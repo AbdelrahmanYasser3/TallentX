@@ -1,0 +1,94 @@
+﻿<div class="min-h-screen bg-surface-container-lowest p-6 md:p-8">
+  <div class="mx-auto max-w-7xl space-y-7">
+    <header class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div>
+        <p class="text-label-md uppercase tracking-widest text-tertiary">Intelligence Reports</p>
+        <h1 class="mt-1 text-display-sm text-on-surface">Analytics Reports</h1>
+        <p class="mt-2 text-body-md text-on-surface-variant">Funnel performance, conversion health, recruiter productivity, and AI trend signals.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <button class="rounded-xl bg-surface-container px-4 py-2 text-label-md text-on-surface">Last 30 days</button>
+        <button class="rounded-xl bg-primary px-4 py-2 text-label-md text-on-primary">Export report</button>
+      </div>
+    </header>
+
+    <section class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <article *ngFor="let kpi of kpis()" class="rounded-2xl bg-surface-container p-5 shadow-sm">
+        <p class="text-label-md uppercase text-on-surface-variant">{{ kpi.label }}</p>
+        <h2 class="mt-2 text-headline-lg text-on-surface">{{ kpi.value }}</h2>
+        <p 
+          class="mt-2 text-body-sm"
+          [ngClass]="{
+            'text-success': kpi.trendType === 'success',
+            'text-warning': kpi.trendType === 'warning',
+            'text-on-surface-variant': kpi.trendType === 'neutral'
+          }"
+        >{{ kpi.trend }}</p>
+      </article>
+    </section>
+
+    <div class="grid grid-cols-1 gap-6 xl:grid-cols-12">
+      <section class="space-y-5 rounded-2xl bg-surface-container p-6 shadow-sm xl:col-span-8">
+        <div class="flex items-center justify-between">
+          <h3 class="text-title-lg text-on-surface">Hiring Funnel</h3>
+          <span class="text-label-md uppercase text-on-surface-variant">Last 30 days</span>
+        </div>
+
+        <div class="space-y-4">
+          <div *ngFor="let stage of funnelStages()">
+            <div class="flex justify-between text-body-sm">
+              <span>{{ stage.label }}</span>
+              <span>{{ stage.percentage }}%</span>
+            </div>
+            <div class="mt-1 h-3 rounded-full bg-surface-container-lowest">
+              <div 
+                class="h-3 rounded-full" 
+                [style.width.%]="stage.percentage"
+                [ngClass]="{
+                  'bg-primary': stage.theme === 'primary',
+                  'bg-secondary': stage.theme === 'secondary',
+                  'bg-tertiary': stage.theme === 'tertiary',
+                  'bg-success': stage.theme === 'success'
+                }"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <article *ngFor="let insight of insights()" class="rounded-xl bg-surface-container-lowest p-4">
+            <h4 class="text-title-md text-on-surface">{{ insight.title }}</h4>
+            <p class="mt-2 text-body-sm text-on-surface-variant">{{ insight.description }}</p>
+          </article>
+        </div>
+      </section>
+
+      <aside class="space-y-4 xl:col-span-4">
+        <article class="rounded-2xl bg-surface-container p-6 shadow-sm">
+          <h3 class="mb-4 text-title-lg text-on-surface">Top Sources</h3>
+          <ul class="space-y-3 text-body-sm text-on-surface-variant">
+            <li *ngFor="let source of topSources()" class="flex items-center justify-between">
+              <span>{{ source.source }}</span>
+              <strong class="text-on-surface">{{ source.percentage }}%</strong>
+            </li>
+          </ul>
+        </article>
+
+        <article class="rounded-2xl bg-surface-container p-6 shadow-sm">
+          <h3 class="mb-3 text-title-md text-on-surface">Risk Monitor</h3>
+          <ul class="space-y-2 text-body-sm text-on-surface-variant">
+            <li *ngFor="let risk of risks()">
+              <i 
+                [class]="risk.icon + ' mr-2'"
+                [ngClass]="{
+                  'text-warning': risk.type === 'warning',
+                  'text-success': risk.type === 'success'
+                }"
+              ></i>{{ risk.text }}
+            </li>
+          </ul>
+        </article>
+      </aside>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Forgot Password - IES Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-container": "#b0b2ff",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-background": "#dae2fd",
+              "outline-variant": "#424754",
+              "inverse-on-surface": "#283044",
+              "on-tertiary-container": "#00311f",
+              "on-primary": "#002e6a",
+              "surface-dim": "#0b1326",
+              "primary-container": "#4d8eff",
+              "inverse-primary": "#005ac2",
+              "on-secondary": "#1000a9",
+              "tertiary-fixed-dim": "#4edea3",
+              "surface-container-highest": "#2d3449",
+              "surface-container": "#171f33",
+              "surface-tint": "#adc6ff",
+              "on-secondary-fixed": "#07006c",
+              "tertiary-container": "#00a572",
+              "primary-fixed": "#d8e2ff",
+              "primary": "#adc6ff",
+              "on-error-container": "#ffdad6",
+              "surface-container-lowest": "#060e20",
+              "inverse-surface": "#dae2fd",
+              "background": "#0b1326",
+              "surface-container-low": "#131b2e",
+              "error": "#ffb4ab",
+              "surface": "#0b1326",
+              "on-primary-container": "#00285d",
+              "outline": "#8c909f",
+              "on-surface": "#dae2fd",
+              "on-error": "#690005",
+              "tertiary-fixed": "#6ffbbe",
+              "on-surface-variant": "#c2c6d6",
+              "error-container": "#93000a",
+              "on-tertiary-fixed": "#002113",
+              "secondary-fixed-dim": "#c0c1ff",
+              "primary-fixed-dim": "#adc6ff",
+              "on-tertiary": "#003824",
+              "secondary": "#c0c1ff",
+              "secondary-container": "#3131c0",
+              "tertiary": "#4edea3",
+              "on-primary-fixed": "#001a42",
+              "on-primary-fixed-variant": "#004395",
+              "surface-variant": "#2d3449",
+              "secondary-fixed": "#e1e0ff",
+              "surface-container-high": "#222a3d",
+              "surface-bright": "#31394d",
+              "on-secondary-fixed-variant": "#2f2ebe"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(34, 42, 61, 0.6);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      .neural-glow {
+        box-shadow: 0 0 40px rgba(173, 198, 255, 0.08);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col selection:bg-primary/30">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 bg-[#0b1326]/80 backdrop-blur-xl shadow-[0_0_40px_rgba(173,198,255,0.08)] flex items-center justify-between px-6 h-16 w-full font-['Inter'] antialiased">
+<div class="flex items-center gap-2">
+<span class="text-xl font-bold tracking-tighter text-[#adc6ff]">IES Portal</span>
+</div>
+<!-- Navigation Suppressed for Transactional Page Focus -->
+<div class="hidden md:flex items-center gap-8">
+<!-- Navigation links hidden to minimize distraction on reset page -->
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#c0c1ff]/60 hover:text-[#c0c1ff] transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined" data-icon="sparkles">colors_spark</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/20">
+<img alt="Recruiter Profile" data-alt="minimalist avatar placeholder with a dark theme aesthetic and soft blue highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_dBsqFjZ6WfDACdRyhFnfW5hyovS92ln4xIxqtno6YLJj7DAUeckN86Zr4eRYkDBiWg5NlXudpmICX5fXPLnKSOCSqB77H29NjKV9PHqhoNXfg9jAlilNsuZYG9o7roRTIWFQpkoPgKqlbpJNVAEjiI7KempHt9Ougb-DCcMH_CGvGu_6y9PSXCDiVtBn0838C5R7UOEY0TC2wVUK3mFgsrkKozMHrt4hQmbN-NE0Y-7K8EM8GMnLfzu6vgL7QUKTPmtcsZmznZ0"/>
+</div>
+</div>
+</header>
+<!-- Main Content: Focused Journey -->
+<main class="flex-grow flex items-center justify-center px-4 pt-16 relative overflow-hidden">
+<!-- Background Decorative Elements (Neural Architect Style) -->
+<div class="absolute top-1/4 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-secondary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="w-full max-w-[440px] z-10">
+<!-- Branding/Identity -->
+<div class="text-center mb-8">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-surface-container-high neural-glow mb-6 border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="lock_reset">lock_reset</span>
+</div>
+<h1 class="text-3xl font-bold tracking-tight text-on-background font-headline mb-2">Forgot Password</h1>
+<p class="text-on-surface-variant body-md px-4">Enter your email address and we'll send you instructions to reset your account.</p>
+</div>
+<!-- Central Card -->
+<div class="glass-card border border-outline-variant/20 rounded-[2rem] p-8 neural-glow">
+<form action="#" class="space-y-6">
+<!-- Email Input Field -->
+<div class="space-y-2">
+<label class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-1" for="email">Email address</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant/50 text-xl" data-icon="mail">mail</span>
+</div>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/30 focus:ring-2 focus:ring-primary/40 focus:bg-surface-container transition-all outline-none" id="email" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary text-on-primary font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(173,198,255,0.2)] hover:shadow-[0_0_30px_rgba(173,198,255,0.4)] transition-all active:scale-[0.98] flex items-center justify-center gap-2 group" type="submit">
+<span>Send Reset Link</span>
+<span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<!-- Footer Link -->
+<div class="mt-8 pt-6 border-t border-outline-variant/10 text-center">
+<a class="inline-flex items-center gap-2 text-secondary hover:text-primary transition-colors text-sm font-medium" href="/login">
+<span class="material-symbols-outlined text-lg" data-icon="arrow_back">arrow_back</span>
+                        Back to Login
+                    </a>
+</div>
+</div>
+<!-- Support Text -->
+<p class="text-center mt-8 text-xs text-on-surface-variant/50">
+                Having trouble? Contact <a class="text-primary/70 hover:underline" href="#">IES Support</a>
+</p>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-8 mt-auto bg-[#0b1326] border-t border-[#adc6ff]/5 flex flex-col md:flex-row items-center justify-between px-12 font-['Inter'] antialiased">
+<div class="text-xs text-[#c0c1ff]/40 mb-4 md:mb-0">
+            © 2024 Intelligent Employment System. Powered by Neural Architect AI.
+        </div>
+<div class="flex gap-6">
+<a class="text-xs text-[#c0c1ff]/40 hover:text-[#adc6ff] transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs text-[#c0c1ff]/40 hover:text-[#adc6ff] transition-colors" href="#">Terms of Service</a>
+<a class="text-xs text-[#c0c1ff]/40 hover:text-[#adc6ff] transition-colors" href="#">API Docs</a>
+<a class="text-xs text-[#c0c1ff]/40 hover:text-[#adc6ff] transition-colors" href="#">Support</a>
+</div>
+</footer>
+</body></html>

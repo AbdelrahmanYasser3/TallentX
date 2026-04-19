@@ -1,0 +1,101 @@
+<main class="flex-grow flex items-center justify-center p-6 relative overflow-hidden flex-1 bg-surface transition-colors duration-300">
+  <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/10 blur-[120px] pointer-events-none"></div>
+  <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-tertiary/10 blur-[120px] pointer-events-none"></div>
+  
+  <div class="w-full max-w-[480px] relative z-10 my-10">
+    <div class="flex flex-col items-center mb-10 text-center">
+      <div class="flex items-center gap-2 mb-2">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/20" style="background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-tertiary) 100%);">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+        </div>
+        <span class="text-3xl font-black tracking-tighter text-on-surface">IES</span>
+      </div>
+      <p class="text-on-surface-variant font-medium tracking-tight">Intelligent Employment System</p>
+    </div>
+    
+    <div class="rounded-3xl p-8 shadow-2xl shadow-on-surface/5 border border-outline-variant/20 dark:border-white/5" style="background: rgba(var(--color-surface), 0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);">
+      <div class="flex p-1 bg-surface-container-low rounded-2xl mb-8">
+        <button type="button" class="flex-1 py-3 px-4 rounded-xl text-sm font-semibold transition-all duration-200 bg-surface-container-lowest text-primary shadow-sm pointer-events-none">
+          Candidate Login
+        </button>
+        <button type="button" routerLink="/register/company" class="flex-1 py-3 px-4 rounded-xl text-sm font-medium text-on-surface-variant hover:text-on-surface transition-all duration-200">
+          Employer Access
+        </button>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <div class="space-y-2">
+          <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1" for="email">Email Address</label>
+          <div class="relative group">
+            <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+              <span class="material-symbols-outlined text-[20px]">mail</span>
+            </div>
+            <input class="w-full pl-12 pr-4 py-4 bg-surface-container-highest/50 border-none rounded-2xl focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all placeholder:text-outline-variant text-on-surface font-medium" id="email" placeholder="name@company.com" type="email" formControlName="email"/>
+          </div>
+          <p *ngIf="f['email'].invalid && f['email'].touched" class="text-xs text-error mt-1 ml-1">
+            {{ f['email'].errors?.['required'] ? 'Email is required.' : 'Enter a valid email.' }}
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex justify-between items-center ml-1">
+            <label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant" for="password">Password</label>
+            <a routerLink="/forgot-password" class="text-xs font-bold text-primary hover:text-secondary transition-colors">Forgot Password?</a>
+          </div>
+          <div class="relative group">
+            <div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-on-surface-variant group-focus-within:text-primary transition-colors">
+              <span class="material-symbols-outlined text-[20px]">lock</span>
+            </div>
+            <input class="w-full pl-12 pr-12 py-4 bg-surface-container-highest/50 border-none rounded-2xl focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all placeholder:text-outline-variant text-on-surface font-medium" id="password" placeholder="••••••••" [type]="showPassword ? 'text' : 'password'" formControlName="password"/>
+            <button class="absolute inset-y-0 right-4 flex items-center text-on-surface-variant hover:text-on-surface transition-colors focus:outline-none" type="button" (click)="togglePasswordVisibility()">
+              <span class="material-symbols-outlined text-[20px]">{{ showPassword ? 'visibility_off' : 'visibility' }}</span>
+            </button>
+          </div>
+          <p *ngIf="f['password'].invalid && f['password'].touched" class="text-xs text-error mt-1 ml-1">Password is required.</p>
+        </div>
+
+        <button class="w-full py-4 text-white font-bold rounded-2xl shadow-xl shadow-secondary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" style="background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-tertiary) 100%);" type="submit" [disabled]="isLoading">
+          <span *ngIf="isLoading" class="flex items-center gap-2"><i class="fa-solid fa-circle-notch fa-spin"></i> Authenticating...</span>
+          <span *ngIf="!isLoading">Sign In with AI Insights</span>
+          <span *ngIf="!isLoading" class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+        </button>
+      </form>
+
+      <div class="relative my-10">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-outline-variant/30"></div>
+        </div>
+        <div class="relative flex justify-center text-xs">
+          <span class="px-4 text-on-surface-variant font-bold uppercase tracking-widest" style="background: rgba(var(--color-surface), 0.7);">Or continue with</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <button type="button" class="flex items-center justify-center gap-3 py-3.5 px-4 bg-surface-container-lowest border border-outline-variant/20 rounded-2xl hover:bg-surface-container-low transition-all duration-200 group">
+          <img alt="Google" class="w-5 h-5 group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmAPpsyVxLZKtDtGapbEe7ayCXcVeROksRIvJrdtSz8cRsccirzNh7Svx0FNxf7Vj2Lyjyu1LX6vNo2r_IPhU19fcdfuiksI_MIjyqDA0NFQropB8vBDB5KulpvZC2zt6JPp6_yuAS0X9R9tnODl5_sKG5EvSj3MrPRuEdr03AwzdVgmCDSdMzjmU_JxyNZ1sWdkvot2RZSEYPNGd5FqO_B7UQLOA2ghmmvwf7ITcDGoIuoqqH5GNUDFxpWKTICYYSaOTr0pSNNVs"/>
+          <span class="text-sm font-semibold text-on-surface">Google</span>
+        </button>
+        <button type="button" class="flex items-center justify-center gap-3 py-3.5 px-4 bg-surface-container-lowest border border-outline-variant/20 rounded-2xl hover:bg-surface-container-low transition-all duration-200 group">
+          <img alt="LinkedIn" class="w-5 h-5 group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoh5G9YJB1DEjKeHUjZH3Icj8f8Oz43nx6dVV4HTqDksVr8QHlUJ7C9hC52FcPbeTcaPffIT5BBSBymM_hAETsuxjy9IdU6_9DSvlFUBWq4SMb32r1lnCHPpwpaoLaoaZV2VD_lNqZg4_QjBdE650HhEbA_R-uTpG--S50RHVaZPa12w-vQcEJq6bMLA4yaL2YhuVgofRUh4nXJgWOnacC49ylcXnJwmGDw0J8PzouyloRUIjX0EBL_4n7mWiabHk14W_IdNvDWy8"/>
+          <span class="text-sm font-semibold text-on-surface">LinkedIn</span>
+        </button>
+      </div>
+
+      <p class="mt-8 text-center text-sm text-on-surface-variant">
+        Don't have an account? 
+        <a routerLink="/register" class="text-primary font-bold hover:underline transition-all">Create Account</a>
+      </p>
+    </div>
+    
+    <div class="mt-8 flex items-center justify-center gap-6">
+      <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary-container/30 border border-secondary/10">
+        <span class="material-symbols-outlined text-[16px] text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-secondary">Secure Portal</span>
+      </div>
+      <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-tertiary-container/30 border border-tertiary/10">
+        <span class="material-symbols-outlined text-[16px] text-tertiary" style="font-variation-settings: 'FILL' 1;">psychology</span>
+        <span class="text-[10px] font-bold uppercase tracking-widest text-tertiary">AI Powered</span>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IES | Interview Scheduling</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary": "#4648d4",
+                        "on-surface-variant": "#424754",
+                        "on-secondary-container": "#fffbff",
+                        "on-primary-container": "#fefcff",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "primary": "#0058be",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#9c48ea",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#005ac2",
+                        "primary-container": "#2170e4",
+                        "tertiary-fixed": "#f0dbff",
+                        "outline": "#727785",
+                        "tertiary-fixed-dim": "#ddb7ff",
+                        "secondary-container": "#6063ee",
+                        "surface-variant": "#e0e3e5",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed": "#2c0051",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-fixed": "#001a42",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary": "#8127cf",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-fixed-variant": "#6900b3",
+                        "surface-dim": "#d8dadc",
+                        "background": "#f7f9fb",
+                        "on-tertiary-container": "#fffbff",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "outline-variant": "#c2c6d6",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "on-secondary-fixed": "#07006c",
+                        "on-surface": "#191c1e",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eceef0",
+                        "inverse-primary": "#adc6ff",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-background": "#191c1e",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#004395"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-gradient {
+            background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+        }
+        .glass-panel {
+            background: rgba(25, 28, 30, 0.7);
+            backdrop-filter: blur(24px);
+        }
+        body {
+            background-color: #0f172a; /* Custom dark slate for professional recruiter view */
+            color: #f1f5f9;
+        }
+    </style>
+</head>
+<body class="font-body antialiased">
+<!-- SideNavBar (Authority: Shared Components JSON) -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-slate-800 bg-slate-950 flex flex-col p-4 gap-2 z-50">
+<div class="mb-8 px-4 py-2">
+<h1 class="text-lg font-bold text-slate-100">IES Portal</h1>
+<p class="text-xs font-medium text-slate-500 uppercase tracking-widest">Intelligent Management</p>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-medium">Applications</span>
+</a>
+<!-- Active State: Interviews -->
+<a class="bg-white dark:bg-slate-900 text-blue-700 dark:text-indigo-400 shadow-sm rounded-xl px-4 py-3 flex items-center gap-3 scale-98 transition-transform" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="text-sm font-medium">Interviews</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-2">
+<button class="ai-gradient text-white rounded-xl py-3 px-4 flex items-center justify-center gap-2 font-semibold text-sm shadow-lg shadow-indigo-500/20 hover:scale-105 transition-all">
+<span>✨ AI Insights</span>
+</button>
+<div class="h-px bg-slate-800 my-2"></div>
+<a class="text-slate-400 hover:text-white px-4 py-2 flex items-center gap-3 text-sm transition-colors" href="#">
+<span class="material-symbols-outlined">help</span> Help Center
+            </a>
+<a class="text-slate-400 hover:text-white px-4 py-2 flex items-center gap-3 text-sm transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span> Logout
+            </a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen p-8 bg-slate-950">
+<!-- Header Section (Editorial Tech Style) -->
+<header class="max-w-7xl mx-auto mb-12 flex justify-between items-end">
+<div>
+<h2 class="text-5xl font-black tracking-tighter text-white mb-2 leading-none">Interview Scheduler</h2>
+<p class="text-slate-400 text-lg font-medium">Manage candidate journeys with AI-assisted logistics.</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-slate-900 border border-slate-800 text-white px-6 py-3 rounded-xl font-semibold hover:bg-slate-800 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">filter_list</span>
+                    Filters
+                </button>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all shadow-xl shadow-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                    Schedule Interview
+                </button>
+</div>
+</header>
+<div class="max-w-7xl mx-auto grid grid-cols-12 gap-8">
+<!-- Calendar Section (Bento Style) -->
+<div class="col-span-12 lg:col-span-8 space-y-8">
+<!-- Modern Calendar Interface -->
+<section class="bg-slate-900/50 rounded-2xl p-8 border border-slate-800/50">
+<div class="flex justify-between items-center mb-8">
+<div class="flex items-center gap-4">
+<h3 class="text-2xl font-bold text-white">October 2024</h3>
+<div class="flex gap-1">
+<button class="p-2 hover:bg-slate-800 rounded-lg transition-colors"><span class="material-symbols-outlined text-slate-400">chevron_left</span></button>
+<button class="p-2 hover:bg-slate-800 rounded-lg transition-colors"><span class="material-symbols-outlined text-slate-400">chevron_right</span></button>
+</div>
+</div>
+<div class="flex bg-slate-800 p-1 rounded-xl">
+<button class="px-4 py-2 text-sm font-medium text-white bg-slate-700 rounded-lg shadow-sm">Month</button>
+<button class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors">Week</button>
+<button class="px-4 py-2 text-sm font-medium text-slate-400 hover:text-white transition-colors">Day</button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-px bg-slate-800 border border-slate-800 rounded-xl overflow-hidden">
+<!-- Days Header -->
+<div class="bg-slate-900 p-4 text-center text-xs font-bold text-slate-500 tracking-widest uppercase">Mon</div>
+<div class="bg-slate-900 p-4 text-center text-xs font-bold text-slate-500 tracking-widest uppercase">Tue</div>
+<div class="bg-slate-900 p-4 text-center text-xs font-bold text-slate-500 tracking-widest uppercase">Wed</div>
+<div class="bg-slate-900 p-4 text-center text-xs font-bold text-slate-500 tracking-widest uppercase">Thu</div>
+<div class="bg-slate-900 p-4 text-center text-xs font-bold text-slate-500 tracking-widest uppercase">Fri</div>
+<div class="bg-slate-900 p-4 text-center text-xs font-bold text-slate-500 tracking-widest uppercase">Sat</div>
+<div class="bg-slate-900 p-4 text-center text-xs font-bold text-slate-500 tracking-widest uppercase">Sun</div>
+<!-- Calendar Days Example (Incomplete for brevity) -->
+<div class="bg-slate-900 min-h-[120px] p-2 text-slate-600">26</div>
+<div class="bg-slate-900 min-h-[120px] p-2 text-slate-600">27</div>
+<div class="bg-slate-900 min-h-[120px] p-2 text-slate-600">28</div>
+<div class="bg-slate-900 min-h-[120px] p-2 text-slate-600">29</div>
+<div class="bg-slate-900 min-h-[120px] p-2 text-slate-600">30</div>
+<div class="bg-slate-900 min-h-[120px] p-2 text-white font-bold">1</div>
+<div class="bg-slate-900 min-h-[120px] p-2 text-white font-bold">2</div>
+<!-- Row 2 -->
+<div class="bg-slate-900 min-h-[120px] p-2 text-white font-bold">
+<span>3</span>
+<div class="mt-2 p-2 bg-indigo-500/20 border-l-4 border-indigo-500 rounded text-[10px] text-indigo-300">
+                                09:00 - AI Screen: Alex J.
+                            </div>
+</div>
+<div class="bg-slate-900 min-h-[120px] p-2 text-white font-bold">4</div>
+<div class="bg-slate-950 min-h-[120px] p-2 text-white font-bold ring-2 ring-primary ring-inset">
+<span>5</span>
+<div class="mt-2 p-2 ai-gradient rounded text-[10px] text-white font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">colors_spark</span>
+                                Smart Scheduling Peak
+                            </div>
+</div>
+<div class="bg-slate-900 min-h-[120px] p-2 text-white font-bold">6</div>
+<div class="bg-slate-900 min-h-[120px] p-2 text-white font-bold">7</div>
+<div class="bg-slate-900 min-h-[120px] p-2 text-white font-bold">8</div>
+<div class="bg-slate-900 min-h-[120px] p-2 text-white font-bold">9</div>
+</div>
+</section>
+<!-- Status Cards (Horizontal Bento) -->
+<div class="grid grid-cols-3 gap-6">
+<div class="bg-slate-900/40 p-6 rounded-2xl border border-slate-800/50">
+<div class="flex items-center gap-3 mb-4">
+<span class="w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.5)]"></span>
+<h4 class="text-slate-400 font-bold text-xs uppercase tracking-widest">Scheduled</h4>
+</div>
+<p class="text-4xl font-black text-white">12</p>
+<p class="text-xs text-slate-500 mt-2">+4 from last week</p>
+</div>
+<div class="bg-slate-900/40 p-6 rounded-2xl border border-slate-800/50">
+<div class="flex items-center gap-3 mb-4">
+<span class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_12px_rgba(16,185,129,0.5)]"></span>
+<h4 class="text-slate-400 font-bold text-xs uppercase tracking-widest">InProgress</h4>
+</div>
+<p class="text-4xl font-black text-white">03</p>
+<p class="text-xs text-slate-500 mt-2">Active sessions live</p>
+</div>
+<div class="bg-slate-900/40 p-6 rounded-2xl border border-slate-800/50">
+<div class="flex items-center gap-3 mb-4">
+<span class="w-3 h-3 rounded-full bg-slate-500"></span>
+<h4 class="text-slate-400 font-bold text-xs uppercase tracking-widest">Completed</h4>
+</div>
+<p class="text-4xl font-black text-white">87</p>
+<p class="text-xs text-slate-500 mt-2">Total this month</p>
+</div>
+</div>
+</div>
+<!-- Sidebar Insights (Asymmetric Layout) -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<!-- AI Smart Reco Card -->
+<div class="ai-gradient p-[1px] rounded-2xl">
+<div class="bg-slate-950 rounded-2xl p-6 h-full">
+<div class="flex items-center gap-2 mb-4 text-indigo-400">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">colors_spark</span>
+<span class="font-bold text-sm tracking-tight uppercase">AI Optimization</span>
+</div>
+<h4 class="text-xl font-bold text-white mb-3">Optimal Times Found</h4>
+<p class="text-slate-400 text-sm mb-6 leading-relaxed">
+                            Lumina AI has identified 4 candidates with matching availability on Wednesday afternoon. Auto-schedule for max efficiency?
+                        </p>
+<button class="w-full ai-gradient text-white py-3 rounded-xl font-bold text-sm hover:opacity-90 transition-opacity">
+                            ✨ Execute Auto-Schedule
+                        </button>
+</div>
+</div>
+<!-- Upcoming Interviews List -->
+<div class="bg-slate-900/50 rounded-2xl p-8 border border-slate-800/50">
+<h4 class="text-white font-bold text-lg mb-6">Today's Agenda</h4>
+<div class="space-y-6">
+<!-- Item 1 -->
+<div class="group flex gap-4 items-start">
+<img alt="Candidate Avatar" class="w-12 h-12 rounded-xl object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="professional headshot of a young male software engineer against a neutral gray background, warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPw3SjlIQjDGMxrgfJNaMfAfN8I0lckt2exdfA45vnm1H5ACJc1CFv53ji79MtNjZ3gex_6YLTMjIMspip0wvtSZc2MGGWeGNlG-6m_H79p-EUbVdFKEqAZ_xg8-7EZ1SvMckD1WAbhb0bvddMArTyeozdAwlAZaQSt3nKiQX8hjdzL9bNTVMSpuQ7oYOB5posm_0L48XSG3mB0VL5znVxVCDAenkRYFFEcDQ02vPxNUpMYkI01XGt-87VHfgB4BroyHuPxDqBf3A"/>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h5 class="text-white font-semibold">Marcus Thorne</h5>
+<span class="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded">LIVE</span>
+</div>
+<p class="text-slate-500 text-xs">Senior Frontend Dev • 14:00</p>
+<div class="mt-3 flex gap-2">
+<button class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm text-slate-300">video_call</span>
+</button>
+<button class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm text-slate-300">description</span>
+</button>
+</div>
+</div>
+</div>
+<div class="h-[1px] bg-slate-800/50"></div>
+<!-- Item 2 -->
+<div class="group flex gap-4 items-start opacity-70 grayscale hover:grayscale-0 hover:opacity-100 transition-all">
+<img alt="Candidate Avatar" class="w-12 h-12 rounded-xl object-cover" data-alt="portrait of a smiling business woman in creative office setting, soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrUXknMWqykpsFbIhVw8E0firaOWB2tQVL-Ch1ajxRk1DOIUCKJnrqCUTOke5yobHLIZoiJwE2_j23VKrFeGxsmSZ9boNFGOf6PAMO8e9vfYtzGJBmGGqMiVB_6ZoFUfcOKOpQFRJSR7pww27T3htttLjTt0sdop69UxGmunPrLkk04n2NkKKSglCCpewLzoIjfyPhn9A0nTLkStKVrST5v3Ni-LrgGY7o-cqtFVmLEThW2jsBjrYLAYAyTz6smbW8z-MOuJpseWU"/>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h5 class="text-white font-semibold">Sarah Jenkins</h5>
+<span class="text-[10px] font-bold text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded">AI AGENT</span>
+</div>
+<p class="text-slate-500 text-xs">Product Manager • 16:30</p>
+<div class="mt-3 flex gap-2">
+<button class="bg-slate-800 hover:bg-slate-700 p-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm text-slate-300">smart_toy</span>
+</button>
+</div>
+</div>
+</div>
+<div class="h-[1px] bg-slate-800/50"></div>
+<!-- Item 3 -->
+<div class="group flex gap-4 items-start">
+<div class="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h5 class="text-white font-semibold">David Wu</h5>
+<span class="text-[10px] font-bold text-slate-400 bg-slate-400/10 px-2 py-1 rounded">WAITING</span>
+</div>
+<p class="text-slate-500 text-xs">Data Scientist • 17:00</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Map Integration (Location logic) -->
+<div class="rounded-2xl overflow-hidden h-48 relative group border border-slate-800/50">
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
+<img alt="HQ Location" class="w-full h-full object-cover grayscale transition-transform duration-500 group-hover:scale-110" data-alt="stylized architectural shot of a modern office building exterior in a tech district at dusk with cool blue lights" data-location="San Francisco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPmVKg4RYCwnO1tAjyXiN_Tkxv9crBdmYBLqGyxi1UFBm_HKxIhpHo6f30w6YzC3GKBOpHSwYrUwBLPNXQcuhNrx6tBtc-D-P_GQidCEVy0p0yCnaHmfkpiFe0hcHFmhgH_8fODpfj7OHjMJDI7GqdBYxgKs1J7mzlgtiwtmfm2aELnnVnja3SbCorzGKrNqwRV36qJEQs7LxNvEvhomSdn4ZJtHUVlBdZ3HTrYDLQ-Es8BkFHIZqNFF6T6-RsUZC_LFvOIVdvvdQ"/>
+<div class="absolute bottom-4 left-4 z-20">
+<h6 class="text-white font-bold text-sm">IES Headquarters</h6>
+<p class="text-slate-400 text-[10px]">Silicon Valley Hub</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Authority: Shared Components JSON) -->
+<footer class="ml-64 bg-slate-950 py-8 border-t border-slate-800 mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+<span class="text-xs font-inter text-slate-500 dark:text-slate-400">© 2024 IES Intelligent Employment System</span>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-slate-300 text-xs transition-opacity" href="#">Privacy Policy</a>
+<a class="text-slate-400 hover:text-slate-300 text-xs transition-opacity" href="#">Terms of Service</a>
+<a class="text-slate-400 hover:text-slate-300 text-xs transition-opacity" href="#">Cookie Settings</a>
+</div>
+<div class="font-bold text-slate-700 dark:text-slate-300">IES</div>
+</div>
+</footer>
+</body></html>

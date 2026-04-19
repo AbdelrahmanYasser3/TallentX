@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "http://ies.runasp.net/api/$1"
+    }
+  ]
+}

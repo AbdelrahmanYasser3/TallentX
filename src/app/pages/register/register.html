@@ -1,0 +1,131 @@
+<main class="flex-grow flex items-center justify-center p-6 md:p-12 relative overflow-hidden bg-surface transition-colors duration-300">
+  <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full blur-3xl -z-10" style="background: linear-gradient(135deg, rgba(var(--color-secondary), 0.1) 0%, rgba(var(--color-tertiary), 0.1) 100%);"></div>
+  <div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-primary/5 rounded-full blur-3xl -z-10"></div>
+  
+  <div class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-12 gap-0 bg-surface-container-lowest rounded-[2rem] shadow-xl shadow-surface-variant/30 overflow-hidden border border-outline-variant/20 dark:border-white/5 my-10">
+    <div class="md:col-span-5 relative hidden md:block">
+      <img class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6skPq5y6l9aEoexiKrscZkmdvhLUpTJej0zHPculFFm7c3gL-Hhg8ifa5UWr1o74B6qTCEvb16xOt4-A5_yM2VSfLO6MASiT3GG_rTA1zLXsSjB-VNZhM5Q42KTIajLfsUjOaulrE5FuAO_G64Jvhrg2lKtx51gs5xdWHdwC23GzNQcAWNN9YLL34sqQEjYZItQTQkSTv4_O1qS4Vaw5gMHd0wktELi_m0OikCY7aBuQTNiigzw19D_6uqxz3fF8UgBqHkvYVD1M" alt="Workspace"/>
+      <div class="absolute inset-0 flex flex-col justify-end p-10 text-white" style="background: linear-gradient(to top, rgba(0, 88, 190, 0.85), transparent);">
+        <h1 class="text-4xl font-headline font-extrabold tracking-tighter mb-4 leading-none">IES Candidate</h1>
+        <p class="text-lg font-light opacity-90 leading-relaxed">Join the world's most intelligent employment ecosystem. Precision matching for your professional journey.</p>
+      </div>
+    </div>
+    
+    <div class="md:col-span-7 p-8 md:p-12 flex flex-col justify-center">
+      <div class="mb-8 relative">
+        <a routerLink="/register/company" class="absolute right-0 top-0 text-xs font-bold text-primary hover:underline uppercase tracking-wider">Company Sign Up</a>
+        <a *ngIf="!isRecruiterMode" routerLink="/register/recruiter" class="absolute right-0 top-6 text-xs font-bold text-tertiary hover:underline uppercase tracking-wider">Recruiter Join</a>
+        <a *ngIf="isRecruiterMode" routerLink="/register" class="absolute right-0 top-6 text-xs font-bold text-tertiary hover:underline uppercase tracking-wider">Candidate Sign Up</a>
+        <span class="text-[0.6875rem] uppercase tracking-widest font-label font-bold text-tertiary mb-2 block">Registration</span>
+        <h2 class="text-3xl font-headline font-bold tracking-tight text-on-surface">{{ isRecruiterMode ? 'Join Company As Recruiter' : 'Create Candidate Profile' }}</h2>
+        <p class="text-on-surface-variant mt-2 text-sm">{{ isRecruiterMode ? 'Use your company invite code to create a recruiter account.' : 'Enter your details to begin your AI-powered career search.' }}</p>
+      </div>
+      
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-5">
+        
+        <div *ngIf="errorMessage" class="flex items-center gap-3 p-3 rounded-lg bg-error-container text-on-error-container mb-4 text-sm font-medium">
+          <i class="fa-solid fa-circle-xmark"></i>
+          <span>{{ errorMessage }}</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="space-y-1.5">
+            <label class="text-[0.75rem] font-bold uppercase tracking-wider text-on-surface-variant px-1" for="first_name">First Name</label>
+            <input formControlName="firstName" class="w-full px-4 py-3 rounded-xl border-none bg-surface-container-low focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-outline-variant text-sm font-medium text-on-surface" id="first_name" placeholder="John" type="text"/>
+            <p *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched" class="text-xs text-error mt-1 ml-1">First name is required</p>
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[0.75rem] font-bold uppercase tracking-wider text-on-surface-variant px-1" for="last_name">Last Name</label>
+            <input formControlName="lastName" class="w-full px-4 py-3 rounded-xl border-none bg-surface-container-low focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-outline-variant text-sm font-medium text-on-surface" id="last_name" placeholder="Doe" type="text"/>
+            <p *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched" class="text-xs text-error mt-1 ml-1">Last name is required</p>
+          </div>
+        </div>
+
+        <div class="space-y-1.5">
+          <label class="text-[0.75rem] font-bold uppercase tracking-wider text-on-surface-variant px-1" for="email">Email Address</label>
+          <input formControlName="email" class="w-full px-4 py-3 rounded-xl border-none bg-surface-container-low focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-outline-variant text-sm font-medium text-on-surface" id="email" placeholder="you@example.com" type="email"/>
+          <p *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-xs text-error mt-1 ml-1">
+            {{ registerForm.get('email')?.errors?.['required'] ? 'Email is required' : 'Enter a valid email' }}
+          </p>
+        </div>
+
+        <div class="space-y-1.5">
+          <label class="text-[0.75rem] font-bold uppercase tracking-wider text-on-surface-variant px-1" for="password">Password</label>
+          <div class="relative">
+            <input formControlName="password" class="w-full px-4 py-3 pr-12 rounded-xl border-none bg-surface-container-low focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-outline-variant text-sm font-medium text-on-surface" id="password" placeholder="••••••••" [type]="showPassword ? 'text' : 'password'"/>
+            <button type="button" (click)="togglePasswordVisibility()" class="absolute inset-y-0 right-4 flex items-center text-on-surface-variant hover:text-on-surface transition-colors focus:outline-none">
+              <span class="material-symbols-outlined text-[20px]">{{ showPassword ? 'visibility_off' : 'visibility' }}</span>
+            </button>
+          </div>
+          <p *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="text-xs text-error mt-1 ml-1">
+            {{ registerForm.get('password')?.errors?.['required'] ? 'Password is required' : 'Minimum 8 chars, 1 uppercase, 1 lowercase, 1 number, 1 special char' }}
+          </p>
+        </div>
+        
+        <div class="space-y-1.5">
+          <label class="text-[0.75rem] font-bold uppercase tracking-wider text-on-surface-variant px-1" for="phone">Phone Number</label>
+          <input formControlName="phoneNumber" class="w-full px-4 py-3 rounded-xl border-none bg-surface-container-low focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-outline-variant text-sm font-medium text-on-surface" id="phone" placeholder="+1 (555) 000-0000" type="text"/>
+          <p *ngIf="registerForm.get('phoneNumber')?.invalid && registerForm.get('phoneNumber')?.touched" class="text-xs text-error mt-1 ml-1">Required</p>
+        </div>
+
+        <div class="space-y-1.5" *ngIf="isRecruiterMode">
+          <label class="text-[0.75rem] font-bold uppercase tracking-wider text-on-surface-variant px-1" for="inviteCode">Invite Code</label>
+          <input formControlName="inviteCode" class="w-full px-4 py-3 rounded-xl border-none bg-surface-container-low focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-outline-variant text-sm font-medium text-on-surface uppercase" id="inviteCode" placeholder="ABC123" type="text"/>
+          <p *ngIf="registerForm.get('inviteCode')?.invalid && registerForm.get('inviteCode')?.touched" class="text-xs text-error mt-1 ml-1">Valid invite code is required</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="space-y-1.5">
+            <label class="text-[0.75rem] font-bold uppercase tracking-wider text-on-surface-variant px-1" for="gender">Gender</label>
+            <select formControlName="gender" class="w-full px-4 py-3 rounded-xl border-none bg-surface-container-low focus:ring-2 focus:ring-primary/40 transition-all text-on-surface-variant text-sm font-medium" id="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="space-y-1.5">
+            <label class="text-[0.75rem] font-bold uppercase tracking-wider text-on-surface-variant px-1" for="dob">Date of Birth</label>
+            <input formControlName="dateOfBirth" class="w-full px-4 py-3 rounded-xl border-none bg-surface-container-low focus:ring-2 focus:ring-primary/40 transition-all text-on-surface-variant text-sm" id="dob" type="date"/>
+            <p *ngIf="registerForm.get('dateOfBirth')?.invalid && registerForm.get('dateOfBirth')?.touched" class="text-xs text-error mt-1 ml-1">Required</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 mt-2">
+          <input type="checkbox" id="terms" formControlName="terms" class="mt-0.5 w-4 h-4 rounded border-outline-variant text-primary focus:ring-primary bg-surface-container-highest"/>
+          <label for="terms" class="text-xs text-on-surface-variant cursor-pointer leading-tight">
+            I agree to the <a routerLink="/terms" class="text-primary hover:underline">Terms of Service</a> and <a routerLink="/privacy" class="text-primary hover:underline">Privacy Policy</a>
+          </label>
+        </div>
+        <p *ngIf="registerForm.get('terms')?.invalid && registerForm.get('terms')?.touched" class="text-xs text-error ml-7 -mt-2">You must agree to continue</p>
+
+        <div class="pt-3 flex flex-col gap-4">
+          <button type="submit" [disabled]="isLoading" class="w-full py-3.5 bg-primary text-on-primary font-bold rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/30 active:scale-95 transition-all text-center flex justify-center items-center gap-2">
+            <span *ngIf="isLoading" class="flex items-center gap-2"><i class="fa-solid fa-spinner fa-spin"></i> Creating Profile...</span>
+            <span *ngIf="!isLoading">{{ isRecruiterMode ? 'Create Recruiter Account' : 'Complete Registration' }}</span>
+          </button>
+          
+          <div class="flex items-center gap-4 py-2">
+            <div class="h-[1px] flex-grow bg-outline-variant opacity-30"></div>
+            <span class="text-[0.75rem] uppercase tracking-widest text-on-surface-variant font-medium">Or Sign Up With</span>
+            <div class="h-[1px] flex-grow bg-outline-variant opacity-30"></div>
+          </div>
+          
+          <div class="grid grid-cols-2 gap-4">
+            <button type="button" class="flex items-center justify-center gap-2 py-3 bg-surface-container-lowest border border-outline-variant/20 hover:bg-surface-container-low rounded-xl transition-all">
+              <img alt="Google Logo" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7gJv4lNSfWtqxxBQnG1MXsbODy1OHag1MGbV7FUfedgCSpAY2oAlL6ehj3WEuwH5ZkkS1ExjzkxKeexOVUXwQDitxvfNORsFDbfVbxuiS8cExePZUKbeRtbjWHx2t9VYiZpR8pNQyzi48_52W2BaNqRCeshgGCPssPdXRu2-O1TMd4FOuDIhuVQ78OZ-Pl9r1KYRuqCbu3LE03T35un89LHA9p-JrSI2xt28v3zkdT1k2zkU9p_nAwkoL9SVzchVVhoQ37N70wJs"/>
+              <span class="text-sm font-semibold">Google</span>
+            </button>
+            <button type="button" class="flex items-center justify-center gap-2 py-3 bg-surface-container-lowest border border-outline-variant/20 hover:bg-surface-container-low rounded-xl transition-all">
+              <img alt="LinkedIn Logo" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-RsOZwfgkhDRwLiF7uecemilsXxSiVBU-SIRdMGiPIeqG2U8HPWgFFC5ZUhUYk_KOWq4bETyozS0sQF9sIrm99-sUMejOJqu0MBcA-02uSTvILbSEsdemnqae-45b1PqlfPTAOA00LsAwYwVcrlbrUQeW7AWxwpwFyEAj6DAIvX4K0bDz3ji8_Sedcd6KJ7g9gRhrK-JyYibhQtOiyFx3lnV-sRlxCPUz6PTVpp32lmLx5OKnOggc4JoAoeKWfNBd2ZmBIuahW4Q"/>
+              <span class="text-sm font-semibold">LinkedIn</span>
+            </button>
+          </div>
+        </div>
+      </form>
+      
+      <p class="text-center text-sm text-on-surface-variant mt-8">
+        Already have an account? <a routerLink="/login" class="text-primary font-bold hover:underline">Log in here</a>
+      </p>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,165 @@
+﻿<div class="min-h-screen bg-surface-container-lowest p-6 md:p-8">
+  <div class="mx-auto max-w-6xl space-y-7">
+    <header>
+      <p class="text-label-md uppercase tracking-widest text-primary">Organization</p>
+      <h1 class="mt-1 text-display-sm text-on-surface">Company Settings</h1>
+      <p class="mt-2 text-body-md text-on-surface-variant">Configure branding, hiring preferences, and workspace defaults.</p>
+    </header>
+
+    <section class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <article class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm ring-1 ring-outline-variant/30 lg:col-span-2">
+        <h2 class="text-title-lg text-on-surface">Profile Details</h2>
+        <div class="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div>
+            <label class="text-label-sm text-on-surface">Company Name</label>
+            <input type="text" value="TallentX Labs" class="mt-1 w-full rounded-xl bg-surface-container px-4 py-2.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary" />
+          </div>
+          <div>
+            <label class="text-label-sm text-on-surface">Industry</label>
+            <input type="text" value="HR Technology" class="mt-1 w-full rounded-xl bg-surface-container px-4 py-2.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary" />
+          </div>
+          <div class="md:col-span-2">
+            <label class="text-label-sm text-on-surface">Website</label>
+            <input type="text" value="https://tallentx.io" class="mt-1 w-full rounded-xl bg-surface-container px-4 py-2.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary" />
+          </div>
+        </div>
+      </article>
+
+      <article class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm ring-1 ring-outline-variant/30">
+        <h2 class="text-title-md text-on-surface">Hiring Preferences</h2>
+        <div class="mt-4 space-y-3 text-body-sm text-on-surface-variant">
+          <label class="flex items-center justify-between rounded-xl bg-surface-container p-3">
+            <span>Enable AI shortlisting</span>
+            <input type="checkbox" checked />
+          </label>
+          <label class="flex items-center justify-between rounded-xl bg-surface-container p-3">
+            <span>Auto-schedule interviews</span>
+            <input type="checkbox" />
+          </label>
+          <label class="flex items-center justify-between rounded-xl bg-surface-container p-3">
+            <span>Anonymous resume mode</span>
+            <input type="checkbox" checked />
+          </label>
+        </div>
+      </article>
+    </section>
+
+    <!-- Recruiter Invite Codes Section -->
+    <section class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm ring-1 ring-outline-variant/30">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-title-lg text-on-surface">Recruiter Invitations</h2>
+          <p class="mt-1 text-body-sm text-on-surface-variant">Generate and manage recruiter invite codes</p>
+        </div>
+        <button 
+          (click)="showGenerateForm.set(!showGenerateForm())"
+          class="rounded-lg bg-primary px-4 py-2 text-label-md font-medium text-on-primary hover:bg-primary/90 transition-colors">
+          + Generate Code
+        </button>
+      </div>
+
+      <!-- Generate New Code Form -->
+      @if (showGenerateForm()) {
+        <div class="mt-6 rounded-2xl bg-surface-container p-6 border border-outline-variant/30">
+          <h3 class="text-title-md text-on-surface mb-4">Create New Invite Code</h3>
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div>
+              <label class="text-label-sm text-on-surface">Max Uses</label>
+              <input 
+                type="number" 
+                [value]="maxUses()" 
+                (change)="maxUses.set($event.target.valueAsNumber)"
+                min="1" 
+                max="100"
+                class="mt-1 w-full rounded-xl bg-surface-container-lowest px-4 py-2.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary" />
+              <p class="mt-1 text-body-xs text-on-surface-variant">How many times can this code be used (1-100)</p>
+            </div>
+            <div>
+              <label class="text-label-sm text-on-surface">Valid For (Days)</label>
+              <input 
+                type="number" 
+                [value]="validDays()" 
+                (change)="validDays.set($event.target.valueAsNumber)"
+                min="1" 
+                max="365"
+                class="mt-1 w-full rounded-xl bg-surface-container-lowest px-4 py-2.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary" />
+              <p class="mt-1 text-body-xs text-on-surface-variant">How many days before expiry (1-365)</p>
+            </div>
+          </div>
+          <div class="mt-4 flex gap-3">
+            <button 
+              (click)="generateNewCode()"
+              [disabled]="isGenerating()"
+              class="flex-1 rounded-lg bg-primary px-4 py-2.5 text-label-md font-medium text-on-primary hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+              {{ isGenerating() ? 'Generating...' : 'Generate Code' }}
+            </button>
+            <button 
+              (click)="showGenerateForm.set(false)"
+              class="rounded-lg bg-surface-container px-4 py-2.5 text-label-md font-medium text-on-surface hover:bg-surface-container/80 transition-colors">
+              Cancel
+            </button>
+          </div>
+        </div>
+      }
+
+      <!-- Invite Codes List -->
+      <div class="mt-6">
+        @if (isLoadingCodes()) {
+          <div class="flex items-center justify-center py-8">
+            <div class="text-body-md text-on-surface-variant">Loading invite codes...</div>
+          </div>
+        } @else if (inviteCodes().length === 0) {
+          <div class="flex items-center justify-center py-8">
+            <div class="text-body-md text-on-surface-variant">No invite codes yet. Create one to get started.</div>
+          </div>
+        } @else {
+          <div class="space-y-3">
+            @for (code of inviteCodes(); track code.id) {
+              <div class="rounded-xl bg-surface-container p-4 flex items-center justify-between"
+                   [class.opacity-60]="!code.isActive || isCodeExpired(code.expiresAt) || isCodeExhausted(code)">
+                <div class="flex-1">
+                  <div class="flex items-center gap-2">
+                    <code class="text-title-sm font-mono text-primary font-bold">{{ code.code }}</code>
+                    <button 
+                      (click)="copyToClipboard(code.code)"
+                      class="rounded px-2 py-1 text-body-xs text-primary hover:bg-primary/10 transition-colors">
+                      📋 Copy
+                    </button>
+                    @if (!code.isActive || isCodeExpired(code.expiresAt) || isCodeExhausted(code)) {
+                      <span class="text-body-xs font-medium px-2 py-1 rounded-lg bg-error/10 text-error">
+                        @if (!code.isActive) { Revoked }
+                        @else if (isCodeExpired(code.expiresAt)) { Expired }
+                        @else { Exhausted }
+                      </span>
+                    }
+                  </div>
+                  <div class="mt-2 flex flex-wrap gap-4 text-body-sm text-on-surface-variant">
+                    <div>
+                      <span class="font-medium">Uses:</span> {{ code.currentUses }} / {{ code.maxUses }}
+                    </div>
+                    <div>
+                      @if (getDaysUntilExpiry(code.expiresAt) > 0) {
+                        <span class="font-medium">Expires:</span> in {{ getDaysUntilExpiry(code.expiresAt) }} days
+                      } @else {
+                        <span class="font-medium text-error">Expired</span>
+                      }
+                    </div>
+                    <div>
+                      <span class="font-medium">Created:</span> {{ formatDate(code.createdAt) }}
+                    </div>
+                  </div>
+                </div>
+                <button 
+                  (click)="revokeCode(code.id)"
+                  [disabled]="!code.isActive"
+                  class="rounded-lg px-3 py-2 text-label-sm font-medium text-error hover:bg-error/10 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                  Revoke
+                </button>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </section>
+  </div>
+</div>

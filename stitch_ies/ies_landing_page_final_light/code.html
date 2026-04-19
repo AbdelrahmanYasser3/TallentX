@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IES | Intelligent Employment System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#f7f9fb",
+                        "secondary-container": "#6063ee",
+                        "on-tertiary-fixed-variant": "#6900b3",
+                        "background": "#f7f9fb",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-tint": "#005ac2",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "secondary": "#4648d4",
+                        "inverse-surface": "#2d3133",
+                        "outline": "#727785",
+                        "surface-container": "#eceef0",
+                        "on-surface": "#191c1e",
+                        "on-tertiary-container": "#fffbff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-container": "#2170e4",
+                        "primary-fixed": "#d8e2ff",
+                        "primary": "#0058be",
+                        "tertiary-fixed-dim": "#ddb7ff",
+                        "on-primary-fixed": "#001a42",
+                        "on-surface-variant": "#424754",
+                        "outline-variant": "#c2c6d6",
+                        "on-primary-container": "#fefcff",
+                        "surface-container-low": "#f2f4f6",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#2c0051",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#8127cf",
+                        "tertiary-container": "#9c48ea",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#adc6ff",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-high": "#e6e8ea",
+                        "on-background": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed": "#f0dbff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#07006c",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e1e0ff"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f7f9fb; color: #191c1e; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-effect { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .hero-gradient { background: radial-gradient(circle at top right, rgba(129, 39, 207, 0.05), transparent), radial-gradient(circle at bottom left, rgba(0, 88, 190, 0.05), transparent); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-[#f7f9fb] dark:bg-slate-900 sticky top-0 z-50">
+<nav class="flex justify-between items-center w-full px-8 py-4 max-w-[1920px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-[#0058be] dark:text-blue-400">IES</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-[#424754] hover:text-[#0058be] transition-colors font-['Inter'] leading-tight tracking-tight" href="#">Candidates</a>
+<a class="text-[#424754] hover:text-[#0058be] transition-colors font-['Inter'] leading-tight tracking-tight" href="#">Jobs</a>
+<a class="text-[#424754] hover:text-[#0058be] transition-colors font-['Inter'] leading-tight tracking-tight" href="#">Analytics</a>
+<a class="text-[#424754] hover:text-[#0058be] transition-colors font-['Inter'] leading-tight tracking-tight" href="#">Reports</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-lg transition-all active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[#424754]">auto_awesome</span>
+</button>
+<button class="p-2 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-lg transition-all active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[#424754]">notifications</span>
+</button>
+<button class="p-2 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-lg transition-all active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[#424754]">dark_mode</span>
+</button>
+<button class="p-2 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-lg transition-all active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined text-[#424754]">menu</span>
+</button>
+<img alt="Recruiter profile avatar" class="w-10 h-10 rounded-full object-cover" data-alt="Professional portrait of a male recruiter in a modern office, clean suit, friendly expression, soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWRuvq0lnl_JVGfMbgyfcjpya9Y7jVbzSpryDzPf-AR_QbfLM4r1fk4q8E1BrDpD28Q_pMAhhIhJJMIAAKYMtdPH9lPqrZjAgUSTMpx4Tl4k5VDEoh3K-Nbg6SHvFBg3mhnNGXu3EQGwPJZ-bVbMy_cbwztS3zGn_4LRNC93satjD5yWuzG-mFghjr18aT41ewYy1p7H_7XLhC_bTG0bLmG0PCZP1F25_MUfZIqE5kQyaen7s_u1WsBHXOLaC3OIb3bWX-93ubPG4"/>
+</div>
+</nav>
+</header>
+<main class="hero-gradient">
+<!-- Hero Section -->
+<section class="max-w-[1200px] mx-auto px-6 py-24 md:py-32 flex flex-col items-center text-center">
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface mb-8 leading-[1.1]">
+                Your Career, <span class="text-primary">Intelligently</span> <br/>Accelerated.
+            </h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mb-12">
+                Join 50,000+ professionals using the world's most advanced AI employment system to find their dream roles in record time.
+            </p>
+<!-- Search Bar (Google Style) -->
+<div class="w-full max-w-4xl bg-surface-container-lowest shadow-[0_10px_40px_-10px_rgba(0,88,190,0.1)] rounded-full p-2 flex flex-col md:flex-row items-center gap-2">
+<div class="flex items-center flex-1 w-full px-6 gap-3">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="w-full border-none focus:ring-0 bg-transparent text-on-surface py-4 text-lg" placeholder="Job title or keywords" type="text"/>
+</div>
+<div class="hidden md:block w-px h-8 bg-outline-variant"></div>
+<div class="flex items-center flex-1 w-full px-6 gap-3">
+<span class="material-symbols-outlined text-outline">location_on</span>
+<input class="w-full border-none focus:ring-0 bg-transparent text-on-surface py-4 text-lg" placeholder="City or remote" type="text"/>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary px-10 py-4 rounded-full font-bold text-lg hover:brightness-110 transition-all active:scale-95">
+                    Search Jobs
+                </button>
+</div>
+</section>
+<!-- Trusted Companies -->
+<section class="max-w-[1200px] mx-auto px-6 py-12">
+<p class="text-center text-xs font-bold uppercase tracking-widest text-outline mb-8">Trusted by Global Innovators</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+<img alt="Tech Corp 1" class="h-6" data-alt="Minimalist abstract tech company logo icon in charcoal gray" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqSfmMRIb_dGH-MWC2JEoembgNQTtULKc48sQMh2oE59PN9dWTglb9voz2uRijgSzIgzIxGCNbH3JUfHbcXL6GY_lWrWMDc5dwIiNoeBMFnnl1IlLH1xbJaYLcKMeHZBHZ6BwzefeoG5DuSw-Vdp1QOlviUrPe92OzcD_-l3b-pZWPmweoRy-dPMHLzoWTFQy3_AB8ndyVSA7BEXBfz7y-bhFWvpYwDv0N4Xnsnb1C1fso8G6MR3Lni5klhQrbntpEgI6oXYDg6TI"/>
+<img alt="Cloud Systems" class="h-6" data-alt="Modern vector cloud computing company logo in deep blue-gray" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc9ihGjIdcqOP46Rp8MLOhuKUPzsUeHjG1bL7Q9qQ-TVxBXArSIZV8FZgtst4ZGre3U1ChaiqWXPy0fIb_l1KPUAvnfW8S5n672l4n9FVJyXVIbOI6Ous5ukC2Yc680Q1WImYR-SfG0d2XZGbGDItRR5TNqL5Mtll0Dm7ZgWzCNBJrsBrvjy5fjep8FA7P5NN2xQ6YjPjtUJ6Bip2_SqOGUuPg8ToXMw7ZtR1dxbRClLxg5L7Yf2zyhFDcitQXsM8aisbByMdfTfo"/>
+<img alt="Nexus Group" class="h-6" data-alt="Geometric minimalist corporate logo representing connectivity and networks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCaLXyJQswobo--5qi4Covf0JMNj6gqqE9zli75TzEeufaBiW2rXYByBpJkK5nby1dYk20xU1EHyft9N6AX8xOw8ojyldDP7VvnVN-8ny6zBdqYlCbxHMi4aBCylB6zqRWZ_ffxOmdijkWHXSGUROljlnUyjutqSh0_ZiX6ab9GlhiTsQb2TIk8koTL8GlwdrMKzqHhyhgfp35PmgqXi9PTkF7yN7B8cTs7qYcx5srnc5zUZcelppVxtWvMPr0YAuURpYihhHEagA"/>
+<img alt="FinTech Solutions" class="h-6" data-alt="Clean sleek abstract financial technology brand logo with sharp lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZJ6TdlnWIj_VkzvlHGVu3X_b3DGzSu_QJjVgRPn-F9zjm-A8fAFDyJWOukuIlNiwempW-7sHK77dDqOT430A0ldE8R65t52hrXeaP4BLNcP_UrcaT7gsxPr_wJ5wl_KN6r1mzWv_Rljvh9rUv5mL54SCMs6ee5TlyKkz6ykxv_I0PCfvRlbF6x7ELt9V3xbjiorLyGdn8wXh8a58YE6lcTL_yIIGPhL_NNDfxYoEWqUQ_MbdsOMjJHWPhM_mN0gaSdhR50EGyCvk"/>
+</div>
+</section>
+<!-- ✨ AI Highlight: Match Score Analysis -->
+<section class="max-w-[1400px] mx-auto px-6 py-24">
+<div class="bg-surface-container-lowest rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden border-2 border-transparent bg-clip-border">
+<!-- AI Accent Border Magic -->
+<div class="absolute inset-0 border-4 border-transparent rounded-[2.5rem] pointer-events-none" style="background: linear-gradient(135deg, #4648d4, #8127cf) border-box; -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.15;">
+</div>
+<div class="grid md:grid-cols-2 gap-16 items-center relative z-10">
+<div class="space-y-8">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed rounded-full">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-xs font-black uppercase tracking-widest">Next-Gen Intelligence</span>
+</div>
+<h2 class="text-4xl md:text-5xl font-bold leading-tight">
+                            Match Score <br/><span class="text-tertiary">Analysis Engine</span>
+</h2>
+<p class="text-lg text-on-surface-variant">
+                            Our proprietary algorithm doesn't just look for keywords. It analyzes 40+ semantic data points to predict your success probability before you even hit apply.
+                        </p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+<span class="font-medium text-on-surface">Skill Gap Identification</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+<span class="font-medium text-on-surface">Cultural Alignment Score</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+<span class="font-medium text-on-surface">Salary Benchmark Insight</span>
+</li>
+</ul>
+</div>
+<div class="relative">
+<!-- Asymmetric Bento-style Card UI -->
+<div class="bg-surface-container-low p-1 rounded-3xl overflow-hidden shadow-2xl">
+<div class="bg-surface-container-lowest p-8 rounded-3xl space-y-6">
+<div class="flex justify-between items-center">
+<div>
+<p class="text-xs text-outline font-bold uppercase mb-1">Target Position</p>
+<h3 class="text-xl font-bold">Principal Product Designer</h3>
+</div>
+<div class="w-16 h-16 rounded-full border-4 border-tertiary/20 flex items-center justify-center relative">
+<span class="text-tertiary font-black">94%</span>
+<svg class="absolute inset-0 w-full h-full -rotate-90">
+<circle class="text-tertiary" cx="32" cy="32" fill="none" r="28" stroke="currentColor" stroke-dasharray="175" stroke-dashoffset="10" stroke-width="4"></circle>
+</svg>
+</div>
+</div>
+<div class="space-y-4">
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-secondary to-tertiary w-[94%]"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-surface-container-low rounded-2xl">
+<p class="text-[10px] text-outline font-black uppercase mb-2">Market Demand</p>
+<div class="text-xl font-bold text-success">High</div>
+</div>
+<div class="p-4 bg-surface-container-low rounded-2xl">
+<p class="text-[10px] text-outline font-black uppercase mb-2">Interview odds</p>
+<div class="text-xl font-bold text-primary">Very Likely</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Floaties -->
+<div class="absolute -top-4 -right-4 w-12 h-12 bg-tertiary text-white rounded-full flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined">colors_spark</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3-Step Process -->
+<section class="max-w-[1200px] mx-auto px-6 py-24 border-t border-outline-variant/10">
+<h2 class="text-center text-4xl font-bold mb-20 tracking-tight">The IES Journey</h2>
+<div class="grid md:grid-cols-3 gap-12 relative">
+<!-- Vertical Line for Desktop -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-outline-variant/30 -z-10"></div>
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-xl flex items-center justify-center mb-8 group-hover:-translate-y-2 transition-transform duration-300">
+<span class="material-symbols-outlined text-primary text-3xl">manage_search</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-sm font-bold mb-4">1</div>
+<h3 class="text-xl font-bold mb-4">Search</h3>
+<p class="text-on-surface-variant px-4">Browse through verified, premium listings optimized for your profile.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-xl flex items-center justify-center mb-8 group-hover:-translate-y-2 transition-transform duration-300">
+<span class="material-symbols-outlined text-secondary text-3xl">send</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-sm font-bold mb-4">2</div>
+<h3 class="text-xl font-bold mb-4">Apply</h3>
+<p class="text-on-surface-variant px-4">Submit your AI-optimized credentials with a single, frictionless click.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-xl flex items-center justify-center mb-8 group-hover:-translate-y-2 transition-transform duration-300">
+<span class="material-symbols-outlined text-tertiary text-3xl">celebration</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center text-sm font-bold mb-4">3</div>
+<h3 class="text-xl font-bold mb-4">Get Hired</h3>
+<p class="text-on-surface-variant px-4">Secure your dream position and start your next professional chapter.</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="max-w-[1200px] mx-auto px-6 py-24">
+<div class="bg-[#0058be] text-white rounded-[3rem] p-12 md:p-24 text-center overflow-hidden relative">
+<div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+<div class="relative z-10">
+<h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">Ready to redefine your future?</h2>
+<p class="text-xl text-white/80 max-w-xl mx-auto mb-12">Join thousand of professionals who have found their perfect career match.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-white text-primary px-12 py-5 rounded-full font-extrabold text-lg hover:bg-surface-container-lowest transition-all">Get Started Free</button>
+<button class="bg-transparent border-2 border-white/30 text-white px-12 py-5 rounded-full font-extrabold text-lg hover:bg-white/10 transition-all">Request Demo</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f7f9fb] dark:bg-slate-950 full-width py-12 border-t border-[#e0e3e5]/15">
+<div class="flex flex-col items-center justify-center w-full gap-8">
+<div class="flex flex-col items-center gap-4">
+<span class="font-bold text-[#0058be] text-2xl tracking-tighter">IES</span>
+<nav class="flex flex-wrap justify-center gap-8">
+<a class="text-[#424754] hover:text-[#0058be] transition-opacity font-['Inter'] text-xs font-medium uppercase tracking-widest" href="#">Privacy Policy</a>
+<a class="text-[#424754] hover:text-[#0058be] transition-opacity font-['Inter'] text-xs font-medium uppercase tracking-widest" href="#">Terms of Service</a>
+<a class="text-[#424754] hover:text-[#0058be] transition-opacity font-['Inter'] text-xs font-medium uppercase tracking-widest" href="#">Cookie Settings</a>
+<a class="text-[#424754] hover:text-[#0058be] transition-opacity font-['Inter'] text-xs font-medium uppercase tracking-widest" href="#">Accessibility</a>
+</nav>
+</div>
+<div class="w-full max-w-[1200px] border-t border-outline-variant/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 px-8">
+<p class="font-['Inter'] text-xs text-[#424754]">© 2024 Intelligent Employment System. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-outline text-lg hover:text-primary cursor-pointer">public</span>
+<span class="material-symbols-outlined text-outline text-lg hover:text-primary cursor-pointer">chat_bubble</span>
+<span class="material-symbols-outlined text-outline text-lg hover:text-primary cursor-pointer">alternate_email</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TallentX | Applicant Tracking System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#142156",
+              "tertiary-container": "#af5cfe",
+              "tertiary-fixed": "#ce9bff",
+              "surface-dim": "#020a2f",
+              "primary-fixed": "#6e9fff",
+              "outline": "#6b739d",
+              "surface-bright": "#192760",
+              "error-container": "#9f0519",
+              "surface-container-highest": "#142156",
+              "secondary-fixed-dim": "#bdbeff",
+              "tertiary": "#c180ff",
+              "on-tertiary-container": "#000000",
+              "primary-dim": "#699cff",
+              "on-secondary": "#080079",
+              "primary": "#85adff",
+              "on-surface": "#e1e4ff",
+              "on-primary-container": "#002150",
+              "secondary-fixed": "#cdcdff",
+              "secondary-dim": "#6063ee",
+              "background": "#020a2f",
+              "on-secondary-container": "#ccccff",
+              "on-primary-fixed-variant": "#002a62",
+              "primary-fixed-dim": "#5391ff",
+              "surface-tint": "#85adff",
+              "on-tertiary-fixed": "#270048",
+              "surface-container-low": "#050f38",
+              "on-primary-fixed": "#000000",
+              "on-primary": "#002c66",
+              "surface-container-lowest": "#000000",
+              "on-tertiary": "#33005b",
+              "tertiary-fixed-dim": "#c488ff",
+              "error-dim": "#d7383b",
+              "on-error": "#490006",
+              "secondary-container": "#2f2ebe",
+              "inverse-surface": "#fbf8ff",
+              "on-background": "#e1e4ff",
+              "inverse-on-surface": "#4b537a",
+              "on-surface-variant": "#a1a9d5",
+              "inverse-primary": "#005bc4",
+              "on-error-container": "#ffa8a3",
+              "outline-variant": "#3d466c",
+              "tertiary-dim": "#9c48ea",
+              "on-secondary-fixed-variant": "#3a3ac8",
+              "surface-container": "#091542",
+              "surface": "#020a2f",
+              "error": "#ff716c",
+              "on-tertiary-fixed-variant": "#560094",
+              "surface-container-high": "#0e1b4c",
+              "secondary": "#9093ff",
+              "primary-container": "#6e9fff",
+              "on-secondary-fixed": "#160bae"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: #020a2f; color: #e1e4ff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .kanban-column { min-width: 320px; max-width: 320px; }
+        .glass-panel { backdrop-filter: blur(24px); background-color: rgba(20, 33, 86, 0.6); }
+        .ai-pulse { background: linear-gradient(135deg, #9093ff 0%, #c180ff 100%); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3d466c; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #85adff; }
+    </style>
+</head>
+<body class="antialiased">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 h-16 w-full bg-[#020a2f]/60 backdrop-blur-xl border-b border-[#85adff]/15 shadow-[0_32px_32px_rgba(0,0,0,0.06)] font-['Inter'] antialiased tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-white tracking-tighter">TallentX</span>
+<div class="hidden md:flex gap-6">
+<a class="text-slate-400 font-medium hover:text-white transition-colors" href="#">Dashboard</a>
+<a class="text-[#85adff] font-bold border-b-2 border-[#85adff] pb-1" href="#">Candidates</a>
+<a class="text-slate-400 font-medium hover:text-white transition-colors" href="#">Jobs</a>
+<a class="text-slate-400 font-medium hover:text-white transition-colors" href="#">Analytics</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-[#85adff]/10 rounded-lg transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#85adff]">notifications</span>
+</button>
+<button class="p-2 hover:bg-[#85adff]/10 rounded-lg transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[#85adff]">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a corporate recruiter in a modern office setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcbdoCuwOaNysT4s_4fuhS7xF9vR4Xdj6IAJf4Rj-EqFTH1_xwYnoH__zc7rwlTAB_rCPBRmc1qeddlMJ0J0t9xbfSMYaP1CgcfAFTWR6R3h-OjNS1n1ARiYukYDDuEV9GLB-TTezxQxI35Ej3CvllNkG4EX97p0mqphRqWeaq3_QZVhsQoDpV4aVFryq0dViDHuQuO89L7fmiJnDeVNFuain_IX2wR0A76VcFEAo7b-5DKbp6iSQzqEprn441XX0Pe-F_FNvBKps"/>
+</div>
+</div>
+</nav>
+<!-- Sidebar Shell (IES Recruiter) -->
+<aside class="h-screen w-64 fixed left-0 top-0 hidden lg:flex flex-col bg-[#020a2f] border-r border-[#85adff]/15 p-4 gap-y-4 font-['Inter'] text-sm font-medium z-40 pt-20">
+<div class="px-2 mb-4">
+<h2 class="text-white font-bold text-lg">IES Recruiter</h2>
+<p class="text-slate-500 text-xs">AI-Powered Engine</p>
+</div>
+<nav class="flex flex-col gap-1">
+<button class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Overview</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 bg-[#85adff]/10 text-[#85adff] rounded-xl transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined">group</span>
+<span>Talent Pool</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined">view_kanban</span>
+<span>Pipelines</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined">psychology</span>
+<span>Assessments</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl transition-all duration-300 ease-in-out">
+<span class="material-symbols-outlined">insights</span>
+<span>Reports</span>
+</button>
+</nav>
+<div class="mt-auto flex flex-col gap-1">
+<button class="w-full py-3 mb-4 ai-pulse text-on-tertiary-container font-bold rounded-xl active:translate-x-1 transition-all">
+                Post New Job
+            </button>
+<button class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-white transition-all">
+<span class="material-symbols-outlined">help</span>
+<span>Help Center</span>
+</button>
+<button class="flex items-center gap-3 px-4 py-2 text-slate-400 hover:text-white transition-all">
+<span class="material-symbols-outlined">logout</span>
+<span>Log Out</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-24 pb-12 px-8 min-h-screen">
+<!-- Header Section -->
+<header class="mb-10 flex justify-between items-end">
+<div>
+<h1 class="text-4xl font-extrabold tracking-tight text-white mb-2">Senior Product Designer</h1>
+<div class="flex items-center gap-4 text-slate-400">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> San Francisco, CA</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">work</span> Full-time</span>
+<span class="bg-surface-variant text-primary px-3 py-1 rounded-full text-xs font-bold">24 Active Candidates</span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-high border border-outline-variant text-on-surface rounded-xl hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined">filter_list</span>
+<span>Filter</span>
+</button>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-high border border-outline-variant text-on-surface rounded-xl hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined">share</span>
+<span>Share Pipeline</span>
+</button>
+</div>
+</header>
+<!-- Kanban Board Area -->
+<div class="flex gap-6 overflow-x-auto pb-8 custom-scrollbar h-[calc(100vh-320px)] items-start">
+<!-- Column: Pending -->
+<section class="kanban-column flex flex-col h-full bg-surface-container-low/40 rounded-2xl p-4">
+<div class="flex justify-between items-center mb-6 px-1">
+<h3 class="font-bold text-slate-200 uppercase tracking-widest text-xs flex items-center gap-2">
+                        Pending <span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] text-primary">8</span>
+</h3>
+<button class="text-slate-500 hover:text-white transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar">
+<!-- Candidate Card -->
+<div class="bg-surface-container-high p-4 rounded-xl border border-outline-variant/15 hover:border-primary/40 transition-all cursor-pointer group shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border-2 border-surface-container-highest" data-alt="Portrait of a creative professional male with glasses smiling slightly against a minimalist studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP2Vh5YHhU7vDM54sp62DZtS-SjQIKurwX1cdeRb8-qLap6yqVFVxhSsXMHq4wah6jlCMZGPsS_-6LH7ZAsCIgsB7y2xMnr_vRyOzaRr8pH_brsPCUtvJ7_-ry2vkHb5WMSVbyZ8615RZTAX1IZGDEGQgf2587aRslW9HnVXuLpY2TvDcM4EuZX-LihV8YWKBKfmGNn68sIomZQ17vwH0yr8iljSBkiirH-7oOUQI_Z_uN1tX7wQZY-q5cSc8o00MoD18GSgkBFGs"/>
+<div>
+<h4 class="font-bold text-white leading-tight">Marcus Chen</h4>
+<p class="text-xs text-slate-500">Applied 2d ago</p>
+</div>
+</div>
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full -rotate-90">
+<circle class="text-surface-variant" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="3"></circle>
+<circle class="transition-all duration-1000" cx="24" cy="24" fill="transparent" r="20" stroke="url(#gradient-purple)" stroke-dasharray="125.6" stroke-dashoffset="12.5" stroke-width="3"></circle>
+<defs>
+<lineargradient id="gradient-purple" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#9093ff"></stop>
+<stop offset="100%" stop-color="#c180ff"></stop>
+</lineargradient>
+</defs>
+</svg>
+<span class="text-[10px] font-black text-tertiary">90%</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-[10px] px-2 py-0.5 bg-background/50 rounded text-slate-400">UX Design</span>
+<span class="text-[10px] px-2 py-0.5 bg-background/50 rounded text-slate-400">Figma</span>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-outline-variant/10">
+<div class="flex -space-x-2">
+<span class="material-symbols-outlined text-slate-500 text-sm">attachment</span>
+<span class="material-symbols-outlined text-slate-500 text-sm ml-4">chat_bubble_outline</span>
+</div>
+<span class="text-[10px] font-bold text-slate-500">Exp: 6 yrs</span>
+</div>
+</div>
+<!-- Candidate Card 2 -->
+<div class="bg-surface-container-high p-4 rounded-xl border border-outline-variant/15 hover:border-primary/40 transition-all cursor-pointer group shadow-lg">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border-2 border-surface-container-highest" data-alt="Close up of a professional woman with natural light falling on her face, studio portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkaVfjeZRo_tpuBq03LqOiS8VdkLETS7vvLv_56iDSIzLqUEO54-uF4DnieQ878WBu3akP9-SVKFAlhLnVjGeZuL9VVvOFb-o_LeYm2DfmykeXRuWvhtbC5DiGIGl9w8TEosL8oUu9EYX6Yjc0CWL__LrfH68aSOvOkoATtqp3LMaFTGLYyjxRsnWTIC-ENesQy0RyTWoZywL3WBjaQodjucnLBJ4fUu2n20XirxBq3gFW7ERTMEO_nio0pMTTOtpFdvAsp1H-gyg"/>
+<div>
+<h4 class="font-bold text-white leading-tight">Sarah Jenkins</h4>
+<p class="text-xs text-slate-500">Applied 5h ago</p>
+</div>
+</div>
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full -rotate-90">
+<circle class="text-surface-variant" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="3"></circle>
+<circle class="transition-all duration-1000" cx="24" cy="24" fill="transparent" r="20" stroke="url(#gradient-purple)" stroke-dasharray="125.6" stroke-dashoffset="25.1" stroke-width="3"></circle>
+</svg>
+<span class="text-[10px] font-black text-tertiary">80%</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-[10px] px-2 py-0.5 bg-background/50 rounded text-slate-400">Prototyping</span>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-outline-variant/10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-500 text-sm">attachment</span>
+</div>
+<span class="text-[10px] font-bold text-slate-500">Exp: 4 yrs</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Column: Under Review -->
+<section class="kanban-column flex flex-col h-full bg-surface-container-low/40 rounded-2xl p-4">
+<div class="flex justify-between items-center mb-6 px-1">
+<h3 class="font-bold text-slate-200 uppercase tracking-widest text-xs flex items-center gap-2">
+                        Under Review <span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] text-primary">3</span>
+</h3>
+<button class="text-slate-500 hover:text-white transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar">
+<div class="bg-surface-container-high p-4 rounded-xl border border-primary/40 transition-all cursor-pointer group shadow-lg ring-1 ring-primary/20">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border-2 border-surface-container-highest" data-alt="Portrait of a young trendy male with short hair and clean shave looking directly at camera with neutral expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSbvrge9zv6OoKEnAL_r_Vmyw43CJypr7cVW-cNT_8Egg0KTS2jV6BGg1JNs6nDN4sL1qgI5ypdIcupzlewLTe3zmpBXluHDS823oqGM8JFEwIGC3MsIGCvSu_pdHWhuigadb5dMqOamda-6LNAIPX--GAVK_yYcfNeKaQKIiDB1Ya_Jix6Ir6fifRbOXTZg8AlgJF537IrgSDYawA8e6mM9953qs1UT7Y2HdFwNrfePUR1fx7yHZAJfR0oYHTHk5kPPhN8GNaVhw"/>
+<div>
+<h4 class="font-bold text-white leading-tight">David Miller</h4>
+<p class="text-xs text-primary font-medium italic">Top Match ✨</p>
+</div>
+</div>
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full -rotate-90">
+<circle class="text-surface-variant" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="3"></circle>
+<circle class="transition-all duration-1000" cx="24" cy="24" fill="transparent" r="20" stroke="url(#gradient-purple)" stroke-dasharray="125.6" stroke-dashoffset="6.2" stroke-width="3"></circle>
+</svg>
+<span class="text-[10px] font-black text-tertiary">95%</span>
+</div>
+</div>
+<div class="bg-tertiary/10 p-2 rounded-lg mb-4 border border-tertiary/20">
+<p class="text-[10px] text-tertiary leading-tight">AI Insight: Exceptional portfolio match for visual design requirements.</p>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-outline-variant/10">
+<div class="flex items-center gap-2 text-slate-500">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-[10px]">Review started 2h ago</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Column: Assessment -->
+<section class="kanban-column flex flex-col h-full bg-surface-container-low/40 rounded-2xl p-4">
+<div class="flex justify-between items-center mb-6 px-1">
+<h3 class="font-bold text-slate-200 uppercase tracking-widest text-xs flex items-center gap-2">
+                        Assessment <span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] text-primary">5</span>
+</h3>
+<button class="text-slate-500 hover:text-white transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar">
+<div class="bg-surface-container-high p-4 rounded-xl border border-outline-variant/15 hover:border-primary/40 transition-all cursor-pointer shadow-lg opacity-70 grayscale-[0.2]">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover border-2 border-surface-container-highest" data-alt="Professional woman with a warm smile, casual business attire, outdoor setting with soft bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJoDCITD8pUy0GmVqwFp0ADQalpE3QEwA6Qrfe5mui781iXOb3ySmmrlOPFR-O-rujhjXwCBY4NGCYahMqukvJ-xT60sziSL-FB_uslH_fjX4tz-HRv30_wahMBFylm5G0A0YF2ll1rt0sijxc205U-L6leDikjr3wY-UwdS66IangqUj0uSJUDKpJO8LMQAvVI5UYI96A0hYkpTzaU0uQE2pSjUaGJUoPp3MoGmNk28ERa6CQak_fNSyTgrShYTNAbFMphnnRGC8"/>
+<div>
+<h4 class="font-bold text-white leading-tight">Elena Rossi</h4>
+<p class="text-xs text-amber-500 font-bold italic">Test In-Progress</p>
+</div>
+</div>
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full -rotate-90">
+<circle class="text-surface-variant" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="3"></circle>
+<circle class="transition-all duration-1000" cx="24" cy="24" fill="transparent" r="20" stroke="url(#gradient-purple)" stroke-dasharray="125.6" stroke-dashoffset="18.8" stroke-width="3"></circle>
+</svg>
+<span class="text-[10px] font-black text-tertiary">85%</span>
+</div>
+</div>
+<div class="w-full bg-background/50 h-1.5 rounded-full overflow-hidden mb-2">
+<div class="bg-amber-500 h-full w-2/3"></div>
+</div>
+<p class="text-[10px] text-slate-500 text-right">65% Completed</p>
+</div>
+</div>
+</section>
+<!-- Column: Interview -->
+<section class="kanban-column flex flex-col h-full bg-surface-container-low/40 rounded-2xl p-4">
+<div class="flex justify-between items-center mb-6 px-1">
+<h3 class="font-bold text-slate-200 uppercase tracking-widest text-xs flex items-center gap-2">
+                        Interview <span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] text-primary">2</span>
+</h3>
+<button class="text-slate-500 hover:text-white transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar">
+<div class="bg-surface-container-high p-4 rounded-xl border border-outline-variant/15 hover:border-primary/40 transition-all cursor-pointer shadow-lg">
+<div class="flex items-center gap-3 mb-4">
+<img class="w-10 h-10 rounded-full object-cover border-2 border-surface-container-highest" data-alt="Portrait of a male professional in a dark shirt, thoughtful expression, clean minimal background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBq3TyJrlG2Qi5Yg3SykpwzhP-V8pK9lDYaEwt9apVVDsN0THL0LLdl9sQsz2OKgNrumTMaIKX2Ptb_Wi8cJgjCBgpCWjGEueRMJB6C74d-S3iP94v8ZMpk41bpaVlO2RsyHpwYCcoDZKU5hJtHGFkmmMfh2TbaLMmzo8lcNLZd5Moo0ZKvTyHoQeIXH-ijlFwcPi-y_p3bSRqjHLveI7x4FuPEg_FA42rRoZlbW7WxVptbcPqlwdupmSMfaPzVM6j1uhy6_rgEqjY"/>
+<div>
+<h4 class="font-bold text-white leading-tight">Thomas Wu</h4>
+<p class="text-[10px] text-secondary font-bold">Today @ 2:30 PM</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-1.5 bg-primary/20 text-primary text-[10px] font-bold rounded-lg border border-primary/20">Join Meet</button>
+<button class="p-1.5 bg-surface-variant text-on-surface rounded-lg"><span class="material-symbols-outlined text-xs">calendar_today</span></button>
+</div>
+</div>
+</div>
+</section>
+<!-- Column: Hired -->
+<section class="kanban-column flex flex-col h-full bg-surface-container-low/40 rounded-2xl p-4">
+<div class="flex justify-between items-center mb-6 px-1">
+<h3 class="font-bold text-slate-200 uppercase tracking-widest text-xs flex items-center gap-2">
+                        Hired <span class="bg-surface-container-highest px-2 py-0.5 rounded text-[10px] text-primary">4</span>
+</h3>
+<button class="text-slate-500 hover:text-white transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar"></div>
+</section>
+<!-- Column: Rejected -->
+<section class="kanban-column flex flex-col h-full bg-surface-container-low/40 rounded-2xl p-4 opacity-50">
+<div class="flex justify-between items-center mb-6 px-1">
+<h3 class="font-bold text-slate-500 uppercase tracking-widest text-xs">Rejected</h3>
+<button class="text-slate-500 hover:text-white transition-colors"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div class="flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar"></div>
+</section>
+</div>
+</main>
+<!-- Slide-out Drawer (Quick Resume View) -->
+<div class="fixed top-0 right-0 h-full w-[450px] bg-surface-container-high shadow-2xl z-[60] border-l border-outline-variant/30 transform translate-x-0 transition-transform duration-500 glass-panel">
+<div class="flex flex-col h-full">
+<div class="p-6 border-b border-outline-variant/20 flex justify-between items-center">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-xl object-cover" data-alt="Portrait of a creative professional male with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7FabBuCsM1QFG5WnQWj14p6pFMwM95oT5DYKBNKHP_X5V8snJnmkH8-qLYd52YE1f3v-Pq5B7s5qrZDzLEdPLBypwsLp_Uu3vg0wTOt8iUTE8pdqy-Z6CUyQe-hIjrsUy022z3CBZB_L39nKrgUT1yfKmxu9wUf3Bi44FNBgHTLNP2mlKV3e89Gz3lfKn-4gCfUb_cjD-988wMYVHOUPBIHpRWtM9Ucx_2-SBl4BEA4Y8baXSTzhcgPK1rpC4AjMum2ot0VMqA-M"/>
+<div>
+<h2 class="text-xl font-bold text-white">Marcus Chen</h2>
+<p class="text-xs text-slate-400">Senior Product Designer • New York</p>
+</div>
+</div>
+<button class="p-2 hover:bg-white/5 rounded-full transition-colors">
+<span class="material-symbols-outlined text-slate-400">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-6 custom-scrollbar">
+<!-- AI Summary Badge -->
+<div class="ai-pulse p-4 rounded-2xl mb-8 flex gap-4 items-center">
+<div class="bg-white/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<p class="text-[10px] font-black uppercase tracking-widest text-white/70 mb-1">AI Recommendation</p>
+<p class="text-sm font-semibold text-white">"Highly compatible skillset for design systems. 12+ relevant projects found."</p>
+</div>
+</div>
+<div class="space-y-8">
+<!-- Resume Section Mockup -->
+<section>
+<h3 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Experience</h3>
+<div class="space-y-4">
+<div class="border-l-2 border-primary/30 pl-4 py-1">
+<h4 class="font-bold text-slate-200">Senior Designer @ TechFlow</h4>
+<p class="text-[10px] text-slate-500">2020 — Present</p>
+<p class="text-xs text-slate-400 mt-2">Led the redesign of the core enterprise dashboard, resulting in 40% increase in user retention.</p>
+</div>
+<div class="border-l-2 border-outline-variant pl-4 py-1">
+<h4 class="font-bold text-slate-200">Product Designer @ InnovateUI</h4>
+<p class="text-[10px] text-slate-500">2017 — 2020</p>
+</div>
+</div>
+</section>
+<section>
+<h3 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Core Skills</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1.5 bg-surface-variant text-primary text-[10px] font-bold rounded-lg">Design Systems</span>
+<span class="px-3 py-1.5 bg-surface-variant text-primary text-[10px] font-bold rounded-lg">React/HTML</span>
+<span class="px-3 py-1.5 bg-surface-variant text-primary text-[10px] font-bold rounded-lg">User Research</span>
+<span class="px-3 py-1.5 bg-surface-variant text-primary text-[10px] font-bold rounded-lg">Figma Mastery</span>
+<span class="px-3 py-1.5 bg-surface-variant text-primary text-[10px] font-bold rounded-lg">Prototyping</span>
+</div>
+</section>
+<section>
+<h3 class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-4">Resume Preview</h3>
+<div class="bg-white/5 aspect-[1/1.4] rounded-xl border border-outline-variant/20 flex flex-col p-6 overflow-hidden">
+<div class="w-2/3 h-4 bg-white/10 rounded mb-4"></div>
+<div class="w-full h-2 bg-white/5 rounded mb-2"></div>
+<div class="w-full h-2 bg-white/5 rounded mb-2"></div>
+<div class="w-1/2 h-2 bg-white/5 rounded mb-6"></div>
+<div class="w-1/3 h-3 bg-white/10 rounded mb-4"></div>
+<div class="w-full h-2 bg-white/5 rounded mb-2"></div>
+<div class="w-full h-2 bg-white/5 rounded mb-2"></div>
+<div class="w-3/4 h-2 bg-white/5 rounded mb-2"></div>
+</div>
+</section>
+</div>
+</div>
+<div class="p-6 border-t border-outline-variant/20 bg-surface-container-highest/50 flex gap-3">
+<button class="flex-1 py-3 bg-secondary-container text-on-secondary-container font-bold rounded-xl active:scale-95 transition-all">Move to Assessment</button>
+<button class="px-4 py-3 bg-error-container/20 text-error font-bold rounded-xl active:scale-95 transition-all">Reject</button>
+</div>
+</div>
+</div>
+<!-- Responsive Bottom Nav -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-[#020a2f]/80 backdrop-blur-2xl border-t border-[#85adff]/15 shadow-[0_-8px_24px_rgba(0,0,0,0.2)] lg:hidden">
+<div class="flex flex-col items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#9093ff] to-[#c180ff] text-white rounded-2xl px-6 py-2 scale-110 duration-300">
+<span class="material-symbols-outlined">work</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Jobs</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Chat</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-500">
+<span class="material-symbols-outlined">person_outline</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,13 @@
+<span [class]="chipClasses">
+  <span class="truncate">{{ label() }}</span>
+  @if (removable()) {
+    <button 
+      type="button" 
+      class="ml-1 flex items-center justify-center rounded-full outline-none hover:bg-black/10 focus-visible:ring-2 focus-visible:ring-primary w-4 h-4 transition-colors"
+      (click)="onRemove()"
+      aria-label="Remove"
+    >
+      <i class="fa-solid fa-xmark text-[10px]"></i>
+    </button>
+  }
+</span>

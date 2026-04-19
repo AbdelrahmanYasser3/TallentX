@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile Builder | IES Lumina Nexus</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#e1e0ff",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-dim": "#d8dadc",
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed": "#2c0051",
+              "on-background": "#191c1e",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#fffbff",
+              "tertiary": "#8127cf",
+              "surface-container-high": "#e6e8ea",
+              "inverse-on-surface": "#eff1f3",
+              "secondary-fixed-dim": "#c0c1ff",
+              "on-primary-container": "#fefcff",
+              "outline": "#727785",
+              "background": "#f7f9fb",
+              "surface-variant": "#e0e3e5",
+              "surface-tint": "#005ac2",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-primary-fixed-variant": "#004395",
+              "secondary-container": "#6063ee",
+              "primary": "#0058be",
+              "outline-variant": "#c2c6d6",
+              "on-surface-variant": "#424754",
+              "surface-bright": "#f7f9fb",
+              "on-tertiary-fixed-variant": "#6900b3",
+              "on-tertiary-container": "#fffbff",
+              "on-primary-fixed": "#001a42",
+              "surface": "#f7f9fb",
+              "primary-fixed": "#d8e2ff",
+              "tertiary-fixed-dim": "#ddb7ff",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#adc6ff",
+              "on-surface": "#191c1e",
+              "surface-container": "#eceef0",
+              "primary-fixed-dim": "#adc6ff",
+              "tertiary-container": "#9c48ea",
+              "primary-container": "#2170e4",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "tertiary-fixed": "#f0dbff",
+              "surface-container-highest": "#e0e3e5",
+              "on-secondary-fixed": "#07006c",
+              "inverse-surface": "#2d3133",
+              "secondary": "#4648d4"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="bg-[#f2f4f6] dark:bg-slate-800 w-full top-0 z-50 flex justify-between items-center px-8 py-4 w-full">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-[#0058be] dark:text-blue-500 tracking-tighter">IES</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-['Inter'] font-semibold tracking-tight text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Jobs</a>
+<a class="font-['Inter'] font-semibold tracking-tight text-[#0058be] border-b-2 border-[#0058be] pb-1" href="#">Candidates</a>
+<a class="font-['Inter'] font-semibold tracking-tight text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#424754]">notifications</span>
+<span class="material-symbols-outlined text-[#424754]">settings</span>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a professional man with a friendly expression in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuaCB9ukN5cmVm0KEbmuP6FEG6UDwDBFYDXU9qILKftBm8V3AUsYWydOX51N8vpKqy5NIlBuQi5H-DXMdWpCg2Pe7-viilmwOxoiYhjwW3GxiNwte4ANKODGtd_14fST7KWzVt5_e-v_YiYKIza3UYM1YBkxsmKcMernfE-_vtSRpPwK_KQTLA0JrAYM3sJkPHoFJTu-Z_11CrHj2sRimlI9zvtGo6AyrInNpTqWkuIx7bMDS1w19FZlWLvDVJshPvaRIJ5xVj5S8"/>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col md:flex-row p-6 md:p-12 gap-12 max-w-7xl mx-auto w-full">
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex flex-col p-4 gap-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl w-64 rounded-3xl shadow-xl shadow-blue-900/5 h-fit sticky top-28">
+<div class="flex flex-col gap-1 mb-4 px-2">
+<span class="text-lg font-bold text-[#0058be]">Recruit Pro</span>
+<span class="font-['Inter'] text-[0.6875rem] uppercase tracking-widest text-on-surface-variant">Intelligence Suite</span>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 p-3 font-['Inter'] text-sm font-medium text-[#424754] dark:text-slate-300 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-xl hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+                </a>
+<a class="flex items-center gap-3 p-3 font-['Inter'] text-sm font-medium bg-gradient-to-r from-[#4648d4] to-[#8127cf] text-white rounded-xl shadow-lg shadow-indigo-500/20 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">group</span> Talent Pool
+                </a>
+<a class="flex items-center gap-3 p-3 font-['Inter'] text-sm font-medium text-[#424754] dark:text-slate-300 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-xl hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">alt_route</span> Pipeline
+                </a>
+<a class="flex items-center gap-3 p-3 font-['Inter'] text-sm font-medium text-[#424754] dark:text-slate-300 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-xl hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">event_upcoming</span> Interviews
+                </a>
+<a class="flex items-center gap-3 p-3 font-['Inter'] text-sm font-medium text-[#424754] dark:text-slate-300 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-xl hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">auto_awesome</span> AI Insights
+                </a>
+</nav>
+<button class="mt-6 w-full py-3 bg-primary text-white rounded-xl font-semibold shadow-lg shadow-primary/20 hover:opacity-90 transition-all">New Requisition</button>
+</aside>
+<!-- Main Content Canvas -->
+<div class="flex-grow space-y-12">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="flex items-center gap-6">
+<div class="relative">
+<div class="w-24 h-24 rounded-3xl overflow-hidden shadow-2xl">
+<img alt="Candidate Profile" class="w-full h-full object-cover" data-alt="professional woman portrait with soft lighting and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqBlU7smP8PkODGc_UhkFgFyxX_M8U76_esqUBYtiACM_v7G9dUoy3kzCwRa3yaz71XGz8XFp41RuhCTKfV_M6tJa-GFmsMIswypheVWoZnWJu8m49znIKLGxwCtKJY1CCFhXy8xy0aH4fdqAPm_mDZmuFkS74WkL6NtDNuD61zS2mgcz6hzYt7-UN0lu9KUlhgLD-Yd2IY7OF8zvAzTP7Fe7o60J594fpGYSK5W9VBqRJBJYMTTEgqu8HuXbOR8jOy7SUoVJFzWY"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-primary text-white p-2 rounded-xl shadow-lg cursor-pointer">
+<span class="material-symbols-outlined text-sm">edit</span>
+</div>
+</div>
+<div>
+<h1 class="font-headline font-bold text-4xl tracking-tight text-on-surface">Alex Rivera</h1>
+<p class="text-on-surface-variant font-medium mt-1">Senior Product Designer • San Francisco, CA</p>
+<div class="flex gap-2 mt-3">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[0.6875rem] font-bold uppercase tracking-widest text-primary">Open to work</span>
+<span class="px-3 py-1 bg-tertiary/10 rounded-full text-[0.6875rem] font-bold uppercase tracking-widest text-tertiary">Top 5% Talent</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 bg-surface-container-lowest text-primary font-bold rounded-xl shadow-sm hover:shadow-md transition-all">Preview Profile</button>
+<button class="px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 transition-all">Publish Changes</button>
+</div>
+</section>
+<!-- Resume Section: AI Focus -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="font-headline text-2xl font-bold tracking-tight">Professional Resume</h2>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-secondary to-tertiary text-white font-bold rounded-xl shadow-lg shadow-indigo-500/30 hover:scale-[1.02] transition-transform">
+<span class="material-symbols-outlined" data-weight="fill">auto_awesome</span>
+                        AI Enhance CV
+                    </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 relative group">
+<div class="h-64 border-2 border-dashed border-outline-variant rounded-3xl flex flex-col items-center justify-center bg-surface-container-lowest transition-colors group-hover:bg-primary/5 group-hover:border-primary/40">
+<span class="material-symbols-outlined text-5xl text-outline-variant mb-4 group-hover:text-primary">upload_file</span>
+<p class="text-on-surface font-semibold text-lg">Drag &amp; drop your resume here</p>
+<p class="text-on-surface-variant text-sm mt-1">Supports PDF, DOCX (Max 5MB)</p>
+<button class="mt-6 text-primary font-bold hover:underline">Or browse files</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-sm space-y-4">
+<h3 class="font-bold text-lg">AI Optimization Tips</h3>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+<p class="text-sm text-on-surface-variant">Quantify your achievements in the <b>Experience</b> section for 40% better reach.</p>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+<p class="text-sm text-on-surface-variant">Add <b>Figma</b> and <b>Strategy</b> keywords to match current Senior roles.</p>
+</li>
+<li class="flex gap-3 text-tertiary font-bold cursor-pointer hover:underline">
+<p class="text-sm">Scan Profile now →</p>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Experience & Education Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Experience Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 shadow-sm space-y-8">
+<div class="flex justify-between items-center">
+<h2 class="font-headline text-2xl font-bold tracking-tight">Experience</h2>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">add_circle</span>
+</div>
+<div class="space-y-10">
+<div class="flex gap-6 relative">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-low flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary">corporate_fare</span>
+</div>
+<div class="space-y-2">
+<h4 class="font-bold text-lg leading-none">Senior Product Designer</h4>
+<p class="text-primary font-semibold text-sm">Stellar Dynamics • Full-time</p>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Jan 2021 – Present • 3 yrs 4 mos</p>
+<p class="text-on-surface-variant text-sm leading-relaxed mt-3">Leading the design system initiative across 4 core products, resulting in a 30% reduction in front-end development time.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-low flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary">corporate_fare</span>
+</div>
+<div class="space-y-2">
+<h4 class="font-bold text-lg leading-none">UX Designer</h4>
+<p class="text-primary font-semibold text-sm">CloudStream Systems</p>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Aug 2018 – Dec 2020 • 2 yrs 5 mos</p>
+<p class="text-on-surface-variant text-sm leading-relaxed mt-3">Redesigned the onboarding flow, increasing user retention by 22% in the first quarter post-launch.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Education Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 shadow-sm space-y-8">
+<div class="flex justify-between items-center">
+<h2 class="font-headline text-2xl font-bold tracking-tight">Education</h2>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 transition-transform">add_circle</span>
+</div>
+<div class="space-y-10">
+<div class="flex gap-6">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-low flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary">school</span>
+</div>
+<div class="space-y-2">
+<h4 class="font-bold text-lg leading-none">M.S. Human-Computer Interaction</h4>
+<p class="text-primary font-semibold text-sm">Stanford University</p>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">2016 – 2018</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-12 h-12 rounded-2xl bg-surface-container-low flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary">school</span>
+</div>
+<div class="space-y-2">
+<h4 class="font-bold text-lg leading-none">B.A. Graphic Design</h4>
+<p class="text-primary font-semibold text-sm">Rhode Island School of Design</p>
+<p class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">2012 – 2016</p>
+</div>
+</div>
+<!-- Certification Highlight (Asymmetric element) -->
+<div class="mt-4 p-5 bg-tertiary/5 rounded-2xl border-l-4 border-tertiary">
+<p class="text-[0.6875rem] font-bold uppercase tracking-widest text-tertiary mb-1">Latest Achievement</p>
+<h4 class="font-bold text-on-surface">Certified Professional in Accessibility (CPWA)</h4>
+<p class="text-xs text-on-surface-variant mt-1">Issued by IAAP • Valid until 2026</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f7f9fb] dark:bg-slate-900 w-full py-8 mt-auto border-t border-[#e0e3e5]/15 flex flex-col md:flex-row justify-between items-center px-12 w-full">
+<p class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] dark:text-slate-400">© 2024 Intelligent Employment System</p>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+</body></html>

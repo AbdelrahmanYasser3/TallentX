@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Global Notifications | TallentX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#6b739d",
+              "secondary-dim": "#6063ee",
+              "surface-variant": "#142156",
+              "secondary-container": "#2f2ebe",
+              "on-tertiary": "#33005b",
+              "primary-fixed": "#6e9fff",
+              "primary-fixed-dim": "#5391ff",
+              "on-tertiary-fixed": "#270048",
+              "inverse-on-surface": "#4b537a",
+              "on-secondary": "#080079",
+              "primary": "#85adff",
+              "surface-container-lowest": "#000000",
+              "tertiary-container": "#af5cfe",
+              "error": "#ff716c",
+              "outline-variant": "#3d466c",
+              "error-container": "#9f0519",
+              "primary-dim": "#699cff",
+              "on-secondary-fixed": "#160bae",
+              "secondary-fixed": "#cdcdff",
+              "inverse-primary": "#005bc4",
+              "tertiary": "#c180ff",
+              "on-error-container": "#ffa8a3",
+              "on-tertiary-fixed-variant": "#560094",
+              "surface-dim": "#020a2f",
+              "on-error": "#490006",
+              "on-tertiary-container": "#000000",
+              "tertiary-fixed": "#ce9bff",
+              "tertiary-fixed-dim": "#c488ff",
+              "surface-container-highest": "#142156",
+              "on-primary-fixed": "#000000",
+              "on-secondary-container": "#ccccff",
+              "on-primary-container": "#002150",
+              "secondary-fixed-dim": "#bdbeff",
+              "secondary": "#9093ff",
+              "on-surface-variant": "#a1a9d5",
+              "surface": "#020a2f",
+              "error-dim": "#d7383b",
+              "surface-tint": "#85adff",
+              "primary-container": "#6e9fff",
+              "surface-bright": "#192760",
+              "on-surface": "#e1e4ff",
+              "surface-container": "#091542",
+              "on-secondary-fixed-variant": "#3a3ac8",
+              "inverse-surface": "#fbf8ff",
+              "on-background": "#e1e4ff",
+              "on-primary-fixed-variant": "#002a62",
+              "on-primary": "#002c66",
+              "surface-container-high": "#0e1b4c",
+              "tertiary-dim": "#9c48ea",
+              "surface-container-low": "#050f38",
+              "background": "#020a2f"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        background-color: #020a2f;
+        color: #e1e4ff;
+        font-family: 'Inter', sans-serif;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .ai-gradient-mesh {
+        background: radial-gradient(at 0% 0%, rgba(144, 147, 255, 0.15) 0, transparent 50%),
+                    radial-gradient(at 100% 100%, rgba(193, 128, 255, 0.15) 0, transparent 50%);
+      }
+      .glass-card {
+        background: rgba(20, 33, 86, 0.6);
+        backdrop-filter: blur(24px);
+      }
+    </style>
+</head>
+<body class="antialiased">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-[#020a2f]/60 backdrop-blur-xl border-b border-[#85adff]/15 shadow-[0_32px_32px_rgba(0,0,0,0.06)]">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-screen-2xl mx-auto font-['Inter'] antialiased tracking-tight">
+<div class="flex items-center gap-8">
+<div class="text-2xl font-bold tracking-tighter text-white uppercase">TallentX</div>
+<div class="hidden md:flex gap-6">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Jobs</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Candidates</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Interviews</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Analytics</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group cursor-pointer active:scale-95 transition-all duration-300">
+<span class="material-symbols-outlined text-[#85adff] text-2xl" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-tertiary rounded-full border border-[#020a2f]"></span>
+</div>
+<div class="cursor-pointer active:scale-95 transition-all duration-300">
+<span class="material-symbols-outlined text-slate-400 hover:text-white" data-icon="settings">settings</span>
+</div>
+<img alt="Recruiter Profile Avatar" class="w-10 h-10 rounded-full border-2 border-primary/20" data-alt="Professional portrait of a male executive in a sharp navy suit against a soft blue architectural background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC58x6FbRkr_7rD8zb-LsBEpB0wz1YZkzFe8Txyi48g_C_75qEK6dvUNjlD4_wn2ZpGbHFgc87QBezTJtTe_C5ORX0eFZBSWoZOrulghn1U1Ay_PoLZwQ66LJRy8OUnUZjipVs3KMOzE5imrNlc0LCzL_ltrnXbqpmpvLxk9Yr0oUjCltczlAYtlSHlQyFA0oWudZzRZuj7x7RCVlIHEJr42nHoaXmd1jPokfUS0__dFGEa_0qFJNKnBWfXo4RL71FOsIy1WuSAXuw"/>
+</div>
+</div>
+</nav>
+<!-- Side Navigation Bar -->
+<aside class="h-screen w-64 fixed left-0 top-0 hidden lg:flex flex-col bg-[#020a2f] border-r border-[#85adff]/10 pt-20">
+<div class="px-6 py-6 mb-4">
+<h2 class="text-lg font-black text-[#85adff] tracking-tight">IES Recruiter</h2>
+<p class="text-xs font-medium text-slate-500 uppercase tracking-widest">AI-Powered Hiring</p>
+</div>
+<nav class="flex flex-col gap-y-2 py-6 flex-grow">
+<a class="text-slate-400 px-6 py-3 hover:bg-white/5 hover:translate-x-1 transition-transform flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium font-['Inter']">Dashboard</span>
+</a>
+<a class="text-slate-400 px-6 py-3 hover:bg-white/5 hover:translate-x-1 transition-transform flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="text-sm font-medium font-['Inter']">Active Jobs</span>
+</a>
+<a class="text-slate-400 px-6 py-3 hover:bg-white/5 hover:translate-x-1 transition-transform flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-sm font-medium font-['Inter']">Talent Pool</span>
+</a>
+<a class="text-slate-400 px-6 py-3 hover:bg-white/5 hover:translate-x-1 transition-transform flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="text-sm font-medium font-['Inter']">Schedule</span>
+</a>
+<a class="text-slate-400 px-6 py-3 hover:bg-white/5 hover:translate-x-1 transition-transform flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="text-sm font-medium font-['Inter']">AI Insights</span>
+</a>
+</nav>
+<div class="p-6 flex flex-col gap-2">
+<button class="w-full bg-gradient-to-r from-secondary to-tertiary text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                Post New Job
+            </button>
+<div class="mt-4 pt-4 border-t border-[#85adff]/10 flex flex-col gap-2">
+<a class="text-slate-500 text-sm hover:text-white transition-colors flex items-center gap-3 px-2" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+                    Help Center
+                </a>
+<a class="text-slate-500 text-sm hover:text-white transition-colors flex items-center gap-3 px-2" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+                    Logout
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-24 pb-12 px-8 min-h-screen max-w-7xl">
+<!-- Header & Filters Section -->
+<header class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="text-5xl font-extrabold tracking-tighter text-white mb-2">Notifications</h1>
+<p class="text-slate-400 max-w-xl text-lg">Manage your hiring flow and AI-driven insights across the TallentX ecosystem.</p>
+</div>
+<div class="flex gap-2 p-1 bg-surface-container rounded-xl">
+<button class="px-6 py-2 rounded-lg bg-primary text-on-primary font-semibold text-sm transition-all shadow-lg shadow-primary/20">All</button>
+<button class="px-6 py-2 rounded-lg text-slate-400 hover:text-white font-semibold text-sm transition-all">Unread</button>
+<button class="px-6 py-2 rounded-lg text-slate-400 hover:text-white font-semibold text-sm transition-all">Priority</button>
+</div>
+</div>
+</header>
+<!-- Bento Layout for Notifications -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<!-- Notification List (Major Column) -->
+<div class="xl:col-span-8 flex flex-col gap-6">
+<!-- AI INSIGHTS NOTIFICATION (Custom Component) -->
+<div class="ai-gradient-mesh border border-tertiary/20 rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-tertiary/20 text-tertiary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest border border-tertiary/30">✨ AI Insight</span>
+</div>
+<div class="flex gap-6 items-start">
+<div class="bg-tertiary-container w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-tertiary/30">
+<span class="material-symbols-outlined text-white" data-icon="psychology" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-xl font-bold text-white tracking-tight">AI Talent Matching Ready</h3>
+<span class="text-xs text-slate-500 font-medium">2m ago</span>
+</div>
+<p class="text-slate-300 leading-relaxed mb-4">We've identified 3 "High Potential" matches for the <span class="text-primary font-semibold">Lead Product Designer</span> role based on recent portfolio updates.</p>
+<div class="flex gap-4">
+<button class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg text-xs font-bold transition-all border border-white/5 active:scale-95">View Matches</button>
+<button class="text-slate-400 hover:text-white text-xs font-bold transition-all">Mark as read</button>
+</div>
+</div>
+</div>
+</div>
+<!-- NEW APPLICANT NOTIFICATION (Recruiter) -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/15 hover:border-primary/30 transition-all group">
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="person_add">person_add</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-xl font-bold text-white tracking-tight">New Applicant: Sarah Chen</h3>
+<span class="text-xs text-slate-500 font-medium">1h ago</span>
+</div>
+<p class="text-slate-400 leading-relaxed mb-4">Sarah Chen applied for <span class="text-on-surface-variant font-medium italic">Senior Frontend Architect</span>. Skills match: 94%.</p>
+<div class="flex gap-4">
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-lg text-xs font-bold transition-all active:scale-95">Review Profile</button>
+<button class="text-slate-500 hover:text-white text-xs font-bold transition-all">Mark as read</button>
+</div>
+</div>
+</div>
+</div>
+<!-- INTERVIEW REMINDER -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/15 hover:border-secondary/30 transition-all">
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary" data-icon="event_note">event_note</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-xl font-bold text-white tracking-tight">Upcoming: Interview with David Miller</h3>
+<span class="text-xs text-slate-500 font-medium">4h ago</span>
+</div>
+<p class="text-slate-400 leading-relaxed mb-4">Technical round starts in 30 minutes via Microsoft Teams. Feedback form is ready.</p>
+<div class="flex gap-4">
+<button class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-lg text-xs font-bold transition-all active:scale-95">Join Meeting</button>
+<button class="text-slate-500 hover:text-white text-xs font-bold transition-all">Mark as read</button>
+</div>
+</div>
+</div>
+</div>
+<!-- APPLICATION STATUS (Candidate Context) -->
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/15 opacity-80">
+<div class="flex gap-6 items-start">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-outline" data-icon="assignment_turned_in">assignment_turned_in</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-xl font-bold text-slate-400 tracking-tight">Status Update: FinTech Solutions</h3>
+<span class="text-xs text-slate-500 font-medium">Yesterday</span>
+</div>
+<p class="text-slate-500 leading-relaxed mb-4">Your application for Senior UI/UX Designer has moved to the <span class="font-medium">Selection Committee</span> stage.</p>
+<div class="flex gap-4">
+<button class="text-slate-500 hover:text-white text-xs font-bold transition-all">View Details</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Context (Minor Column) -->
+<div class="xl:col-span-4 flex flex-col gap-8">
+<!-- Summary Card -->
+<section class="glass-card rounded-xl p-8 border border-white/5 shadow-2xl">
+<h4 class="text-white font-bold text-lg mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+                        Weekly Pulse
+                    </h4>
+<div class="space-y-6">
+<div class="flex justify-between items-center">
+<span class="text-slate-400 text-sm">New Applicants</span>
+<span class="text-white font-bold text-xl">24</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-400 text-sm">Interviews Scheduled</span>
+<span class="text-white font-bold text-xl">8</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-slate-400 text-sm">AI Matches Generated</span>
+<span class="text-tertiary font-bold text-xl">12</span>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-white/5">
+<button class="w-full py-4 text-center text-xs font-bold text-slate-500 border border-slate-700 rounded-lg hover:bg-white/5 hover:text-white transition-all">Download Report</button>
+</div>
+</section>
+<!-- Recommendation Widget -->
+<section class="bg-surface-container rounded-xl p-8 overflow-hidden relative">
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+<h4 class="text-white font-bold text-lg mb-4">Manage Preferences</h4>
+<p class="text-slate-400 text-sm mb-6 leading-relaxed">Customize which events trigger push notifications and AI alerts.</p>
+<div class="space-y-4">
+<label class="flex items-center justify-between group cursor-pointer">
+<span class="text-sm text-slate-300 group-hover:text-white transition-colors">Candidate Applications</span>
+<div class="w-10 h-5 bg-primary/20 rounded-full relative p-0.5">
+<div class="w-4 h-4 bg-primary rounded-full absolute right-0.5"></div>
+</div>
+</label>
+<label class="flex items-center justify-between group cursor-pointer">
+<span class="text-sm text-slate-300 group-hover:text-white transition-colors">AI Insight Briefs</span>
+<div class="w-10 h-5 bg-tertiary/20 rounded-full relative p-0.5">
+<div class="w-4 h-4 bg-tertiary rounded-full absolute right-0.5"></div>
+</div>
+</label>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 mt-auto bg-[#020a2f] border-t border-[#85adff]/10">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-6">
+<span class="font-bold text-white tracking-tighter">TallentX</span>
+<span class="text-xs font-normal text-slate-500">© 2024 Intelligent Employment System. Powered by TallentX AI.</span>
+</div>
+<div class="flex gap-6">
+<a class="text-xs font-normal text-slate-500 hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs font-normal text-slate-500 hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="text-xs font-normal text-slate-500 hover:text-white transition-colors text-[#85adff] underline" href="#">AI Ethics</a>
+<a class="text-xs font-normal text-slate-500 hover:text-white transition-colors" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</body></html>

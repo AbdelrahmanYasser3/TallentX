@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notifications Center | IES Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#c0c1ff",
+              "inverse-on-surface": "#eff1f3",
+              "secondary": "#4648d4",
+              "on-surface-variant": "#424754",
+              "on-secondary-container": "#fffbff",
+              "on-primary-container": "#fefcff",
+              "on-secondary": "#ffffff",
+              "surface": "#f7f9fb",
+              "primary": "#0058be",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-container": "#9c48ea",
+              "error": "#ba1a1a",
+              "surface-tint": "#005ac2",
+              "primary-container": "#2170e4",
+              "tertiary-fixed": "#f0dbff",
+              "outline": "#727785",
+              "tertiary-fixed-dim": "#ddb7ff",
+              "secondary-container": "#6063ee",
+              "surface-variant": "#e0e3e5",
+              "primary-fixed": "#d8e2ff",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "on-tertiary-fixed": "#2c0051",
+              "primary-fixed-dim": "#adc6ff",
+              "on-primary-fixed": "#001a42",
+              "surface-container-high": "#e6e8ea",
+              "tertiary": "#8127cf",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed-variant": "#6900b3",
+              "surface-dim": "#d8dadc",
+              "background": "#f7f9fb",
+              "on-tertiary-container": "#fffbff",
+              "on-error": "#ffffff",
+              "surface-bright": "#f7f9fb",
+              "outline-variant": "#c2c6d6",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-secondary-fixed": "#07006c",
+              "on-surface": "#191c1e",
+              "error-container": "#ffdad6",
+              "surface-container": "#eceef0",
+              "inverse-primary": "#adc6ff",
+              "inverse-surface": "#2d3133",
+              "secondary-fixed": "#e1e0ff",
+              "on-background": "#191c1e",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#004395"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-ai-gradient {
+            background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 flex flex-col p-4 gap-2 z-40">
+<div class="mb-8 px-4 py-2">
+<h1 class="text-lg font-bold text-slate-900 dark:text-slate-100">IES Portal</h1>
+<p class="text-xs font-medium text-slate-500">Intelligent Management</p>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-sm font-medium">Applications</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="text-sm font-medium">Interviews</span>
+</a>
+<a class="bg-white dark:bg-slate-900 text-blue-700 dark:text-indigo-400 shadow-sm rounded-xl px-4 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="notifications" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="text-sm font-medium">Notifications</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-1">
+<button class="bg-ai-gradient text-white rounded-xl px-4 py-3 mb-4 flex items-center justify-center gap-2 text-sm font-semibold shadow-lg shadow-secondary/20 hover:scale-105 active:scale-95 transition-all">
+<span>✨ AI Insights</span>
+</button>
+<a class="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 px-4 py-2 flex items-center gap-3 text-xs" href="#">
+<span class="material-symbols-outlined text-base" data-icon="help">help</span>
+<span>Help Center</span>
+</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 px-4 py-2 flex items-center gap-3 text-xs" href="#">
+<span class="material-symbols-outlined text-base" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="fixed top-0 right-0 left-64 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl z-30 shadow-sm border-b border-slate-100/50">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-4">
+<h2 class="text-xl font-bold tracking-tight text-on-surface">Notifications Center</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative">
+<input class="bg-surface-container-low border-none rounded-full px-4 py-2 text-sm w-64 focus:ring-2 focus:ring-primary/20" placeholder="Search notifications..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-2 text-slate-400 text-lg" data-icon="search">search</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+<button class="p-2 hover:bg-slate-100 rounded-lg transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<img alt="User Profile" class="w-10 h-10 rounded-full border-2 border-primary-container object-cover" data-alt="Close-up portrait of a young professional male in business casual attire, warm neutral background, natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgv2eccjaUoh1hWjeNjrB3j5jf4IUfnAw2EyZ4poPPojNHZCm_C7hhJYtMVdfB2ey4ZOCZAwG6a6OkhFw7OhiIaHxbMJYN6wx7GLujMmQvlKKuBQMlhJwRo4y1YySE30t_3xYGzt5gI-i9PWZ5-wwcYqTXKXhZSmcgyy6xNeQQMGnawbagnCEwn2sQ3lGSqKVG5CpeuI-WNIMws4CWEo8zYaPQyQuiEYcZ02Ul2XjrMZ-jBwIrdN3SSFaAjIU6SeYJa8YsMg_AqT8"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-64 pt-24 pb-12 px-8 min-h-screen bg-surface">
+<div class="max-w-5xl mx-auto">
+<!-- Header Section with Stats -->
+<div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-6">
+<div class="space-y-2">
+<span class="text-primary font-bold tracking-widest text-[10px] uppercase">Lumina Nexus Feedback Loop</span>
+<h3 class="text-4xl font-extrabold tracking-tighter text-on-surface leading-none">Your Intelligence Feed</h3>
+<p class="text-on-surface-variant text-lg">Stay updated with real-time opportunities and cognitive analysis.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-2 bg-surface-container-lowest text-on-surface text-sm font-semibold rounded-xl border border-outline-variant/20 hover:bg-surface-container-low transition-all">Mark all as read</button>
+<button class="px-6 py-2 bg-primary text-white text-sm font-semibold rounded-xl shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">Notification Settings</button>
+</div>
+</div>
+<!-- Bento Grid Notifications Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Filter Sidebar (Internal) -->
+<div class="col-span-12 lg:col-span-3 space-y-4">
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Categories</h4>
+<div class="space-y-1">
+<button class="w-full flex justify-between items-center px-3 py-2 bg-primary/5 text-primary font-semibold rounded-lg text-sm">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg" data-icon="all_inclusive">all_inclusive</span> All</span>
+<span class="text-xs bg-primary text-white px-2 rounded-full">12</span>
+</button>
+<button class="w-full flex justify-between items-center px-3 py-2 text-on-surface-variant hover:bg-slate-50 rounded-lg text-sm transition-all">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg" data-icon="auto_awesome">auto_awesome</span> AI Insights</span>
+<span class="text-xs bg-secondary-container/20 text-secondary px-2 rounded-full">4</span>
+</button>
+<button class="w-full flex justify-between items-center px-3 py-2 text-on-surface-variant hover:bg-slate-50 rounded-lg text-sm transition-all">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg" data-icon="work">work</span> Applications</span>
+<span class="text-xs bg-slate-100 text-slate-500 px-2 rounded-full">5</span>
+</button>
+<button class="w-full flex justify-between items-center px-3 py-2 text-on-surface-variant hover:bg-slate-50 rounded-lg text-sm transition-all">
+<span class="flex items-center gap-2"><span class="material-symbols-outlined text-lg" data-icon="calendar_today">calendar_today</span> Interviews</span>
+<span class="text-xs bg-slate-100 text-slate-500 px-2 rounded-full">3</span>
+</button>
+</div>
+</div>
+<!-- Highlight Card -->
+<div class="bg-ai-gradient rounded-xl p-6 text-white overflow-hidden relative group">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-3xl mb-4" data-icon="sparkles" style="font-variation-settings: 'FILL' 1;">colors_spark</span>
+<h5 class="font-bold text-lg mb-2">Resume Score Up!</h5>
+<p class="text-xs text-white/80 leading-relaxed mb-4">Your profile match for "Senior Product Designer" increased by 15% after recent updates.</p>
+<a class="inline-block text-xs font-bold underline underline-offset-4 hover:text-white/100 transition-colors" href="#">View Analysis</a>
+</div>
+<div class="absolute -bottom-6 -right-6 opacity-20 transition-transform duration-500 group-hover:scale-110">
+<span class="material-symbols-outlined text-8xl" data-icon="psychology">psychology</span>
+</div>
+</div>
+</div>
+<!-- Notification Feed -->
+<div class="col-span-12 lg:col-span-9 space-y-6">
+<!-- Today Section -->
+<div class="space-y-3">
+<div class="flex items-center gap-4 px-2">
+<h5 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Today</h5>
+<div class="flex-grow h-px bg-slate-200"></div>
+</div>
+<!-- AI Insight Notification -->
+<div class="group bg-surface-container-lowest hover:bg-surface-bright p-5 rounded-xl transition-all shadow-sm border-l-4 border-secondary flex gap-5">
+<div class="flex-shrink-0">
+<div class="w-12 h-12 bg-secondary-container/10 flex items-center justify-center rounded-xl text-secondary">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Smart Match Discovery</h4>
+<span class="text-[10px] font-bold text-slate-400 uppercase">2 hours ago</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-4">Based on your skills in <span class="text-secondary font-medium">System Architecture</span>, we've found 3 new high-priority matches at <span class="italic">Nexus Dynamics</span>.</p>
+<div class="flex gap-3">
+<button class="bg-secondary-container text-white px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-secondary transition-colors">View Matches</button>
+<button class="px-4 py-1.5 rounded-lg text-xs font-semibold text-secondary border border-secondary/20 hover:bg-secondary/5">Dismiss</button>
+</div>
+</div>
+</div>
+<!-- Application Update Notification -->
+<div class="group bg-surface-container-lowest hover:bg-surface-bright p-5 rounded-xl transition-all shadow-sm flex gap-5">
+<div class="flex-shrink-0">
+<div class="w-12 h-12 bg-primary/5 flex items-center justify-center rounded-xl text-primary">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface">Application Status Changed</h4>
+<span class="text-[10px] font-bold text-slate-400 uppercase">5 hours ago</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Your application for <span class="font-semibold">Lead Developer</span> at <span class="font-semibold">Aether Tech</span> has moved to the <span class="text-emerald-600 font-bold">Review</span> stage.</p>
+<a class="mt-3 inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline" href="#">
+                                    Check application tracking
+                                    <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Yesterday Section -->
+<div class="space-y-3">
+<div class="flex items-center gap-4 px-2">
+<h5 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Yesterday</h5>
+<div class="flex-grow h-px bg-slate-200"></div>
+</div>
+<!-- Interview Reminder Notification -->
+<div class="group bg-surface-container-lowest hover:bg-surface-bright p-5 rounded-xl transition-all shadow-sm border-l-4 border-error/50 flex gap-5">
+<div class="flex-shrink-0">
+<div class="w-12 h-12 bg-error/5 flex items-center justify-center rounded-xl text-error">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface">Upcoming Interview Reminder</h4>
+<span class="text-[10px] font-bold text-slate-400 uppercase">22 hours ago</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-3">Don't forget your technical interview with <span class="font-semibold">Quant Systems</span> scheduled for tomorrow at <span class="font-bold">10:00 AM EST</span>.</p>
+<div class="flex items-center gap-4">
+<div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-full border-2 border-white object-cover" data-alt="Female tech interviewer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDShOMEFlK--WjVb9X0ie6CB_qcVDeidkYKReZsISYb43pr-qNgE6v40XOMeRkBoj3zqhjGUP23mOFVpw9IWkl0o3UTrQSeSH_3UbfL3IajeADrg_sUKpJNjSwUHAQQmL-e7MttluYape8FV8ovK2ey4IU38KUGiq3ZiQPwqmIoNBtQcOTAYuyUNfK2tPOyCrjwbUZs8jNPB7t-xuoEqm35_rN0PUDJTFrMWB1tNqQOiaYxIAVyPVqmLaJSG9M9VuqktRI5Ong_YyA"/>
+<img class="w-6 h-6 rounded-full border-2 border-white object-cover" data-alt="Male tech lead portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAetd_K_kR2tRrwRsItFi06SkkPd53z2NgDwq8BPJ6PCNDOF5OcqBWZ78XXYdaPhIaGqW0gMfCOplTo_WMYFvJHvn1p_MdYP29eZzeg3WBbfh43G2jwypl3zA7_j_XbUGzaKj98uIlYredLfGCYlENxiiGPbJpkCBOG8DOPLjlv47QZJACrXriQB4P3TbNnVk8EglbHY-ZeyPr1FCg9nZ9MxVWpZiWpHl58fJA86FaZjBXK4h6C5aqeu46x1o3vu3aDWOo2RT4lcKg"/>
+</div>
+<span class="text-[10px] font-medium text-slate-500 italic">2 interviewers confirmed</span>
+</div>
+<div class="flex gap-3 mt-4">
+<button class="bg-primary text-white px-4 py-1.5 rounded-lg text-xs font-semibold hover:bg-primary-container transition-colors">Join Meeting Room</button>
+<button class="px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-600 border border-slate-200 hover:bg-slate-50">Reschedule</button>
+</div>
+</div>
+</div>
+<!-- Recommendation Sparkle Chip Notification -->
+<div class="group bg-surface-container-lowest hover:bg-surface-bright p-5 rounded-xl transition-all shadow-sm flex gap-5">
+<div class="flex-shrink-0">
+<div class="w-12 h-12 bg-tertiary-container/10 flex items-center justify-center rounded-xl text-tertiary">
+<span class="material-symbols-outlined" data-icon="tips_and_updates">tips_and_updates</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface flex items-center gap-2">
+                                        AI Career Tip
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-tertiary/10 text-tertiary">✨ Insight</span>
+</h4>
+<span class="text-[10px] font-bold text-slate-400 uppercase">28 hours ago</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Adding <span class="italic">"React Query"</span> to your skills section could increase your interview callbacks by up to <span class="font-bold text-tertiary">12%</span> for current openings.</p>
+<button class="mt-3 text-xs font-bold text-tertiary hover:opacity-80 transition-opacity">Apply suggestion to profile</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Anchor -->
+<footer class="ml-64 bg-white dark:bg-slate-900 w-full py-8 border-t border-slate-100 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+<span class="font-bold text-slate-700 dark:text-slate-300">IES</span>
+<span class="text-xs font-inter text-slate-500 dark:text-slate-400">© 2024 IES Intelligent Employment System</span>
+<div class="flex gap-6">
+<a class="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 text-xs transition-opacity hover:opacity-80" href="#">Privacy Policy</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 text-xs transition-opacity hover:opacity-80" href="#">Terms of Service</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 text-xs transition-opacity hover:opacity-80" href="#">Cookie Settings</a>
+</div>
+</div>
+</footer>
+</body></html>

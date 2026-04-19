@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#171f33",
+              "secondary": "#c0c1ff",
+              "inverse-on-surface": "#283044",
+              "on-tertiary": "#003824",
+              "outline-variant": "#424754",
+              "tertiary-fixed": "#6ffbbe",
+              "surface-bright": "#31394d",
+              "primary": "#adc6ff",
+              "tertiary-container": "#00a572",
+              "on-tertiary-container": "#00311f",
+              "error": "#ffb4ab",
+              "surface-variant": "#2d3449",
+              "surface-container-high": "#222a3d",
+              "tertiary-fixed-dim": "#4edea3",
+              "on-background": "#dae2fd",
+              "primary-fixed-dim": "#adc6ff",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-surface-variant": "#c2c6d6",
+              "surface-container-low": "#131b2e",
+              "on-secondary-container": "#b0b2ff",
+              "surface-dim": "#0b1326",
+              "surface-tint": "#adc6ff",
+              "on-primary-fixed": "#001a42",
+              "on-primary": "#002e6a",
+              "inverse-surface": "#dae2fd",
+              "on-primary-fixed-variant": "#004395",
+              "on-tertiary-fixed-variant": "#005236",
+              "primary-container": "#4d8eff",
+              "secondary-container": "#3131c0",
+              "outline": "#8c909f",
+              "error-container": "#93000a",
+              "on-primary-container": "#00285d",
+              "on-tertiary-fixed": "#002113",
+              "surface": "#0b1326",
+              "tertiary": "#4edea3",
+              "on-secondary": "#1000a9",
+              "primary-fixed": "#d8e2ff",
+              "on-surface": "#dae2fd",
+              "surface-container-lowest": "#060e20",
+              "on-error": "#690005",
+              "secondary-fixed": "#e1e0ff",
+              "secondary-fixed-dim": "#c0c1ff",
+              "inverse-primary": "#005ac2",
+              "on-secondary-fixed": "#07006c",
+              "on-error-container": "#ffdad6",
+              "background": "#0b1326",
+              "surface-container-highest": "#2d3449"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(34, 42, 61, 0.6);
+            backdrop-filter: blur(16px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0b1326]/80 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-8">
+<div class="text-2xl font-black tracking-tighter bg-gradient-to-br from-[#adc6ff] to-[#c0c1ff] bg-clip-text text-transparent">IES</div>
+<div class="hidden md:flex items-center gap-6 font-['Inter'] text-sm tracking-wide">
+<a class="text-[#adc6ff] font-semibold" href="#">Explore Jobs</a>
+<a class="text-[#222a3d] hover:bg-[#222a3d] transition-all duration-300 px-3 py-1 rounded" href="#">Companies</a>
+<a class="text-[#222a3d] hover:bg-[#222a3d] transition-all duration-300 px-3 py-1 rounded" href="#">AI Insights</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2">
+<span class="material-symbols-outlined text-[#adc6ff]" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-[#adc6ff]" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/20">
+<img alt="User Profile Avatar" data-alt="professional portrait of a tech professional with soft ambient lighting and clean dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYGEzR27xEH-we2vMGqtHpCh81mcg6uRjocs0YeEmhJkysJ5Dd99fuxylosflC5pYOkblpNyb3sthftRYCgdD90zRra3CliELDsaiFcnpZFAFAIhjKgfGhdue-avKH9VKUSkAmfyoMQS388uzpA0EEzkJN5z4_zEanjTirvwUQrIel-MtUk6lv8yOF2sGatpXcP-NDbA2XvcQKSJzReStURT0GtPlRP8Ghzt1qNxNHvIUdBH5xJa75dpL5tYydwbdcsZzpYjyWoq0"/>
+</div>
+<button class="md:hidden text-[#adc6ff]">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex flex-col items-center justify-center px-4 overflow-hidden">
+<!-- Background Neural Glows -->
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -z-10"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[150px] -z-10"></div>
+<div class="text-center max-w-4xl mx-auto mb-12">
+<h1 class="text-5xl md:text-7xl font-headline font-black tracking-tighter mb-6 leading-tight">
+                    Architect Your <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Future Career</span>
+</h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+                    The Intelligent Employment System uses Neural Architect AI to illuminate opportunities tailored to your unique engineering profile.
+                </p>
+</div>
+<!-- Massive Search Bar -->
+<div class="w-full max-w-3xl glass-panel p-2 rounded-full border border-outline-variant/20 shadow-2xl flex flex-col md:flex-row items-center gap-2">
+<div class="flex-1 flex items-center px-6 py-3 w-full">
+<span class="material-symbols-outlined text-outline mr-3" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface w-full placeholder:text-outline/60" placeholder="Job Title, Skills, or Keywords" type="text"/>
+</div>
+<div class="hidden md:block w-px h-8 bg-outline-variant/30"></div>
+<div class="flex-1 flex items-center px-6 py-3 w-full">
+<span class="material-symbols-outlined text-outline mr-3" data-icon="location_on">location_on</span>
+<input class="bg-transparent border-none focus:ring-0 text-on-surface w-full placeholder:text-outline/60" placeholder="Location or Remote" type="text"/>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary font-bold px-10 py-4 rounded-full transition-transform active:scale-95 hover:shadow-[0_0_20px_rgba(173,198,255,0.4)]">
+                    Find Matches
+                </button>
+</div>
+<!-- Trusted By -->
+<div class="mt-24 w-full max-w-5xl">
+<p class="text-center text-xs font-label uppercase tracking-[0.3em] text-outline mb-10">Powering Talent at Global Leaders</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
+<span class="text-2xl font-black tracking-widest">VOLT</span>
+<span class="text-2xl font-black tracking-widest">NEXUS</span>
+<span class="text-2xl font-black tracking-widest">ORBIT</span>
+<span class="text-2xl font-black tracking-widest">SYNERGY</span>
+<span class="text-2xl font-black tracking-widest">CORE</span>
+</div>
+</div>
+</section>
+<!-- Stats Bento Grid -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Large Match Card -->
+<div class="md:col-span-2 bg-surface-container-low rounded-3xl p-10 border-l-4 border-tertiary relative overflow-hidden group">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-tertiary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-tertiary font-bold tracking-wider text-sm uppercase">AI Reliability Index</span>
+</div>
+<h2 class="text-6xl font-black mb-4">98%</h2>
+<p class="text-xl text-on-surface-variant max-w-md">Precision matching accuracy using our proprietary Neural Architect graph technology.</p>
+</div>
+<div class="absolute top-0 right-0 w-64 h-full bg-gradient-to-l from-tertiary/5 to-transparent -z-0"></div>
+</div>
+<!-- Active Jobs -->
+<div class="bg-surface-container-high rounded-3xl p-10 flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="work">work</span>
+<div>
+<h2 class="text-4xl font-bold mb-2">10k+</h2>
+<p class="text-on-surface-variant">Active tech roles from verified hiring partners globally.</p>
+</div>
+</div>
+<!-- AI Feature: Semantic Analysis -->
+<div class="bg-surface-container-low rounded-3xl p-8 border border-outline-variant/10 hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/30 flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</div>
+<h3 class="text-xl font-bold mb-3 flex items-center gap-2">Semantic Soul <span class="text-secondary text-sm">✨</span></h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Our AI understands your code architecture experience, not just keywords on a page.</p>
+</div>
+<!-- AI Feature: Speed to Hire -->
+<div class="bg-surface-container-low rounded-3xl p-8 border border-outline-variant/10 hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 rounded-xl bg-primary-container/30 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</div>
+<h3 class="text-xl font-bold mb-3 flex items-center gap-2">Quantum Speed <span class="text-primary text-sm">✨</span></h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Reduce your search time by 70% with direct pipeline injections into top-tier firms.</p>
+</div>
+<!-- AI Feature: Growth Path -->
+<div class="bg-surface-container-low rounded-3xl p-8 border border-outline-variant/10 hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container/30 flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+</div>
+<h3 class="text-xl font-bold mb-3 flex items-center gap-2">Growth Mapping <span class="text-tertiary text-sm">✨</span></h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">AI-driven career pathing that suggests roles based on where you want to be in 5 years.</p>
+</div>
+</div>
+</section>
+<!-- 3-Step Process -->
+<section class="py-24 bg-surface-container-lowest relative overflow-hidden">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-20">
+<h2 class="text-4xl font-headline font-black mb-4">The Neural Onboarding</h2>
+<p class="text-on-surface-variant">Three steps to hyper-personalized matching.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
+<!-- Step 1 -->
+<div class="relative flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center text-2xl font-bold text-primary mb-8 border border-primary/20 shadow-[0_0_30px_rgba(173,198,255,0.1)]">1</div>
+<h4 class="text-xl font-bold mb-4">Connect Repositories</h4>
+<p class="text-on-surface-variant text-sm px-4">Integrate GitHub or GitLab. Our AI analyzes your contribution patterns and technical depth.</p>
+</div>
+<!-- Step 2 -->
+<div class="relative flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center text-2xl font-bold text-secondary mb-8 border border-secondary/20 shadow-[0_0_30px_rgba(192,193,255,0.1)]">2</div>
+<h4 class="text-xl font-bold mb-4">Neural Tuning</h4>
+<p class="text-on-surface-variant text-sm px-4">Define your ideal culture and tech stack priorities through our conversational AI interface.</p>
+</div>
+<!-- Step 3 -->
+<div class="relative flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center text-2xl font-bold text-tertiary mb-8 border border-tertiary/20 shadow-[0_0_30px_rgba(78,222,163,0.1)]">3</div>
+<h4 class="text-xl font-bold mb-4">Direct Matching</h4>
+<p class="text-on-surface-variant text-sm px-4">Get direct interview requests from hiring managers who have already seen your AI-verified profile.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Roles (Horizontal Scroll/Grid) -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-3xl font-headline font-black mb-2">Top Opportunities</h2>
+<p class="text-on-surface-variant">Recommended based on current market trends</p>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 hover:translate-x-2 transition-transform">
+                    View all 10,240 jobs <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Job Card 1 -->
+<div class="bg-surface-container rounded-2xl p-6 border border-outline-variant/10 hover:border-primary/30 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center">
+<span class="text-primary font-bold">NX</span>
+</div>
+<span class="bg-tertiary/10 text-tertiary text-[10px] font-bold px-2 py-1 rounded">99% MATCH</span>
+</div>
+<h4 class="text-xl font-bold group-hover:text-primary transition-colors">Senior Distibuted Systems Engineer</h4>
+<p class="text-on-surface-variant text-sm mb-6">NEXUS Core • Remote • $180k - $240k</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-variant rounded text-[10px] font-medium">Rust</span>
+<span class="px-2 py-1 bg-surface-variant rounded text-[10px] font-medium">Kubernetes</span>
+<span class="px-2 py-1 bg-surface-variant rounded text-[10px] font-medium">gRPC</span>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="bg-surface-container rounded-2xl p-6 border border-outline-variant/10 hover:border-primary/30 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center">
+<span class="text-secondary font-bold">VL</span>
+</div>
+<span class="bg-tertiary/10 text-tertiary text-[10px] font-bold px-2 py-1 rounded">96% MATCH</span>
+</div>
+<h4 class="text-xl font-bold group-hover:text-primary transition-colors">AI Research Infrastructure Lead</h4>
+<p class="text-on-surface-variant text-sm mb-6">VOLT Labs • San Francisco • $210k+</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-variant rounded text-[10px] font-medium">PyTorch</span>
+<span class="px-2 py-1 bg-surface-variant rounded text-[10px] font-medium">MLOps</span>
+<span class="px-2 py-1 bg-surface-variant rounded text-[10px] font-medium">CUDA</span>
+</div>
+</div>
+<!-- Job Card 3 -->
+<div class="bg-surface-container rounded-2xl p-6 border border-outline-variant/10 hover:border-primary/30 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center">
+<span class="text-tertiary font-bold">SY</span>
+</div>
+<span class="bg-tertiary/10 text-tertiary text-[10px] font-bold px-2 py-1 rounded">94% MATCH</span>
+</div>
+<h4 class="text-xl font-bold group-hover:text-primary transition-colors">Lead Frontend Architect</h4>
+<p class="text-on-surface-variant text-sm mb-6">SYNERGY AI • London / Hybrid • £120k+</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-variant rounded text-[10px] font-medium">React</span>
+<span class="px-2 py-1 bg-surface-variant rounded text-[10px] font-medium">TypeScript</span>
+<span class="px-2 py-1 bg-surface-variant rounded text-[10px] font-medium">Canvas API</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-6">
+<div class="max-w-5xl mx-auto rounded-[3rem] bg-gradient-to-br from-primary-container to-secondary-container p-12 md:p-20 text-center relative overflow-hidden">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<img alt="Neural Background" class="w-full h-full object-cover" data-alt="abstract 3d visualization of neural network pathways with glowing blue and purple nodes and connections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD65e2iwyMBoLa1OXY-YcQ-rHSgzOf7hRC5u4nK06HId_0fGB8mv92Idovuv3Bd1CbPAQU7cdv9NQIvOaZsuoRRK7nqA_uxbSAQk_zyHWLtJY-CIQR7t6slukMfoHwjKpXDwq2MrHjUC6yIJySlzSuwXDq8Zj1aPIJlxzosjLmMF5r9DWGXfr1p72P8LrRFWIMbbLTFDTUnsVYYJtbEM9m0wx6IHUCa93giN0ekhUPRcBFkSv0-5K5bJygGzRc7LBlDdMe7JYYtRKo"/>
+</div>
+<div class="relative z-10">
+<h2 class="text-4xl md:text-6xl font-black text-on-primary-container mb-8 leading-tight">Ready to meet your<br/>Neural Match?</h2>
+<div class="flex flex-col md:flex-row items-center justify-center gap-6">
+<button class="bg-surface text-primary font-bold px-12 py-5 rounded-full text-lg shadow-xl hover:scale-105 transition-transform">Get Started Free</button>
+<button class="bg-transparent border border-on-primary-container/30 text-on-primary-container font-bold px-12 py-5 rounded-full text-lg hover:bg-on-primary-container/10 transition-colors">Schedule AI Demo</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-[#0b1326] flex flex-col items-center justify-center space-y-8">
+<div class="w-full h-px bg-[#adc6ff]/5 max-w-7xl mx-auto"></div>
+<div class="flex flex-wrap justify-center gap-8 font-['Inter'] text-xs text-[#222a3d]">
+<a class="hover:text-[#c0c1ff] transition-opacity opacity-100 hover:opacity-80" href="#">Privacy Policy</a>
+<a class="hover:text-[#c0c1ff] transition-opacity opacity-100 hover:opacity-80" href="#">Terms of Service</a>
+<a class="hover:text-[#c0c1ff] transition-opacity opacity-100 hover:opacity-80" href="#">AI Ethics</a>
+<a class="hover:text-[#c0c1ff] transition-opacity opacity-100 hover:opacity-80" href="#">Contact</a>
+</div>
+<div class="text-center font-['Inter'] text-xs text-[#222a3d] max-w-md px-6">
+            © 2024 Intelligent Employment System. Powered by Neural Architect AI.
+        </div>
+<div class="flex items-center gap-4 text-[#222a3d]">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="share">share</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="public">public</span>
+</div>
+</footer>
+</body></html>

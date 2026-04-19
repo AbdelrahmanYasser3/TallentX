@@ -1,0 +1,46 @@
+﻿<div class="min-h-screen bg-surface-container-lowest p-6 md:p-8">
+  <div class="mx-auto max-w-6xl space-y-7">
+    <header>
+      <p class="text-label-md uppercase tracking-widest text-tertiary">Interview Designer</p>
+      <h1 class="mt-1 text-display-sm text-on-surface">Create AI Interview</h1>
+      <p class="mt-2 text-body-md text-on-surface-variant">Generate structured interview flows based on the role and competencies.</p>
+    </header>
+
+    <section class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <article class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm ring-1 ring-outline-variant/30 lg:col-span-2">
+        <h2 class="text-title-lg text-on-surface">Interview Setup</h2>
+        <div class="mt-5 space-y-4">
+          <div>
+            <label class="text-label-sm text-on-surface">Target Role</label>
+            <input type="text" value="Senior Frontend Engineer" class="mt-1 w-full rounded-xl bg-surface-container px-4 py-2.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary" />
+          </div>
+          <div>
+            <label class="text-label-sm text-on-surface">Key Competencies</label>
+            <div class="mt-2 flex flex-wrap gap-2">
+              <span class="rounded-lg bg-primary-container px-3 py-1 text-label-sm text-on-primary-container">Angular</span>
+              <span class="rounded-lg bg-secondary-container px-3 py-1 text-label-sm text-on-secondary-container">System Design</span>
+              <span class="rounded-lg bg-tertiary-container px-3 py-1 text-label-sm text-on-tertiary-container">Communication</span>
+            </div>
+          </div>
+          <div>
+            <label class="text-label-sm text-on-surface">Difficulty</label>
+            <div class="mt-2 flex flex-wrap gap-2">
+              <button class="rounded-xl bg-surface-container px-3 py-2 text-label-sm text-on-surface">Junior</button>
+              <button class="rounded-xl bg-primary px-3 py-2 text-label-sm text-on-primary">Mid</button>
+              <button class="rounded-xl bg-surface-container px-3 py-2 text-label-sm text-on-surface">Senior</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="rounded-3xl bg-surface-container p-6 shadow-sm">
+        <h2 class="text-title-md text-on-surface">AI Output Preview</h2>
+        <ul class="mt-4 space-y-3 text-body-sm text-on-surface-variant">
+          <li class="rounded-xl bg-surface-container-lowest p-3">5 behavioral questions</li>
+          <li class="rounded-xl bg-surface-container-lowest p-3">4 technical deep dives</li>
+          <li class="rounded-xl bg-surface-container-lowest p-3">1 live coding exercise</li>
+        </ul>
+      </article>
+    </section>
+  </div>
+</div>

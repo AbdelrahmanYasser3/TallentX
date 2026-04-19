@@ -1,0 +1,220 @@
+<div class="bg-surface-bright font-body">
+
+
+<!-- SideNavBar Implementation -->
+<aside class="fixed left-4 top-24 bottom-4 w-64 rounded-3xl bg-[#ffffff]/80 backdrop-blur-xl shadow-[0_10px_15px_-3px_rgba(0,0,0,0.03)] flex flex-col p-4 gap-2 z-40 hidden lg:flex">
+<div class="flex items-center gap-3 px-3 py-4 mb-4">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">corporate_fare</span>
+</div>
+<div>
+<h2 class="text-lg font-bold text-[#191c1e] leading-none">IES Recruiter</h2>
+<p class="text-[10px] text-outline font-bold tracking-widest uppercase mt-1">Enterprise Suite</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1 overflow-y-auto no-scrollbar">
+<a class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#4648d4] to-[#8127cf] text-white rounded-xl shadow-lg transition-transform duration-200" href="/recruiter/dashboard">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] hover:translate-x-1 rounded-xl transition-all duration-200" href="/recruiter/jobs">
+<span class="material-symbols-outlined">work</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Active Jobs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] hover:translate-x-1 rounded-xl transition-all duration-200" href="/recruiter/applicant-tracking">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Applicant Tracking</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] hover:translate-x-1 rounded-xl transition-all duration-200" href="/recruiter/interviews">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Interviews</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] hover:translate-x-1 rounded-xl transition-all duration-200" href="/recruiter/assessments">
+<span class="material-symbols-outlined">assignment</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Assessments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] hover:translate-x-1 rounded-xl transition-all duration-200" href="/company/settings">
+<span class="material-symbols-outlined">business</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Company Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] hover:translate-x-1 rounded-xl transition-all duration-200" href="/notifications">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] hover:translate-x-1 rounded-xl transition-all duration-200" href="/settings">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-outline-variant/15 space-y-1">
+<button type="button" (click)="createNewJob()" class="w-full flex items-center justify-center gap-2 py-3 bg-primary text-white rounded-xl font-bold text-sm shadow-md hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined">add</span>
+                Create New Job
+            </button>
+<button type="button" disabled class="w-full flex items-center gap-3 px-4 py-3 text-[#424754] opacity-60 cursor-not-allowed rounded-xl transition-all duration-200 mt-2" title="Coming soon">
+<span class="material-symbols-outlined">help</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Help Center (Coming soon)</span>
+</button>
+<button type="button" (click)="logout()" class="w-full flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] hover:translate-x-1 rounded-xl transition-all duration-200">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-['Inter'] text-sm font-medium tracking-wide uppercase">Logout</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-72 pt-24 px-8 pb-12 min-h-screen">
+<!-- Header Section -->
+<header class="mb-10 flex flex-col md:flex-row justify-between items-end gap-4">
+<div>
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Recruitment Overview</h1>
+<p class="text-on-surface-variant font-medium">Welcome back, {{ recruiterGreeting }}. Here's your intelligence brief for today.</p>
+</div>
+<div class="flex gap-3">
+<button type="button" disabled class="px-4 py-2 bg-surface-container-lowest text-on-surface-variant font-semibold text-sm rounded-xl border border-outline-variant/15 opacity-60 cursor-not-allowed" title="Coming soon">
+          Export Report (Coming soon)
+        </button>
+<button type="button" disabled class="px-4 py-2 bg-primary text-white font-semibold text-sm rounded-xl shadow-lg opacity-60 cursor-not-allowed" title="Coming soon">
+          Share Dashboard (Coming soon)
+        </button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Analytics Cards: Hero Numbers -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-6 rounded-[2rem] shadow-sm flex flex-col justify-between min-h-[180px]">
+<div>
+<span class="text-[0.6875rem] font-bold text-outline tracking-widest uppercase">Hire Rate</span>
+<h3 class="text-5xl font-black text-primary mt-2 tracking-tighter">{{ stats()?.interviewsScheduled || 0 }}<span class="text-2xl">%</span></h3>
+</div>
+<div class="flex items-center gap-2 text-success font-bold text-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12.4% from last quarter</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-6 rounded-[2rem] shadow-sm flex flex-col justify-between min-h-[180px]">
+<div>
+<span class="text-[0.6875rem] font-bold text-outline tracking-widest uppercase">Total Applicants</span>
+<h3 class="text-5xl font-black text-on-surface mt-2 tracking-tighter">{{ stats()?.totalApplicants || 0 }}</h3>
+</div>
+<div class="flex items-center gap-2 text-primary font-bold text-sm">
+<span class="material-symbols-outlined text-sm">groups</span>
+<span>84 new today</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest p-6 rounded-[2rem] shadow-sm flex flex-col justify-between min-h-[180px]">
+<div>
+<span class="text-[0.6875rem] font-bold text-outline tracking-widest uppercase">Active Job Posts</span>
+<h3 class="text-5xl font-black text-on-surface mt-2 tracking-tighter">{{ stats()?.activeJobs || 0 }}</h3>
+</div>
+<div class="flex items-center gap-2 text-secondary font-bold text-sm">
+<span class="material-symbols-outlined text-sm">work_outline</span>
+<span>3 closing soon</span>
+</div>
+</div>
+<!-- AI Market Demand Forecast (Asymmetric Highlight) -->
+<div class="col-span-12 md:col-span-8 bg-gradient-to-br from-secondary to-tertiary p-8 rounded-[2.5rem] text-white relative overflow-hidden shadow-2xl">
+<!-- Decorative Sparkles -->
+<span class="material-symbols-outlined absolute top-6 right-8 text-4xl opacity-40 animate-pulse">auto_awesome</span>
+<span class="material-symbols-outlined absolute bottom-12 right-24 text-2xl opacity-20">auto_awesome</span>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-6">
+<span class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-bold tracking-widest uppercase">AI Intelligence</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<h2 class="text-3xl font-black mb-4 tracking-tight leading-tight max-w-lg">Market Demand Forecast: Software Engineering</h2>
+<p class="text-white/80 text-lg mb-8 max-w-md">Predictive models suggest a 15% increase in React-focused roles by Q3. We recommend accelerating current pipeline velocity.</p>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<div class="bg-white/10 backdrop-blur-sm p-4 rounded-2xl border border-white/10">
+<p class="text-[10px] uppercase tracking-wider font-bold text-white/60 mb-1">Confidence</p>
+<p class="text-xl font-bold">94%</p>
+</div>
+<div class="bg-white/10 backdrop-blur-sm p-4 rounded-2xl border border-white/10">
+<p class="text-[10px] uppercase tracking-wider font-bold text-white/60 mb-1">Time Range</p>
+<p class="text-xl font-bold">90 Days</p>
+</div>
+<div class="bg-white/10 backdrop-blur-sm p-4 rounded-2xl border border-white/10">
+<p class="text-[10px] uppercase tracking-wider font-bold text-white/60 mb-1">Talent Gap</p>
+<p class="text-xl font-bold">Medium</p>
+</div>
+<div class="bg-white/10 backdrop-blur-sm p-4 rounded-2xl border border-white/10">
+<p class="text-[10px] uppercase tracking-wider font-bold text-white/60 mb-1">Action</p>
+<p class="text-xl font-bold">Sourcing</p>
+</div>
+</div>
+</div>
+<!-- Abstract visual element -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+</div>
+<!-- Recent Candidate Feed (The Intelligence Rail Style) -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-low p-6 rounded-[2.5rem]">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold text-on-surface">Recent Applicants</h3>
+<button class="text-primary text-xs font-bold uppercase tracking-wider">View All</button>
+</div>
+<div class="space-y-4">
+
+<!-- Dynamic Candidate Feed -->
+<a [routerLink]="['/recruiter/applicants', applicant.id]" class="bg-surface-container-lowest p-4 rounded-2xl flex items-center gap-4 hover:translate-x-1 transition-transform cursor-pointer" *ngFor="let applicant of recentApplicants() || []">
+  <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+    {{ applicant.name.charAt(0) }}
+  </div>
+  <div class="flex-1 min-w-0">
+    <h4 class="font-bold text-on-surface truncate">{{ applicant.name }}</h4>
+    <p class="text-xs text-on-surface-variant truncate">Applicant</p>
+  </div>
+  <div class="flex flex-col items-end">
+    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full min-w-[60px] text-center"
+          [ngClass]="{'text-success bg-emerald-50': applicant.status === 'Shortlisted', 'text-tertiary bg-tertiary-fixed': applicant.status !== 'Shortlisted'}">
+      {{ applicant.status }}
+    </span>
+    <span class="text-[10px] text-outline mt-1">{{ applicant.appliedDate | date:'shortTime' }}</span>
+  </div>
+</a>
+
+</div>
+</div>
+<!-- Detailed Hiring Analytics (Large Canvas) -->
+<div class="col-span-12 md:col-span-12 lg:col-span-8 bg-surface-container-lowest p-8 rounded-[2.5rem] shadow-sm">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+<div>
+<h3 class="text-2xl font-black text-on-surface tracking-tight">Hiring Pipeline Velocity</h3>
+<p class="text-sm text-on-surface-variant">Avg. time to fill roles: 18 days (-4 days from month ago)</p>
+</div>
+<div class="flex gap-2 bg-surface-container-low p-1 rounded-xl">
+<button class="px-4 py-1.5 bg-white shadow-sm rounded-lg text-xs font-bold text-primary">Week</button>
+<button class="px-4 py-1.5 text-xs font-bold text-outline hover:text-on-surface">Month</button>
+<button class="px-4 py-1.5 text-xs font-bold text-outline hover:text-on-surface">Year</button>
+</div>
+</div>
+<!-- Pipeline Chart Visualization -->
+<div class="relative h-64 w-full flex items-end justify-between gap-2 pt-10 px-2">
+<!-- Grid Lines -->
+<div class="absolute inset-x-0 top-10 border-t border-outline-variant/10"></div>
+<div class="absolute inset-x-0 top-1/2 border-t border-outline-variant/10"></div>
+<div class="absolute inset-x-0 bottom-0 border-t border-outline-variant/20"></div>
+<!-- Bars -->
+<div *ngFor="let col of chartData()" class="w-full bg-primary/10 rounded-t-lg relative group h-full">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg transition-all group-hover:brightness-110" [style.height.%]="getBarHeight(col.value)"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-[10px] font-bold text-outline">{{ col.day }}</span>
+</div>
+</div>
+</div>
+<!-- Active Interview Reminders -->
+<div class="col-span-12 md:col-span-12 lg:col-span-4 bg-surface-container-highest p-8 rounded-[2.5rem]">
+<h3 class="text-lg font-bold text-on-surface mb-6">Upcoming Interviews</h3>
+<div class="space-y-6">
+<div *ngFor="let interview of upcomingInterviews(); let index = index" class="relative pl-6" [ngClass]="index === 0 ? 'border-l-2 border-primary' : 'border-l-2 border-outline-variant'">
+<p class="text-[10px] font-bold tracking-widest uppercase mb-1" [ngClass]="index === 0 ? 'text-primary' : 'text-outline'">{{ interview.scheduledTime | date:'short' }}</p>
+<h4 class="font-bold text-on-surface">{{ interview.jobTitle }}: {{ interview.candidateName }}</h4>
+<p class="text-xs text-on-surface-variant">{{ interview.meetingLink || 'Interview details available in interview module' }}</p>
+</div>
+</div>
+<button type="button" (click)="goToInterviewScheduling()" class="w-full mt-10 py-3 border-2 border-dashed border-outline-variant text-outline rounded-2xl font-bold text-sm hover:bg-surface-container-high transition-colors">
+                    Schedule New Meeting
+                </button>
+</div>
+</div>
+</main>
+
+
+</div>

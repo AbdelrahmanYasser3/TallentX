@@ -1,0 +1,385 @@
+[
+  {
+    "id": "TC001",
+    "title": "Login successfully and reach the correct dashboard for the user role",
+    "description": "Verifies an existing user can log in with valid credentials and is redirected to the appropriate role-based dashboard.",
+    "category": "User Login",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on an authenticated dashboard appropriate to their role"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Register as a candidate and get auto-logged in to the candidate dashboard",
+    "description": "Verifies a public visitor can complete candidate registration with valid details and is auto-logged in to the candidate dashboard.",
+    "category": "User Registration (Candidate)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /register"
+      },
+      {
+        "type": "action",
+        "description": "Select candidate account type"
+      },
+      {
+        "type": "action",
+        "description": "Fill a first name into the first name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a last name into the last name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a unique email into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a strong password into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the candidate dashboard in an authenticated state"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Forgot password request shows privacy-preserving confirmation",
+    "description": "Verifies submitting the forgot-password form shows a generic confirmation message that does not reveal whether the email exists.",
+    "category": "Password Recovery (Forgot Password)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Choose the forgot password flow"
+      },
+      {
+        "type": "action",
+        "description": "Fill unknown.or.known@example.com into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the forgot password request"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a generic password reset confirmation message is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Choose a role from landing and start registration",
+    "description": "Verifies a public visitor can navigate from the landing page into the registration flow and reach account type selection.",
+    "category": "Landing / Product Discovery",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /landing"
+      },
+      {
+        "type": "action",
+        "description": "Click the call to action to create an account"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the registration page to load"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the registration page shows account type selection options"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "Register a new company with recruiter admin and reach recruiter/company dashboard",
+    "description": "Verifies a public visitor can create a company-admin recruiter account with company details and is auto-logged in to the recruiter/company dashboard.",
+    "category": "User Registration (Company / Recruiter Creating Company)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /register"
+      },
+      {
+        "type": "action",
+        "description": "Select the company/recruiter creating company account type"
+      },
+      {
+        "type": "action",
+        "description": "Fill Alice into the admin first name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill Admin into the admin last name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill company.admin.alice@example.com into the admin email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a strong valid password into the admin password field"
+      },
+      {
+        "type": "action",
+        "description": "Fill Acme Staffing LLC into the company name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill 1234567890 into the company tax number field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the recruiter/company dashboard"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Register as invited recruiter with invite code and reach recruiter dashboard",
+    "description": "Verifies an invited recruiter can register with an invite code and is auto-logged in to the recruiter dashboard.",
+    "category": "User Registration (Recruiter via Invite Code)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /register"
+      },
+      {
+        "type": "action",
+        "description": "Select the recruiter (join via invite) account type"
+      },
+      {
+        "type": "action",
+        "description": "Fill Jordan into the first name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill Joiner into the last name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill invited.jordan@example.com into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a strong valid password into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid invite code into the invite code field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the recruiter dashboard"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Navigate from landing to login",
+    "description": "Verifies a public visitor can navigate from the landing page to the login page and see the login form.",
+    "category": "Landing / Product Discovery",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /landing"
+      },
+      {
+        "type": "action",
+        "description": "Click the sign-in entry point"
+      },
+      {
+        "type": "action",
+        "description": "Wait for the login page to load"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the login form is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Show validation when email format is invalid on login",
+    "description": "Verifies the login form prevents submission and shows an email format validation error when the email is malformed.",
+    "category": "User Login",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with invalid-email-format"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with any-password"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an email format validation error is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Invite-code registration blocks submit when invite code is missing",
+    "description": "Verifies an invited recruiter cannot register without providing an invite code and sees a client-side validation error.",
+    "category": "User Registration (Recruiter via Invite Code)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /register"
+      },
+      {
+        "type": "action",
+        "description": "Select the recruiter (join via invite) account type"
+      },
+      {
+        "type": "action",
+        "description": "Fill Riley into the first name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill Recruiter into the last name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill invited.riley@example.com into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a strong valid password into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an invite code validation error is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Reject weak password during candidate registration",
+    "description": "Verifies candidate registration blocks submission and shows a password strength validation error when a weak password is entered.",
+    "category": "User Registration (Candidate)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /register"
+      },
+      {
+        "type": "action",
+        "description": "Select candidate account type"
+      },
+      {
+        "type": "action",
+        "description": "Fill a first name into the first name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a last name into the last name field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a unique email into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill a weak password into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the registration form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a password strength validation error is visible"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Forgot password rejects malformed email format",
+    "description": "Verifies the forgot-password form blocks submission for malformed emails and shows a client-side email format validation error.",
+    "category": "Password Recovery (Forgot Password)",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Choose the forgot password flow"
+      },
+      {
+        "type": "action",
+        "description": "Fill not-an-email into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the forgot password request"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an email format validation error is visible"
+      }
+    ],
+    "priority": "High"
+  }
+]

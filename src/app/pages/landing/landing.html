@@ -1,0 +1,178 @@
+<main class="hero-gradient">
+  <!-- Hero Section -->
+  <section class="max-w-[1200px] mx-auto px-6 py-24 md:py-32 flex flex-col items-center text-center">
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface mb-8 leading-[1.1]">
+          Your Career, <span class="text-primary">Intelligently</span> <br />Accelerated.
+      </h1>
+      <p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mb-12">
+          Join 50,000+ professionals using the world's most advanced AI employment system to find their dream roles in record time.
+      </p>
+
+      <!-- Search Bar (Google Style) -->
+      <div class="w-full max-w-4xl bg-surface-container-lowest shadow-[0_10px_40px_-10px_rgba(0,88,190,0.1)] rounded-full p-2 flex flex-col md:flex-row items-center gap-2">
+          <div class="flex items-center flex-1 w-full px-6 gap-3">
+              <span class="material-symbols-outlined text-outline">search</span>
+              <input [(ngModel)]="searchQuery" (keyup.enter)="onSearch()" class="w-full border-none focus:ring-0 bg-transparent text-on-surface py-4 text-lg" placeholder="Job title or keywords" type="text" />
+          </div>
+          <div class="hidden md:block w-px h-8 bg-outline-variant"></div>
+          <div class="flex items-center flex-1 w-full px-6 gap-3">
+              <span class="material-symbols-outlined text-outline">location_on</span>
+              <input [(ngModel)]="locationQuery" (keyup.enter)="onSearch()" class="w-full border-none focus:ring-0 bg-transparent text-on-surface py-4 text-lg" placeholder="City or remote" type="text" />
+          </div>
+          <button (click)="onSearch()" class="w-full md:w-auto bg-primary text-on-primary px-10 py-4 rounded-full font-bold text-lg hover:brightness-110 transition-all active:scale-95">
+              Search Jobs
+          </button>
+      </div>
+  </section>
+
+  <!-- Trusted Companies -->
+  <section class="max-w-[1200px] mx-auto px-6 py-12">
+      <p class="text-center text-xs font-bold uppercase tracking-widest text-outline mb-8">Trusted by Global Innovators</p>
+      <div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+          <img alt="Tech Corp 1" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqSfmMRIb_dGH-MWC2JEoembgNQTtULKc48sQMh2oE59PN9dWTglb9voz2uRijgSzIgzIxGCNbH3JUfHbcXL6GY_lWrWMDc5dwIiNoeBMFnnl1IlLH1xbJaYLcKMeHZBHZ6BwzefeoG5DuSw-Vdp1QOlviUrPe92OzcD_-l3b-pZWPmweoRy-dPMHLzoWTFQy3_AB8ndyVSA7BEXBfz7y-bhFWvpYwDv0N4Xnsnb1C1fso8G6MR3Lni5klhQrbntpEgI6oXYDg6TI" />
+          <img alt="Cloud Systems" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc9ihGjIdcqOP46Rp8MLOhuKUPzsUeHjG1bL7Q9qQ-TVxBXArSIZV8FZgtst4ZGre3U1ChaiqWXPy0fIb_l1KPUAvnfW8S5n672l4n9FVJyXVIbOI6Ous5ukC2Yc680Q1WImYR-SfG0d2XZGbGDItRR5TNqL5Mtll0Dm7ZgWzCNBJrsBrvjy5fjep8FA7P5NN2xQ6YjPjtUJ6Bip2_SqOGUuPg8ToXMw7ZtR1dxbRClLxg5L7Yf2zyhFDcitQXsM8aisbByMdfTfo" />
+          <img alt="Nexus Group" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCaLXyJQswobo--5qi4Covf0JMNj6gqqE9zli75TzEeufaBiW2rXYByBpJkK5nby1dYk20xU1EHyft9N6AX8xOw8ojyldDP7VvnVN-8ny6zBdqYlCbxHMi4aBCylB6zqRWZ_ffxOmdijkWHXSGUROljlnUyjutqSh0_ZiX6ab9GlhiTsQb2TIk8koTL8GlwdrMKzqHhyhgfp35PmgqXi9PTkF7yN7B8cTs7qYcx5srnc5zUZcelppVxtWvMPr0YAuURpYihhHEagA" />
+          <img alt="FinTech Solutions" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZJ6TdlnWIj_VkzvlHGVu3X_b3DGzSu_QJjVgRPn-F9zjm-A8fAFDyJWOukuIlNiwempW-7sHK77dDqOT430A0ldE8R65t52hrXeaP4BLNcP_UrcaT7gsxPr_wJ5wl_KN6r1mzWv_Rljvh9rUv5mL54SCMs6ee5TlyKkz6ykxv_I0PCfvRlbF6x7ELt9V3xbjiorLyGdn8wXh8a58YE6lcTL_yIIGPhL_NNDfxYoEWqUQ_MbdsOMjJHWPhM_mN0gaSdhR50EGyCvk" />
+      </div>
+  </section>
+
+  <!-- ✨ AI Highlight: Match Score Analysis -->
+  <section class="max-w-[1400px] mx-auto px-6 py-24">
+      <div class="bg-surface-container-lowest rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden border-2 border-transparent bg-clip-border">
+          <!-- AI Accent Border Magic -->
+          <div class="absolute inset-0 border-4 border-transparent rounded-[2.5rem] pointer-events-none" style="background: linear-gradient(135deg, var(--color-secondary), var(--color-tertiary)) border-box; -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.15;">
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-16 items-center relative z-10">
+              <div class="space-y-8">
+                  <div class="inline-flex items-center gap-2 px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed rounded-full">
+                      <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                      <span class="text-xs font-black uppercase tracking-widest">Next-Gen Intelligence</span>
+                  </div>
+                  <h2 class="text-4xl md:text-5xl font-bold leading-tight">
+                      Match Score <br /><span class="text-tertiary">Analysis Engine</span>
+                  </h2>
+                  <p class="text-lg text-on-surface-variant">
+                      Our proprietary algorithm doesn't just look for keywords. It analyzes 40+ semantic data points to predict your success probability before you even hit apply.
+                  </p>
+                  
+                  <ul class="space-y-4">
+                      <li class="flex items-center gap-3">
+                          <span class="material-symbols-outlined text-tertiary">check_circle</span>
+                          <span class="font-medium text-on-surface">Skill Gap Identification</span>
+                      </li>
+                      <li class="flex items-center gap-3">
+                          <span class="material-symbols-outlined text-tertiary">check_circle</span>
+                          <span class="font-medium text-on-surface">Cultural Alignment Score</span>
+                      </li>
+                      <li class="flex items-center gap-3">
+                          <span class="material-symbols-outlined text-tertiary">check_circle</span>
+                          <span class="font-medium text-on-surface">Salary Benchmark Insight</span>
+                      </li>
+                  </ul>
+              </div>
+
+              <div class="relative">
+                  <!-- Asymmetric Bento-style Card UI -->
+                  <div class="bg-surface-container-low p-1 rounded-3xl overflow-hidden shadow-2xl">
+                      <div class="bg-surface-container-lowest p-8 rounded-3xl space-y-6">
+                          <div class="flex justify-between items-center">
+                              <div>
+                                  <p class="text-xs text-outline font-bold uppercase mb-1">Target Position</p>
+                                  <h3 class="text-xl font-bold">Principal Product Designer</h3>
+                              </div>
+                              <div class="w-16 h-16 rounded-full border-4 border-tertiary/20 flex items-center justify-center relative">
+                                  <span class="text-tertiary font-black">94%</span>
+                                  <svg class="absolute inset-0 w-full h-full -rotate-90">
+                                      <circle class="text-tertiary" cx="32" cy="32" fill="none" r="28" stroke="currentColor" stroke-dasharray="175" stroke-dashoffset="10" stroke-width="4"></circle>
+                                  </svg>
+                              </div>
+                          </div>
+
+                          <div class="space-y-4">
+                              <div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+                                  <div class="h-full bg-[linear-gradient(90deg,var(--color-secondary),var(--color-tertiary))] w-[94%]"></div>
+                              </div>
+                              <div class="grid grid-cols-2 gap-4">
+                                  <div class="p-4 bg-surface-container-low rounded-2xl">
+                                      <p class="text-[10px] text-outline font-black uppercase mb-2">Market Demand</p>
+                                      <div class="text-xl font-bold text-success">High</div>
+                                  </div>
+                                  <div class="p-4 bg-surface-container-low rounded-2xl">
+                                      <p class="text-[10px] text-outline font-black uppercase mb-2">Interview odds</p>
+                                      <div class="text-xl font-bold text-primary">Very Likely</div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- Decorative Floaties -->
+                  <div class="absolute -top-4 -right-4 w-12 h-12 bg-tertiary text-white rounded-full flex items-center justify-center shadow-lg">
+                      <span class="material-symbols-outlined">colors_spark</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- 3-Step Process -->
+  <section class="max-w-[1200px] mx-auto px-6 py-24 border-t border-outline-variant/10">
+      <h2 class="text-center text-4xl font-bold mb-20 tracking-tight">The IES Journey</h2>
+      
+      <div class="grid md:grid-cols-3 gap-12 relative">
+          <!-- Vertical Line for Desktop -->
+          <div class="hidden md:block absolute top-1/2 left-0 w-full h-px bg-outline-variant/30 -z-10"></div>
+          
+          <!-- Step 1 -->
+          <div class="flex flex-col items-center text-center group">
+              <div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-xl flex items-center justify-center mb-8 group-hover:-translate-y-2 transition-transform duration-300">
+                  <span class="material-symbols-outlined text-primary text-3xl">manage_search</span>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-sm font-bold mb-4">1</div>
+              <h3 class="text-xl font-bold mb-4">Search</h3>
+              <p class="text-on-surface-variant px-4">Browse through verified, premium listings optimized for your profile.</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flex flex-col items-center text-center group">
+              <div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-xl flex items-center justify-center mb-8 group-hover:-translate-y-2 transition-transform duration-300">
+                  <span class="material-symbols-outlined text-secondary text-3xl">send</span>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-sm font-bold mb-4">2</div>
+              <h3 class="text-xl font-bold mb-4">Apply</h3>
+              <p class="text-on-surface-variant px-4">Submit your AI-optimized credentials with a single, frictionless click.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flex flex-col items-center text-center group">
+              <div class="w-20 h-20 rounded-2xl bg-surface-container-lowest shadow-xl flex items-center justify-center mb-8 group-hover:-translate-y-2 transition-transform duration-300">
+                  <span class="material-symbols-outlined text-tertiary text-3xl">celebration</span>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center text-sm font-bold mb-4">3</div>
+              <h3 class="text-xl font-bold mb-4">Get Hired</h3>
+              <p class="text-on-surface-variant px-4">Secure your dream position and start your next professional chapter.</p>
+          </div>
+      </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="max-w-[1200px] mx-auto px-6 py-24">
+      <div class="bg-[#0058be] text-white rounded-[3rem] p-12 md:p-24 text-center overflow-hidden relative">
+          <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+          
+          <div class="relative z-10">
+              <h2 class="text-4xl md:text-6xl font-bold mb-8 tracking-tighter text-white">Ready to redefine your future?</h2>
+              <p class="text-xl text-white/80 max-w-xl mx-auto mb-12">Join thousands of professionals who have found their perfect career match.</p>
+              
+              <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a routerLink="/register/candidate" class="bg-white text-primary px-12 py-5 rounded-full font-extrabold text-lg hover:bg-surface-container-lowest transition-all cursor-pointer">
+                      Get Started Free
+                  </a>
+                  <a routerLink="/register/company" class="bg-transparent border-2 border-white/30 text-white px-12 py-5 rounded-full font-extrabold text-lg hover:bg-white/10 transition-all cursor-pointer">
+                      Employer Registration
+                  </a>
+              </div>
+          </div>
+      </div>
+  </section>
+</main>

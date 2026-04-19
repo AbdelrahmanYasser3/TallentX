@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Assessment Focus Mode | IES</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-container": "#b0b2ff",
+              "tertiary": "#4edea3",
+              "surface-container-high": "#222a3d",
+              "inverse-on-surface": "#283044",
+              "on-primary-container": "#00285d",
+              "secondary-fixed-dim": "#c0c1ff",
+              "surface-variant": "#2d3449",
+              "surface-tint": "#adc6ff",
+              "outline": "#8c909f",
+              "background": "#0b1326",
+              "on-error-container": "#ffdad6",
+              "on-error": "#690005",
+              "surface-container-lowest": "#060e20",
+              "secondary-fixed": "#e1e0ff",
+              "on-tertiary": "#003824",
+              "surface-dim": "#0b1326",
+              "on-tertiary-fixed": "#002113",
+              "on-background": "#dae2fd",
+              "surface-container-low": "#131b2e",
+              "error": "#ffb4ab",
+              "primary-container": "#4d8eff",
+              "error-container": "#93000a",
+              "on-primary": "#002e6a",
+              "tertiary-fixed": "#6ffbbe",
+              "surface-container-highest": "#2d3449",
+              "inverse-surface": "#dae2fd",
+              "on-secondary-fixed": "#07006c",
+              "secondary": "#c0c1ff",
+              "secondary-container": "#3131c0",
+              "primary": "#adc6ff",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-primary-fixed-variant": "#004395",
+              "outline-variant": "#424754",
+              "on-surface-variant": "#c2c6d6",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-tertiary-container": "#00311f",
+              "on-primary-fixed": "#001a42",
+              "surface-bright": "#31394d",
+              "tertiary-fixed-dim": "#4edea3",
+              "surface": "#0b1326",
+              "primary-fixed": "#d8e2ff",
+              "on-secondary": "#1000a9",
+              "inverse-primary": "#005ac2",
+              "surface-container": "#171f33",
+              "on-surface": "#dae2fd",
+              "primary-fixed-dim": "#adc6ff",
+              "tertiary-container": "#00a572"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-panel {
+        background: rgba(19, 27, 46, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+      }
+      body {
+        background-color: #0b1326;
+        color: #dae2fd;
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<!-- TopNavBar (Focus Mode Variant) -->
+<header class="fixed top-0 w-full z-50 bg-[#0b1326]/80 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center space-x-4">
+<span class="text-2xl font-black tracking-tighter bg-gradient-to-br from-[#adc6ff] to-[#c0c1ff] bg-clip-text text-transparent">IES</span>
+<div class="h-4 w-px bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="text-sm font-semibold text-primary">Senior Full-Stack Architect Assessment</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest">Neural Evaluation Phase 2</span>
+</div>
+</div>
+<!-- Countdown Timer - High Visibility -->
+<div class="flex items-center bg-error-container/20 px-4 py-2 rounded-xl border border-error/20">
+<span class="material-symbols-outlined text-error mr-2" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="text-lg font-bold text-error tabular-nums tracking-tight">14:52</span>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-all text-on-surface-variant">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="bg-surface-container-high px-4 py-1.5 rounded-lg text-xs font-medium text-on-surface hover:bg-surface-container-highest transition-all">
+                    Exit Focus Mode
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col items-center justify-start pt-32 pb-40 px-6 max-w-4xl mx-auto w-full">
+<!-- Assessment Thread (Chat-like sequential format) -->
+<div class="w-full space-y-12">
+<!-- Question 1: Completed State -->
+<div class="flex flex-col space-y-4 opacity-50">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant/20">
+<span class="text-xs font-bold text-on-surface-variant">01</span>
+</div>
+<span class="text-sm font-medium text-on-surface-variant">Architectural Foundation</span>
+</div>
+<div class="glass-panel p-6 rounded-2xl border-l-4 border-tertiary">
+<p class="text-lg text-on-surface">Explain the trade-offs between monolithic and microservices architectures in the context of high-throughput financial systems.</p>
+</div>
+<div class="pl-12">
+<div class="bg-surface-container-low p-4 rounded-xl text-on-surface-variant text-sm italic">
+                        Response recorded and analyzed.
+                    </div>
+</div>
+</div>
+<!-- Question 2: Active AI-Generated Question -->
+<div class="flex flex-col space-y-6 relative">
+<!-- AI Indicator -->
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center border border-primary/30">
+<span class="text-sm font-black text-primary">02</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold uppercase tracking-tighter text-secondary flex items-center">
+                                Neural Architect Generating ✨
+                            </span>
+<span class="text-xl font-bold text-on-surface">System Scalability &amp; Edge Cases</span>
+</div>
+</div>
+<div class="flex items-center space-x-2 text-[10px] text-tertiary bg-tertiary/10 px-2 py-1 rounded-full border border-tertiary/20">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+<span>High Relevance Match</span>
+</div>
+</div>
+<!-- Chat Bubble for Question -->
+<div class="glass-panel p-8 rounded-3xl rounded-tl-none border border-outline-variant/10 shadow-2xl relative overflow-hidden">
+<!-- Subtle Purple Sparkle background effect -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 blur-3xl rounded-full -mr-16 -mt-16"></div>
+<h2 class="text-2xl md:text-3xl font-light leading-relaxed text-on-surface relative z-10">
+                        Based on your previous answer, how would you specifically approach <span class="text-secondary font-medium">database consistency</span> across distributed nodes during a network partition scenario?
+                    </h2>
+</div>
+<!-- User Input Area -->
+<div class="w-full flex flex-col space-y-4 pt-4">
+<div class="relative group">
+<textarea class="w-full bg-surface-container-highest/50 border-none rounded-2xl p-6 text-lg text-on-surface placeholder:text-on-surface-variant/40 focus:ring-2 focus:ring-primary/40 focus:bg-surface-container-highest transition-all resize-none" placeholder="Type your architectural reasoning here... (Markdown supported)" rows="6"></textarea>
+<!-- Character count -->
+<div class="absolute bottom-4 right-6 text-[10px] text-on-surface-variant font-mono">
+                            432 / 2000
+                        </div>
+</div>
+<!-- Actions -->
+<div class="flex items-center justify-between">
+<div class="flex space-x-2">
+<button class="p-3 bg-surface-container-high rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined">attachment</span>
+</button>
+<button class="p-3 bg-surface-container-high rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined">code</span>
+</button>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-on-surface-variant hover:text-on-surface text-sm font-medium transition-all px-4 py-2">
+                                Skip Question
+                            </button>
+<button class="bg-gradient-to-br from-primary to-secondary text-on-primary-container font-bold px-8 py-3 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center space-x-2">
+<span>Next Question</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Future Question Preview (Muted) -->
+<div class="flex flex-col space-y-4 opacity-20 filter blur-[1px]">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="text-xs font-bold text-on-surface-variant">03</span>
+</div>
+<span class="text-sm font-medium text-on-surface-variant">Security &amp; Compliance</span>
+</div>
+<div class="h-24 bg-surface-container-low rounded-2xl border border-dashed border-outline-variant/30"></div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar / Sticky Progress -->
+<footer class="fixed bottom-0 w-full z-50 bg-[#0b1326]/80 backdrop-blur-xl border-t border-outline-variant/10">
+<div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center space-x-6 w-full max-w-xl">
+<div class="flex-grow">
+<div class="flex justify-between mb-2">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Overall Progress</span>
+<span class="text-[10px] font-bold text-primary">35% Complete</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[35%] rounded-full shadow-[0_0_10px_#4d8eff]"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<div class="text-right hidden md:block">
+<div class="text-xs text-on-surface-variant">Current Grade Estimate</div>
+<div class="text-sm font-bold text-tertiary">B+ (Strong Match)</div>
+</div>
+<button class="bg-surface-container-highest text-on-surface font-semibold px-8 py-3 rounded-xl border border-outline-variant/20 hover:bg-surface-bright transition-all">
+                    Submit Assessment
+                </button>
+</div>
+</div>
+</footer>
+<!-- Distraction Free Decor -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 overflow-hidden">
+<div class="absolute top-[20%] left-[-10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[10%] right-[-5%] w-[30%] h-[30%] bg-secondary/5 rounded-full blur-[100px]"></div>
+</div>
+</body></html>

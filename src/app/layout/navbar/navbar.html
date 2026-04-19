@@ -1,0 +1,59 @@
+<header class="bg-surface dark:bg-inverse-surface sticky top-0 z-50 border-b border-surface-container-highest/20 transition-colors duration-300">
+  <nav class="flex justify-between items-center w-full px-8 py-4 max-w-[1920px] mx-auto">
+    <div class="flex items-center gap-8">
+      <a routerLink="/landing" class="text-2xl font-black tracking-tighter text-primary dark:text-primary-fixed-dim">IES</a>
+      <div class="hidden md:flex gap-6 items-center">
+        <a routerLink="/jobs" routerLinkActive="text-primary font-bold" class="text-on-surface-variant hover:text-primary transition-colors font-['Inter'] leading-tight tracking-tight">Jobs</a>
+        <a routerLink="/companies" routerLinkActive="text-primary font-bold" class="text-on-surface-variant hover:text-primary transition-colors font-['Inter'] leading-tight tracking-tight">Companies</a>
+      </div>
+    </div>
+    
+    <div class="flex items-center gap-4">
+      <!-- Unauthenticated State -->
+      <ng-container *ngIf="!authenticated">
+        <a routerLink="/login" class="text-on-surface-variant hover:text-primary transition-colors font-['Inter'] leading-tight tracking-tight hidden md:block">
+          Login
+        </a>
+        <a routerLink="/register/candidate" class="px-5 py-2 rounded-xl bg-primary text-on-primary hover:bg-primary/90 font-bold shadow-sm hover:shadow transition-all">
+          Get Started
+        </a>
+      </ng-container>
+
+      <button (click)="toggleDarkMode()" class="p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-150 ease-in-out text-on-surface-variant flex items-center justify-center">
+        <span class="material-symbols-outlined">{{ themeService.isDarkMode() ? 'light_mode' : 'dark_mode' }}</span>
+      </button>
+
+      <!-- Authenticated State -->
+      <ng-container *ngIf="authenticated">
+        <button class="p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-150 ease-in-out text-on-surface-variant flex items-center justify-center">
+          <span class="material-symbols-outlined">auto_awesome</span>
+        </button>
+        <button class="p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-150 ease-in-out text-on-surface-variant flex items-center justify-center">
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <a [routerLink]="profileRoute" class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm cursor-pointer border border-primary/20">
+          {{ userInitial }}
+        </a>
+        <button (click)="logout()" class="p-2 hover:bg-error-container text-error rounded-lg transition-all active:scale-95 duration-150 ease-in-out flex items-center justify-center" title="Logout">
+          <span class="material-symbols-outlined">logout</span>
+        </button>
+      </ng-container>
+
+      <button (click)="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-150 ease-in-out text-on-surface-variant flex items-center justify-center">
+        <span class="material-symbols-outlined">{{ mobileMenuOpen ? 'close' : 'menu' }}</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden" *ngIf="mobileMenuOpen">
+    <div class="px-4 pt-2 pb-4 space-y-1 bg-surface-container/50 border-t border-outline-variant/20">
+      <a routerLink="/jobs" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors">Jobs</a>
+      <a routerLink="/companies" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors">Companies</a>
+      <ng-container *ngIf="!authenticated">
+        <a routerLink="/login" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors">Login</a>
+      </ng-container>
+    </div>
+  </div>
+</header>
+

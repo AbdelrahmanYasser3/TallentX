@@ -1,0 +1,73 @@
+# 🚀 IES Master Design Plan & Prompt Guide
+
+Based on our strategic alignment, here is the comprehensive plan and the "Master Prompt" for generating the **Intelligent Employment System (IES)** using Google Stitch.
+
+---
+
+## 1. Design System Foundation (The "Vibe")
+*   **Aesthetic:** Modern, Tech-Savvy, Innovation-focused.
+*   **Core Palette:** 
+    *   Primary: **Electric Blue** (#3B82F6)
+    *   Backgrounds: **Slate Gray** (#F8FAFC)
+    *   AI Accent: **Purple/Indigo Gradient** (#6366F1 to #A855F7) ✨
+    *   Success: **Emerald Green** (#10B981)
+*   **Typography:** **Inter** (Sans-serif) for high data readability.
+*   **Shape:** **Soft Rounded Corners** (8px - 12px) for a friendly yet professional feel.
+
+---
+
+## 2. Component Strategy
+*   **AI Indicators:** Circular Progress Rings (Purple gradient) + Sparkle Icons (✨).
+*   **Navigation:** Side-out Drawers for CV viewing to preserve context.
+*   **Data Management:** Kanban board with full Drag & Drop visual cues.
+*   **Focus Mode:** Clean, minimalist views for Interviews and Assessments with a Red countdown timer.
+
+---
+
+## 3. The Master Prompt (Copy & Paste to Stitch)
+
+> **"Act as a Senior UI/UX Designer. Design a [SCREEN_NAME] for an AI-Powered Recruitment Platform called 'Intelligent Employment System' (IES).**
+>
+> **Global Theme:**
+> - **Visual Style:** Modern, Tech-savvy, and clean. Use high-contrast Electric Blue as the primary color.
+> - **Typography:** Use 'Inter' Sans-serif. Large headings, clear data labels.
+> - **Components:** Soft rounded corners (12px). Use Tailwind CSS.
+> - **AI Elements:** Any AI-driven feature (Match Scores, Summaries) MUST use a Purple/Indigo gradient border and text, accompanied by a Sparkle (✨) icon. Match scores should be shown in a Circular Progress Ring.
+>
+> **Technical Requirements:**
+> - **Icons:** Use Lucide-React or Heroicons exclusively. Ensure icons are contextually accurate.
+> - **Data:** Use REALISTIC mock data related to Software Engineering (e.g., C#, .NET 10, Angular, SQL Server). NO Lorem Ipsum.
+> - **Animations:** Implement smooth transitions for side drawers and hover states.
+>
+> **Specific Page Context: [INSERT_PAGE_SPECIFIC_INSTRUCTIONS_HERE]**
+>
+> **Device:** Desktop."
+
+---
+
+## 4. Execution Roadmap (Page-by-Page)
+
+### Phase 1: Public Face
+1.  **Landing Page:** Massive Google-style search bar, AI value props.
+2.  **Auth (Login/Register):** Clean card-based layout with "Candidate/Recruiter" branch.
+
+### Phase 2: Candidate Journey
+3.  **Candidate Dashboard:** Summary statistics + Applications table.
+4.  **Profile Builder:** One-page layout with ✨ "AI Enhance CV" button. Modals for editing sections.
+5.  **Job Search:** LinkedIn-style fixed top bar and side filters.
+6.  **Assessment Page:** Chat-like interface, focus mode, red countdown timer.
+
+### Phase 3: Recruiter Control Center
+7.  **Recruiter Dashboard:** Analytics charts and trend widgets.
+8.  **Kanban Board:** Horizontal board (Pending -> Accepted) with draggable cards and a Slide-out Drawer for resume viewing.
+9.  **AI Interview Setup:** Form with ✨ "Auto-Generate via AI" primary action.
+
+---
+
+## 5. Implementation Tips for Back-End Developers
+*   **Stateless UI:** Ask Stitch to keep logic in the UI so you can easily map your API responses (from the Integration Guide) to the props.
+*   **Responsive Design:** Although we focus on Desktop MVP, ensure the grid system is flexible for future mobile views.
+*   **Consistent Identifiers:** Use the data models from your PRD (e.g., `JobPost`, `ApplicationStatus`) in your prompt updates to keep the code aligned with your C# DTOs.
+
+---
+**Ready to start? Let's begin by generating the Landing Page!**

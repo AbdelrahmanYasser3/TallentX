@@ -1,0 +1,151 @@
+﻿<div class="min-h-screen bg-surface-container-lowest px-4 py-8 md:px-8">
+  <div class="mx-auto max-w-7xl" *ngIf="candidateService.profile$ | async as profile; else loading">
+    <header class="mb-8 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+      <div class="flex items-center gap-5">
+        <div class="relative">
+          <div class="h-24 w-24 overflow-hidden rounded-3xl bg-surface-container shadow-md">
+            <img *ngIf="profile.hasProfilePicture" [src]="profile.profilePicture" alt="Profile picture" class="h-full w-full object-cover" />
+            <div *ngIf="!profile.hasProfilePicture" class="flex h-full w-full items-center justify-center text-2xl font-bold text-on-surface-variant">
+              {{ profile.firstName.charAt(0) }}{{ profile.lastName.charAt(0) }}
+            </div>
+          </div>
+          <label class="absolute -bottom-1 -right-1 flex h-9 w-9 cursor-pointer items-center justify-center rounded-xl bg-primary text-on-primary shadow-md">
+            <i class="fa-solid fa-camera text-sm"></i>
+            <input type="file" accept="image/*" class="hidden" [disabled]="isUploadingPicture" (change)="onPictureSelected($event)" />
+          </label>
+        </div>
+
+        <div>
+          <h1 class="text-display-sm font-bold text-on-surface">{{ profile.fullName }}</h1>
+          <p class="mt-1 text-body-lg text-on-surface-variant">{{ profile.email }}</p>
+          <p *ngIf="profile.phoneNumber" class="mt-1 text-body-md text-on-surface-variant">
+            <i class="fa-solid fa-phone mr-2"></i>{{ profile.phoneNumber }}
+          </p>
+          <span class="mt-3 inline-flex items-center rounded-xl bg-secondary-container px-3 py-1 text-label-lg font-semibold text-on-secondary-container">
+            <i class="fa-solid fa-user-check mr-2"></i>{{ profile.completionPercentage }}% Complete
+          </span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-lg">
+        <i class="fa-solid fa-pen-to-square"></i>
+        Edit Profile
+      </button>
+    </header>
+
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
+      <section class="space-y-6 lg:col-span-8">
+        <article class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm md:p-8">
+          <div class="mb-6 flex items-center justify-between gap-4">
+            <h2 class="text-headline-sm font-bold text-on-surface">Core Skills</h2>
+            <div *ngIf="isUpdatingSkills" class="h-6 w-6 animate-spin rounded-full border-2 border-tertiary border-t-transparent"></div>
+          </div>
+
+          <div class="mb-5 flex flex-col gap-3 sm:flex-row">
+            <input
+              type="text"
+              [(ngModel)]="newSkill"
+              (keyup.enter)="addSkill(profile.skills)"
+              [disabled]="isUpdatingSkills"
+              placeholder="Add a skill (e.g. Angular, Azure, Product Strategy)"
+              class="input"
+            />
+            <button type="button" (click)="addSkill(profile.skills)" [disabled]="isUpdatingSkills || !newSkill.trim()" class="btn btn-primary whitespace-nowrap">
+              Add Skill
+            </button>
+          </div>
+
+          <div *ngIf="profile.skills.length; else noSkills" class="flex flex-wrap gap-2">
+            <span *ngFor="let skill of profile.skills" class="inline-flex items-center gap-2 rounded-xl bg-primary-container/20 px-3 py-1.5 text-label-lg font-semibold text-on-surface">
+              {{ skill }}
+              <button type="button" (click)="removeSkill(skill, profile.skills)" [disabled]="isUpdatingSkills" class="text-on-surface-variant hover:text-error">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </span>
+          </div>
+          <ng-template #noSkills>
+            <div class="rounded-2xl bg-surface-container p-5 text-body-md text-on-surface-variant">
+              Add your strongest skills to improve your match score.
+            </div>
+          </ng-template>
+        </article>
+
+        <article class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm md:p-8">
+          <div class="mb-6 flex items-center justify-between">
+            <h2 class="text-headline-sm font-bold text-on-surface">Professional Resume</h2>
+            <button type="button" class="btn btn-ai">
+              <i class="fa-solid fa-sparkles"></i>
+              AI Enhance CV
+            </button>
+          </div>
+
+          <div *ngIf="profile.hasResume" class="rounded-2xl bg-success-container/30 p-5">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div class="flex items-center gap-3">
+                <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-success text-on-success">
+                  <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <div>
+                  <p class="text-title-md font-semibold text-on-surface">Resume Uploaded</p>
+                  <p class="text-body-sm text-on-surface-variant">Ready for applications and recruiter review</p>
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <button type="button" (click)="downloadResume()" class="btn btn-outline btn-sm">Download</button>
+                <button type="button" (click)="onDeleteResume()" [disabled]="isDeletingResume" class="btn btn-sm bg-error text-on-error hover:opacity-90">
+                  <span *ngIf="!isDeletingResume">Remove</span>
+                  <span *ngIf="isDeletingResume"><i class="fa-solid fa-spinner fa-spin"></i></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <label *ngIf="!profile.hasResume" class="mt-2 flex cursor-pointer flex-col items-center justify-center rounded-2xl bg-surface-container p-8 text-center hover:bg-surface-container-high transition-colors">
+            <div class="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-surface-container-highest text-on-surface-variant">
+              <i *ngIf="!isUploadingResume" class="fa-solid fa-cloud-arrow-up text-xl"></i>
+              <i *ngIf="isUploadingResume" class="fa-solid fa-spinner fa-spin text-xl"></i>
+            </div>
+            <p class="text-title-md font-semibold text-on-surface">Upload your resume</p>
+            <p class="mt-1 text-body-sm text-on-surface-variant">PDF, DOC, DOCX up to 5MB</p>
+            <input
+              type="file"
+              class="hidden"
+              accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+              [disabled]="isUploadingResume"
+              (change)="onUploadResume($event)"
+            />
+          </label>
+        </article>
+      </section>
+
+      <aside class="space-y-6 lg:col-span-4">
+        <article class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm">
+          <h3 class="text-title-lg font-semibold text-on-surface">AI Optimization Tips</h3>
+          <ul class="mt-4 space-y-4 text-body-md text-on-surface-variant">
+            <li class="flex gap-3"><i class="fa-solid fa-circle-check mt-1 text-tertiary"></i><span>Add measurable outcomes in your latest experience.</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-circle-check mt-1 text-tertiary"></i><span>Include tools and frameworks used in real projects.</span></li>
+            <li class="flex gap-3"><i class="fa-solid fa-circle-check mt-1 text-tertiary"></i><span>Keep skills list focused on current market demand.</span></li>
+          </ul>
+        </article>
+
+        <article class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm">
+          <h3 class="text-title-lg font-semibold text-on-surface">Profile Strength</h3>
+          <div class="mt-4">
+            <div class="mb-2 flex justify-between text-body-sm"><span>Completion</span><span>{{ profile.completionPercentage }}%</span></div>
+            <div class="h-3 rounded-full bg-surface-container">
+              <div class="h-3 rounded-full bg-primary" [style.width.%]="profile.completionPercentage"></div>
+            </div>
+          </div>
+          <p class="mt-4 text-body-sm text-on-surface-variant">Higher completion improves visibility in recruiter search and AI matching.</p>
+        </article>
+      </aside>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <div class="mx-auto mt-20 flex max-w-xl items-center justify-center rounded-2xl bg-surface-container-lowest p-10 shadow-sm">
+      <i class="fa-solid fa-circle-notch fa-spin mr-3 text-primary"></i>
+      <span class="text-title-md text-on-surface-variant">Loading profile...</span>
+    </div>
+  </ng-template>
+</div>

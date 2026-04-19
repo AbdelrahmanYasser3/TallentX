@@ -1,0 +1,68 @@
+<!-- Job Card - Premium UI -->
+<article class="bg-surface-container-lowest rounded-3xl p-6 shadow-xl shadow-blue-900/5 flex flex-col sm:flex-row gap-6 hover:translate-y-[-2px] transition-transform duration-300 relative group" *ngIf="job">
+  
+  <button *ngIf="showSaveButton" (click)="onSave()" [disabled]="isSaving || job.isSaved" class="absolute top-6 right-6 p-2 transition-colors z-10" [ngClass]="job.isSaved ? 'text-primary' : 'text-on-surface-variant hover:text-primary'">
+    <span class="material-symbols-outlined" [style.font-variation-settings]="job.isSaved ? '\'FILL\' 1' : '\'FILL\' 0'">bookmark</span>
+  </button>
+  
+  <div class="w-16 h-16 bg-surface-container-low rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary/5 transition-colors">
+    <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-primary transition-colors">corporate_fare</span>
+  </div>
+  
+  <div class="flex-grow">
+    
+    <div class="flex flex-col gap-1 pr-8">
+      <h3 class="text-xl font-bold text-on-background group-hover:text-primary transition-colors">{{ job.title || 'Untitled Role' }}</h3>
+      <div class="flex items-center flex-wrap gap-2 text-sm">
+        <span class="font-semibold text-primary">{{ job.company || 'Unknown Company' }}</span>
+        <span class="text-outline-variant">•</span>
+        <span class="text-on-surface-variant">{{ job.location || 'Remote' }}</span>
+        <span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-md" [ngClass]="job.location === 'Remote' ? 'bg-green-500/10 text-green-600' : 'bg-secondary-container/10 text-secondary-container'">
+          {{ job.location === 'Remote' ? 'Remote' : 'On-site' }}
+        </span>
+        <span class="px-2 py-0.5 bg-primary-container/10 text-primary-container text-[10px] font-bold uppercase rounded-md">
+          {{ job.jobType || 'Full-time' }}
+        </span>
+      </div>
+    </div>
+    
+    <!-- Optional Skills/Tags (Mocked if empty) -->
+    <div class="mt-4 flex flex-wrap gap-2">
+      <span class="px-3 py-1 bg-surface-container-low text-xs font-medium rounded-lg">Engineering</span>
+      <span class="px-3 py-1 bg-surface-container-low text-xs font-medium rounded-lg">Product</span>
+    </div>
+
+    <!-- Footer Stats & Actions -->
+    <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+      
+      <div class="flex items-center gap-4 sm:gap-6 text-xs text-on-surface-variant font-medium">
+        <div class="flex items-center gap-1.5" *ngIf="job.salaryMin && job.salaryMax">
+          <span class="material-symbols-outlined text-base">payments</span>
+          <span class="text-on-background font-bold">${{ job.salaryMin/1000 }}k - ${{ job.salaryMax/1000 }}k</span>
+        </div>
+        <div class="flex items-center gap-1.5" *ngIf="!job.salaryMin">
+           <span class="material-symbols-outlined text-base">payments</span>
+           <span class="text-on-background font-bold">Not disclosed</span>
+        </div>
+        <div class="flex items-center gap-1.5 hidden sm:flex">
+          <span class="material-symbols-outlined text-base">group</span>
+          <span>--</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-base">schedule</span>
+          <span>{{ job.createdAt || 'Just now' }}</span>
+        </div>
+      </div>
+      
+      <div class="flex gap-3 w-full sm:w-auto">
+        <button class="flex-1 sm:flex-none px-5 py-2.5 border border-primary text-primary font-bold rounded-xl text-sm hover:bg-primary/5 transition-all">
+          Details
+        </button>
+        <button *ngIf="showApplyButton" (click)="onApply()" class="flex-1 sm:flex-none px-5 py-2.5 bg-primary text-white font-bold rounded-xl text-sm shadow-md shadow-primary/20 hover:opacity-90 transition-all">
+          Apply Now
+        </button>
+      </div>
+
+    </div>
+  </div>
+</article>

@@ -1,0 +1,79 @@
+<div class="min-h-screen bg-surface-container-lowest p-6 md:p-8">
+  <div class="mx-auto max-w-6xl space-y-6">
+    <header class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-label-md uppercase tracking-widest text-primary">Candidate Space</p>
+        <h1 class="mt-1 text-display-sm text-on-surface">Applications</h1>
+        <p class="mt-1 text-body-md text-on-surface-variant">Track your submitted job applications and statuses.</p>
+      </div>
+      <a routerLink="/jobs" class="rounded-xl bg-primary px-4 py-2 text-label-md text-on-primary">Discover jobs</a>
+    </header>
+
+    <section class="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <article class="rounded-2xl bg-surface-container p-5 shadow-sm">
+        <p class="text-label-md uppercase text-on-surface-variant">Total</p>
+        <h2 class="mt-2 text-headline-lg text-on-surface">{{ applications().length }}</h2>
+      </article>
+      <article class="rounded-2xl bg-surface-container p-5 shadow-sm">
+        <p class="text-label-md uppercase text-on-surface-variant">Active</p>
+        <h2 class="mt-2 text-headline-lg text-on-surface">{{ activeCount() }}</h2>
+      </article>
+      <article class="rounded-2xl bg-surface-container p-5 shadow-sm">
+        <p class="text-label-md uppercase text-on-surface-variant">Withdrawn</p>
+        <h2 class="mt-2 text-headline-lg text-on-surface">{{ applications().filter(a => a.status === 'Withdrawn').length }}</h2>
+      </article>
+    </section>
+
+    <section class="rounded-2xl bg-surface-container p-4 shadow-sm">
+      <label class="text-label-sm text-on-surface-variant">Filter by status</label>
+      <select
+        class="mt-2 w-full rounded-xl bg-surface-container-lowest px-3 py-2 text-on-surface ring-1 ring-outline-variant/30"
+        [ngModel]="selectedStatus()"
+        (ngModelChange)="setStatusFilter($event)"
+      >
+        <option value="All">All</option>
+        <option value="Pending">Pending</option>
+        <option value="UnderReview">UnderReview</option>
+        <option value="Assessment">Assessment</option>
+        <option value="Interview">Interview</option>
+        <option value="Accepted">Accepted</option>
+        <option value="Rejected">Rejected</option>
+        <option value="Withdrawn">Withdrawn</option>
+      </select>
+    </section>
+
+    <div *ngIf="isLoading()" class="space-y-3">
+      <div *ngFor="let i of [1,2,3]" class="rounded-2xl bg-surface-container p-4 animate-pulse">
+        <div class="h-5 w-1/3 rounded bg-surface-variant"></div>
+      </div>
+    </div>
+
+    <section *ngIf="!isLoading()" class="space-y-3">
+      <article *ngFor="let app of filteredApplications()" class="rounded-2xl bg-surface-container-lowest p-5 shadow-sm ring-1 ring-outline-variant/20">
+        <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h3 class="text-title-lg text-on-surface">{{ app.jobTitle || 'Job Application' }}</h3>
+            <p class="mt-1 text-body-sm text-on-surface-variant">{{ app.appliedAt | date:'medium' }}</p>
+            <p *ngIf="app.matchScore !== undefined" class="mt-1 text-label-sm text-tertiary">Match Score: {{ app.matchScore }}%</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="rounded-full bg-primary-container/30 px-3 py-1 text-label-md text-on-primary-container">{{ app.status }}</span>
+            <a [routerLink]="['/jobs', app.jobPostingId]" class="rounded-lg bg-surface-container px-3 py-1.5 text-label-sm text-on-surface">View Job</a>
+            <button
+              *ngIf="app.status !== 'Withdrawn' && app.status !== 'Accepted'"
+              type="button"
+              (click)="withdraw(app)"
+              class="rounded-lg bg-error px-3 py-1.5 text-label-sm text-on-error"
+            >
+              Withdraw
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <div *ngIf="filteredApplications().length === 0" class="rounded-2xl bg-surface-container p-8 text-center text-on-surface-variant">
+        No applications found.
+      </div>
+    </section>
+  </div>
+</div>

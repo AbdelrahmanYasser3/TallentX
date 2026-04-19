@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Candidate Registration | TallentX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#3a3ac8",
+              "error-container": "#9f0519",
+              "on-tertiary-fixed-variant": "#560094",
+              "surface-container": "#091542",
+              "outline": "#6b739d",
+              "secondary-fixed": "#cdcdff",
+              "on-secondary-fixed": "#160bae",
+              "secondary-fixed-dim": "#bdbeff",
+              "on-tertiary-container": "#000000",
+              "error": "#ff716c",
+              "secondary": "#9093ff",
+              "on-surface-variant": "#a1a9d5",
+              "tertiary-fixed": "#ce9bff",
+              "tertiary": "#c180ff",
+              "error-dim": "#d7383b",
+              "on-background": "#e1e4ff",
+              "primary-container": "#6e9fff",
+              "surface-container-lowest": "#000000",
+              "secondary-dim": "#6063ee",
+              "surface-dim": "#020a2f",
+              "on-error-container": "#ffa8a3",
+              "surface-bright": "#192760",
+              "tertiary-dim": "#9c48ea",
+              "primary-dim": "#699cff",
+              "primary": "#85adff",
+              "inverse-on-surface": "#4b537a",
+              "on-secondary-container": "#ccccff",
+              "inverse-primary": "#005bc4",
+              "surface-container-highest": "#142156",
+              "on-primary-fixed-variant": "#002a62",
+              "on-secondary": "#080079",
+              "tertiary-fixed-dim": "#c488ff",
+              "background": "#020a2f",
+              "outline-variant": "#3d466c",
+              "tertiary-container": "#af5cfe",
+              "primary-fixed": "#6e9fff",
+              "on-primary-fixed": "#000000",
+              "on-error": "#490006",
+              "surface-container-high": "#0e1b4c",
+              "surface": "#020a2f",
+              "on-surface": "#e1e4ff",
+              "surface-variant": "#142156",
+              "on-tertiary": "#33005b",
+              "on-primary": "#002c66",
+              "surface-tint": "#85adff",
+              "on-primary-container": "#002150",
+              "on-tertiary-fixed": "#270048",
+              "inverse-surface": "#fbf8ff",
+              "surface-container-low": "#050f38",
+              "primary-fixed-dim": "#5391ff",
+              "secondary-container": "#2f2ebe"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-morphism {
+        background: rgba(20, 33, 86, 0.6);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+      }
+      .ai-gradient {
+        background: linear-gradient(135deg, #9093ff 0%, #c180ff 100%);
+      }
+      body {
+        background-color: #020a2f;
+        color: #e1e4ff;
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary/30 selection:text-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 dark:bg-[#020a2f]/60 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-blue-900/20">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<img class="h-8 w-auto" data-alt="TallentX corporate logo featuring minimalist geometric lines in white on a dark blue background with the text TallentX" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdYpi93lwovOYQH9lAA1YIvRA8rXkXCx3oF4BNQrOE6juN-VltRwarKiF1fJVoqkuBJ5w3h9gxtS6VCcTZrq9HaAxqrZgs7E8tvvFLSMNShd2d4dnI4lRLNaQiC0wh69dxOXbp0tb0R-HhT9f1tfBdc1ADuDw8vsD6xoDZqubg2nQprF8qpGR19Ako1NIojuV3v5ug6VsT3BmO4qgRjqYN3hRDxSTn2-k_lfcAoazlp-m6_1YiChEw4zTH6-S9Voqpskoz4txQfAQ"/>
+<span class="text-2xl font-bold tracking-tighter text-white font-['Inter']">TallentX</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-400 hover:bg-white/10 transition-all duration-300 px-3 py-1 rounded-lg text-sm font-medium" href="#">Explore Jobs</a>
+<a class="text-slate-400 hover:bg-white/10 transition-all duration-300 px-3 py-1 rounded-lg text-sm font-medium" href="#">AI Insights</a>
+<a class="text-[#85adff] font-semibold px-3 py-1 rounded-lg text-sm" href="#">Join Now</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group cursor-pointer active:scale-95 transition-all">
+<span class="material-symbols-outlined text-slate-400">notifications</span>
+</div>
+<div class="h-10 w-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-white/10 overflow-hidden cursor-pointer active:scale-95 transition-all">
+<span class="material-symbols-outlined text-slate-400">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<main class="min-h-screen pt-32 pb-20 px-6 relative overflow-hidden">
+<!-- Background Decorative Elements -->
+<div class="absolute top-0 right-0 -z-10 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-0 left-0 -z-10 w-[400px] h-[400px] bg-tertiary/5 rounded-full blur-[100px]"></div>
+<div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left Side: Editorial Content & Progress -->
+<div class="lg:col-span-5 space-y-10">
+<div class="space-y-4">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                        Next-Gen Hiring
+                    </div>
+<h1 class="text-5xl md:text-6xl font-black text-white leading-[1.1] tracking-tight">
+                        Build your <span class="text-transparent bg-clip-text ai-gradient">Intelligent</span> profile.
+                    </h1>
+<p class="text-slate-400 text-lg leading-relaxed max-w-md">
+                        Join thousands of professionals using TallentX to match with roles that align with their skill DNA and future potential.
+                    </p>
+</div>
+<!-- Progress Indicator -->
+<div class="space-y-6 pt-6">
+<div class="flex items-center gap-4 group">
+<div class="w-10 h-10 rounded-full ai-gradient flex items-center justify-center text-white shadow-lg shadow-primary/20 transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<div>
+<p class="text-white font-semibold">Account Setup</p>
+<p class="text-slate-500 text-sm">Personal details &amp; credentials</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-sm">psychology</span>
+</div>
+<div>
+<p class="text-slate-400 font-medium">Skill Mapping</p>
+<p class="text-slate-500 text-sm">AI-driven proficiency analysis</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group opacity-50">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-white/10 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+</div>
+<div>
+<p class="text-slate-400 font-medium">Final Launch</p>
+<p class="text-slate-500 text-sm">Verification and live profile</p>
+</div>
+</div>
+</div>
+<!-- Trust Badge -->
+<div class="p-6 rounded-xl bg-surface-container-low border border-white/5 flex items-start gap-4 mt-8">
+<div class="p-2 rounded-lg bg-tertiary/10">
+<span class="material-symbols-outlined text-tertiary">shield_person</span>
+</div>
+<p class="text-xs text-slate-400 leading-relaxed">
+                        TallentX uses end-to-end encryption for your personal data. We comply with GDPR and CCPA standards to ensure your privacy is never compromised.
+                    </p>
+</div>
+</div>
+<!-- Right Side: Registration Card -->
+<div class="lg:col-span-7">
+<div class="glass-morphism rounded-xl p-8 md:p-10 shadow-2xl border border-white/5">
+<div class="mb-8">
+<h2 class="text-2xl font-bold text-white mb-2">Create Candidate Account</h2>
+<p class="text-slate-400 text-sm">Start your journey toward intelligent employment.</p>
+</div>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- First Name -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500 px-1">First Name</label>
+<div class="group">
+<input class="w-full bg-surface-container-low border-b-2 border-transparent border-b-outline-variant focus:border-b-primary focus:ring-0 text-white px-4 py-3 rounded-t-lg transition-all placeholder:text-slate-600 outline-none" placeholder="e.g. Alex" type="text"/>
+</div>
+</div>
+<!-- Last Name -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500 px-1">Last Name</label>
+<div class="group">
+<input class="w-full bg-surface-container-low border-b-2 border-transparent border-b-outline-variant focus:border-b-primary focus:ring-0 text-white px-4 py-3 rounded-t-lg transition-all placeholder:text-slate-600 outline-none" placeholder="e.g. Mercer" type="text"/>
+</div>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500 px-1">Email Address</label>
+<div class="group">
+<input class="w-full bg-surface-container-low border-b-2 border-transparent border-b-outline-variant focus:border-b-primary focus:ring-0 text-white px-4 py-3 rounded-t-lg transition-all placeholder:text-slate-600 outline-none" placeholder="alex.mercer@innovate.ai" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500 px-1">Password</label>
+<div class="group relative">
+<input class="w-full bg-surface-container-low border-b-2 border-transparent border-b-outline-variant focus:border-b-primary focus:ring-0 text-white px-4 py-3 rounded-t-lg transition-all placeholder:text-slate-600 outline-none" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-3 top-3 text-slate-500 hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+</div>
+<p class="text-[10px] text-slate-500 mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">info</span>
+                                Minimum 12 characters with a mix of letters, numbers, and symbols.
+                            </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Gender -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500 px-1">Gender</label>
+<div class="relative group">
+<select class="w-full bg-surface-container-low border-b-2 border-transparent border-b-outline-variant focus:border-b-primary focus:ring-0 text-white px-4 py-3 rounded-t-lg transition-all appearance-none outline-none">
+<option disabled="" selected="" value="">Select gender</option>
+<option value="male">Male</option>
+<option value="female">Female</option>
+<option value="non-binary">Non-binary</option>
+<option value="prefer-not">Prefer not to say</option>
+</select>
+<div class="absolute right-3 top-3 pointer-events-none text-slate-500">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Date of Birth -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500 px-1">Date of Birth</label>
+<div class="group">
+<input class="w-full bg-surface-container-low border-b-2 border-transparent border-b-outline-variant focus:border-b-primary focus:ring-0 text-white px-4 py-3 rounded-t-lg transition-all placeholder:text-slate-600 outline-none [color-scheme:dark]" type="date"/>
+</div>
+</div>
+</div>
+<!-- Submit Button -->
+<div class="pt-4">
+<button class="w-full ai-gradient hover:opacity-90 active:scale-[0.98] transition-all py-4 rounded-lg text-white font-bold tracking-tight text-lg shadow-xl shadow-primary/20 flex items-center justify-center gap-2" type="submit">
+                                Create Candidate Account
+                                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Social Registration -->
+<div class="relative py-4">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-white/5"></div>
+</div>
+<div class="relative flex justify-center">
+<span class="bg-surface-container/60 px-4 text-xs text-slate-500 uppercase tracking-widest backdrop-blur-sm">Or sign up with</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 rounded-lg bg-surface-container-high border border-white/5 hover:bg-white/5 transition-all active:scale-[0.98]" type="button">
+<img class="w-4 h-4" data-alt="Minimalist Google logo G icon in brand colors on a transparent background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXg1efyVEx3Vmrcm2Yp0FGBc8P4xBoSmp2Z_C8SZ96HHnPbGdq9WUgxWjJIJwvLRV31OwfqEivWO6Kjy-G9QTe6c7YnzINmkNKrTxl5-6jqwm07umktb5O6iUqWn55EN1SuC7KDWrtB66oJoxMId69pdzVlO8VpRiyZSOMCvGcoTULfJzE1CJKuf-v85W32HF7Po2MRURd639O_ZcWYsrM3fstH7lVSwIXYEWhkFOJNVqYG5HtU6AlDfxF81pBipp_OTXlJAoBVtk"/>
+<span class="text-sm font-medium text-white">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 rounded-lg bg-surface-container-high border border-white/5 hover:bg-white/5 transition-all active:scale-[0.98]" type="button">
+<img class="w-4 h-4" data-alt="Official LinkedIn professional network logo in white minimalist style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAijqEzW5NEWJJoyVfaIXl1lcIizZpxqxinY8fU8MRIBUq6NqIfb2Y5fWMIUv22tO_PEPC3x7LZvG6A-qkvW5nYni-zA10nqhvc4g9b9FfhCVHf61k1lA_i1KXZSXqAGkXzkY76yNCXPWubY0GNVE2wmFASVdgCt1PNc_d4JwxrXves6mxfVg3BYfNIyO0vByd2rqK-ErOnerRy4iq-bKuFWyFjTzJbd5q3ETmYVUit2kp9zIwA6sRU98_l4idcvhvsEVlgqhRIxwA"/>
+<span class="text-sm font-medium text-white">LinkedIn</span>
+</button>
+</div>
+<p class="text-center text-sm text-slate-500">
+                            Already have an account? <a class="text-primary font-semibold hover:underline underline-offset-4" href="#">Log in here</a>
+</p>
+</form>
+</div>
+<!-- AI Insight Card -->
+<div class="mt-8 p-6 rounded-xl border border-tertiary/20 bg-surface-container-high/40 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary/5 to-transparent"></div>
+<div class="relative flex items-center gap-4">
+<div class="w-12 h-12 rounded-full flex items-center justify-center bg-tertiary/20">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<p class="text-sm font-bold text-white">AI Advantage</p>
+<p class="text-xs text-slate-400">Your profile will be automatically matched against 450+ data points for premium roles.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 mt-20 border-t border-white/5 bg-[#020a2f]">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-8">
+<div class="text-[#85adff] font-['Inter'] text-xs uppercase tracking-widest mb-4 md:mb-0">
+                © 2024 Intelligent Employment System. All rights reserved.
+            </div>
+<div class="flex items-center gap-8">
+<a class="text-slate-500 hover:text-[#85adff] transition-colors text-xs uppercase tracking-widest underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-[#85adff] transition-colors text-xs uppercase tracking-widest underline-offset-4 hover:underline" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-[#85adff] transition-colors text-xs uppercase tracking-widest underline-offset-4 hover:underline" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>
