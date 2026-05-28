@@ -213,10 +213,59 @@ export class CandidateService {
     return this.http.delete(`${environment.apiUrl}/JobApplication/${applicationId}/withdraw`);
   }
 
-  applyForJob(jobPostId: number, resumeId: number): Observable<JobApplicationDto> {
-    return this.http.post<JobApplicationDto>(`${environment.apiUrl}/JobApplication/apply`, {
-      jobPostId,
-      resumeId
+  applyForJob(jobPostId: number, resumeId: number, coverLetter?: string): Observable<JobApplicationDto> {
+    const body: any = { jobPostId, resumeId };
+    if (coverLetter?.trim()) {
+      body.coverLetter = coverLetter.trim();
+    }
+    return this.http.post<JobApplicationDto>(`${environment.apiUrl}/JobApplication/apply`, body);
+  }
+
+  /**
+   * Upload CV then apply for a job in one flow.
+   * If the candidate already has a default resume, skip upload and use that.
+   */
+  applyWithCv(jobPostId: number, file: File, coverLetter?: string): Observable<JobApplicationDto> {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    return new Observable<JobApplicationDto>(subscriber => {
+      // Step 1: Upload the resume
+      this.http.post<any>(`${this.base}/resume`, formData).pipe(
+        tap(() => {
+          const current = this.profileSubject.value;
+          if (current) {
+            const updated = { ...current, hasResume: true };
+            updated.completionPercentage = this.recalculateCompletion(updated);
+            this.profileSubject.next(updated);
+          }
+        })
+      ).subscribe({
+        next: (uploadResult) => {
+          const resumeId = uploadResult?.id ?? uploadResult?.resumeId;
+          if (!resumeId) {
+            subscriber.error(new Error('Resume upload succeeded but no ID was returned.'));
+            return;
+          }
+
+          // Step 2: Apply for the job
+          this.applyForJob(jobPostId, resumeId, coverLetter).subscribe({
+            next: (result) => {
+              subscriber.next(result);
+              subscriber.complete();
+            },
+            error: (err) => subscriber.error(err)
+          });
+        },
+        error: (err) => subscriber.error(err)
+      });
     });
+  }
+
+  /** Check if the candidate has already applied to a specific job */
+  hasAppliedToJob(jobPostId: number): Observable<boolean> {
+    return this.getApplications().pipe(
+      map((apps) => apps.some(a => a.jobPostingId === jobPostId))
+    );
   }
 }

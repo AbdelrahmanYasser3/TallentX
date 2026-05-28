@@ -1,195 +1,385 @@
-<div class="min-h-screen bg-surface-container-lowest py-8 animate-fade-in-up">
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+<div class="min-h-screen bg-background py-10 animate-fade-in-up">
+  <div class="max-w-7xl mx-auto px-6">
+
     <!-- Back Button -->
-    <button (click)="goBack()" class="flex items-center text-on-surface-variant hover:text-primary transition-colors mb-6 group">
-      <div class="w-8 h-8 rounded-full bg-surface-container-low shadow-sm flex items-center justify-center mr-3 group-hover:bg-primary-container/20 transition-all">
-        <i class="fa-solid fa-arrow-left text-sm"></i>
+    <button (click)="goBack()" class="flex items-center text-on-surface-variant hover:text-primary transition-colors mb-8 group">
+      <div class="w-8 h-8 rounded-full bg-surface-container-low shadow-sm flex items-center justify-center mr-3 group-hover:bg-primary/10 transition-all">
+        <span class="material-symbols-outlined text-sm">arrow_back</span>
       </div>
-      <span class="font-medium">Back to search</span>
+      <span class="font-medium font-['Inter']">Back to search</span>
     </button>
 
-    <!-- Skeleton Loader -->
-    <div *ngIf="isLoading()" class="space-y-6">
-      <div class="bg-surface-container-lowest rounded-3xl p-8 shadow-sm animate-pulse">
-        <div class="flex items-start gap-6">
-          <div class="w-16 h-16 bg-surface-variant rounded-2xl flex-shrink-0"></div>
-          <div class="flex-1 space-y-4">
-            <div class="h-8 bg-surface-variant rounded w-3/4"></div>
-            <div class="h-5 bg-surface-variant rounded w-1/2"></div>
+    <!-- ═══ Skeleton Loader ═══ -->
+    <div *ngIf="isLoading()" class="space-y-8">
+      <div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm animate-pulse flex flex-col md:flex-row justify-between gap-6">
+        <div class="flex items-center gap-6">
+          <div class="w-20 h-20 bg-surface-variant rounded-2xl"></div>
+          <div class="space-y-3">
+            <div class="h-8 bg-surface-variant rounded w-64"></div>
+            <div class="h-5 bg-surface-variant rounded w-48"></div>
             <div class="flex gap-3">
-              <div class="h-6 w-24 bg-surface-variant rounded-full"></div>
-              <div class="h-6 w-24 bg-surface-variant rounded-full"></div>
-              <div class="h-6 w-24 bg-surface-variant rounded-full"></div>
+              <div class="h-6 w-28 bg-surface-variant rounded-full"></div>
+              <div class="h-6 w-28 bg-surface-variant rounded-full"></div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="bg-surface-container-lowest rounded-3xl p-8 shadow-ghost animate-pulse">
-        <div class="h-6 bg-surface-variant rounded w-1/4 mb-6"></div>
         <div class="space-y-3">
-          <div class="h-4 bg-surface-variant rounded w-full"></div>
-          <div class="h-4 bg-surface-variant rounded w-full"></div>
-          <div class="h-4 bg-surface-variant rounded w-5/6"></div>
-          <div class="h-4 bg-surface-variant rounded w-full"></div>
-          <div class="h-4 bg-surface-variant rounded w-4/5"></div>
+          <div class="h-14 w-40 bg-surface-variant rounded-xl"></div>
+          <div class="h-14 w-40 bg-surface-variant rounded-xl"></div>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-8 space-y-6">
+          <div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm animate-pulse">
+            <div class="h-6 bg-surface-variant rounded w-1/4 mb-6"></div>
+            <div class="space-y-3">
+              <div class="h-4 bg-surface-variant rounded w-full"></div>
+              <div class="h-4 bg-surface-variant rounded w-full"></div>
+              <div class="h-4 bg-surface-variant rounded w-5/6"></div>
+              <div class="h-4 bg-surface-variant rounded w-full"></div>
+              <div class="h-4 bg-surface-variant rounded w-4/5"></div>
+            </div>
+          </div>
+        </div>
+        <div class="lg:col-span-4 space-y-6">
+          <div class="bg-surface-container-lowest p-6 rounded-[2rem] shadow-sm animate-pulse h-48"></div>
+          <div class="bg-surface-container-lowest p-6 rounded-[2rem] shadow-sm animate-pulse h-32"></div>
         </div>
       </div>
     </div>
 
-    <!-- Job Details Content -->
+    <!-- ═══ Job Details Content ═══ -->
     <ng-container *ngIf="!isLoading() && job()">
-      
-      <!-- Header Card -->
-      <div class="bg-surface-container-lowest rounded-3xl p-6 sm:p-8 shadow-sm mb-6 relative overflow-hidden">
-        
-        <!-- Background Banner -->
-        <div class="absolute top-0 left-0 right-0 h-24 bg-gradient-to-r from-primary-container/50 to-surface"></div>
-        
-        <div class="relative z-10 flex flex-col md:flex-row md:items-start gap-6 pt-4">
-          
+
+      <!-- ══ Hero Header Card (stitch-ies style) ══ -->
+      <section class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
+        <div class="flex items-center gap-6">
           <!-- Company Logo -->
-          <div class="w-20 h-20 bg-white dark:bg-gray-800 rounded-2xl shadow-sm flex items-center justify-center flex-shrink-0">
-            <img *ngIf="job()?.companyLogo" [src]="job()?.companyLogo" alt="{{job()?.companyName}} logo" class="max-w-full max-h-full p-2 object-contain">
-            <span *ngIf="!job()?.companyLogo" class="text-2xl font-bold text-primary">
+          <div class="w-20 h-20 rounded-2xl bg-surface-container flex items-center justify-center p-2 shadow-sm">
+            <img *ngIf="job()?.companyLogo" [src]="job()?.companyLogo" [alt]="(job()?.companyName || 'Company') + ' logo'" class="w-full h-full object-contain rounded-lg">
+            <span *ngIf="!job()?.companyLogo" class="text-3xl font-black text-primary">
               {{ job()?.companyName?.charAt(0) || 'C' }}
             </span>
           </div>
-
-          <!-- Main Info -->
-          <div class="flex-1">
-            <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
-              <div>
-                <h1 class="text-2xl sm:text-3xl font-bold text-on-surface mb-2 leading-tight">
-                  {{ job()?.title }}
-                </h1>
-                <div class="text-lg text-primary font-medium mb-4 flex items-center gap-2">
-                  <i class="fa-regular fa-building"></i>
-                  {{ job()?.companyName }}
-                </div>
-                
-                <div class="flex flex-wrap gap-3">
-                  <span class="inline-flex items-center px-3 py-1 rounded-lg bg-surface-container-high text-on-surface-variant text-sm font-medium">
-                    <i class="fa-solid fa-location-dot mr-2 opacity-70"></i>
-                    {{ job()?.location || 'Remote' }}
-                  </span>
-                  
-                  <span *ngIf="job()?.employmentType" class="inline-flex items-center px-3 py-1 rounded-lg bg-surface-container-high text-on-surface-variant text-sm font-medium">
-                    <i class="fa-solid fa-briefcase mr-2 opacity-70"></i>
-                    {{ job()?.employmentType || 'Full-time' }}
-                  </span>
-
-                  <span *ngIf="job()?.salaryRange" class="inline-flex items-center px-3 py-1 rounded-lg bg-surface-container-high text-success text-sm font-medium">
-                    <i class="fa-solid fa-sack-dollar mr-2 opacity-70"></i>
-                    {{ job()?.salaryRange }}
-                  </span>
-                </div>
-              </div>
-
-              <!-- Action Buttons -->
-              <div class="flex flex-col md:items-end gap-3 mt-4 md:mt-0">
-                <button 
-                  (click)="applyForJob()"
-                  [disabled]="isApplying() || job()?.hasApplied"
-                  class="bg-primary text-on-primary px-8 py-3 rounded-xl font-medium hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface disabled:opacity-70 disabled:cursor-not-allowed transition-all shadow-sm flex items-center justify-center min-w-[200px]"
-                >
-                  <span *ngIf="job()?.hasApplied"><i class="fa-solid fa-check mr-2"></i> Applied</span>
-                  <span *ngIf="isApplying()"><i class="fa-solid fa-circle-notch fa-spin mr-2"></i> Applying...</span>
-                  <span *ngIf="!isApplying() && !job()?.hasApplied">Apply Now</span>
-                </button>
-                <div class="text-sm text-on-surface-variant text-center md:text-right w-full">
-                  Posted {{ (job()?.postedDate | date:'mediumDate') || 'Recently' }}
-                </div>
-              </div>
-
+          <div>
+            <h1 class="text-3xl font-extrabold tracking-tight text-on-surface leading-tight">
+              {{ job()?.title }}
+            </h1>
+            <div class="flex items-center gap-3 mt-2 text-on-surface-variant flex-wrap">
+              <span class="font-semibold text-primary">{{ job()?.companyName }}</span>
+              <span class="text-outline-variant hidden sm:inline">•</span>
+              <span class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">location_on</span>
+                {{ job()?.location || 'Remote' }}
+              </span>
+              <span class="text-outline-variant hidden sm:inline">•</span>
+              <span class="flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">work</span>
+                {{ getEmploymentTypeDisplay() }}
+              </span>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Main Content Tabs Area Structure -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        <!-- Left Column: Description & Details -->
-        <div class="lg:col-span-2 space-y-6">
-          <div class="bg-surface-container-lowest rounded-3xl p-6 md:p-8 shadow-ghost">
-            <h2 class="text-xl font-bold text-on-surface mb-6 flex items-center">
-              <i class="fa-solid fa-align-left text-primary mr-3"></i>
+        <!-- Prominent CTAs -->
+        <div class="w-full md:w-auto flex flex-col gap-3">
+          <!-- Already Applied State -->
+          <button
+            *ngIf="hasAlreadyApplied()"
+            disabled
+            class="bg-success/10 text-success px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 cursor-default"
+          >
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+            Already Applied
+          </button>
+
+          <!-- Apply Now Button -->
+          <button
+            *ngIf="!hasAlreadyApplied()"
+            (click)="openApplyModal()"
+            [disabled]="isCheckingApplication()"
+            class="ai-gradient-btn text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg shadow-indigo-500/20 active:scale-95 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            <span *ngIf="isCheckingApplication()">Checking...</span>
+            <span *ngIf="!isCheckingApplication()">Apply Now</span>
+          </button>
+
+          <button class="bg-surface-container-low text-primary px-8 py-4 rounded-xl font-bold hover:bg-surface-container-high transition-colors">
+            Save Job
+          </button>
+        </div>
+      </section>
+
+      <!-- ══ Main Content Grid (12-col stitch-ies layout) ══ -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+        <!-- ── Left Column (8 cols) ── -->
+        <div class="lg:col-span-8 space-y-8">
+
+          <!-- Job Description Card -->
+          <article class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-on-surface">
+              <span class="material-symbols-outlined text-primary">description</span>
               Job Description
             </h2>
-            
-            <div class="prose dark:prose-invert max-w-none text-on-surface-variant whitespace-pre-line leading-relaxed">
+            <div class="text-on-surface-variant leading-relaxed space-y-4 whitespace-pre-line">
               {{ job()?.description || 'No description provided.' }}
             </div>
-            
-            <!-- Requirements Section (Mock, based on description or separate field if exists) -->
-            <div *ngIf="job()?.requirements" class="mt-8 pt-8">
-               <h3 class="text-lg font-bold text-on-surface mb-4">Requirements & Skills</h3>
-               <p class="text-on-surface-variant whitespace-pre-line">{{job()?.requirements}}</p>
+          </article>
+
+          <!-- Requirements / Skills Card -->
+          <article *ngIf="job()?.requirements || getSkillsList().length > 0" class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm">
+            <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-on-surface">
+              <span class="material-symbols-outlined text-primary">verified</span>
+              Requirements &amp; Skills
+            </h2>
+
+            <!-- Requirements Text -->
+            <div *ngIf="job()?.requirements" class="text-on-surface-variant whitespace-pre-line leading-relaxed mb-6">
+              {{ job()?.requirements }}
             </div>
-          </div>
+
+            <!-- Skills Chips -->
+            <div *ngIf="getSkillsList().length > 0" class="flex flex-wrap gap-3">
+              <span
+                *ngFor="let skill of getSkillsList()"
+                class="px-4 py-2 bg-primary/5 text-primary border border-primary/10 rounded-full text-sm font-medium"
+              >
+                {{ skill }}
+              </span>
+            </div>
+          </article>
         </div>
 
-        <!-- Right Column: Company Info & Similar -->
-        <div class="space-y-6">
-          <div class="rounded-3xl bg-ai-gradient p-1 shadow-lg">
-            <div class="rounded-[22px] bg-surface-container-lowest p-6 text-center">
-              <p class="text-label-md uppercase tracking-wide text-tertiary">AI Match Score</p>
-              <p class="mt-2 text-5xl font-black text-ai-gradient">94%</p>
-              <p class="mt-3 text-body-md text-on-surface-variant">
-                Your profile exceeds most role requirements based on skill and experience signals.
+        <!-- ── Right Column (4 cols) ── -->
+        <div class="lg:col-span-4 space-y-6">
+
+          <!-- AI Match Score Card -->
+          <div class="ai-gradient-border p-1 rounded-[2rem] shadow-xl shadow-indigo-500/20">
+            <div class="bg-surface-container-lowest rounded-[1.9rem] p-6 text-center">
+              <span class="text-[0.6875rem] uppercase tracking-widest font-bold text-tertiary">AI Match Score</span>
+              <div class="mt-4 mb-2">
+                <span class="text-5xl font-black text-ai-gradient tracking-tighter">94%</span>
+              </div>
+              <p class="text-sm text-on-surface-variant px-4">
+                Your profile exceeds 94% of applicant requirements for this role.
               </p>
-              <i class="fa-solid fa-sparkles mt-4 text-2xl text-tertiary"></i>
-            </div>
-          </div>
-
-           <div class="bg-surface-container-lowest rounded-3xl p-6 shadow-ghost">
-            <h3 class="font-bold text-on-surface mb-4">About the Company</h3>
-            <p class="text-sm text-on-surface-variant mb-6 leading-relaxed">
-               {{ job()?.companyDescription || 'Leading company in its industry with a focus on innovation and growth. Join our team and make an impact.' }}
-            </p>
-            <div class="space-y-3">
-              <div class="flex items-center text-sm text-on-surface-variant">
-                <div class="w-8 flex-shrink-0 text-center text-outline"><i class="fa-solid fa-users"></i></div>
-                <span>500-1000 employees</span>
-              </div>
-              <div class="flex items-center text-sm text-on-surface-variant">
-                <div class="w-8 flex-shrink-0 text-center text-outline"><i class="fa-solid fa-globe"></i></div>
-                <a href="#" class="text-primary hover:underline" (click)="$event.preventDefault()">Visit website</a>
+              <div class="mt-6 flex justify-center">
+                <span class="material-symbols-outlined text-tertiary text-4xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
               </div>
             </div>
           </div>
 
-          <div class="bg-surface-container-lowest rounded-3xl p-6 shadow-ghost">
-            <h3 class="font-bold text-on-surface mb-5">Hiring Timeline</h3>
-            <div class="space-y-4 text-sm">
-              <div class="rounded-xl bg-surface-container-low p-3">
-                <p class="font-semibold text-on-surface">Application Window</p>
-                <p class="text-on-surface-variant">Open now - closes in 9 days</p>
-              </div>
-              <div class="rounded-xl bg-surface-container-low p-3">
-                <p class="font-semibold text-on-surface">Screening Rounds</p>
-                <p class="text-on-surface-variant">Expected within 2 weeks</p>
-              </div>
-              <div class="rounded-xl bg-surface-container-low p-3">
-                <p class="font-semibold text-on-surface">Final Interviews</p>
-                <p class="text-on-surface-variant">Planned in 3-4 weeks</p>
+          <!-- Salary Range Card -->
+          <div class="bg-surface-container-lowest p-6 rounded-[2rem] shadow-sm">
+            <h3 class="text-sm font-bold uppercase tracking-widest text-outline mb-4">Salary Range</h3>
+            <div class="flex flex-col">
+              <span class="text-2xl font-bold text-on-surface">{{ getSalaryDisplay() }}</span>
+              <span class="text-xs text-on-surface-variant mt-1">Annual Compensation</span>
+            </div>
+          </div>
+
+          <!-- Company Overview Card -->
+          <div class="bg-surface-container-lowest p-6 rounded-[2rem] shadow-sm">
+            <h3 class="text-sm font-bold uppercase tracking-widest text-outline mb-4">Company Overview</h3>
+            <div class="space-y-4">
+              <p class="text-sm text-on-surface-variant leading-snug">
+                {{ job()?.companyDescription || 'Leading company in its industry with a focus on innovation and growth.' }}
+              </p>
+              <div class="pt-4 border-t border-outline-variant/10 space-y-2">
+                <div class="flex justify-between text-xs">
+                  <span class="text-outline">Location</span>
+                  <span class="font-semibold text-on-surface">{{ job()?.location || 'Remote' }}</span>
+                </div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-outline">Type</span>
+                  <span class="font-semibold text-on-surface">{{ getEmploymentTypeDisplay() }}</span>
+                </div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-outline">Posted</span>
+                  <span class="font-semibold text-on-surface">{{ getPostedDate() }}</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="rounded-3xl bg-primary/10 p-6">
-            <h3 class="font-semibold text-primary mb-2">Know someone perfect?</h3>
-            <p class="text-body-md text-on-surface-variant mb-4">Generate a referral link and earn a bonus on successful hire.</p>
-            <button type="button" class="w-full rounded-xl bg-surface-container-lowest py-2.5 text-primary font-semibold hover:bg-surface-container transition-colors">
+          <!-- Hiring Timeline Card -->
+          <div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm">
+            <h3 class="text-sm font-bold uppercase tracking-widest text-outline mb-6">Hiring Timeline</h3>
+            <div class="space-y-6 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-surface-container">
+              <div class="relative pl-8 flex flex-col">
+                <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary flex items-center justify-center border-4 border-surface-container-lowest">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                </div>
+                <span class="text-sm font-bold text-on-surface">Application Period</span>
+                <span class="text-xs text-on-surface-variant">Open now</span>
+              </div>
+              <div class="relative pl-8 flex flex-col">
+                <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container flex items-center justify-center border-4 border-surface-container-lowest"></div>
+                <span class="text-sm font-bold text-outline">Screening Rounds</span>
+                <span class="text-xs text-outline-variant">Expected within 2 weeks</span>
+              </div>
+              <div class="relative pl-8 flex flex-col">
+                <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container flex items-center justify-center border-4 border-surface-container-lowest"></div>
+                <span class="text-sm font-bold text-outline">Final Interviews</span>
+                <span class="text-xs text-outline-variant">Planned in 3-4 weeks</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Referral Card -->
+          <div class="bg-primary/5 p-8 rounded-[2rem] border border-primary/10">
+            <h3 class="text-sm font-bold text-primary mb-4">Know someone perfect?</h3>
+            <p class="text-xs text-on-surface-variant mb-6">Refer a candidate and earn a bonus upon successful hire.</p>
+            <button type="button" class="w-full py-3 bg-surface-container-lowest border border-primary text-primary rounded-xl font-bold text-sm hover:bg-primary/5 transition-colors">
               Generate Referral Link
             </button>
           </div>
         </div>
-
       </div>
 
     </ng-container>
-    
+
+    <!-- ═══ Not Found State ═══ -->
+    <div *ngIf="!isLoading() && !job()" class="text-center py-24">
+      <span class="material-symbols-outlined text-6xl text-on-surface-variant/30 mb-4">work_off</span>
+      <h2 class="text-headline-sm text-on-surface mb-2">Job Not Found</h2>
+      <p class="text-on-surface-variant mb-6">This job posting may have been removed or expired.</p>
+      <button (click)="goBack()" class="btn-primary px-6 py-3 rounded-xl font-semibold bg-primary text-on-primary">
+        Browse Jobs
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- ═══ Apply Modal ═══ -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<div *ngIf="showApplyModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" (click)="closeApplyModal()"></div>
+
+  <!-- Modal Content -->
+  <div class="relative bg-surface-container-lowest dark:bg-surface-container rounded-[2rem] shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto apply-modal-enter">
+
+    <!-- Modal Header -->
+    <div class="sticky top-0 bg-surface-container-lowest dark:bg-surface-container rounded-t-[2rem] px-8 pt-8 pb-4 border-b border-outline-variant/10 z-10">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-title-lg font-bold text-on-surface">Apply for this Position</h2>
+          <p class="text-body-sm text-on-surface-variant mt-1">{{ job()?.title }} at {{ job()?.companyName }}</p>
+        </div>
+        <button (click)="closeApplyModal()" class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center transition-colors">
+          <span class="material-symbols-outlined text-on-surface-variant">close</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="px-8 py-6 space-y-6">
+
+      <!-- CV Upload Zone -->
+      <div>
+        <label class="text-label-md font-semibold text-on-surface mb-3 block">
+          Upload Your CV <span class="text-error">*</span>
+        </label>
+
+        <!-- Drop Zone (when no file selected) -->
+        <div
+          *ngIf="!cvFile()"
+          class="upload-zone border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all"
+          [class.border-primary]="isDragOver()"
+          [class.bg-primary/5]="isDragOver()"
+          [class.border-outline-variant/30]="!isDragOver()"
+          [class.hover:border-primary/50]="!isDragOver()"
+          [class.hover:bg-primary/3]="!isDragOver()"
+          (dragover)="onDragOver($event)"
+          (dragleave)="onDragLeave($event)"
+          (drop)="onDrop($event)"
+          (click)="fileInput.click()"
+        >
+          <input
+            #fileInput
+            type="file"
+            accept=".pdf,.doc,.docx"
+            class="hidden"
+            (change)="onFileSelected($event)"
+          />
+          <span class="material-symbols-outlined text-4xl text-primary/60 mb-3">cloud_upload</span>
+          <p class="text-body-md font-semibold text-on-surface">
+            {{ isDragOver() ? 'Drop your CV here' : 'Drag & drop your CV' }}
+          </p>
+          <p class="text-body-sm text-on-surface-variant mt-1">or click to browse files</p>
+          <p class="text-label-sm text-on-surface-variant/60 mt-3">PDF, DOC, DOCX • Max 5MB</p>
+        </div>
+
+        <!-- File Preview Card (when file selected) -->
+        <div *ngIf="cvFile()" class="flex items-center gap-4 p-4 bg-surface-container-low rounded-2xl ring-1 ring-primary/10">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-primary">description</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-body-md font-semibold text-on-surface truncate">{{ cvFileName() }}</p>
+            <p class="text-label-sm text-on-surface-variant">{{ getFileSizeFormatted() }}</p>
+          </div>
+          <button (click)="removeFile()" class="w-8 h-8 rounded-full bg-error/10 hover:bg-error/20 flex items-center justify-center transition-colors">
+            <span class="material-symbols-outlined text-error text-lg">close</span>
+          </button>
+        </div>
+
+        <!-- File Error -->
+        <p *ngIf="cvFileError()" class="text-error text-body-sm mt-2 flex items-center gap-1">
+          <span class="material-symbols-outlined text-sm">error</span>
+          {{ cvFileError() }}
+        </p>
+      </div>
+
+      <!-- Cover Letter -->
+      <div>
+        <label class="text-label-md font-semibold text-on-surface mb-2 block">
+          Cover Letter <span class="text-on-surface-variant font-normal">(optional)</span>
+        </label>
+        <textarea
+          [ngModel]="coverLetter()"
+          (ngModelChange)="coverLetter.set($event)"
+          rows="4"
+          placeholder="Tell the recruiter why you're a great fit for this role..."
+          class="w-full rounded-xl bg-surface-container-low dark:bg-surface-container-high px-4 py-3 text-on-surface text-body-md border border-outline-variant/20 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
+        ></textarea>
+      </div>
+
+      <!-- Or use existing resume -->
+      <div class="text-center">
+        <p class="text-label-sm text-on-surface-variant mb-2">Already uploaded a resume?</p>
+        <button
+          (click)="applyWithExistingResume()"
+          [disabled]="isApplying()"
+          class="text-primary font-semibold text-body-sm hover:text-primary/80 transition-colors underline underline-offset-2 disabled:opacity-50"
+        >
+          Apply with existing resume
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="sticky bottom-0 bg-surface-container-lowest dark:bg-surface-container rounded-b-[2rem] px-8 py-6 border-t border-outline-variant/10">
+      <div class="flex gap-3">
+        <button
+          (click)="closeApplyModal()"
+          class="flex-1 py-3.5 bg-surface-container text-on-surface-variant rounded-xl font-semibold hover:bg-surface-container-high transition-colors"
+        >
+          Cancel
+        </button>
+        <button
+          (click)="submitApplication()"
+          [disabled]="isApplying() || !cvFile()"
+          class="flex-1 py-3.5 ai-gradient-btn text-white rounded-xl font-bold shadow-lg shadow-indigo-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+        >
+          <span class="material-symbols-outlined text-lg" *ngIf="isApplying()">progress_activity</span>
+          {{ isApplying() ? 'Submitting...' : 'Submit Application' }}
+        </button>
+      </div>
+    </div>
   </div>
 </div>

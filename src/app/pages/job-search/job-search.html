@@ -1,5 +1,4 @@
 <main class="flex-grow container mx-auto px-6 py-8 animate-fade-in-up">
-  <!-- New Full Width Search Bar -->
   <div class="max-w-5xl mx-auto mb-10">
     <form [formGroup]="searchForm" (ngSubmit)="search()" class="flex flex-col md:flex-row items-center gap-4 bg-surface-container-lowest p-2 pl-6 rounded-2xl shadow-xl shadow-blue-900/5">
       <div class="flex-grow w-full flex items-center gap-4">
@@ -19,7 +18,6 @@
   </div>
 
   <div class="flex flex-col xl:flex-row gap-8">
-    <!-- Collapsible Filter Sidebar -->
     <aside class="w-full xl:w-72 space-y-6 flex-shrink-0">
       <form [formGroup]="searchForm" class="bg-surface-container-lowest rounded-3xl p-6 shadow-xl shadow-blue-900/5 sticky top-8">
         <div class="flex justify-between items-center mb-6">
@@ -29,8 +27,28 @@
           </button>
         </div>
 
-        <div class="space-y-8">
-          <!-- Employment Type -->
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-bold mb-2">Category</label>
+            <select formControlName="category" class="w-full rounded-xl border-none bg-surface-container-low text-sm py-2.5 px-3">
+              <option *ngFor="let opt of categoryOptions" [value]="opt.value">{{ opt.label }}</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold mb-2">Experience</label>
+            <select formControlName="careerLevel" class="w-full rounded-xl border-none bg-surface-container-low text-sm py-2.5 px-3">
+              <option *ngFor="let lvl of careerLevels" [value]="lvl.value">{{ lvl.label }}</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold mb-2">Workplace</label>
+            <select formControlName="workLocation" class="w-full rounded-xl border-none bg-surface-container-low text-sm py-2.5 px-3">
+              <option *ngFor="let wl of workLocations" [value]="wl.value">{{ wl.label }}</option>
+            </select>
+          </div>
+
           <div>
             <label class="block text-sm font-bold mb-3">Employment Type</label>
             <div class="space-y-3">
@@ -50,6 +68,21 @@
                 <input formControlName="jobType" value="Contract" type="radio" class="w-4 h-4 text-primary bg-surface-container border-outline focus:ring-primary focus:ring-2">
                 <span class="text-sm text-on-surface-variant group-hover:text-primary transition-colors">Contract</span>
               </label>
+              <label class="flex items-center gap-3 cursor-pointer group">
+                <input formControlName="jobType" value="Internship" type="radio" class="w-4 h-4 text-primary bg-surface-container border-outline focus:ring-primary focus:ring-2">
+                <span class="text-sm text-on-surface-variant group-hover:text-primary transition-colors">Internship</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold mb-1 text-on-surface-variant">Min salary</label>
+              <input formControlName="salaryMin" type="number" class="w-full rounded-xl border-none bg-surface-container-low text-sm py-2 px-3" placeholder="USD" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold mb-1 text-on-surface-variant">Max salary</label>
+              <input formControlName="salaryMax" type="number" class="w-full rounded-xl border-none bg-surface-container-low text-sm py-2 px-3" placeholder="USD" />
             </div>
           </div>
         </div>
@@ -60,54 +93,81 @@
       </form>
     </aside>
 
-    <!-- Main Feed -->
-    <section class="flex-grow md:w-3/4 space-y-6">
-      <div class="flex justify-between items-end mb-4">
+    <section class="flex-grow space-y-6">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3 mb-2">
         <div>
           <h1 class="text-2xl font-extrabold tracking-tight text-on-background">Explore Opportunities</h1>
           <p class="text-on-surface-variant text-sm mt-1" *ngIf="!isLoading() && hasSearched()">
-            Showing <strong class="text-on-surface">{{ jobs().length }}</strong> results matching your profile
+            Showing <strong class="text-on-surface">{{ jobs().length }}</strong> of
+            <strong class="text-on-surface">{{ totalCount() }}</strong> open roles
           </p>
-          <p class="text-on-surface-variant text-sm mt-1" *ngIf="isLoading()">
-            Searching...
-          </p>
+          <p class="text-on-surface-variant text-sm mt-1" *ngIf="isLoading()">Loading jobs...</p>
         </div>
+        <p class="text-xs text-on-surface-variant" *ngIf="!canApply()">
+          <a routerLink="/login" class="text-primary font-bold hover:underline">Sign in</a> as a candidate to apply
+        </p>
       </div>
 
-      <!-- Skeleton Loaders -->
       <div *ngIf="isLoading()" class="space-y-6">
         <div *ngFor="let i of [1,2,3,4]" class="bg-surface-container-lowest rounded-3xl p-6 shadow-xl shadow-blue-900/5 animate-pulse flex flex-col sm:flex-row gap-6">
           <div class="w-16 h-16 bg-surface-variant/50 rounded-2xl flex-shrink-0"></div>
           <div class="flex-1 space-y-3">
             <div class="h-6 bg-surface-variant/50 rounded w-1/3"></div>
             <div class="h-4 bg-surface-variant/50 rounded w-1/4"></div>
-            <div class="flex gap-2 pt-2">
-              <div class="h-6 w-16 bg-surface-variant/50 rounded-lg"></div>
-              <div class="h-6 w-20 bg-surface-variant/50 rounded-lg"></div>
-            </div>
             <div class="h-8 bg-surface-variant/50 rounded w-full mt-4"></div>
           </div>
         </div>
       </div>
 
-      <!-- Empty State -->
       <div *ngIf="!isLoading() && jobs().length === 0 && hasSearched()" class="bg-surface-container-lowest rounded-3xl p-12 text-center shadow-sm">
         <div class="w-20 h-20 bg-primary-container text-on-primary-container rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary/20">
           <span class="material-symbols-outlined text-[40px]">manage_search</span>
         </div>
         <h3 class="text-2xl font-bold text-on-surface mb-3">No opportunities found</h3>
         <p class="text-on-surface-variant max-w-md mx-auto mb-8 leading-relaxed">
-          We couldn't find any positions matching your specific criteria. Expanding your search radius or modifying keywords might help.
+          Try different keywords, broaden your location, or reset filters to browse the full catalog.
         </p>
-        <button (click)="clearFilters()" class="px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md shadow-primary/20 hover:opacity-90 transition-all">
+        <button type="button" (click)="clearFilters()" class="px-6 py-3 bg-primary text-white font-bold rounded-xl shadow-md shadow-primary/20 hover:opacity-90 transition-all">
           Reset Search
         </button>
       </div>
 
-      <!-- Job Cards Container -->
       <div *ngIf="!isLoading() && jobs().length > 0" class="space-y-6">
-        <app-job-card *ngFor="let job of jobs()" [job]="job"></app-job-card>
+        <app-job-card
+          *ngFor="let job of jobs()"
+          [job]="job"
+          [showApplyButton]="canApply()"
+          (apply)="onApply(job)"
+        ></app-job-card>
       </div>
+
+      <nav *ngIf="!isLoading() && totalPages() > 1" class="flex flex-wrap items-center justify-center gap-2 pt-4" aria-label="Job results pagination">
+        <button
+          type="button"
+          (click)="goToPage(pageNumber() - 1)"
+          [disabled]="pageNumber() <= 1"
+          class="px-4 py-2 rounded-xl border border-outline-variant/30 text-sm font-bold disabled:opacity-40 hover:bg-surface-container-low transition-colors"
+        >
+          Previous
+        </button>
+        <button
+          *ngFor="let p of pageNumbers()"
+          type="button"
+          (click)="goToPage(p)"
+          class="min-w-[2.5rem] px-3 py-2 rounded-xl text-sm font-bold transition-colors"
+          [ngClass]="pageNumber() === p ? 'bg-primary text-on-primary' : 'border border-outline-variant/30 hover:bg-surface-container-low'"
+        >
+          {{ p }}
+        </button>
+        <button
+          type="button"
+          (click)="goToPage(pageNumber() + 1)"
+          [disabled]="pageNumber() >= totalPages()"
+          class="px-4 py-2 rounded-xl border border-outline-variant/30 text-sm font-bold disabled:opacity-40 hover:bg-surface-container-low transition-colors"
+        >
+          Next
+        </button>
+      </nav>
     </section>
   </div>
 </main>

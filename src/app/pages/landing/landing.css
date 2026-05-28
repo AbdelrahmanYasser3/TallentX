@@ -1,0 +1,72 @@
+/* ===== Match Score Analysis Engine - Section Styles ===== */
+
+/* Animated gradient shimmer for the progress bar */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.progress-bar-gradient {
+  background: linear-gradient(90deg, #4648d4, #8127cf, #ddb7ff, #8127cf, #4648d4);
+  background-size: 300% 100%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* Pulsing glow behind the score ring */
+@keyframes score-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(129, 39, 207, 0.3); }
+  50% { box-shadow: 0 0 20px 6px rgba(129, 39, 207, 0.15); }
+}
+
+.score-ring {
+  animation: score-pulse 3s ease-in-out infinite;
+}
+
+/* Floating badge animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.floating-badge {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Subtle glow border for the outer card */
+.ai-section-card {
+  position: relative;
+}
+
+.ai-section-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(70, 72, 212, 0.4), rgba(129, 39, 207, 0.4), rgba(70, 72, 212, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Stat card hover lift */
+.stat-card {
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.3);
+}
+
+/* SVG circle animation */
+@keyframes draw-circle {
+  from { stroke-dashoffset: 176; }
+  to { stroke-dashoffset: 10; }
+}
+
+.score-circle-animated {
+  animation: draw-circle 1.5s ease-out forwards;
+}

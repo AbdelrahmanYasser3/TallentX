@@ -99,6 +99,10 @@ export interface JobModel {
   postedDate?: string;
   applicantsCount?: number;
   status?: string;
+  skillTags?: string[];
+  careerLevel?: JobLevel | string;
+  workLocation?: string;
+  category?: string;
 }
 
 export interface ApplicationModel {

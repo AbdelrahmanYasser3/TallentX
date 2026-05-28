@@ -1,9 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RouterModule, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { finalize } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AuthService } from '../../core/services/auth.service';
 import { ToastService } from '../../core/services/toast.service';
+import { RegistrationUserType, RegisterRequest } from '../../core/models/auth.models';
 
 @Component({
   selector: 'app-register',
@@ -12,16 +16,19 @@ import { ToastService } from '../../core/services/toast.service';
   templateUrl: './register.html',
   styleUrls: ['./register.css'],
 })
+
 export class Register {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
   private toast = inject(ToastService);
+  private destroyRef = inject(DestroyRef);
 
   registerForm: FormGroup;
   isLoading = false;
   showPassword = false;
-  userType = 'Candidate';
+  /** Derived from URL: /register/recruiter vs /register, /register/candidate */
+  registrationUserType: RegistrationUserType = 'Candidate';
   isRecruiterMode = false;
   errorMessage = '';
 
@@ -33,7 +40,7 @@ export class Register {
       phoneNumber: ['', Validators.required],
       dateOfBirth: ['', Validators.required],
       gender: ['Male', Validators.required],
-      userType: ['Candidate', Validators.required],
+      companyId: [''],
       inviteCode: [''],
       terms: [false, Validators.requiredTrue],
       password: [
@@ -46,29 +53,79 @@ export class Register {
       ]
     });
 
-    this.isRecruiterMode = this.router.url.includes('/register/recruiter');
-    if (this.isRecruiterMode) {
-      this.userType = 'Recruiter';
-      this.registerForm.patchValue({ userType: 'Recruiter' });
-      this.registerForm.get('inviteCode')?.setValidators([
+    this.syncModeFromUrl();
+
+    this.router.events.pipe(
+      filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe(() => this.syncModeFromUrl());
+  }
+
+  get f() { return this.registerForm.controls; }
+
+  private syncModeFromUrl(): void {
+    const path = this.router.url.split('?')[0].toLowerCase();
+    const recruiter = path.includes('/register/recruiter');
+    this.isRecruiterMode = recruiter;
+    this.registrationUserType = recruiter ? 'Recruiter' : 'Candidate';
+
+    const invite = this.registerForm.get('inviteCode');
+    if (recruiter) {
+      invite?.setValidators([
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(12),
         Validators.pattern('^[A-Za-z0-9]+$')
       ]);
-      this.registerForm.get('inviteCode')?.updateValueAndValidity();
+    } else {
+      invite?.clearValidators();
+      invite?.setValue('', { emitEvent: false });
     }
-  }
-
-  get f() { return this.registerForm.controls; }
-
-  setUserType(type: string) {
-    this.userType = type;
-    this.registerForm.patchValue({ userType: type });
+    invite?.updateValueAndValidity({ emitEvent: false });
   }
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
+  }
+
+  private toIsoDate(dateValue: string): string {
+    const d = new Date(dateValue);
+    if (Number.isNaN(d.getTime())) {
+      throw new Error('Invalid date');
+    }
+    return d.toISOString();
+  }
+
+  private buildRegisterRequest(): RegisterRequest {
+    const v = this.registerForm.getRawValue();
+    const dateOfBirth = this.toIsoDate(v.dateOfBirth as string);
+
+    const body: RegisterRequest = {
+      firstName: String(v.firstName ?? '').trim(),
+      lastName: String(v.lastName ?? '').trim(),
+      email: String(v.email ?? '').trim(),
+      password: v.password as string,
+      phoneNumber: String(v.phoneNumber ?? '').trim(),
+      gender: String(v.gender),
+      dateOfBirth,
+      userType: this.registrationUserType,
+    };
+
+    if (this.registrationUserType === 'Recruiter') {
+      const raw = String(v.companyId ?? '').trim();
+      if (raw !== '') {
+        const n = Number(raw);
+        if (Number.isFinite(n) && n > 0) {
+          body.companyId = n;
+        }
+      }
+      const code = String(v.inviteCode ?? '').trim();
+      if (code !== '') {
+        body.inviteCode = code;
+      }
+    }
+
+    return body;
   }
 
   onSubmit() {
@@ -77,40 +134,23 @@ export class Register {
       return;
     }
 
+    let payload: RegisterRequest;
+    try {
+      payload = this.buildRegisterRequest();
+    } catch {
+      this.registerForm.get('dateOfBirth')?.setErrors({ invalidDate: true });
+      this.registerForm.markAllAsTouched();
+      return;
+    }
+
     this.isLoading = true;
-    const data = {
-      ...this.registerForm.value,
-      firstName: String(this.registerForm.value.firstName ?? '').trim(),
-      lastName: String(this.registerForm.value.lastName ?? '').trim(),
-      email: String(this.registerForm.value.email ?? '').trim(),
-      phoneNumber: String(this.registerForm.value.phoneNumber ?? '').trim(),
-      gender: String(this.registerForm.value.gender),
-      dateOfBirth: this.registerForm.value.dateOfBirth ? new Date(this.registerForm.value.dateOfBirth).toISOString() : undefined,
-      inviteCode: String(this.registerForm.value.inviteCode ?? '').trim()
-    };
+    this.errorMessage = '';
 
-    const request$ = this.isRecruiterMode
-      ? this.authService.registerRecruiter({
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
-          password: this.registerForm.value.password,
-          phoneNumber: data.phoneNumber,
-          gender: data.gender,
-          dateOfBirth: data.dateOfBirth,
-          inviteCode: data.inviteCode
-        })
-      : this.authService.registerCandidate({
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
-          password: this.registerForm.value.password,
-          phoneNumber: data.phoneNumber,
-          gender: data.gender,
-          dateOfBirth: data.dateOfBirth
-        });
-
-    request$.subscribe({
+    this.authService.register(payload).pipe(
+      finalize(() => {
+        this.isLoading = false;
+      })
+    ).subscribe({
       next: (res) => {
         if (res) {
           this.toast.success(this.isRecruiterMode ? 'Recruiter account created successfully!' : 'Registration successful! Welcome to TallentX.');
@@ -118,17 +158,11 @@ export class Register {
         }
       },
       error: (err) => {
-        setTimeout(() => {
-          this.isLoading = false;
-        });
         const message = err?.error?.message || 'Registration failed. Please check your data and try again.';
-        setTimeout(() => {
-          this.errorMessage = message;
-        });
+        this.errorMessage = message;
         this.toast.error(message);
         console.error('Register error:', err);
       }
     });
   }
 }
-

@@ -6,6 +6,19 @@ import { InterviewService } from '../../core/services/interview.service';
 import { InterviewDto } from '../../core/models/interview.models';
 import { ToastService } from '../../core/services/toast.service';
 import { Router } from '@angular/router';
+import {
+  UpcomingInterviewItem,
+  buildStaticUpcomingInterviews,
+  InterviewType,
+} from '../../core/data/upcoming-interviews.seed';
+
+export type InterviewTimeBucket = 'today' | 'tomorrow' | 'thisWeek' | 'later';
+
+export interface InterviewTimeSection {
+  key: InterviewTimeBucket;
+  label: string;
+  items: UpcomingInterviewItem[];
+}
 
 @Component({
   selector: 'app-interview-scheduling-page',
@@ -14,28 +27,51 @@ import { Router } from '@angular/router';
   templateUrl: './interview-scheduling.html',
 })
 export class InterviewSchedulingPage implements OnInit {
-
   private interviewService = inject(InterviewService);
   private toast = inject(ToastService);
   private fb = inject(FormBuilder);
   private router = inject(Router);
 
-  readonly interviews = signal<InterviewDto[]>([]);
+  readonly interviews = signal<UpcomingInterviewItem[]>([]);
   readonly isLoading = signal<boolean>(true);
   readonly isSubmitting = signal<boolean>(false);
+  readonly expandedId = signal<number | null>(null);
 
-  readonly upcoming = computed(() =>
-    this.interviews()
-      .filter((item) => item.status === 'Scheduled')
-      .sort((a, b) =>
-        new Date(a.scheduledTime).getTime() - new Date(b.scheduledTime).getTime()
-      )
-  );
+  readonly timeSections: { key: InterviewTimeBucket; label: string }[] = [
+    { key: 'today', label: 'Today' },
+    { key: 'tomorrow', label: 'Tomorrow' },
+    { key: 'thisWeek', label: 'This Week' },
+    { key: 'later', label: 'Later' },
+  ];
 
-  /** Minimum datetime value for the scheduling input (now, in local time format) */
+  readonly upcoming = computed(() => {
+    const now = Date.now();
+    return this.interviews()
+      .filter((item) => item.status === 'Scheduled' && new Date(item.scheduledTime).getTime() > now - 60_000)
+      .sort((a, b) => new Date(a.scheduledTime).getTime() - new Date(b.scheduledTime).getTime());
+  });
+
+  readonly groupedSections = computed((): InterviewTimeSection[] => {
+    const buckets: Record<InterviewTimeBucket, UpcomingInterviewItem[]> = {
+      today: [],
+      tomorrow: [],
+      thisWeek: [],
+      later: [],
+    };
+
+    for (const item of this.upcoming()) {
+      buckets[this.getTimeBucket(item.scheduledTime)].push(item);
+    }
+
+    return this.timeSections
+      .map((section) => ({ ...section, items: buckets[section.key] }))
+      .filter((section) => section.items.length > 0);
+  });
+
+  readonly hasUpcoming = computed(() => this.upcoming().length > 0);
+
   get minDateTime(): string {
     const now = new Date();
-    // datetime-local requires "YYYY-MM-DDTHH:mm" format in local time
     const pad = (n: number) => n.toString().padStart(2, '0');
     return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
   }
@@ -45,7 +81,7 @@ export class InterviewSchedulingPage implements OnInit {
     scheduledTime: ['', Validators.required],
     durationMinutes: [45, [Validators.required, Validators.min(15)]],
     meetingLink: [''],
-    notes: ['']
+    notes: [''],
   });
 
   ngOnInit(): void {
@@ -55,15 +91,111 @@ export class InterviewSchedulingPage implements OnInit {
   loadInterviews(): void {
     this.isLoading.set(true);
 
-    this.interviewService.getByRecruiter()
+    this.interviewService
+      .getByRecruiter()
       .pipe(finalize(() => this.isLoading.set(false)))
       .subscribe({
-        next: (items) => this.interviews.set(items ?? []),
+        next: (items) => {
+          const apiItems = (items ?? []).map((item) => this.toDisplayItem(item));
+          this.interviews.set(this.mergeWithStatic(apiItems));
+        },
         error: () => {
-          this.interviews.set([]);
-          this.toast.error('Failed to load interviews.');
-        }
+          this.interviews.set(buildStaticUpcomingInterviews());
+        },
       });
+  }
+
+  private mergeWithStatic(apiItems: UpcomingInterviewItem[]): UpcomingInterviewItem[] {
+    const staticItems = buildStaticUpcomingInterviews();
+    const apiIds = new Set(apiItems.map((i) => i.id));
+    const merged = [...apiItems, ...staticItems.filter((s) => !apiIds.has(s.id))];
+    return merged.sort(
+      (a, b) => new Date(a.scheduledTime).getTime() - new Date(b.scheduledTime).getTime()
+    );
+  }
+
+  private toDisplayItem(item: InterviewDto): UpcomingInterviewItem {
+    const roomName = item.meetingLink?.split('/').pop();
+    return {
+      ...item,
+      companyName: 'Company',
+      interviewType: 'Online',
+      displayStatus: 'Scheduled',
+      roomName,
+      isStatic: false,
+    };
+  }
+
+  getTimeBucket(scheduledTime: string): InterviewTimeBucket {
+    const date = new Date(scheduledTime);
+    const now = new Date();
+    const startOf = (d: Date) => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    const dayMs = 86_400_000;
+
+    const interviewDay = startOf(date).getTime();
+    const today = startOf(now).getTime();
+    const tomorrow = today + dayMs;
+
+    if (interviewDay === today) return 'today';
+    if (interviewDay === tomorrow) return 'tomorrow';
+
+    const daysUntilSaturday = 6 - now.getDay();
+    const endOfWeek = today + daysUntilSaturday * dayMs;
+    if (interviewDay > tomorrow && interviewDay <= endOfWeek) return 'thisWeek';
+    return 'later';
+  }
+
+  typeBadgeClass(type: InterviewType): string {
+    const map: Record<InterviewType, string> = {
+      Online: 'bg-primary-container/20 text-primary',
+      'On-site': 'bg-secondary-container/20 text-secondary',
+      Technical: 'bg-tertiary-container/20 text-tertiary',
+      HR: 'bg-surface-container-high text-on-surface-variant',
+    };
+    return map[type] ?? 'bg-surface-container-high text-on-surface-variant';
+  }
+
+  statusBadgeClass(status: string): string {
+    switch (status) {
+      case 'Confirmed':
+        return 'bg-tertiary/15 text-tertiary';
+      case 'Pending':
+        return 'bg-secondary/15 text-secondary';
+      case 'Rescheduled':
+        return 'bg-primary/15 text-primary';
+      default:
+        return 'bg-primary-container/30 text-on-primary-container';
+    }
+  }
+
+  formatTime(scheduledTime: string): string {
+    return new Date(scheduledTime).toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+    });
+  }
+
+  formatDate(scheduledTime: string): string {
+    return new Date(scheduledTime).toLocaleDateString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+    });
+  }
+
+  viewInterview(item: UpcomingInterviewItem): void {
+    this.expandedId.update((current) => (current === item.id ? null : item.id));
+  }
+
+  rescheduleInterview(item: UpcomingInterviewItem): void {
+    if (item.isStatic) {
+      this.interviews.update((list) =>
+        list.map((row) =>
+          row.id === item.id ? { ...row, displayStatus: 'Rescheduled' as const } : row
+        )
+      );
+    }
+    this.toast.show(`Reschedule request noted for ${item.candidateName}.`, 'info');
   }
 
   schedule(): void {
@@ -73,12 +205,8 @@ export class InterviewSchedulingPage implements OnInit {
     }
 
     const value = this.interviewForm.getRawValue();
-
-    // 1. Parse the datetime-local value ("2026-04-30T16:00") into a Date object.
-    //    datetime-local gives a naive local-time string — no timezone indicator.
     const selectedDate = new Date(value.scheduledTime);
 
-    // 2. Frontend validation — reject past dates before making a network call.
     if (isNaN(selectedDate.getTime())) {
       this.toast.error('Please enter a valid date and time.');
       return;
@@ -88,70 +216,66 @@ export class InterviewSchedulingPage implements OnInit {
       return;
     }
 
-    // 3. Send the local time AS-IS — do NOT convert to UTC with toISOString().
-    //
-    //    WHY: toISOString() shifts the time to UTC (e.g., 16:00 UTC+2 → 14:00Z),
-    //    but the backend compares against DateTime.Now (server-local, not UtcNow).
-    //    If the server is in a different timezone, the shifted time can appear
-    //    to be in the past, causing "must be scheduled for a future date".
-    //
-    //    The datetime-local value ("2026-04-30T16:00") is already ISO 8601.
-    //    We append ":00" for seconds so ASP.NET Core parses it cleanly.
     const scheduledTimeLocal = value.scheduledTime.includes(':00', value.scheduledTime.length - 3)
       ? value.scheduledTime
       : value.scheduledTime + ':00';
-
-    console.log('[InterviewScheduling] User selected (local):', value.scheduledTime);
-    console.log('[InterviewScheduling] Sent to backend:', scheduledTimeLocal);
 
     const roomId = this.generateRoomId();
     const meetingLink = `https://meet.jit.si/TallentX-${roomId}`;
 
     this.isSubmitting.set(true);
 
-    this.interviewService.schedule({
-      jobApplicationId: Number(value.jobApplicationId),
-      scheduledTime: scheduledTimeLocal,
-      durationMinutes: Number(value.durationMinutes),
-      meetingLink: meetingLink,
-      notes: value.notes || undefined
-    })
+    this.interviewService
+      .schedule({
+        jobApplicationId: Number(value.jobApplicationId),
+        scheduledTime: scheduledTimeLocal,
+        durationMinutes: Number(value.durationMinutes),
+        meetingLink,
+        notes: value.notes || undefined,
+      })
       .pipe(finalize(() => this.isSubmitting.set(false)))
       .subscribe({
         next: (created) => {
-          this.interviews.update((current) => [created, ...current]);
-
+          const display = this.toDisplayItem(created);
+          display.roomName = meetingLink.split('/').pop();
+          display.companyName = 'Your Company';
+          display.interviewType = 'Online';
+          display.displayStatus = 'Scheduled';
+          this.interviews.update((current) => this.mergeWithStatic([display, ...current]));
           this.interviewForm.reset({
             jobApplicationId: 0,
             scheduledTime: '',
             durationMinutes: 45,
             meetingLink: '',
-            notes: ''
+            notes: '',
           });
-
           this.toast.success('Interview scheduled successfully.');
         },
         error: (err) => {
           const serverMsg = err?.error?.message || err?.error?.title || 'Failed to schedule interview.';
           this.toast.error(serverMsg);
-          console.error('[InterviewScheduling] Schedule failed:', err?.status, err?.error);
-        }
+        },
       });
   }
 
   cancelInterview(interviewId: number): void {
+    const target = this.interviews().find((i) => i.id === interviewId);
+    if (target?.isStatic) {
+      this.interviews.update((current) =>
+        current.map((item) => (item.id === interviewId ? { ...item, status: 'Cancelled' } : item))
+      );
+      this.toast.success('Interview cancelled.');
+      return;
+    }
+
     this.interviewService.cancel(interviewId).subscribe({
       next: () => {
         this.interviews.update((current) =>
-          current.map((item) =>
-            item.id === interviewId
-              ? { ...item, status: 'Cancelled' }
-              : item
-          )
+          current.map((item) => (item.id === interviewId ? { ...item, status: 'Cancelled' } : item))
         );
         this.toast.success('Interview cancelled.');
       },
-      error: () => this.toast.error('Failed to cancel interview.')
+      error: () => this.toast.error('Failed to cancel interview.'),
     });
   }
 
@@ -159,26 +283,19 @@ export class InterviewSchedulingPage implements OnInit {
     return 'room-' + Math.random().toString(36).substring(2, 10);
   }
 
-  startInterview() {
+  startInterview(): void {
     const roomId = this.generateRoomId();
-
-    const interviews = JSON.parse(localStorage.getItem('interviews') || '[]');
-
-    interviews.push({
-      roomId,
-      date: new Date(),
-      status: 'started'
-    });
-
-    localStorage.setItem('interviews', JSON.stringify(interviews));
-
     this.router.navigate(['/interview', roomId]);
   }
 
-  joinInterview(link: string) {
-    if (!link) return;
-
+  joinInterview(link: string | undefined): void {
+    if (!link) {
+      this.toast.show('No meeting link available for this interview.', 'info');
+      return;
+    }
     const roomId = link.split('/').pop();
-    this.router.navigate(['/interview', roomId]);
+    if (roomId) {
+      this.router.navigate(['/interview', roomId]);
+    }
   }
 }

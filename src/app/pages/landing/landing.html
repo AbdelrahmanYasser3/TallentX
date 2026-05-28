@@ -37,82 +37,177 @@
   </section>
 
   <!-- ✨ AI Highlight: Match Score Analysis -->
-  <section class="max-w-[1400px] mx-auto px-6 py-24">
-      <div class="bg-surface-container-lowest rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden border-2 border-transparent bg-clip-border">
-          <!-- AI Accent Border Magic -->
-          <div class="absolute inset-0 border-4 border-transparent rounded-[2.5rem] pointer-events-none" style="background: linear-gradient(135deg, var(--color-secondary), var(--color-tertiary)) border-box; -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0.15;">
-          </div>
-          
-          <div class="grid md:grid-cols-2 gap-16 items-center relative z-10">
-              <div class="space-y-8">
-                  <div class="inline-flex items-center gap-2 px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed rounded-full">
-                      <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
-                      <span class="text-xs font-black uppercase tracking-widest">Next-Gen Intelligence</span>
-                  </div>
-                  <h2 class="text-4xl md:text-5xl font-bold leading-tight">
-                      Match Score <br /><span class="text-tertiary">Analysis Engine</span>
-                  </h2>
-                  <p class="text-lg text-on-surface-variant">
-                      Our proprietary algorithm doesn't just look for keywords. It analyzes 40+ semantic data points to predict your success probability before you even hit apply.
-                  </p>
-                  
-                  <ul class="space-y-4">
-                      <li class="flex items-center gap-3">
-                          <span class="material-symbols-outlined text-tertiary">check_circle</span>
-                          <span class="font-medium text-on-surface">Skill Gap Identification</span>
-                      </li>
-                      <li class="flex items-center gap-3">
-                          <span class="material-symbols-outlined text-tertiary">check_circle</span>
-                          <span class="font-medium text-on-surface">Cultural Alignment Score</span>
-                      </li>
-                      <li class="flex items-center gap-3">
-                          <span class="material-symbols-outlined text-tertiary">check_circle</span>
-                          <span class="font-medium text-on-surface">Salary Benchmark Insight</span>
-                      </li>
-                  </ul>
-              </div>
+  <section class="w-full py-16 sm:py-20 lg:py-28">
+      <div class="ai-section-card max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-0">
+          <div class="bg-[#0c0e17] rounded-2xl sm:rounded-3xl lg:rounded-[2.5rem] px-6 py-12 sm:p-10 lg:p-16 xl:p-20 relative overflow-hidden">
 
-              <div class="relative">
-                  <!-- Asymmetric Bento-style Card UI -->
-                  <div class="bg-surface-container-low p-1 rounded-3xl overflow-hidden shadow-2xl">
-                      <div class="bg-surface-container-lowest p-8 rounded-3xl space-y-6">
-                          <div class="flex justify-between items-center">
-                              <div>
-                                  <p class="text-xs text-outline font-bold uppercase mb-1">Target Position</p>
-                                  <h3 class="text-xl font-bold">Principal Product Designer</h3>
+              <!-- Background decorative glows -->
+              <div class="absolute top-0 right-0 w-72 h-72 bg-[#8127cf]/10 rounded-full blur-[100px] pointer-events-none"></div>
+              <div class="absolute bottom-0 left-0 w-56 h-56 bg-[#4648d4]/10 rounded-full blur-[80px] pointer-events-none"></div>
+
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-center relative z-10">
+
+                  <!-- Left Content -->
+                  <div class="space-y-6 sm:space-y-8">
+                      <!-- Badge -->
+                      <div class="inline-flex items-center gap-2 px-4 py-2 bg-[#8127cf]/15 border border-[#8127cf]/30 rounded-full">
+                          <span class="material-symbols-outlined text-[#ddb7ff] text-base" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                          <span class="text-[11px] font-bold uppercase tracking-[0.15em] text-[#ddb7ff]">Next-Gen Intelligence</span>
+                      </div>
+
+                      <!-- Heading -->
+                      <h2 class="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-extrabold leading-[1.1] tracking-tight text-white">
+                          Match Score <br />
+                          <span class="bg-gradient-to-r from-[#c0c1ff] to-[#ddb7ff] bg-clip-text text-transparent">Analysis Engine</span>
+                      </h2>
+
+                      <!-- Description -->
+                      <p class="text-base sm:text-lg text-[#9ca3af] leading-relaxed max-w-lg">
+                          Our proprietary algorithm doesn't just look for keywords. It analyzes <span class="text-white font-semibold">40+ semantic data points</span> to predict your success probability before you even hit apply.
+                      </p>
+
+                      <!-- Feature List -->
+                      <ul class="space-y-3 sm:space-y-4 pt-2">
+                          <li class="flex items-center gap-3 group">
+                              <div class="w-8 h-8 rounded-lg bg-[#8127cf]/15 flex items-center justify-center shrink-0 group-hover:bg-[#8127cf]/25 transition-colors">
+                                  <span class="material-symbols-outlined text-[#ddb7ff] text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
                               </div>
-                              <div class="w-16 h-16 rounded-full border-4 border-tertiary/20 flex items-center justify-center relative">
-                                  <span class="text-tertiary font-black">94%</span>
-                                  <svg class="absolute inset-0 w-full h-full -rotate-90">
-                                      <circle class="text-tertiary" cx="32" cy="32" fill="none" r="28" stroke="currentColor" stroke-dasharray="175" stroke-dashoffset="10" stroke-width="4"></circle>
+                              <span class="font-medium text-[#e5e7eb] text-sm sm:text-base">Skill Gap Identification</span>
+                          </li>
+                          <li class="flex items-center gap-3 group">
+                              <div class="w-8 h-8 rounded-lg bg-[#8127cf]/15 flex items-center justify-center shrink-0 group-hover:bg-[#8127cf]/25 transition-colors">
+                                  <span class="material-symbols-outlined text-[#ddb7ff] text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                              </div>
+                              <span class="font-medium text-[#e5e7eb] text-sm sm:text-base">Cultural Alignment Score</span>
+                          </li>
+                          <li class="flex items-center gap-3 group">
+                              <div class="w-8 h-8 rounded-lg bg-[#8127cf]/15 flex items-center justify-center shrink-0 group-hover:bg-[#8127cf]/25 transition-colors">
+                                  <span class="material-symbols-outlined text-[#ddb7ff] text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                              </div>
+                              <span class="font-medium text-[#e5e7eb] text-sm sm:text-base">Salary Benchmark Insight</span>
+                          </li>
+                      </ul>
+                  </div>
+
+                  <!-- Right Card -->
+                  <div class="relative w-full max-w-md mx-auto lg:max-w-none">
+                      <div class="bg-[#151822] border border-[#2a2d3a] rounded-2xl sm:rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl shadow-black/30">
+
+                          <!-- Card Header: Position + Score Ring -->
+                          <div class="flex items-start justify-between gap-4">
+                              <div class="space-y-1 min-w-0">
+                                  <p class="text-[11px] text-[#6b7280] font-bold uppercase tracking-[0.12em]">Target Position</p>
+                                  <h3 class="text-lg sm:text-xl font-bold text-white truncate">Principal Product Designer</h3>
+                                  <p class="text-xs text-[#6b7280]">at Neural Labs • Remote</p>
+                              </div>
+                              <!-- Score Ring -->
+                              <div class="score-ring w-[72px] h-[72px] rounded-full flex items-center justify-center relative shrink-0">
+                                  <svg class="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 72 72">
+                                      <circle cx="36" cy="36" r="30" fill="none" stroke="#2a2d3a" stroke-width="5"></circle>
+                                      <circle class="score-circle-animated" cx="36" cy="36" r="30" fill="none" stroke="url(#scoreGradient)" stroke-width="5" stroke-linecap="round" stroke-dasharray="188" stroke-dashoffset="10"></circle>
+                                      <defs>
+                                          <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                              <stop offset="0%" stop-color="#4648d4" />
+                                              <stop offset="100%" stop-color="#ddb7ff" />
+                                          </linearGradient>
+                                      </defs>
                                   </svg>
+                                  <span class="text-lg font-black text-white z-10">94<span class="text-xs text-[#ddb7ff]">%</span></span>
                               </div>
                           </div>
 
-                          <div class="space-y-4">
-                              <div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
-                                  <div class="h-full bg-[linear-gradient(90deg,var(--color-secondary),var(--color-tertiary))] w-[94%]"></div>
+                          <!-- Progress Bar -->
+                          <div class="space-y-2">
+                              <div class="flex justify-between items-center text-[11px] font-semibold uppercase tracking-wider">
+                                  <span class="text-[#6b7280]">Match Progress</span>
+                                  <span class="text-[#ddb7ff]">Excellent</span>
                               </div>
-                              <div class="grid grid-cols-2 gap-4">
-                                  <div class="p-4 bg-surface-container-low rounded-2xl">
-                                      <p class="text-[10px] text-outline font-black uppercase mb-2">Market Demand</p>
-                                      <div class="text-xl font-bold text-success">High</div>
+                              <div class="h-2.5 w-full bg-[#1e2130] rounded-full overflow-hidden">
+                                  <div class="progress-bar-gradient h-full rounded-full w-[94%] transition-all duration-1000"></div>
+                              </div>
+                              <div class="flex justify-between text-[10px] text-[#4b5563]">
+                                  <span>0%</span>
+                                  <span>50%</span>
+                                  <span>100%</span>
+                              </div>
+                          </div>
+
+                          <!-- Stat Cards Grid -->
+                          <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                              <div class="stat-card p-4 sm:p-5 bg-[#1a1d2b] border border-[#2a2d3a] rounded-xl sm:rounded-2xl">
+                                  <div class="flex items-center gap-2 mb-3">
+                                      <span class="material-symbols-outlined text-emerald-400 text-lg" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                                      <p class="text-[10px] sm:text-[11px] text-[#6b7280] font-bold uppercase tracking-wide">Market Demand</p>
                                   </div>
-                                  <div class="p-4 bg-surface-container-low rounded-2xl">
-                                      <p class="text-[10px] text-outline font-black uppercase mb-2">Interview odds</p>
-                                      <div class="text-xl font-bold text-primary">Very Likely</div>
+                                  <div class="flex items-center gap-2">
+                                      <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+                                      <span class="text-base sm:text-lg font-bold text-emerald-400">High</span>
+                                  </div>
+                              </div>
+                              <div class="stat-card p-4 sm:p-5 bg-[#1a1d2b] border border-[#2a2d3a] rounded-xl sm:rounded-2xl">
+                                  <div class="flex items-center gap-2 mb-3">
+                                      <span class="material-symbols-outlined text-[#adc6ff] text-lg" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                                      <p class="text-[10px] sm:text-[11px] text-[#6b7280] font-bold uppercase tracking-wide">Interview Odds</p>
+                                  </div>
+                                  <div class="flex items-center gap-2">
+                                      <span class="w-2 h-2 rounded-full bg-[#adc6ff] shrink-0"></span>
+                                      <span class="text-base sm:text-lg font-bold text-[#adc6ff]">Very Likely</span>
                                   </div>
                               </div>
                           </div>
                       </div>
-                  </div>
-                  <!-- Decorative Floaties -->
-                  <div class="absolute -top-4 -right-4 w-12 h-12 bg-tertiary text-white rounded-full flex items-center justify-center shadow-lg">
-                      <span class="material-symbols-outlined">colors_spark</span>
+
+                      <!-- Floating Decorative Badge -->
+                      <div class="floating-badge absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-11 h-11 sm:w-14 sm:h-14 bg-gradient-to-br from-[#4648d4] to-[#8127cf] text-white rounded-2xl flex items-center justify-center shadow-lg shadow-[#8127cf]/30">
+                          <span class="material-symbols-outlined text-xl sm:text-2xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                      </div>
                   </div>
               </div>
           </div>
       </div>
+  </section>
+
+  <!-- Featured / Latest Jobs -->
+  <section class="max-w-[1200px] mx-auto px-6 py-20 border-t border-outline-variant/10">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4 mb-12">
+      <div>
+        <span class="text-[0.6875rem] uppercase tracking-widest font-bold text-tertiary mb-2 block">Open Roles</span>
+        <h2 class="text-3xl md:text-4xl font-headline font-black tracking-tight text-on-surface">Featured Opportunities</h2>
+        <p class="text-on-surface-variant mt-2 text-sm md:text-base">
+          Browse {{ totalPublicJobs() }} active listings — no account required to explore.
+        </p>
+      </div>
+      <a routerLink="/jobs" class="text-primary font-bold flex items-center gap-2 hover:translate-x-1 transition-transform shrink-0">
+        View all jobs
+        <span class="material-symbols-outlined text-xl">arrow_forward</span>
+      </a>
+    </div>
+
+  <div *ngIf="isLoadingJobs()" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div *ngFor="let i of [1,2,3,4,5,6]" class="bg-surface-container rounded-2xl p-6 border border-outline-variant/10 animate-pulse h-52"></div>
+  </div>
+
+  <div *ngIf="!isLoadingJobs()" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <a
+      *ngFor="let job of featuredJobs()"
+      [routerLink]="['/jobs', job.id]"
+      class="bg-surface-container rounded-2xl p-6 border border-outline-variant/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all cursor-pointer group block"
+    >
+      <div class="flex justify-between items-start mb-6">
+        <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
+          {{ companyInitials(job) }}
+        </div>
+        <span class="bg-tertiary/10 text-tertiary text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wide">
+          {{ job.workLocation === 'Remote' ? 'Remote' : (job.workLocation || 'New') }}
+        </span>
+      </div>
+      <h4 class="text-lg font-bold group-hover:text-primary transition-colors line-clamp-2">{{ job.title }}</h4>
+      <p class="text-on-surface-variant text-sm mb-5 mt-2 line-clamp-2">{{ jobMetaLine(job) }}</p>
+      <div class="flex flex-wrap gap-2" *ngIf="job.skillTags?.length">
+        <span *ngFor="let skill of job.skillTags | slice:0:3" class="px-2 py-1 bg-surface-variant/50 rounded text-[10px] font-medium">{{ skill }}</span>
+      </div>
+    </a>
+  </div>
   </section>
 
   <!-- 3-Step Process -->

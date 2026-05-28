@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { LoginRequest, RegisterCandidateRequest, RegisterCompanyRequest, RegisterRecruiterRequest, AuthResponse } from '../models/auth.models';
+import { LoginRequest, RegisterRequest, RegisterCompanyRequest, AuthResponse } from '../models/auth.models';
 import { CandidateService } from './candidate.service';
 
 @Injectable({ providedIn: 'root' })
@@ -50,7 +50,8 @@ export class AuthService {
     );
   }
 
-  registerCandidate(data: RegisterCandidateRequest): Observable<AuthResponse> {
+  /** Single registration endpoint; body must include userType per API contract. */
+  register(data: RegisterRequest): Observable<AuthResponse> {
     const url = `${this.base}/Auth/register`;
     return this.http.post<AuthResponse>(url, data).pipe(
       tap(response => this.persistSession(response))
@@ -59,13 +60,6 @@ export class AuthService {
 
   registerCompany(data: RegisterCompanyRequest): Observable<AuthResponse> {
     const url = `${this.base}/Auth/register/company`;
-    return this.http.post<AuthResponse>(url, data).pipe(
-      tap(response => this.persistSession(response))
-    );
-  }
-
-  registerRecruiter(data: RegisterRecruiterRequest): Observable<AuthResponse> {
-    const url = `${this.base}/Auth/register/recruiter`;
     return this.http.post<AuthResponse>(url, data).pipe(
       tap(response => this.persistSession(response))
     );

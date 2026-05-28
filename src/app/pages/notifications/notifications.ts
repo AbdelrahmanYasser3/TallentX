@@ -35,7 +35,7 @@ export class NotificationsPage implements OnInit, OnDestroy {
     this.loadNotifications();
     this.signalRService.startConnection();
 
-    this.signalRSub = this.signalRService.notifications$.subscribe((incoming) => {
+    this.signalRSub = this.signalRService.notification$.subscribe((incoming) => {
       if (!incoming) {
         return;
       }
@@ -47,7 +47,7 @@ export class NotificationsPage implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.signalRSub?.unsubscribe();
-    this.signalRService.stopConnection();
+    // Note: SignalR connection lifecycle is managed by the Navbar component
   }
 
   loadNotifications(): void {

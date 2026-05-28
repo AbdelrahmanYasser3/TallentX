@@ -11,10 +11,14 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
 
   const isAuthEndpoint = /\/Auth\/(login|register|forgot-password|reset-password|change-password)$/i.test(req.url);
+  const isPublicJobRead =
+    /\/JobPosting(\/public)?(\?|$)/i.test(req.url) ||
+    /\/JobPosting\/\d+$/i.test(req.url) ||
+    /\/JobPosting\/search\//i.test(req.url);
 
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
-      if (error.status === 401 && !isAuthEndpoint) {
+      if (error.status === 401 && !isAuthEndpoint && !isPublicJobRead) {
         console.error(`[ErrorInterceptor] Received HTTP 401 from backend for URL: ${req.url}`);
         // Token expired or invalid → clear session → redirect to login
         authService.clearSession();

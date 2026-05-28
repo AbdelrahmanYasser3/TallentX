@@ -1,13 +1,15 @@
 <header class="bg-surface dark:bg-inverse-surface sticky top-0 z-50 border-b border-surface-container-highest/20 transition-colors duration-300">
   <nav class="flex justify-between items-center w-full px-8 py-4 max-w-[1920px] mx-auto">
     <div class="flex items-center gap-8">
-      <a routerLink="/landing" class="text-2xl font-black tracking-tighter text-primary dark:text-primary-fixed-dim">IES</a>
+      <a routerLink="/landing" class="flex items-center shrink-0" aria-label="TallentX home">
+        <img src="/logo.jpeg" alt="TallentX" class="app-logo" width="140" height="40" />
+      </a>
       <div class="hidden md:flex gap-6 items-center">
         <a routerLink="/jobs" routerLinkActive="text-primary font-bold" class="text-on-surface-variant hover:text-primary transition-colors font-['Inter'] leading-tight tracking-tight">Jobs</a>
         <a routerLink="/companies" routerLinkActive="text-primary font-bold" class="text-on-surface-variant hover:text-primary transition-colors font-['Inter'] leading-tight tracking-tight">Companies</a>
       </div>
     </div>
-    
+
     <div class="flex items-center gap-4">
       <!-- Unauthenticated State -->
       <ng-container *ngIf="!authenticated">
@@ -28,9 +30,104 @@
         <button class="p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-150 ease-in-out text-on-surface-variant flex items-center justify-center">
           <span class="material-symbols-outlined">auto_awesome</span>
         </button>
-        <button class="p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-150 ease-in-out text-on-surface-variant flex items-center justify-center">
-          <span class="material-symbols-outlined">notifications</span>
-        </button>
+
+        <!-- ═══ Notification Bell ═══ -->
+        <div class="relative" id="notification-bell-container">
+          <button
+            (click)="toggleNotificationDropdown()"
+            class="p-2 hover:bg-surface-container-low dark:hover:bg-surface-container-high rounded-lg transition-all active:scale-95 duration-150 ease-in-out text-on-surface-variant flex items-center justify-center relative"
+            [class.text-primary]="notificationDropdownOpen()"
+            [class.bg-primary/5]="notificationDropdownOpen()"
+            id="notification-bell-btn"
+          >
+            <span class="material-symbols-outlined" [style.font-variation-settings]="notificationDropdownOpen() ? &quot;'FILL' 1&quot; : &quot;'FILL' 0&quot;">notifications</span>
+            <!-- Unread badge -->
+            <span
+              *ngIf="notificationService.unreadCount() > 0"
+              class="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] flex items-center justify-center text-[10px] font-bold text-white bg-error rounded-full px-1 shadow-sm animate-bounce-once"
+            >
+              {{ notificationService.unreadCount() > 99 ? '99+' : notificationService.unreadCount() }}
+            </span>
+          </button>
+
+          <!-- ═══ Notification Dropdown Panel ═══ -->
+          <div
+            *ngIf="notificationDropdownOpen()"
+            class="absolute right-0 top-full mt-2 w-[380px] max-h-[480px] bg-surface-container-lowest dark:bg-surface-container rounded-2xl shadow-xl ring-1 ring-outline-variant/10 overflow-hidden z-50 notification-dropdown-enter"
+          >
+            <!-- Dropdown Header -->
+            <div class="flex items-center justify-between px-5 py-4 border-b border-outline-variant/10">
+              <div>
+                <h3 class="text-title-md font-bold text-on-surface">Notifications</h3>
+                <p *ngIf="notificationService.unreadCount() > 0" class="text-label-sm text-on-surface-variant">
+                  {{ notificationService.unreadCount() }} unread
+                </p>
+              </div>
+              <button
+                *ngIf="notificationService.unreadCount() > 0"
+                (click)="markAllNotificationsRead(); $event.stopPropagation()"
+                class="text-label-sm text-primary font-semibold hover:text-primary/80 transition-colors"
+              >
+                Mark all read
+              </button>
+            </div>
+
+            <!-- Notification Items -->
+            <div class="overflow-y-auto max-h-[340px] divide-y divide-outline-variant/5">
+              <ng-container *ngIf="notificationService.recentNotifications().length > 0; else emptyNotifications">
+                <div
+                  *ngFor="let notification of notificationService.recentNotifications()"
+                  class="flex gap-3 px-5 py-4 hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/50 transition-colors cursor-pointer"
+                  [class.bg-primary/3]="!notification.isRead"
+                  (click)="markNotificationRead(notification.id)"
+                >
+                  <!-- Icon -->
+                  <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" [ngClass]="getNotificationIconColor(notification.type)">
+                    <span class="material-symbols-outlined text-lg">{{ getNotificationIcon(notification.type) }}</span>
+                  </div>
+                  <!-- Content -->
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-start justify-between gap-2">
+                      <h4 class="text-body-md font-semibold text-on-surface truncate" [class.font-bold]="!notification.isRead">
+                        {{ notification.title }}
+                      </h4>
+                      <span *ngIf="!notification.isRead" class="w-2 h-2 rounded-full bg-primary shrink-0 mt-1.5"></span>
+                    </div>
+                    <p class="text-body-sm text-on-surface-variant line-clamp-2 mt-0.5">{{ notification.message }}</p>
+                    <span class="text-label-sm text-on-surface-variant/60 mt-1 block">{{ getTimeAgo(notification.createdAt) }}</span>
+                  </div>
+                </div>
+              </ng-container>
+
+              <ng-template #emptyNotifications>
+                <div class="px-5 py-10 text-center">
+                  <span class="material-symbols-outlined text-4xl text-on-surface-variant/30 mb-2">notifications_off</span>
+                  <p class="text-body-md text-on-surface-variant/60">No notifications yet</p>
+                </div>
+              </ng-template>
+            </div>
+
+            <!-- Dropdown Footer -->
+            <div class="border-t border-outline-variant/10 px-5 py-3">
+              <a
+                routerLink="/notifications"
+                (click)="closeNotificationDropdown()"
+                class="text-label-md text-primary font-semibold hover:text-primary/80 transition-colors flex items-center justify-center gap-1"
+              >
+                View all notifications
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Backdrop (click to close) -->
+          <div
+            *ngIf="notificationDropdownOpen()"
+            class="fixed inset-0 z-40"
+            (click)="closeNotificationDropdown()"
+          ></div>
+        </div>
+
         <a [routerLink]="profileRoute" class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm cursor-pointer border border-primary/20">
           {{ userInitial }}
         </a>
@@ -50,10 +147,17 @@
     <div class="px-4 pt-2 pb-4 space-y-1 bg-surface-container/50 border-t border-outline-variant/20">
       <a routerLink="/jobs" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors">Jobs</a>
       <a routerLink="/companies" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors">Companies</a>
+      <ng-container *ngIf="authenticated">
+        <a routerLink="/notifications" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors flex items-center gap-2">
+          Notifications
+          <span *ngIf="notificationService.unreadCount() > 0" class="inline-flex items-center justify-center min-w-[20px] h-5 text-[11px] font-bold text-white bg-error rounded-full px-1">
+            {{ notificationService.unreadCount() }}
+          </span>
+        </a>
+      </ng-container>
       <ng-container *ngIf="!authenticated">
         <a routerLink="/login" class="block px-4 py-3 rounded-xl text-on-surface hover:bg-surface-container transition-colors">Login</a>
       </ng-container>
     </div>
   </div>
 </header>
-

@@ -1,3 +1,20 @@
+/** Unified body for POST /Auth/register (ASP.NET expects userType). */
+export type RegistrationUserType = 'Candidate' | 'Recruiter';
+
+export interface RegisterRequest {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  gender: string;
+  dateOfBirth: string;
+  userType: RegistrationUserType;
+  companyId?: number;
+  /** Sent only when provided (legacy invite-based recruiter signup). */
+  inviteCode?: string;
+}
+
 export interface RegisterCandidateRequest {
   firstName: string;
   lastName: string;

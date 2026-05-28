@@ -1,9 +1,10 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { JobListDto, CreateJobPostingDto } from '../models/job.models';
+import { PublicJobsService, PublicJobsFilters, PublicJobsPage } from './public-jobs.service';
 
 export interface SearchFilters {
   searchTerm?: string;
@@ -21,29 +22,20 @@ export interface SearchFilters {
 })
 export class JobService {
   private http = inject(HttpClient);
+  private publicJobs = inject(PublicJobsService);
   private apiUrl = `${environment.apiUrl}/JobPosting`;
 
+  /** Public catalog for landing + job search (anonymous-safe, seed fallback). */
+  getPublicJobs(filters: PublicJobsFilters = {}): Observable<PublicJobsPage> {
+    return this.publicJobs.getPublicJobs(filters);
+  }
+
   searchJobs(filters: SearchFilters): Observable<JobListDto[]> {
-    let params = new HttpParams();
-    
-    const term = filters.searchTerm || filters.keyword || '';
-    const page = filters.pageNumber || 1;
-    const size = filters.pageSize || 20;
-
-    params = params.set('pageNumber', page.toString());
-    params = params.set('pageSize', size.toString());
-
-    const url = term ? `${this.apiUrl}/search/${encodeURIComponent(term)}` : `${this.apiUrl}`;
-    
-    return this.http.get<JobListDto[]>(url, { params }).pipe(
-      catchError(() => of([]))
-    );
+    return this.getPublicJobs(filters).pipe(map((page) => page.items));
   }
 
   getJob(id: number | string): Observable<JobListDto | null> {
-    return this.http.get<JobListDto>(`${this.apiUrl}/${id}`).pipe(
-      catchError(() => of(null))
-    );
+    return this.publicJobs.getPublicJob(id);
   }
 
   getJobsBySkill(skillId: number, pageNumber = 1, pageSize = 20): Observable<JobListDto[]> {

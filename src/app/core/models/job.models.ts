@@ -15,6 +15,9 @@ export interface JobListDto {
   applicantsCount: number;
   createdAt: string;
   expiryDate?: string;
+  /** Full job details — populated by GET /api/JobPosting/{id} */
+  description?: string;
+  requirements?: string;
 }
 
 export interface CreateJobPostingDto {
@@ -44,4 +47,10 @@ export interface JobApplicationDto {
   matchScore?: number;
   recruiterRating?: number;
   rejectionReason?: string;
+}
+
+export interface ApplyWithCvDto {
+  jobPostId: number;
+  resumeId?: number;
+  coverLetter?: string;
 }

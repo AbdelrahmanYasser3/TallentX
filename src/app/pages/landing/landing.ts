@@ -1,50 +1,61 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { finalize } from 'rxjs';
+import { JobService } from '../../core/services/job';
 import { JobModel } from '../../core/models/candidate.models';
+import { jobListDtoToJobModel } from '../../core/utils/job.mapper';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
-  templateUrl: './landing.html'
+  templateUrl: './landing.html',
+  styleUrls: ['./landing.css'],
 })
-export class LandingPage {
+export class LandingPage implements OnInit {
   private router = inject(Router);
+  private jobService = inject(JobService);
 
   searchQuery = '';
   locationQuery = '';
 
-  featuredJobs: JobModel[] = [
-    {
-      id: 'f-1',
-      title: 'Senior Frontend Engineer',
-      companyName: 'Neural Labs',
-      location: 'Cairo, Egypt',
-      employmentType: 'Full-time',
-      salaryRange: '$2,500 - $3,500',
-      isSaved: false
-    },
-    {
-      id: 'f-2',
-      title: 'AI Product Manager',
-      companyName: 'TalentFlow',
-      location: 'Remote',
-      employmentType: 'Full-time',
-      salaryRange: '$3,000 - $4,200',
-      isSaved: false
-    },
-    {
-      id: 'f-3',
-      title: 'Backend .NET Developer',
-      companyName: 'Cloud Forge',
-      location: 'Alexandria, Egypt',
-      employmentType: 'Hybrid',
-      salaryRange: '$2,000 - $3,000',
-      isSaved: false
-    }
-  ];
+  readonly featuredJobs = signal<JobModel[]>([]);
+  readonly isLoadingJobs = signal(true);
+  readonly totalPublicJobs = signal(0);
+
+  ngOnInit(): void {
+    this.loadFeaturedJobs();
+  }
+
+  private loadFeaturedJobs(): void {
+    this.isLoadingJobs.set(true);
+    this.jobService
+      .getPublicJobs({ pageNumber: 1, pageSize: 6 })
+      .pipe(finalize(() => this.isLoadingJobs.set(false)))
+      .subscribe((page) => {
+        this.totalPublicJobs.set(page.totalCount);
+        this.featuredJobs.set(page.items.map(jobListDtoToJobModel));
+      });
+  }
+
+  companyInitials(job: JobModel): string {
+    const name = job.companyName || (typeof job.company === 'string' ? job.company : '') || 'TX';
+    return name
+      .split(/\s+/)
+      .map((w) => w[0])
+      .join('')
+      .slice(0, 2)
+      .toUpperCase();
+  }
+
+  jobMetaLine(job: JobModel): string {
+    const company = job.companyName || (typeof job.company === 'string' ? job.company : 'Company');
+    const loc = job.location || 'Remote';
+    const salary = job.salaryRange || '';
+    return [company, loc, salary].filter(Boolean).join(' • ');
+  }
 
   onSearch(): void {
     const q = this.searchQuery.trim();
@@ -53,8 +64,8 @@ export class LandingPage {
     this.router.navigate(['/jobs'], {
       queryParams: {
         ...(q ? { q } : {}),
-        ...(location ? { location } : {})
-      }
+        ...(location ? { location } : {}),
+      },
     });
   }
 }

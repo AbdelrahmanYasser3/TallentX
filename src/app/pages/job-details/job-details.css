@@ -1,0 +1,64 @@
+/* ═══ AI Gradient Button (stitch-ies pattern) ═══ */
+.ai-gradient-btn {
+  background: linear-gradient(135deg, var(--color-secondary, #4648d4) 0%, var(--color-tertiary, #8127cf) 100%);
+}
+
+.ai-gradient-btn:hover {
+  opacity: 0.92;
+}
+
+/* ═══ AI Gradient Border (for Match Score card) ═══ */
+.ai-gradient-border {
+  background: linear-gradient(135deg, var(--color-secondary, #4648d4) 0%, var(--color-tertiary, #8127cf) 100%);
+}
+
+/* ═══ Apply Modal Animation ═══ */
+.apply-modal-enter {
+  animation: modal-slide-up 300ms ease-out;
+}
+
+@keyframes modal-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ═══ Upload Zone ═══ */
+.upload-zone {
+  transition: all 200ms ease-out;
+}
+
+.upload-zone:hover {
+  transform: translateY(-1px);
+}
+
+/* ═══ Fade-in-up animation ═══ */
+.animate-fade-in-up {
+  animation: fade-in-up 400ms ease-out;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ═══ Spinning animation for submit button ═══ */
+.material-symbols-outlined[style*="progress_activity"] {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

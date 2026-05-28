@@ -1,0 +1,43 @@
+.app-logo {
+  height: 2.5rem;
+  width: auto;
+  max-width: 10.5rem;
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* ═══ Notification Dropdown Animation ═══ */
+.notification-dropdown-enter {
+  animation: dropdown-slide-in 200ms ease-out;
+}
+
+@keyframes dropdown-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ═══ Bounce-once for unread badge ═══ */
+.animate-bounce-once {
+  animation: badge-bounce 600ms ease-out;
+}
+
+@keyframes badge-bounce {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.3); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+/* ═══ Line Clamp Utility ═══ */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
