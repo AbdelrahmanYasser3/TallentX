@@ -15,10 +15,13 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
     /\/JobPosting(\/public)?(\?|$)/i.test(req.url) ||
     /\/JobPosting\/\d+$/i.test(req.url) ||
     /\/JobPosting\/search\//i.test(req.url);
+  const isPublicCompanyRead =
+    /\/Company(\?|$)/i.test(req.url) ||
+    /\/Company\/\d+$/i.test(req.url);
 
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
-      if (error.status === 401 && !isAuthEndpoint && !isPublicJobRead) {
+      if (error.status === 401 && !isAuthEndpoint && !isPublicJobRead && !isPublicCompanyRead) {
         console.error(`[ErrorInterceptor] Received HTTP 401 from backend for URL: ${req.url}`);
         // Token expired or invalid → clear session → redirect to login
         authService.clearSession();

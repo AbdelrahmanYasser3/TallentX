@@ -47,6 +47,13 @@ export interface JobApplicationDto {
   matchScore?: number;
   recruiterRating?: number;
   rejectionReason?: string;
+  candidateEmail?: string;
+  candidatePhone?: string;
+  skills?: string[];
+  experienceLevel?: string;
+  assessmentStatus?: string;
+  interviewStatus?: string;
+  avatarUrl?: string;
 }
 
 export interface ApplyWithCvDto {

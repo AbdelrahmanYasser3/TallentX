@@ -18,14 +18,14 @@
       </div>
     </section>
 
-    <div *ngIf="isLoading()" class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <div *ngIf="isLoading()" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       <div *ngFor="let i of [1,2,3]" class="rounded-2xl bg-surface-container p-5 shadow-sm animate-pulse">
         <div class="h-5 w-2/3 rounded bg-surface-variant"></div>
         <div class="mt-2 h-4 w-1/2 rounded bg-surface-variant"></div>
       </div>
     </div>
 
-    <section *ngIf="!isLoading()" class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    <section *ngIf="!isLoading()" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       <article *ngFor="let job of jobs()" class="rounded-2xl bg-surface-container-lowest p-5 shadow-sm ring-1 ring-outline-variant/20">
         <h2 class="text-title-md text-on-surface">{{ job.title }}</h2>
         <p class="mt-1 text-body-sm text-on-surface-variant">{{ job.company.name || 'Company' }}</p>

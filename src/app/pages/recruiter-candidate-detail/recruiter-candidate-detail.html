@@ -1,0 +1,314 @@
+<div class="min-h-screen bg-surface-container-lowest px-4 py-6 md:px-8 md:py-8">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+      <a
+        [routerLink]="backLink()"
+        class="inline-flex items-center gap-2 rounded-xl bg-surface-container px-4 py-2 text-label-md text-on-surface ring-1 ring-outline-variant/30 hover:bg-surface-container-high"
+      >
+        <i class="fa-solid fa-arrow-left"></i> Back to pipeline
+      </a>
+      <p *ngIf="detail() as d" class="text-label-md text-on-surface-variant">
+        Application for <span class="font-semibold text-on-surface">{{ d.jobTitle }}</span>
+      </p>
+    </div>
+
+    <div *ngIf="isLoading()" class="grid animate-pulse grid-cols-1 gap-6 lg:grid-cols-12">
+      <div class="h-[600px] rounded-3xl bg-surface-container lg:col-span-8"></div>
+      <div class="h-[600px] rounded-3xl bg-surface-container lg:col-span-4"></div>
+    </div>
+
+    <div *ngIf="!isLoading() && !detail()" class="rounded-3xl bg-surface-container-lowest p-12 text-center ring-1 ring-outline-variant/30">
+      <p class="text-title-md text-on-surface">Candidate not found</p>
+      <a routerLink="/recruiter/jobs" class="mt-4 inline-block text-primary">Return to jobs</a>
+    </div>
+
+    <div *ngIf="!isLoading() && detail() as person" class="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start">
+      <!-- MAIN CONTENT -->
+      <div class="space-y-6 lg:col-span-8">
+        <!-- Personal / Contact -->
+        <section class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm ring-1 ring-outline-variant/25 md:p-8">
+          <h2 class="text-title-lg font-semibold text-on-surface">Personal &amp; contact</h2>
+          <div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl bg-primary-container/15 p-4">
+              <p class="text-label-sm uppercase tracking-wide text-on-surface-variant">Full name</p>
+              <p class="mt-1 text-body-lg font-medium text-on-surface">{{ person.fullName }}</p>
+            </div>
+            <div class="rounded-2xl bg-secondary-container/20 p-4">
+              <p class="text-label-sm uppercase tracking-wide text-on-surface-variant">Current title</p>
+              <p class="mt-1 text-body-lg font-medium text-on-surface">{{ person.headline }}</p>
+            </div>
+            <div class="rounded-2xl bg-surface-container p-4 ring-1 ring-outline-variant/20">
+              <p class="text-label-sm text-on-surface-variant">Email</p>
+              <p class="mt-1 text-body-md text-on-surface">{{ person.email || '—' }}</p>
+            </div>
+            <div class="rounded-2xl bg-surface-container p-4 ring-1 ring-outline-variant/20">
+              <p class="text-label-sm text-on-surface-variant">Phone</p>
+              <p class="mt-1 text-body-md text-on-surface">{{ person.phone || '—' }}</p>
+            </div>
+            <div class="rounded-2xl bg-surface-container p-4 ring-1 ring-outline-variant/20 sm:col-span-2">
+              <p class="text-label-sm text-on-surface-variant">Location</p>
+              <p class="mt-1 text-body-md text-on-surface">{{ person.location || '—' }}</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm ring-1 ring-outline-variant/25 md:p-8">
+          <h2 class="text-title-lg font-semibold text-on-surface">Skills</h2>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span
+              *ngFor="let skill of person.skills"
+              class="rounded-full bg-primary-container/25 px-3 py-1.5 text-label-md font-medium text-on-primary-container"
+            >
+              {{ skill }}
+            </span>
+            <span *ngIf="!person.skills.length" class="text-body-md text-on-surface-variant">No skills listed.</span>
+          </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm ring-1 ring-outline-variant/25 md:p-8">
+          <h2 class="text-title-lg font-semibold text-on-surface">Experience</h2>
+          <div class="mt-5 space-y-4">
+            <article
+              *ngFor="let exp of person.experience"
+              class="rounded-2xl border border-outline-variant/20 bg-surface-container/40 p-5"
+            >
+              <div class="flex flex-wrap items-start justify-between gap-2">
+                <div>
+                  <h3 class="text-title-sm font-semibold text-on-surface">{{ exp.role }}</h3>
+                  <p class="text-body-md text-primary">{{ exp.company }}</p>
+                </div>
+                <span class="rounded-lg bg-tertiary-container/30 px-2.5 py-1 text-label-sm text-on-tertiary-container">
+                  {{ exp.duration }}
+                </span>
+              </div>
+              <p class="mt-3 text-body-md leading-relaxed text-on-surface-variant">{{ exp.description }}</p>
+            </article>
+            <p *ngIf="!person.experience.length" class="text-body-md text-on-surface-variant">No experience listed.</p>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm ring-1 ring-outline-variant/25 md:p-8">
+          <h2 class="text-title-lg font-semibold text-on-surface">Education</h2>
+          <div class="mt-5 space-y-3">
+            <div
+              *ngFor="let edu of person.education"
+              class="flex flex-wrap items-center justify-between gap-2 rounded-2xl bg-secondary-container/15 px-5 py-4"
+            >
+              <div>
+                <p class="text-title-sm font-medium text-on-surface">{{ edu.university }}</p>
+                <p class="text-body-md text-on-surface-variant">{{ edu.degree }}</p>
+              </div>
+              <span class="text-label-md text-on-secondary-container">{{ edu.years }}</span>
+            </div>
+            <p *ngIf="!person.education.length" class="text-body-md text-on-surface-variant">No education listed.</p>
+          </div>
+        </section>
+
+        <!-- CV / Resume -->
+        <section class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm ring-1 ring-outline-variant/25 md:p-8">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <h2 class="text-title-lg font-semibold text-on-surface">CV / Resume</h2>
+            <div class="flex gap-2">
+              <button
+                type="button"
+                class="rounded-xl bg-surface-container px-4 py-2 text-label-md text-on-surface ring-1 ring-outline-variant/30 hover:bg-surface-container-high"
+                (click)="cvExpanded.set(!cvExpanded())"
+              >
+                {{ cvExpanded() ? 'Collapse' : 'Expand' }}
+              </button>
+              <button
+                type="button"
+                class="rounded-xl bg-primary px-4 py-2 text-label-md text-on-primary hover:opacity-90"
+                (click)="viewCv()"
+              >
+                Open / Download
+              </button>
+            </div>
+          </div>
+          <div
+            *ngIf="cvExpanded()"
+            class="mt-5 max-h-[480px] overflow-y-auto rounded-2xl border border-outline-variant/25 bg-white p-6 shadow-inner"
+          >
+            <pre class="whitespace-pre-wrap font-sans text-body-sm leading-relaxed text-gray-800">{{ person.cvPreviewText }}</pre>
+          </div>
+        </section>
+
+        <!-- Evaluation / Status -->
+        <section class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm ring-1 ring-outline-variant/25 md:p-8">
+          <h2 class="text-title-lg font-semibold text-on-surface">Evaluation &amp; status</h2>
+          <div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div class="rounded-2xl bg-primary-container/20 p-4">
+              <p class="text-label-sm text-on-surface-variant">Application stage</p>
+              <p class="mt-2 text-title-sm font-semibold text-on-surface">{{ getStageConfig(person.stageId).label }}</p>
+            </div>
+            <div class="rounded-2xl bg-tertiary-container/20 p-4">
+              <p class="text-label-sm text-on-surface-variant">Assessment</p>
+              <p class="mt-2 text-title-sm font-semibold text-on-surface">{{ person.assessmentStatus }}</p>
+            </div>
+            <div class="rounded-2xl bg-secondary-container/20 p-4">
+              <p class="text-label-sm text-on-surface-variant">Interview</p>
+              <p class="mt-2 text-title-sm font-semibold text-on-surface">{{ person.interviewStatus }}</p>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <label class="text-label-md text-on-surface-variant">Move pipeline stage</label>
+            <select
+              class="mt-2 w-full rounded-xl bg-surface-container px-4 py-3 text-on-surface ring-1 ring-outline-variant/30"
+              [value]="person.stageId"
+              (change)="onStageChange($any($event.target).value)"
+            >
+              <option *ngFor="let stage of stages" [value]="stage.id">{{ stage.label }}</option>
+            </select>
+          </div>
+
+          <div class="mt-6">
+            <label class="text-label-md text-on-surface-variant">Recruiter notes</label>
+            <textarea
+              rows="4"
+              class="mt-2 w-full rounded-xl bg-surface-container px-4 py-3 text-on-surface ring-1 ring-outline-variant/30"
+              [value]="recruiterNotes()"
+              (input)="recruiterNotes.set($any($event.target).value)"
+              placeholder="Add private notes about this candidate…"
+            ></textarea>
+            <button
+              type="button"
+              class="mt-3 rounded-xl bg-surface-container-high px-4 py-2 text-label-md text-on-surface"
+              (click)="saveNotes()"
+            >
+              Save notes
+            </button>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT SIDEBAR -->
+      <aside class="lg:col-span-4">
+        <div class="sticky top-6 space-y-4 rounded-3xl bg-surface-container-lowest p-6 shadow-md ring-1 ring-outline-variant/25">
+          <div class="flex flex-col items-center text-center">
+            <div
+              class="flex h-24 w-24 items-center justify-center overflow-hidden rounded-full bg-primary-container text-2xl font-bold text-on-primary-container ring-4 ring-primary-container/30"
+            >
+              <img *ngIf="person.avatarUrl" [src]="person.avatarUrl" [alt]="person.fullName" class="h-full w-full object-cover" />
+              <span *ngIf="!person.avatarUrl">{{ initials(person.fullName) }}</span>
+            </div>
+            <h1 class="mt-4 text-headline-sm font-bold text-on-surface">{{ person.fullName }}</h1>
+            <p class="mt-1 text-body-md text-on-surface-variant">{{ person.headline }}</p>
+            <p class="mt-2 flex items-center justify-center gap-1 text-body-sm text-on-surface-variant">
+              <i class="fa-solid fa-location-dot text-primary"></i> {{ person.location }}
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="rounded-2xl bg-primary-container/25 p-3 text-center">
+              <p class="text-label-sm text-on-surface-variant">Status</p>
+              <p class="mt-1 text-label-lg font-bold text-on-primary-container">{{ getStageConfig(person.stageId).label }}</p>
+            </div>
+            <div class="rounded-2xl bg-success-container/25 p-3 text-center">
+              <p class="text-label-sm text-on-surface-variant">Match</p>
+              <p class="mt-1 text-label-lg font-bold text-on-success-container">{{ person.matchScore }}%</p>
+            </div>
+            <div class="col-span-2 rounded-2xl bg-secondary-container/20 p-3 text-center">
+              <p class="text-label-sm text-on-surface-variant">Profile score</p>
+              <p class="mt-1 text-title-md font-bold text-on-secondary-container">{{ person.profileScore }}%</p>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <button
+              type="button"
+              class="w-full rounded-xl bg-success-container/40 py-2.5 text-label-md font-semibold text-on-success-container hover:opacity-90"
+              (click)="shortlist()"
+            >
+              Shortlist
+            </button>
+            <button
+              type="button"
+              class="w-full rounded-xl bg-primary py-2.5 text-label-md font-semibold text-on-primary hover:opacity-90"
+              (click)="openSchedule()"
+            >
+              Schedule interview
+            </button>
+            <button
+              type="button"
+              class="w-full rounded-xl bg-tertiary-container/50 py-2.5 text-label-md font-semibold text-on-tertiary-container hover:opacity-90"
+              (click)="openAssign()"
+            >
+              Assign assessment
+            </button>
+            <button
+              type="button"
+              class="w-full rounded-xl bg-surface-container py-2.5 text-label-md font-medium text-on-surface ring-1 ring-outline-variant/30"
+              (click)="viewCv()"
+            >
+              View CV
+            </button>
+            <button
+              type="button"
+              class="w-full rounded-xl bg-error-container/35 py-2.5 text-label-md font-semibold text-on-error-container hover:opacity-90"
+              (click)="reject()"
+            >
+              Reject candidate
+            </button>
+          </div>
+
+          <div class="border-t border-outline-variant/20 pt-4">
+            <p class="mb-2 text-label-sm uppercase tracking-wide text-on-surface-variant">Quick actions</p>
+            <div class="flex flex-col gap-2">
+              <button type="button" class="flex items-center gap-2 rounded-xl px-3 py-2 text-body-sm text-on-surface hover:bg-surface-container" (click)="sendEmail()">
+                <i class="fa-regular fa-envelope text-primary w-5"></i> Send email
+              </button>
+              <button type="button" class="flex items-center gap-2 rounded-xl px-3 py-2 text-body-sm text-on-surface hover:bg-surface-container" (click)="downloadResume()">
+                <i class="fa-solid fa-download text-primary w-5"></i> Download resume
+              </button>
+              <button type="button" class="flex items-center gap-2 rounded-xl px-3 py-2 text-body-sm text-error hover:bg-error-container/15" (click)="reject()">
+                <i class="fa-solid fa-ban w-5"></i> Block / reject
+              </button>
+            </div>
+          </div>
+
+          <p class="text-center text-label-sm text-on-surface-variant">
+            Applied {{ person.appliedAt | date: 'mediumDate' }}
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- Schedule modal -->
+<div *ngIf="scheduleOpen()" class="fixed inset-0 z-50 flex items-center justify-center bg-scrim/50 p-4" (click)="closeSchedule()">
+  <div class="w-full max-w-md rounded-2xl bg-surface-container-lowest p-6 shadow-xl ring-1 ring-outline-variant/30" (click)="$event.stopPropagation()">
+    <h3 class="text-title-lg text-on-surface">Schedule interview</h3>
+    <form class="mt-4 space-y-3" [formGroup]="scheduleForm" (ngSubmit)="submitSchedule()">
+      <input type="datetime-local" formControlName="scheduledTime" class="w-full rounded-xl bg-surface-container px-3 py-2 ring-1 ring-outline-variant/30" />
+      <input type="number" formControlName="durationMinutes" class="w-full rounded-xl bg-surface-container px-3 py-2 ring-1 ring-outline-variant/30" />
+      <input type="url" formControlName="meetingLink" placeholder="Meeting link" class="w-full rounded-xl bg-surface-container px-3 py-2 ring-1 ring-outline-variant/30" />
+      <textarea formControlName="notes" rows="2" placeholder="Notes" class="w-full rounded-xl bg-surface-container px-3 py-2 ring-1 ring-outline-variant/30"></textarea>
+      <div class="flex justify-end gap-2">
+        <button type="button" (click)="closeSchedule()">Cancel</button>
+        <button type="submit" class="rounded-xl bg-primary px-4 py-2 text-on-primary">Schedule</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Assign modal -->
+<div *ngIf="assignOpen()" class="fixed inset-0 z-50 flex items-center justify-center bg-scrim/50 p-4" (click)="closeAssign()">
+  <div class="w-full max-w-md rounded-2xl bg-surface-container-lowest p-6 shadow-xl" (click)="$event.stopPropagation()">
+    <h3 class="text-title-lg text-on-surface">Assign assessment</h3>
+    <form class="mt-4" [formGroup]="assignForm" (ngSubmit)="submitAssign()">
+      <select formControlName="assessmentId" class="w-full rounded-xl bg-surface-container px-3 py-2 ring-1 ring-outline-variant/30">
+        <option [ngValue]="null" disabled>Select assessment</option>
+        <option *ngFor="let a of assessments()" [ngValue]="a.id">{{ a.title }}</option>
+      </select>
+      <div class="mt-4 flex justify-end gap-2">
+        <button type="button" (click)="closeAssign()">Cancel</button>
+        <button type="submit" class="rounded-xl bg-primary px-4 py-2 text-on-primary">Assign</button>
+      </div>
+    </form>
+  </div>
+</div>

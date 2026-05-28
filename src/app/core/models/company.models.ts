@@ -6,6 +6,25 @@ export interface CompanyDetailDto {
   website?: string;
   logoPath?: string;
   size?: string;
+  location?: string;
+  bannerPath?: string;
+  employeesCount?: number;
+  openJobsCount?: number;
+  linkedInUrl?: string;
+  twitterUrl?: string;
+  contactEmail?: string;
+}
+
+export interface PublicCompanyListItemDto {
+  id: number;
+  name: string;
+  logoPath?: string;
+  industry?: string;
+  location?: string;
+  description?: string;
+  openJobsCount: number;
+  size?: string;
+  employeesCount?: number;
 }
 
 export interface InviteCodeDto {

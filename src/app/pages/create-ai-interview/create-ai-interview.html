@@ -1,46 +1,129 @@
 ﻿<div class="min-h-screen bg-surface-container-lowest p-6 md:p-8">
-  <div class="mx-auto max-w-6xl space-y-7">
-    <header>
-      <p class="text-label-md uppercase tracking-widest text-tertiary">Interview Designer</p>
-      <h1 class="mt-1 text-display-sm text-on-surface">Create AI Interview</h1>
-      <p class="mt-2 text-body-md text-on-surface-variant">Generate structured interview flows based on the role and competencies.</p>
+  <div class="mx-auto max-w-7xl space-y-6">
+    <header class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+      <div>
+        <p class="text-label-md uppercase tracking-widest text-tertiary">Assessment Builder</p>
+        <h1 class="mt-1 text-display-sm text-on-surface">Create Assessment</h1>
+        <p class="mt-2 text-body-md text-on-surface-variant">Design and publish role-specific assessments for candidates.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <a routerLink="/recruiter/assessments" class="rounded-xl border border-outline-variant/40 bg-surface-container px-4 py-2 text-label-md text-on-surface">
+          All Assessments
+        </a>
+        <button type="button" (click)="previewMode.set(!previewMode())" class="rounded-xl border border-outline-variant/40 bg-surface-container px-4 py-2 text-label-md text-on-surface">
+          {{ previewMode() ? 'Edit Mode' : 'Preview' }}
+        </button>
+        <button type="button" (click)="saveDraft()" [disabled]="isSaving()" class="rounded-xl bg-secondary px-4 py-2 text-label-md text-on-secondary disabled:opacity-60">
+          {{ isSaving() ? 'Saving...' : 'Save Draft' }}
+        </button>
+        <button type="button" (click)="publish()" [disabled]="isPublishing()" class="rounded-xl bg-primary px-4 py-2 text-label-md text-on-primary disabled:opacity-60">
+          {{ isPublishing() ? 'Publishing...' : 'Publish Assessment' }}
+        </button>
+      </div>
     </header>
 
-    <section class="grid grid-cols-1 gap-6 lg:grid-cols-3">
-      <article class="rounded-3xl bg-surface-container-lowest p-6 shadow-sm ring-1 ring-outline-variant/30 lg:col-span-2">
-        <h2 class="text-title-lg text-on-surface">Interview Setup</h2>
-        <div class="mt-5 space-y-4">
-          <div>
-            <label class="text-label-sm text-on-surface">Target Role</label>
-            <input type="text" value="Senior Frontend Engineer" class="mt-1 w-full rounded-xl bg-surface-container px-4 py-2.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary" />
-          </div>
-          <div>
-            <label class="text-label-sm text-on-surface">Key Competencies</label>
-            <div class="mt-2 flex flex-wrap gap-2">
-              <span class="rounded-lg bg-primary-container px-3 py-1 text-label-sm text-on-primary-container">Angular</span>
-              <span class="rounded-lg bg-secondary-container px-3 py-1 text-label-sm text-on-secondary-container">System Design</span>
-              <span class="rounded-lg bg-tertiary-container px-3 py-1 text-label-sm text-on-tertiary-container">Communication</span>
+    <div *ngIf="isLoadingExisting()" class="rounded-2xl bg-surface-container p-6 text-center text-on-surface-variant">Loading assessment...</div>
+    <form *ngIf="!isLoadingExisting()" [formGroup]="builderForm" class="grid grid-cols-1 gap-6 xl:grid-cols-12">
+      <section class="space-y-4 xl:col-span-8">
+        <article class="rounded-3xl bg-surface-container-lowest p-5 ring-1 ring-outline-variant/25">
+          <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div class="md:col-span-2">
+              <label class="mb-1 block text-label-sm text-on-surface-variant">Assessment Title</label>
+              <input formControlName="title" type="text" class="w-full rounded-xl bg-surface-container px-3 py-2.5 text-on-surface ring-1 ring-outline-variant/30" />
+            </div>
+            <div class="md:col-span-2">
+              <label class="mb-1 block text-label-sm text-on-surface-variant">Description</label>
+              <textarea formControlName="description" rows="3" class="w-full rounded-xl bg-surface-container px-3 py-2.5 text-on-surface ring-1 ring-outline-variant/30"></textarea>
+            </div>
+            <div>
+              <label class="mb-1 block text-label-sm text-on-surface-variant">Job Posting ID</label>
+              <input formControlName="jobPostingId" type="number" class="w-full rounded-xl bg-surface-container px-3 py-2.5 text-on-surface ring-1 ring-outline-variant/30" />
+            </div>
+            <div>
+              <label class="mb-1 block text-label-sm text-on-surface-variant">Assessment Time (minutes)</label>
+              <input formControlName="timeLimitMinutes" type="number" class="w-full rounded-xl bg-surface-container px-3 py-2.5 text-on-surface ring-1 ring-outline-variant/30" />
             </div>
           </div>
-          <div>
-            <label class="text-label-sm text-on-surface">Difficulty</label>
-            <div class="mt-2 flex flex-wrap gap-2">
-              <button class="rounded-xl bg-surface-container px-3 py-2 text-label-sm text-on-surface">Junior</button>
-              <button class="rounded-xl bg-primary px-3 py-2 text-label-sm text-on-primary">Mid</button>
-              <button class="rounded-xl bg-surface-container px-3 py-2 text-label-sm text-on-surface">Senior</button>
-            </div>
-          </div>
-        </div>
-      </article>
+        </article>
 
-      <article class="rounded-3xl bg-surface-container p-6 shadow-sm">
-        <h2 class="text-title-md text-on-surface">AI Output Preview</h2>
-        <ul class="mt-4 space-y-3 text-body-sm text-on-surface-variant">
-          <li class="rounded-xl bg-surface-container-lowest p-3">5 behavioral questions</li>
-          <li class="rounded-xl bg-surface-container-lowest p-3">4 technical deep dives</li>
-          <li class="rounded-xl bg-surface-container-lowest p-3">1 live coding exercise</li>
-        </ul>
-      </article>
-    </section>
+        <div cdkDropList (cdkDropListDropped)="dropQuestion($event)" class="space-y-4">
+        <article *ngFor="let q of questions.controls; let i = index" [formGroup]="questionAt(i)" cdkDrag
+          class="rounded-3xl bg-surface-container-lowest p-5 shadow-sm ring-1 ring-outline-variant/25">
+          <div class="mb-3 flex items-center justify-between">
+            <span class="rounded-full bg-primary/10 px-2.5 py-1 text-label-sm font-semibold text-primary">Q{{ i + 1 }}</span>
+            <div class="flex items-center gap-2">
+              <span cdkDragHandle class="cursor-move rounded-lg border border-outline-variant/30 px-2 py-1 text-xs">Drag</span>
+              <button type="button" (click)="moveQuestion(i, -1)" class="rounded-lg border border-outline-variant/30 px-2 py-1 text-xs">↑</button>
+              <button type="button" (click)="moveQuestion(i, 1)" class="rounded-lg border border-outline-variant/30 px-2 py-1 text-xs">↓</button>
+              <button type="button" (click)="removeQuestion(i)" class="rounded-lg bg-error-container px-3 py-1 text-xs text-on-error-container">Delete</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-3 md:grid-cols-2">
+            <div>
+              <label class="mb-1 block text-label-sm text-on-surface-variant">Question Type</label>
+              <select formControlName="type" class="w-full rounded-xl bg-surface-container px-3 py-2.5 text-on-surface ring-1 ring-outline-variant/30">
+                <option *ngFor="let type of questionTypes" [value]="type">{{ type }}</option>
+              </select>
+            </div>
+            <div>
+              <label class="mb-1 block text-label-sm text-on-surface-variant">Points</label>
+              <input formControlName="points" type="number" class="w-full rounded-xl bg-surface-container px-3 py-2.5 text-on-surface ring-1 ring-outline-variant/30" />
+            </div>
+            <div class="md:col-span-2">
+              <label class="mb-1 block text-label-sm text-on-surface-variant">Question Title</label>
+              <input formControlName="title" type="text" class="w-full rounded-xl bg-surface-container px-3 py-2.5 text-on-surface ring-1 ring-outline-variant/30" />
+            </div>
+            <div class="md:col-span-2">
+              <label class="mb-1 block text-label-sm text-on-surface-variant">Question Description</label>
+              <textarea formControlName="description" rows="2" class="w-full rounded-xl bg-surface-container px-3 py-2.5 text-on-surface ring-1 ring-outline-variant/30"></textarea>
+            </div>
+
+            <div class="md:col-span-2" *ngIf="questionAt(i).get('type')?.value === 'Multiple Choice'">
+              <label class="mb-1 block text-label-sm text-on-surface-variant">Options (one per line)</label>
+              <textarea formControlName="options" rows="4" class="w-full rounded-xl bg-surface-container px-3 py-2.5 text-on-surface ring-1 ring-outline-variant/30"></textarea>
+            </div>
+
+            <div class="md:col-span-2" *ngIf="questionAt(i).get('type')?.value === 'Coding Challenge'">
+              <label class="mb-1 block text-label-sm text-on-surface-variant">Starter Code</label>
+              <textarea formControlName="starterCode" rows="4" class="w-full rounded-xl bg-surface-container px-3 py-2.5 font-mono text-on-surface ring-1 ring-outline-variant/30"></textarea>
+            </div>
+
+            <div>
+              <label class="mb-1 block text-label-sm text-on-surface-variant">Time Limit (minutes)</label>
+              <input formControlName="timeLimitMinutes" type="number" class="w-full rounded-xl bg-surface-container px-3 py-2.5 text-on-surface ring-1 ring-outline-variant/30" />
+            </div>
+            <label class="flex items-center gap-2 pt-6 text-label-sm text-on-surface-variant">
+              <input formControlName="required" type="checkbox" />
+              Required
+            </label>
+          </div>
+
+          <div class="mt-3 space-y-2">
+            <div class="flex gap-2">
+              <button type="button" (click)="generateRubric(i)" class="rounded-lg bg-tertiary px-3 py-1.5 text-label-sm text-on-tertiary">Generate Rubric</button>
+            </div>
+            <textarea formControlName="rubric" rows="2" placeholder="Rubric..." class="w-full rounded-xl bg-surface-container px-3 py-2 text-on-surface ring-1 ring-outline-variant/30"></textarea>
+          </div>
+        </article>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <button type="button" (click)="addQuestion()" class="rounded-xl border border-primary/40 bg-primary/10 px-4 py-2 text-label-md text-primary">+ Add Question</button>
+          <p class="text-body-sm text-on-surface-variant">Last autosave: {{ autoSaveAt() || 'Not yet' }}</p>
+        </div>
+      </section>
+
+      <aside class="space-y-4 xl:col-span-4">
+        <article class="rounded-3xl bg-surface-container p-5 ring-1 ring-outline-variant/20">
+          <h3 class="text-title-md text-on-surface">Assessment Summary</h3>
+          <div class="mt-3 space-y-2 text-body-sm text-on-surface-variant">
+            <p>Questions: <span class="font-semibold text-on-surface">{{ questions.length }}</span></p>
+            <p>Total Points: <span class="font-semibold text-on-surface">{{ totalPoints() }}</span></p>
+            <p>Mode: <span class="font-semibold text-on-surface">{{ previewMode() ? 'Preview' : 'Editing' }}</span></p>
+          </div>
+        </article>
+      </aside>
+    </form>
   </div>
 </div>

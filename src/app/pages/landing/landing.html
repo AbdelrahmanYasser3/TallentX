@@ -183,11 +183,11 @@
       </a>
     </div>
 
-  <div *ngIf="isLoadingJobs()" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div *ngIf="isLoadingJobs()" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     <div *ngFor="let i of [1,2,3,4,5,6]" class="bg-surface-container rounded-2xl p-6 border border-outline-variant/10 animate-pulse h-52"></div>
   </div>
 
-  <div *ngIf="!isLoadingJobs()" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div *ngIf="!isLoadingJobs()" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     <a
       *ngFor="let job of featuredJobs()"
       [routerLink]="['/jobs', job.id]"

@@ -1,0 +1,70 @@
+<div class="min-h-screen bg-surface-container-lowest p-6 md:p-8">
+  <div class="mx-auto max-w-7xl space-y-6">
+    <header class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="text-label-md uppercase tracking-widest text-tertiary">Assessment Studio</p>
+        <h1 class="mt-1 text-display-sm text-on-surface">Assessments</h1>
+        <p class="mt-1 text-body-md text-on-surface-variant">Manage draft and published assessments for your jobs.</p>
+      </div>
+      <button type="button" (click)="createNew()" class="rounded-xl bg-primary px-4 py-2 text-label-md text-on-primary">
+        + Create Assessment
+      </button>
+    </header>
+
+    <section class="rounded-3xl bg-surface-container-lowest p-5 ring-1 ring-outline-variant/25">
+      <div class="mb-5 flex items-center gap-2">
+        <button type="button" (click)="setTab('Draft')" class="rounded-xl px-4 py-2 text-label-md"
+          [ngClass]="activeTab() === 'Draft' ? 'bg-primary text-on-primary' : 'bg-surface-container text-on-surface-variant'">
+          Draft ({{ drafts().length }})
+        </button>
+        <button type="button" (click)="setTab('Published')" class="rounded-xl px-4 py-2 text-label-md"
+          [ngClass]="activeTab() === 'Published' ? 'bg-primary text-on-primary' : 'bg-surface-container text-on-surface-variant'">
+          Published ({{ published().length }})
+        </button>
+      </div>
+
+      <div *ngIf="isLoading()" class="space-y-3">
+        <div *ngFor="let i of [1,2,3]" class="h-24 animate-pulse rounded-2xl bg-surface-container"></div>
+      </div>
+
+      <div *ngIf="!isLoading() && activeTab() === 'Draft' && drafts().length === 0" class="rounded-2xl bg-surface-container p-8 text-center text-on-surface-variant">
+        No draft assessments yet.
+      </div>
+      <div *ngIf="!isLoading() && activeTab() === 'Published' && published().length === 0" class="rounded-2xl bg-surface-container p-8 text-center text-on-surface-variant">
+        No published assessments yet.
+      </div>
+
+      <div class="space-y-3" *ngIf="!isLoading() && activeTab() === 'Draft'">
+        <article *ngFor="let item of drafts()" class="rounded-2xl bg-surface-container p-4">
+          <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 class="text-title-md text-on-surface">{{ item.title }}</h3>
+              <p class="mt-1 text-body-sm text-on-surface-variant">{{ item.description || 'No description' }}</p>
+              <p class="mt-1 text-label-sm text-on-surface-variant">{{ item.questionCount }} questions · {{ item.timeLimitMinutes || 0 }} min</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" (click)="edit(item)" class="rounded-lg border border-outline-variant/30 px-3 py-1.5 text-label-sm text-on-surface">Edit</button>
+              <button type="button" (click)="publish(item)" class="rounded-lg bg-primary px-3 py-1.5 text-label-sm text-on-primary">Publish</button>
+              <button type="button" (click)="remove(item)" class="rounded-lg bg-error-container px-3 py-1.5 text-label-sm text-on-error-container">Delete</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="space-y-3" *ngIf="!isLoading() && activeTab() === 'Published'">
+        <article *ngFor="let item of published()" class="rounded-2xl bg-surface-container p-4">
+          <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h3 class="text-title-md text-on-surface">{{ item.title }}</h3>
+              <p class="mt-1 text-body-sm text-on-surface-variant">{{ item.description || 'No description' }}</p>
+              <p class="mt-1 text-label-sm text-on-surface-variant">{{ item.questionCount }} questions · {{ item.timeLimitMinutes || 0 }} min</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" (click)="edit(item)" class="rounded-lg border border-outline-variant/30 px-3 py-1.5 text-label-sm text-on-surface">View / Edit</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>

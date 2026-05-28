@@ -7,7 +7,7 @@
   </div>
 
   <!-- Loading State -->
-  <div *ngIf="isLoading" class="space-y-4">
+  <div *ngIf="isLoading" class="space-y-6">
     <div *ngFor="let i of [1,2,3]" class="animate-pulse flex p-4 rounded-xl bg-surface-container-low shadow-sm">
       <div class="w-12 h-12 bg-surface-container rounded-lg mr-4"></div>
       <div class="flex-1">
@@ -18,7 +18,7 @@
   </div>
 
   <!-- Recommended Jobs List -->
-  <div *ngIf="!isLoading && jobs.length > 0" class="space-y-4">
+  <div *ngIf="!isLoading && jobs.length > 0" class="space-y-6">
     <app-job-card *ngFor="let job of jobs" [job]="job" [showApplyButton]="false" class="block"></app-job-card>
   </div>
 

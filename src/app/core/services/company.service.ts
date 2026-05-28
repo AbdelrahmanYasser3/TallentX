@@ -1,13 +1,64 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { CompanyDetailDto, InviteCodeDto, GenerateInviteCodeRequest, GenerateInviteCodeResponse } from '../models/company.models';
+import {
+  CompanyDetailDto,
+  InviteCodeDto,
+  GenerateInviteCodeRequest,
+  GenerateInviteCodeResponse,
+  PublicCompanyListItemDto,
+} from '../models/company.models';
+import { getSeedCompanyById, PUBLIC_COMPANY_SEED } from '../data/public-companies.seed';
+import { PublicJobsService } from './public-jobs.service';
 
 @Injectable({ providedIn: 'root' })
 export class CompanyService {
   private http = inject(HttpClient);
+  private publicJobsService = inject(PublicJobsService);
   private base = `${environment.apiUrl}/Company`;
+
+  getPublicCompanies(): Observable<PublicCompanyListItemDto[]> {
+    return this.http.get<PublicCompanyListItemDto[] | CompanyDetailDto[] | { items: CompanyDetailDto[] }>(this.base).pipe(
+      map((response) => {
+        const list = Array.isArray(response)
+          ? response
+          : Array.isArray((response as any)?.items)
+            ? (response as any).items
+            : [];
+
+        if (!list.length) return PUBLIC_COMPANY_SEED;
+        return list.map((company: any) => ({
+          id: Number(company.id),
+          name: company.name,
+          logoPath: company.logoPath,
+          industry: company.industry,
+          location: company.location,
+          description: company.description,
+          openJobsCount: Number(company.openJobsCount ?? 0),
+          size: company.size,
+          employeesCount: company.employeesCount,
+        }));
+      }),
+      catchError(() => of(PUBLIC_COMPANY_SEED))
+    );
+  }
+
+  getPublicCompanyById(id: number): Observable<CompanyDetailDto | null> {
+    return this.getCompany(id).pipe(
+      catchError(() => of(getSeedCompanyById(id) ?? null))
+    );
+  }
+
+  getPublicCompanyJobs(companyId: number): Observable<any[]> {
+    return this.publicJobsService.getPublicJobs({ pageNumber: 1, pageSize: 200 }).pipe(
+      map((page) =>
+        (page.items || []).filter((j) => Number(j.company?.id) === companyId)
+      ),
+      catchError(() => of([]))
+    );
+  }
 
   getCompany(id: number): Observable<CompanyDetailDto> {
     return this.http.get<CompanyDetailDto>(`${this.base}/${id}`);
