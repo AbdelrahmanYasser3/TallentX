@@ -1,0 +1,166 @@
+<div class="p-8 max-w-screen-2xl mx-auto w-full">
+  <!-- Hero Header -->
+  <div class="mb-10">
+    <h1 class="text-4xl font-bold tracking-tight text-on-surface mb-2">Welcome back, {{ firstName }}</h1>
+    <p class="text-on-surface-variant max-w-2xl">
+      Your job search is gaining momentum. You have <span class="text-primary font-semibold">{{ suggestedJobs.length }} new matches</span> identified by IES AI since your last visit.
+    </p>
+  </div>
+
+  <section *ngIf="isLoading" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+    <div class="h-32 rounded-xl bg-surface-container animate-pulse"></div>
+    <div class="h-32 rounded-xl bg-surface-container animate-pulse"></div>
+    <div class="h-32 rounded-xl bg-surface-container animate-pulse"></div>
+  </section>
+
+  <section *ngIf="isError && !isLoading" class="mb-10 rounded-xl border border-error-container bg-error-container/40 p-6">
+    <h2 class="text-lg font-bold text-on-error-container mb-1">Could not load dashboard</h2>
+    <p class="text-sm text-on-error-container/80 mb-4">An unexpected error occurred while loading your profile and activity.</p>
+    <button
+      type="button"
+      (click)="onRetry()"
+      class="rounded-lg bg-primary px-4 py-2 text-sm font-bold text-on-primary hover:opacity-90"
+    >
+      Try again
+    </button>
+  </section>
+
+  <div *ngIf="!isLoading && !isError">
+    <!-- Bento Grid Metrics -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <!-- Total Applications -->
+      <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-transparent hover:border-primary/10 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="p-2 bg-primary/10 text-primary rounded-lg material-symbols-outlined" data-icon="send">send</span>
+            <span class="text-emerald-600 text-xs font-bold bg-emerald-50 px-2 py-1 rounded">+12%</span>
+          </div>
+          <h3 class="text-slate-500 text-sm font-medium">Total Applications</h3>
+          <p class="text-3xl font-bold mt-1">{{ dashboard?.activeApplicationsCount || 0 }}</p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-slate-50 opacity-0 group-hover:opacity-100 transition-opacity">
+          <a routerLink="/candidate/applications" class="text-primary text-xs font-semibold flex items-center gap-1">View details <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+        </div>
+      </div>
+
+      <!-- Upcoming Interviews -->
+      <div class="bg-secondary text-white p-6 rounded-xl shadow-lg shadow-secondary/20 flex flex-col justify-between transform hover:scale-[1.02] transition-transform">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="p-2 bg-white/20 text-white rounded-lg material-symbols-outlined" data-icon="video_call">video_call</span>
+            <span class="bg-white/20 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wider">Next: Tomorrow</span>
+          </div>
+          <h3 class="text-white/80 text-sm font-medium">Upcoming Interviews</h3>
+          <p class="text-3xl font-bold mt-1">{{ dashboard?.upcomingInterviewsCount || 0 }}</p>
+        </div>
+        <p class="text-white/70 text-xs mt-4">Check your interview schedule</p>
+      </div>
+
+      <!-- Saved Jobs -->
+      <div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-transparent hover:border-primary/10 transition-all flex flex-col justify-between group">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="p-2 bg-tertiary/10 text-tertiary rounded-lg material-symbols-outlined" data-icon="bookmark">bookmark</span>
+            <span class="text-slate-400 text-xs font-medium">Matches</span>
+          </div>
+          <h3 class="text-slate-500 text-sm font-medium">Saved Jobs</h3>
+          <p class="text-3xl font-bold mt-1">{{ dashboard?.savedJobsCount || 0 }}</p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-slate-50 opacity-0 group-hover:opacity-100 transition-opacity">
+          <a routerLink="/candidate/saved-jobs" class="text-tertiary text-xs font-semibold flex items-center gap-1">Browse saved <span class="material-symbols-outlined text-xs">arrow_forward</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Split: Recent Apps & AI Insights -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+      <!-- Table of Recent Applications -->
+      <div class="lg:col-span-2 bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+        <div class="px-6 py-5 border-b border-slate-50 flex justify-between items-center">
+          <h2 class="text-lg font-bold text-on-surface">Recent Applications</h2>
+          <a routerLink="/candidate/applications" class="text-primary text-sm font-semibold hover:underline">View All</a>
+        </div>
+        
+        <div *ngIf="applications.length > 0" class="overflow-x-auto flex-1">
+          <table class="w-full text-left">
+            <thead class="bg-slate-50/50 text-slate-500 text-[10px] uppercase tracking-widest font-bold">
+              <tr>
+                <th class="px-6 py-4">Job Title</th>
+                <th class="px-6 py-4">Company</th>
+                <th class="px-6 py-4">Date Applied</th>
+                <th class="px-6 py-4">Status</th>
+                <th class="px-6 py-4"></th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-50">
+              <tr *ngFor="let app of applications.slice(0, 5)" class="hover:bg-slate-50/50 transition-colors">
+                <td class="px-6 py-5">
+                  <p class="text-sm font-semibold text-on-surface">{{ app.jobTitle || 'Role' }}</p>
+                  <p class="text-xs text-slate-400">Application</p>
+                </td>
+                <td class="px-6 py-5">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded bg-slate-100 flex items-center justify-center text-xs font-bold text-slate-400">
+                      {{ (app.companyName || 'CO').substring(0, 2).toUpperCase() }}
+                    </div>
+                    <span class="text-sm font-medium">{{ app.companyName }}</span>
+                  </div>
+                </td>
+                <td class="px-6 py-5 text-sm text-slate-500">{{ app.appliedDate | date:'mediumDate' }}</td>
+                <td class="px-6 py-5">
+                  <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase" [ngClass]="getApplicationStatusClass(app.status)">
+                    {{ app.status || 'Pending' }}
+                  </span>
+                </td>
+                <td class="px-6 py-5 text-right">
+                  <span class="material-symbols-outlined text-slate-300 cursor-pointer hover:text-slate-600">more_vert</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="applications.length === 0" class="px-6 py-10 text-center flex-1 flex flex-col items-center justify-center">
+          <span class="material-symbols-outlined text-4xl text-slate-300 mb-3">inbox</span>
+          <p class="text-slate-500 text-sm">No applications yet.</p>
+        </div>
+      </div>
+
+      <!-- AI Sidebar -->
+      <div class="flex flex-col gap-6">
+        <div class="bg-gradient-to-br from-slate-900 to-indigo-950 p-6 rounded-xl shadow-xl relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
+          
+          <div class="relative z-10">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+              <span class="text-xs font-bold text-tertiary-fixed uppercase tracking-widest">AI MATCH SCORE</span>
+            </div>
+            
+            <ng-container *ngIf="topSuggestedJob; else noMatch">
+              <h4 class="text-white text-xl font-bold mb-2">{{ aiMatchScore }}% Match: {{ topSuggestedJob.company || 'Company' }}</h4>
+              <p class="text-slate-300 text-sm mb-6">Your profile aligns perfectly with the "{{ topSuggestedJob.title }}" role. IES AI recommends applying.</p>
+              <a routerLink="/jobs" class="inline-block text-center w-full bg-white text-slate-900 py-3 rounded-lg font-bold text-sm hover:bg-slate-100 transition-colors">Explore Match</a>
+            </ng-container>
+            
+            <ng-template #noMatch>
+              <h4 class="text-white text-xl font-bold mb-2">No active matches</h4>
+              <p class="text-slate-300 text-sm mb-6">Complete your profile to let our AI find the best roles for you.</p>
+              <a routerLink="/candidate/profile" class="inline-block text-center w-full bg-white text-slate-900 py-3 rounded-lg font-bold text-sm hover:bg-slate-100 transition-colors">Update Profile</a>
+            </ng-template>
+          </div>
+        </div>
+
+        <div class="bg-surface-container-low p-6 rounded-xl border-2 border-dashed border-slate-200 flex flex-col items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-slate-300 mb-3" *ngIf="!isUploadingCv">upload_file</span>
+          <span class="material-symbols-outlined text-4xl text-primary animate-bounce mb-3" *ngIf="isUploadingCv">cloud_upload</span>
+          <h4 class="text-sm font-bold mb-1">Update Resume</h4>
+          <p class="text-xs text-slate-500 mb-4">Keep your profile fresh for better AI matches.</p>
+          <label class="text-primary text-xs font-bold cursor-pointer hover:underline">
+            {{ isUploadingCv ? 'Uploading...' : 'Upload New PDF' }}
+            <input type="file" class="hidden" (change)="onFileUpload($event)" accept=".pdf,.doc,.docx" [disabled]="isUploadingCv" />
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IES | Neural Architect Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#171f33",
+                        "secondary": "#c0c1ff",
+                        "inverse-on-surface": "#283044",
+                        "on-tertiary": "#003824",
+                        "outline-variant": "#424754",
+                        "tertiary-fixed": "#6ffbbe",
+                        "surface-bright": "#31394d",
+                        "primary": "#adc6ff",
+                        "tertiary-container": "#00a572",
+                        "on-tertiary-container": "#00311f",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#2d3449",
+                        "surface-container-high": "#222a3d",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-background": "#dae2fd",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-container-low": "#131b2e",
+                        "on-secondary-container": "#b0b2ff",
+                        "surface-dim": "#0b1326",
+                        "surface-tint": "#adc6ff",
+                        "on-primary-fixed": "#001a42",
+                        "on-primary": "#002e6a",
+                        "inverse-surface": "#dae2fd",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "primary-container": "#4d8eff",
+                        "secondary-container": "#3131c0",
+                        "outline": "#8c909f",
+                        "error-container": "#93000a",
+                        "on-primary-container": "#00285d",
+                        "on-tertiary-fixed": "#002113",
+                        "surface": "#0b1326",
+                        "tertiary": "#4edea3",
+                        "on-secondary": "#1000a9",
+                        "primary-fixed": "#d8e2ff",
+                        "on-surface": "#dae2fd",
+                        "surface-container-lowest": "#060e20",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#e1e0ff",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "inverse-primary": "#005ac2",
+                        "on-secondary-fixed": "#07006c",
+                        "on-error-container": "#ffdad6",
+                        "background": "#0b1326",
+                        "surface-container-highest": "#2d3449"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0b1326;
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(19, 27, 46, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .neural-pulse {
+            box-shadow: 0 0 0 0 rgba(192, 193, 255, 0.4);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(192, 193, 255, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(192, 193, 255, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(192, 193, 255, 0); }
+        }
+    </style>
+</head>
+<body class="text-on-background selection:bg-primary/30 min-h-screen flex flex-col">
+<!-- Background Decoration -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+<div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px]"></div>
+<div class="absolute top-[20%] -right-[5%] w-[30%] h-[30%] bg-secondary/10 rounded-full blur-[100px]"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center px-4 py-12">
+<div class="w-full max-w-md">
+<!-- Branding Header -->
+<div class="flex flex-col items-center mb-10">
+<div class="w-20 h-20 mb-6 relative">
+<div class="absolute inset-0 bg-primary/20 rounded-2xl blur-xl"></div>
+<img alt="IES Neural Architect Logo" class="relative z-10 w-full h-full object-contain" data-alt="Stylized abstract geometric neural network icon with glowing blue and purple gradients representing artificial intelligence and connection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7tLdPciG9grAbCNyVK36jmlEK1CgDxrYxKLSHzVXPNpkQEwHCS4q_ofMPNvjwzxOpqmkyUpLeSuMtAJNyd-teYXY6g4vOR4VKUsQ6BRmW_cgFp2RUpgsre_BFTk-LHL5lrG-nFecj3k6MNZAEFyc29hA9aGDzuFzEZ3V-UrLZ6a0eqv7mXtkyZB-woTnDGPBGC-TSELPJJnuseOsgOnpy1JhRdWmaj68gieAmKw1hehGZ_Z4M5tiOrJmvxaucedd2X01beSDIy9w"/>
+</div>
+<h1 class="text-3xl font-black tracking-tighter bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
+                    Neural Architect
+                </h1>
+<p class="text-on-surface-variant body-md mt-2">Intelligent Employment System</p>
+</div>
+<!-- Login Card -->
+<div class="glass-panel bg-surface-container-low rounded-3xl p-8 shadow-2xl border border-white/5">
+<!-- Tab Switcher -->
+<div class="flex p-1 bg-surface-container-lowest rounded-xl mb-8">
+<button class="flex-1 py-2.5 text-sm font-semibold rounded-lg bg-surface-container-high text-primary transition-all duration-300">
+                        Candidate Login
+                    </button>
+<button class="flex-1 py-2.5 text-sm font-medium text-on-surface-variant hover:text-on-surface transition-all duration-300">
+                        Recruiter Login
+                    </button>
+</div>
+<!-- Form Fields -->
+<form class="space-y-5">
+<div class="space-y-2">
+<label class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant ml-1">Email address</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">alternate_email</span>
+<input class="w-full bg-surface-container-highest border-none rounded-xl py-3.5 pl-12 pr-4 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/50 transition-all outline-none" placeholder="name@neural.ai" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center ml-1">
+<label class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">Password</label>
+<a class="text-xs font-medium text-primary hover:text-secondary transition-colors" href="#">Forgot password?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full bg-surface-container-highest border-none rounded-xl py-3.5 pl-12 pr-4 text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/50 transition-all outline-none" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full mt-4 bg-gradient-to-br from-primary to-secondary text-on-primary-fixed font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300" type="submit">
+<span class="material-symbols-outlined text-[20px]" data-icon="auto_awesome">auto_awesome</span>
+                        Sign In with AI Insights
+                    </button>
+</form>
+<!-- Divider -->
+<div class="relative my-10">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant/30"></div>
+</div>
+<div class="relative flex justify-center text-xs">
+<span class="px-4 bg-surface-container-low text-on-surface-variant font-medium uppercase tracking-widest">Or continue with</span>
+</div>
+</div>
+<!-- Social Logins -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 py-3 px-4 bg-surface-container-highest rounded-xl hover:bg-surface-bright transition-colors duration-300 group">
+<svg class="w-5 h-5 group-hover:scale-110 transition-transform" viewbox="0 0 24 24">
+<path d="M12 5.04c1.73 0 3.28.6 4.5 1.76l3.37-3.37C17.8 1.44 15.13 0 12 0 7.31 0 3.25 2.69 1.18 6.63l3.96 3.07C6.08 6.94 8.82 5.04 12 5.04z" fill="#EA4335"></path>
+<path d="M22.82 12.3c0-.83-.07-1.63-.2-2.4H12v4.54h6.06c-.26 1.38-1.04 2.55-2.21 3.33l3.44 2.67c2.01-1.85 3.17-4.57 3.17-7.74z" fill="#FBBC05"></path>
+<path d="M1.18 6.63C.43 8.08 0 9.71 0 11.4c0 1.69.43 3.32 1.18 4.77l4.03-3.13c-.1-.52-.17-1.07-.17-1.64s.07-1.12.17-1.64L1.18 6.63z" fill="#4285F4"></path>
+<path d="M12 24c3.24 0 5.95-1.07 7.94-2.91l-3.44-2.67c-1.24.83-2.82 1.32-4.5 1.32-3.18 0-5.92-1.9-6.87-4.64l-4.03 3.13C3.25 21.31 7.31 24 12 24z" fill="#34A853"></path>
+</svg>
+<span class="text-sm font-semibold">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 py-3 px-4 bg-surface-container-highest rounded-xl hover:bg-surface-bright transition-colors duration-300 group">
+<svg class="w-5 h-5 text-[#0A66C2] group-hover:scale-110 transition-transform" fill="currentColor" viewbox="0 0 24 24">
+<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+</svg>
+<span class="text-sm font-semibold">LinkedIn</span>
+</button>
+</div>
+<!-- Secondary Action -->
+<div class="mt-10 text-center">
+<p class="text-sm text-on-surface-variant">
+                        Don't have an account? 
+                        <a class="text-primary font-bold hover:underline underline-offset-4 ml-1" href="#">Join the Network</a>
+</p>
+</div>
+</div>
+<!-- AI Badge -->
+<div class="mt-8 flex justify-center">
+<div class="flex items-center gap-3 px-4 py-2 bg-surface-container-high/40 rounded-full border border-white/5 backdrop-blur-md">
+<div class="w-2 h-2 rounded-full bg-tertiary neural-pulse"></div>
+<span class="text-[11px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Systems Nominal | AI Node 04 Active</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Segment -->
+<footer class="w-full py-12 bg-[#0b1326] flex flex-col items-center justify-center space-y-4">
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-4 px-6">
+<a class="font-['Inter'] text-xs text-[#222a3d] hover:text-[#c0c1ff] transition-all duration-300 opacity-100 hover:opacity-80" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs text-[#222a3d] hover:text-[#c0c1ff] transition-all duration-300 opacity-100 hover:opacity-80" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs text-[#222a3d] hover:text-[#c0c1ff] transition-all duration-300 opacity-100 hover:opacity-80" href="#">AI Ethics</a>
+<a class="font-['Inter'] text-xs text-[#222a3d] hover:text-[#c0c1ff] transition-all duration-300 opacity-100 hover:opacity-80" href="#">Contact</a>
+</div>
+<p class="font-['Inter'] text-xs text-[#222a3d] text-center px-6">
+            © 2024 Intelligent Employment System. Powered by Neural Architect AI.
+        </p>
+</footer>
+</body></html>

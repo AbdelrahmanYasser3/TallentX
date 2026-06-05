@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#0b1326",
+              "secondary-container": "#3131c0",
+              "tertiary": "#4edea3",
+              "inverse-surface": "#dae2fd",
+              "inverse-on-surface": "#283044",
+              "on-background": "#dae2fd",
+              "surface-bright": "#31394d",
+              "secondary-fixed-dim": "#c0c1ff",
+              "on-primary-container": "#00285d",
+              "outline": "#8c909f",
+              "on-primary": "#002e6a",
+              "on-primary-fixed-variant": "#004395",
+              "on-primary-fixed": "#001a42",
+              "primary-fixed": "#d8e2ff",
+              "on-error": "#690005",
+              "surface-variant": "#2d3449",
+              "outline-variant": "#424754",
+              "on-error-container": "#ffdad6",
+              "on-tertiary-fixed": "#002113",
+              "surface-container-lowest": "#060e20",
+              "tertiary-fixed-dim": "#4edea3",
+              "secondary": "#c0c1ff",
+              "on-tertiary": "#003824",
+              "inverse-primary": "#005ac2",
+              "error-container": "#93000a",
+              "on-surface-variant": "#c2c6d6",
+              "surface-dim": "#0b1326",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-secondary": "#1000a9",
+              "error": "#ffb4ab",
+              "surface-container-highest": "#2d3449",
+              "on-tertiary-container": "#00311f",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "surface-container-low": "#131b2e",
+              "tertiary-fixed": "#6ffbbe",
+              "secondary-fixed": "#e1e0ff",
+              "primary-fixed-dim": "#adc6ff",
+              "primary-container": "#4d8eff",
+              "on-secondary-fixed": "#07006c",
+              "on-secondary-container": "#b0b2ff",
+              "surface-tint": "#adc6ff",
+              "surface-container-high": "#222a3d",
+              "surface": "#0b1326",
+              "on-surface": "#dae2fd",
+              "tertiary-container": "#00a572",
+              "primary": "#adc6ff",
+              "surface-container": "#171f33"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0b1326;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(19, 27, 46, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="text-on-background">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0b1326]/80 backdrop-blur-xl flex justify-between items-center px-6 h-16 w-full shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-[#adc6ff] bg-clip-text bg-gradient-to-r from-[#adc6ff] to-[#c0c1ff]">IES</span>
+<div class="hidden md:flex items-center bg-surface-container px-4 py-2 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary/60 mr-2" style="font-size: 20px;">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-['Inter'] w-64 text-on-surface-variant" placeholder="Search interviews..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full text-[#c0c1ff]/60 hover:bg-[#222a3d] hover:text-[#adc6ff] transition-all duration-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full text-[#c0c1ff]/60 hover:bg-[#222a3d] hover:text-[#adc6ff] transition-all duration-300">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img alt="User profile avatar" data-alt="Close up portrait of a professional young man with short dark hair and glasses looking friendly and confident" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBt345OKE7AUV10ZuOVjPQSTQCOvs1gyEkN9N7YHRZh066G2tl-TLihZ4FvGcpj0vgfQIBDNVjaaA_hWLlpNBQNUtJYtQcozAGGsI2ySua31ctvpxGnTXdc-hrrvzVbPI-f2mDDl3S5gqaLY4SEiSuuGq36t8nFaBUG8YcUvx-2rpMDr-8anIOZ9ZiRZGDdIatQBhjC7bnSP94BLimvOvVlNVEWw14bKGvQtp16J_XK2eVCbBbkZN_VC2rqcbs0KCYE-0fZ0i239g"/>
+</div>
+</div>
+</nav>
+<div class="flex pt-16">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 z-40 bg-[#0b1326] flex flex-col h-full py-6 mt-16">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary">auto_awesome</span>
+</div>
+<div>
+<p class="text-sm font-bold text-[#adc6ff] font-['Inter']">Neural Architect</p>
+<p class="text-[10px] uppercase tracking-widest text-[#c0c1ff]/50 font-['Inter']">AI Recruitment Engine</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-2">
+<a class="flex items-center gap-3 text-[#c0c1ff]/50 px-4 py-3 hover:text-[#c0c1ff] hover:bg-[#222a3d] transition-colors rounded-r-lg font-['Inter'] text-[12px] uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 bg-[#adc6ff]/10 text-[#adc6ff] border-l-4 border-[#4edea3] px-4 py-3 rounded-r-lg font-['Inter'] text-[12px] uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">group</span>
+                    Candidates
+                </a>
+<a class="flex items-center gap-3 text-[#c0c1ff]/50 px-4 py-3 hover:text-[#c0c1ff] hover:bg-[#222a3d] transition-colors rounded-r-lg font-['Inter'] text-[12px] uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">work</span>
+                    Job Board
+                </a>
+<a class="flex items-center gap-3 text-[#c0c1ff]/50 px-4 py-3 hover:text-[#c0c1ff] hover:bg-[#222a3d] transition-colors rounded-r-lg font-['Inter'] text-[12px] uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+                    AI Analytics
+                </a>
+<a class="flex items-center gap-3 text-[#c0c1ff]/50 px-4 py-3 hover:text-[#c0c1ff] hover:bg-[#222a3d] transition-colors rounded-r-lg font-['Inter'] text-[12px] uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-3 bg-primary text-on-primary font-bold rounded-xl shadow-lg shadow-primary/20 scale-95 active:scale-90 transition-transform">
+                    New Opening
+                </button>
+</div>
+<div class="mt-8 px-2 space-y-1">
+<a class="flex items-center gap-3 text-[#c0c1ff]/50 px-4 py-3 hover:text-[#c0c1ff] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">help</span>
+                    Help
+                </a>
+<a class="flex items-center gap-3 text-[#c0c1ff]/50 px-4 py-3 hover:text-[#c0c1ff] transition-colors font-['Inter'] text-[10px] uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">logout</span>
+                    Logout
+                </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 flex-1 p-12 min-h-screen">
+<header class="mb-12">
+<h1 class="text-4xl font-extrabold text-on-surface tracking-tight mb-2">Upcoming Interviews</h1>
+<p class="text-on-surface-variant max-w-2xl">Your journey to the next milestone. Use our Neural AI Coach to simulate sessions before you go live.</p>
+</header>
+<!-- Timeline Structure -->
+<div class="relative max-w-5xl">
+<!-- Vertical Line -->
+<div class="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-surface-container-high to-transparent opacity-30"></div>
+<div class="space-y-16">
+<!-- Timeline Item 1 (Active/Upcoming) -->
+<div class="relative flex gap-12 group">
+<!-- Dot -->
+<div class="relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center shadow-[0_0_20px_rgba(173,198,255,0.2)]">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">event_upcoming</span>
+</div>
+<div class="absolute inset-0 w-12 h-12 rounded-full animate-ping bg-primary/20"></div>
+</div>
+<!-- Card -->
+<div class="flex-1">
+<div class="glass-panel border border-outline-variant/10 rounded-2xl p-8 hover:bg-surface-container-high transition-all duration-500 shadow-xl relative overflow-hidden group-hover:translate-x-1">
+<div class="absolute top-0 left-0 w-1 h-full bg-primary"></div>
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter bg-primary/10 text-primary border border-primary/20">Upcoming • Today</span>
+<span class="text-on-surface-variant text-sm font-medium">14:00 - 15:00 GMT</span>
+</div>
+<h2 class="text-2xl font-bold text-on-surface mb-1">Senior Neural Architect</h2>
+<div class="flex items-center gap-2 text-on-surface-variant mb-6">
+<span class="material-symbols-outlined text-sm">corporate_fare</span>
+<span class="text-sm">Synthetix Systems Ltd.</span>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="flex items-center gap-2 px-6 py-3 bg-primary text-on-primary font-bold rounded-xl hover:shadow-[0_0_20px_rgba(173,198,255,0.4)] transition-all">
+<span class="material-symbols-outlined text-xl">video_call</span>
+                                                Join Live Meeting
+                                            </button>
+<button class="flex items-center gap-2 px-6 py-3 bg-secondary-container text-on-secondary-container font-bold rounded-xl border border-secondary/20 hover:bg-secondary-container/80 transition-all">
+<span class="material-symbols-outlined text-xl">auto_awesome</span>
+                                                Join ✨ AI Session
+                                            </button>
+</div>
+</div>
+<div class="w-full md:w-48 p-4 rounded-xl bg-surface-container-lowest/50 border border-outline-variant/10">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-3 font-bold">Preparation Level</p>
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between">
+<div>
+<span class="text-xs font-semibold inline-block text-tertiary">Optimized</span>
+</div>
+<div class="text-right">
+<span class="text-xs font-semibold inline-block text-tertiary">92%</span>
+</div>
+</div>
+<div class="overflow-hidden h-1.5 mb-4 text-xs flex rounded bg-surface-container-highest">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-tertiary" style="width:92%"></div>
+</div>
+</div>
+<button class="w-full text-xs font-bold text-primary hover:underline flex items-center justify-center gap-1">
+                                            Recalculate <span class="material-symbols-outlined text-[14px]">refresh</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Item 2 (AI Focus) -->
+<div class="relative flex gap-12 group">
+<div class="relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border-2 border-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">schedule</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="glass-panel border border-outline-variant/10 rounded-2xl p-8 hover:bg-surface-container-high transition-all duration-500 shadow-xl relative group-hover:translate-x-1">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter bg-surface-container-highest text-on-surface-variant">In 2 Days</span>
+<span class="text-on-surface-variant text-sm font-medium">Nov 24, 2024 • 10:00 AM</span>
+</div>
+<h2 class="text-2xl font-bold text-on-surface mb-1">Lead Design Strategist</h2>
+<div class="flex items-center gap-2 text-on-surface-variant mb-6">
+<span class="material-symbols-outlined text-sm">corporate_fare</span>
+<span class="text-sm">Cognition Flow UI</span>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 bg-secondary/10 text-secondary border border-secondary/20 font-bold rounded-xl hover:bg-secondary/20 transition-all">
+<span class="material-symbols-outlined text-xl">psychology</span>
+                                            Prepare with AI Coach
+                                        </button>
+</div>
+<div class="flex gap-2">
+<div class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all cursor-pointer">
+<span class="material-symbols-outlined">edit</span>
+</div>
+<div class="w-10 h-10 rounded-full border border-outline-variant/20 flex items-center justify-center text-on-surface-variant hover:text-error hover:border-error transition-all cursor-pointer">
+<span class="material-symbols-outlined">close</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Item 3 (Completed) -->
+<div class="relative flex gap-12 opacity-60 grayscale group hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+<div class="relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border-2 border-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="glass-panel border border-outline-variant/10 rounded-2xl p-8 hover:bg-surface-container-high transition-all duration-500 shadow-xl group-hover:translate-x-1">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter bg-tertiary/10 text-tertiary">Completed</span>
+<span class="text-on-surface-variant text-sm font-medium">Nov 20, 2024</span>
+</div>
+<h2 class="text-2xl font-bold text-on-surface mb-1">Product Data Analyst</h2>
+<div class="flex items-center gap-2 text-on-surface-variant mb-6">
+<span class="material-symbols-outlined text-sm">corporate_fare</span>
+<span class="text-sm">Metric Minds AI</span>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 bg-surface-container-highest text-on-surface font-bold rounded-xl hover:bg-surface-bright transition-all">
+<span class="material-symbols-outlined text-xl">analytics</span>
+                                            View Performance Analysis
+                                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Timeline Item 4 (Rescheduled) -->
+<div class="relative flex gap-12 group">
+<div class="relative z-10">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border-2 border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">event_repeat</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="glass-panel border border-outline-variant/10 rounded-2xl p-8 hover:bg-surface-container-high transition-all duration-500 shadow-xl relative group-hover:translate-x-1">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter bg-outline-variant/20 text-on-surface-variant">Rescheduled</span>
+<span class="text-on-surface-variant text-sm font-medium">Was: Nov 18 • Now: TBD</span>
+</div>
+<h2 class="text-2xl font-bold text-on-surface mb-1">Human-Computer Interface Designer</h2>
+<div class="flex items-center gap-2 text-on-surface-variant mb-6">
+<span class="material-symbols-outlined text-sm">corporate_fare</span>
+<span class="text-sm">Neuralink Dynamics</span>
+</div>
+<p class="text-xs text-error mb-4 font-medium italic">Pending company confirmation for new time slot.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 mt-auto bg-[#0b1326] flex flex-col md:flex-row justify-between items-center px-12 gap-4 border-t border-outline-variant/10">
+<p class="font-['Inter'] text-[10px] uppercase tracking-widest text-[#c0c1ff]/40">© 2024 Intelligent Employment System. The Neural Architect.</p>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-[10px] uppercase tracking-widest text-[#c0c1ff]/40 hover:text-[#adc6ff] transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-[10px] uppercase tracking-widest text-[#c0c1ff]/40 hover:text-[#adc6ff] transition-colors" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-[10px] uppercase tracking-widest text-[#c0c1ff]/40 hover:text-[#adc6ff] transition-colors" href="#">AI Ethics</a>
+<a class="font-['Inter'] text-[10px] uppercase tracking-widest text-[#c0c1ff]/40 hover:text-[#adc6ff] transition-colors" href="#">Contact</a>
+</div>
+</footer>
+</body></html>

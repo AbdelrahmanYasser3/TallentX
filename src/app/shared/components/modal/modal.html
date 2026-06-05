@@ -1,0 +1,41 @@
+@if (isOpen()) {
+  <!-- Overlay Backdrop -->
+  <div 
+    class="fixed inset-0 z-[1040] bg-black/40 backdrop-blur-[4px] flex items-center justify-center p-4 sm:p-6 animate-fade-in"
+    (click)="onBackdropClick($event)"
+    role="dialog" 
+    aria-modal="true"
+  >
+    <!-- Modal Content -->
+    <div 
+      class="glass-heavy w-full shadow-2xl rounded-2xl flex flex-col max-h-[90vh] animate-fade-in-up"
+      [class]="modalSizeClasses"
+      (click)="$event.stopPropagation()"
+    >
+      <!-- Header -->
+      <div class="flex items-center justify-between px-6 py-4 relative">
+        <div class="absolute inset-x-0 bottom-0 h-px bg-surface-container-high"></div>
+        <h2 class="text-title-lg text-on-surface m-0">{{ title() }}</h2>
+        <button 
+          type="button" 
+          class="w-8 h-8 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"
+          (click)="close()"
+          aria-label="Close modal"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="px-6 py-6 overflow-y-auto">
+        <ng-content></ng-content>
+      </div>
+      
+      <!-- Footer slot if provided -->
+      <div class="px-6 py-4 bg-surface-container-low/50 rounded-b-2xl relative">
+        <div class="absolute inset-x-0 top-0 h-px bg-surface-container-high"></div>
+        <ng-content select="[modal-footer]"></ng-content>
+      </div>
+    </div>
+  </div>
+}

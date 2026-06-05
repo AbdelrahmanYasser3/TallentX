@@ -1,0 +1,41 @@
+﻿<div class="bg-surface-container-lowest rounded-2xl shadow-sm p-6">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-title-lg font-bold text-on-surface flex items-center gap-2">
+      <i class="fa-solid fa-sparkles text-tertiary"></i> Recommended for You
+    </h2>
+    <a routerLink="/jobs" class="text-label-lg font-bold text-primary hover:text-primary/80 transition-colors">See all</a>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="space-y-4">
+    <div *ngFor="let i of [1,2,3]" class="animate-pulse flex p-4 rounded-xl bg-surface-container-low shadow-sm">
+      <div class="w-12 h-12 bg-surface-container rounded-lg mr-4"></div>
+      <div class="flex-1">
+        <div class="h-5 bg-surface-container rounded w-1/3 mb-2"></div>
+        <div class="h-4 bg-surface-container rounded w-1/4"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recommended Jobs List -->
+  <div *ngIf="!isLoading && jobs.length > 0" class="space-y-4">
+    <app-job-card *ngFor="let job of jobs" [job]="job" [showApplyButton]="false" class="block"></app-job-card>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="!isLoading && isError" class="p-6 text-center rounded-xl bg-error-container/20 shadow-sm">
+    <p class="text-body-md text-on-surface-variant mb-4">Couldn't load recommendations.</p>
+    <button (click)="onRetry()" class="btn btn-outline border-error text-error hover:bg-error/10 px-4 py-2 rounded-lg font-medium transition-colors">
+      <i class="fa-solid fa-rotate-right mr-2"></i> Retry
+    </button>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!isLoading && !isError && jobs.length === 0" class="text-center py-10 bg-surface-container/30 rounded-xl shadow-sm">
+    <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-surface-variant text-on-surface-variant mb-4">
+      <i class="fa-regular fa-folder-open text-xl"></i>
+    </div>
+    <h3 class="text-title-md font-medium text-on-surface mb-1">No recommendations yet</h3>
+    <p class="text-body-md text-on-surface-variant max-w-sm mx-auto">Complete your profile to get personalized job matches powered by AI.</p>
+  </div>
+</div>

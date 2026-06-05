@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#e1e0ff",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-dim": "#d8dadc",
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed": "#2c0051",
+              "on-background": "#191c1e",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#fffbff",
+              "tertiary": "#8127cf",
+              "surface-container-high": "#e6e8ea",
+              "inverse-on-surface": "#eff1f3",
+              "secondary-fixed-dim": "#c0c1ff",
+              "on-primary-container": "#fefcff",
+              "outline": "#727785",
+              "background": "#f7f9fb",
+              "surface-variant": "#e0e3e5",
+              "surface-tint": "#005ac2",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-primary-fixed-variant": "#004395",
+              "secondary-container": "#6063ee",
+              "primary": "#0058be",
+              "outline-variant": "#c2c6d6",
+              "on-surface-variant": "#424754",
+              "surface-bright": "#f7f9fb",
+              "on-tertiary-fixed-variant": "#6900b3",
+              "on-tertiary-container": "#fffbff",
+              "on-primary-fixed": "#001a42",
+              "surface": "#f7f9fb",
+              "primary-fixed": "#d8e2ff",
+              "tertiary-fixed-dim": "#ddb7ff",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#adc6ff",
+              "on-surface": "#191c1e",
+              "surface-container": "#eceef0",
+              "primary-fixed-dim": "#adc6ff",
+              "tertiary-container": "#9c48ea",
+              "primary-container": "#2170e4",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "tertiary-fixed": "#f0dbff",
+              "surface-container-highest": "#e0e3e5",
+              "on-secondary-fixed": "#07006c",
+              "inverse-surface": "#2d3133",
+              "secondary": "#4648d4"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-sidebar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="w-full top-0 z-50 flex justify-between items-center px-8 py-4 w-full bg-[#f2f4f6] dark:bg-slate-800">
+<div class="text-2xl font-black text-[#0058be] dark:text-blue-500 tracking-tighter">IES</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-['Inter'] font-semibold tracking-tight text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Jobs</a>
+<a class="font-['Inter'] font-semibold tracking-tight text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Candidates</a>
+<a class="font-['Inter'] font-semibold tracking-tight text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Reports</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">settings</span>
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="Professional corporate headshot of a recruitment manager in a bright modern office setting with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAZkQHEybRJPWFUIV3ngKBtEfBcX8S_l91GpN6EsZp9xlCUZ2AHnm7WiT_bQEGCkXVZHqQBeZFsN8siQm4sfNOwsPEgEhEha6QVb4Ty_HciJO4Hk2rcC10NraRPR3zy_abXx09aohvi4-GwHyHolPK1KpVegJ6UrJ3i2XGAfqdQMZcpI4r1WmOvUUz2YEcdlETrVNbOZrbA9VsWJsn2v5s6mxx_4ZP4d5Rg-1fUCdvcbu5MjMR8S2XzGbig5h_n3U6Si1wiGhFkG4"/>
+</div>
+</nav>
+<div class="flex flex-1 overflow-hidden relative">
+<!-- SideNavBar (Suppressed for focused chat task but here's the layout anchor) -->
+<aside class="hidden lg:flex flex-col p-4 gap-4 fixed left-4 top-20 bottom-4 w-64 rounded-3xl bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-xl shadow-blue-900/5 z-40">
+<div class="flex items-center gap-3 px-2">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">R</div>
+<div>
+<div class="text-lg font-bold text-[#0058be]">Recruit Pro</div>
+<div class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant">Intelligence Suite</div>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] dark:text-slate-300 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-xl hover:translate-x-1 transition-transform duration-200 font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] dark:text-slate-300 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-xl hover:translate-x-1 transition-transform duration-200 font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined">group</span> Talent Pool
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#4648d4] to-[#8127cf] text-white rounded-xl shadow-lg shadow-indigo-500/20 font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forum</span> Messages
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] dark:text-slate-300 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-xl hover:translate-x-1 transition-transform duration-200 font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined">auto_awesome</span> AI Insights
+                </a>
+</nav>
+<button class="mt-auto bg-primary text-white py-3 rounded-xl font-bold shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span> New Requisition
+            </button>
+</aside>
+<!-- Main Content Area: The Cognitive Canvas Chat -->
+<main class="flex-1 ml-0 lg:ml-72 flex h-[calc(100vh-80px)]">
+<!-- Message List / Inbox -->
+<div class="w-full md:w-80 lg:w-96 flex flex-col border-r border-outline-variant/15 bg-surface-container-low/50">
+<div class="p-6">
+<h1 class="text-3xl font-black tracking-tighter mb-6">Messages</h1>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-3 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/40" placeholder="Search talent..." type="text"/>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto no-scrollbar px-3 space-y-2">
+<!-- Active Conversation -->
+<div class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm flex gap-4 cursor-pointer border-l-4 border-primary">
+<div class="relative">
+<img alt="Candidate" class="w-12 h-12 rounded-xl" data-alt="Portrait of a young software engineer with a friendly expression, modern office background, clean professional look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCErrC4wku4K82gMM58cOgYCD6QGNn8VC1qA8bzIhgGbjrarN1Cfh6sViNqQHR-ABlHbvPUQYQVs3RMDtGdiL6lgZpWwGmhbTveyHKzK3-6-6ObOl-7dxzGUizXqI1ljvGW4Xit3DPeZoU3z3BX48X6KQEMYamJeun_wXPmrDH1dF5_CKyh9-xLB5rNz8JYvDSIQNZVG51AY3EwSUbtyFmvNayUtGs5pwEkBOXEfoDHNddEkboTFHde-xSovjXHzBeBKSEzPo8HxqM"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-success border-2 border-white rounded-full"></div>
+</div>
+<div class="flex-1 overflow-hidden">
+<div class="flex justify-between items-start">
+<span class="font-bold text-on-surface truncate">Sarah K. (Senior Dev)</span>
+<span class="text-[0.6875rem] uppercase tracking-widest text-outline">10:42 AM</span>
+</div>
+<p class="text-sm text-on-surface-variant truncate">That sounds perfect! What are the next...</p>
+</div>
+</div>
+<!-- Other Conversations -->
+<div class="p-4 rounded-2xl hover:bg-surface-container-high/50 transition-colors flex gap-4 cursor-pointer">
+<img alt="Candidate" class="w-12 h-12 rounded-xl" data-alt="Smiling professional male headshot in business casual attire with bright soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7-Z4IblRMtuZFp79vkVm4FktLUOMG07eHfJxol7feF6uL6JqGS9GfUT3NSHIKzXLxk_9zlNJ8oO0vLZ_Qc4H1NsEBalhVgz8rw6bE3OI2v9y3ktc-bE7Am47Bx8S1SV2D276lpBcAgf9VR17iAzeZR89UUBWekmy7I9i8gDb0iXBgAS7r8BbvR0s7pB2ysKurG_do1_m6OgM9tzoD3e9HEj2CNXnfEkXB7rpXbb-FvtNXHN04IO3x0AThaFfzlg38qLUPMN_I7cc"/>
+<div class="flex-1 overflow-hidden">
+<div class="flex justify-between items-start">
+<span class="font-bold text-on-surface truncate">James D. (Product Lead)</span>
+<span class="text-[0.6875rem] uppercase tracking-widest text-outline">Yesterday</span>
+</div>
+<p class="text-sm text-on-surface-variant truncate">I've attached my portfolio for review.</p>
+</div>
+</div>
+<div class="p-4 rounded-2xl hover:bg-surface-container-high/50 transition-colors flex gap-4 cursor-pointer">
+<img alt="Candidate" class="w-12 h-12 rounded-xl" data-alt="Professional woman in a creative workspace with colorful abstract art in the background, warm natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtoO9TfiZN5abJdOKHNsC_m6do_8z72vmH72Fg5k4z5mmzDQyD4lEwYuk66w8TdEXr0tQpSe6cnlTQEMXc77ZjEvs98YZ8uPaFNsh7AQSTaXd7kS66OtdG9bB1_WjugG37VD2gqV1ePsH16DI9TJ3ro7D9kkhKnZEwtfCj7JS_azegO1sJ09Teb_EdzByHfjRAM9zYqxVvCTdOEF68YvHCvmdwXJbgPkBPz6AfZNOA1j7J7Vkiv2aRu6L95trrkZ3U4DfiZJ2Rx5o"/>
+<div class="flex-1 overflow-hidden">
+<div class="flex justify-between items-start">
+<span class="font-bold text-on-surface truncate">Maria L. (UX Designer)</span>
+<span class="text-[0.6875rem] uppercase tracking-widest text-outline">2 Days</span>
+</div>
+<p class="text-sm text-on-surface-variant truncate">Thank you for the update on my application.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Chat Window -->
+<div class="flex-1 flex flex-col bg-surface-container-lowest relative">
+<!-- Chat Header -->
+<div class="flex items-center justify-between p-6 border-b border-outline-variant/10">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="Candidate" class="w-10 h-10 rounded-xl" data-alt="Close up of Sarah K, professional female software engineer headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDcmdOhxnKOnQ3tW0AY0RzjhEdxU_fHQSwjwuF9JnNgNjF9YUWigY95jHVrlcsJcQCo_l43Y7T0KusUdJPFSetwHxBFsWqtTPEFxcM-WuzI3OvWQOw8OBCGgoJugxldDkBoun4zNX3QiV1AWHm5_QQKHzmgF6A6Fw8DQi_0MwNsn3p6FDKKte1Jeyp1K-ZS7-R0oUQoYDzwU24WKtbvVl0PAne2lS5XP9fDJumuryvKk6Ag8OVGIEvQrRikgpxCrl1jq4zfeuvuZQ"/>
+</div>
+<div>
+<div class="font-bold text-lg leading-tight">Sarah K.</div>
+<div class="flex items-center gap-2 text-xs text-on-surface-variant">
+<span class="bg-success/10 text-success px-2 py-0.5 rounded-full font-bold">Matched 98%</span>
+<span>Applied for Senior Fullstack Engineer</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">call</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">videocam</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">info</span>
+</button>
+</div>
+</div>
+<!-- Messages Canvas -->
+<div class="flex-1 overflow-y-auto p-8 space-y-8 no-scrollbar">
+<div class="flex justify-center">
+<span class="text-[0.6875rem] uppercase tracking-widest text-outline font-bold px-4 py-1 bg-surface-container-low rounded-full">Monday, Oct 24</span>
+</div>
+<!-- Recruiter Message -->
+<div class="flex justify-end">
+<div class="max-w-[70%] space-y-2">
+<div class="bg-primary text-white p-4 rounded-2xl rounded-tr-none shadow-lg shadow-primary/10">
+<p class="text-sm">Hi Sarah! I've reviewed your GitHub portfolio. Your architecture choices for the Lumina project were very impressive. Would you be available for a technical screening this Wednesday?</p>
+</div>
+<div class="flex justify-end text-[10px] text-outline font-bold uppercase tracking-tighter">Read 10:15 AM</div>
+</div>
+</div>
+<!-- Candidate Message -->
+<div class="flex justify-start gap-4">
+<img class="w-8 h-8 rounded-lg self-end" data-alt="Avatar icon for Sarah K" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUHzQzysgNlLvZN50ep0FNktTioeYZ59RitrrTmnfLxHeccsB9K-xB9kSSAAVhWUfu7N1H4NBqhJl3VyuQVZNGc5pDviqHXGBSmMNSRxa3nVyO57P4PDH0_Bbc8rh1oB_NUokmTEH7iP-hX63UWaExacTEBbMmHd3mNr5lS2_ItdcwaESeMHAOpRtvLXWe8xgSIp1mnciEJCSUA98ghsAhoD-qGZ90CpaVKSuyjaO5f8WBRN-sAJQZNOq41leRz__S0gCTCXFigEE"/>
+<div class="max-w-[70%] space-y-2">
+<div class="bg-surface-container-low text-on-surface p-4 rounded-2xl rounded-tl-none">
+<p class="text-sm">Hi Alex, thanks for reaching out! I'm glad you liked the Lumina repository. I am definitely interested. Wednesday works for me, preferably between 2 PM and 5 PM EST.</p>
+</div>
+<div class="text-[10px] text-outline font-bold uppercase tracking-tighter">10:42 AM</div>
+</div>
+</div>
+<!-- AI Smart Suggestions Floating Above Input -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[0.6875rem] font-bold text-tertiary uppercase tracking-widest">Lumina AI Suggestions</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="bg-surface-container-lowest border border-tertiary/20 text-on-surface-variant text-sm py-2.5 px-5 rounded-full hover:bg-tertiary/5 hover:border-tertiary transition-all shadow-sm flex items-center gap-2">
+                                Great! Let's schedule for 3 PM Wednesday.
+                            </button>
+<button class="bg-surface-container-lowest border border-tertiary/20 text-on-surface-variant text-sm py-2.5 px-5 rounded-full hover:bg-tertiary/5 hover:border-tertiary transition-all shadow-sm">
+                                Send interview invite link.
+                            </button>
+<button class="bg-surface-container-lowest border border-tertiary/20 text-on-surface-variant text-sm py-2.5 px-5 rounded-full hover:bg-tertiary/5 hover:border-tertiary transition-all shadow-sm">
+                                Ask about timezone preference.
+                            </button>
+</div>
+</div>
+</div>
+<!-- Input Footer -->
+<div class="p-6 bg-surface-container-lowest">
+<div class="flex items-end gap-4 p-2 bg-surface-container-low/50 rounded-2xl focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<button class="p-2 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<textarea class="flex-1 bg-transparent border-none focus:ring-0 text-sm resize-none py-2" placeholder="Type a message or use ✨ AI..." rows="1"></textarea>
+<button class="p-2 text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+<button class="bg-gradient-to-r from-secondary to-tertiary text-white w-10 h-10 flex items-center justify-center rounded-xl shadow-lg shadow-indigo-500/20 active:scale-95 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 mt-auto flex flex-col md:flex-row justify-between items-center px-12 w-full bg-[#f7f9fb] dark:bg-slate-900 border-t border-[#e0e3e5]/15">
+<div class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] dark:text-slate-400">
+            © 2024 Intelligent Employment System
+        </div>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+</body></html>

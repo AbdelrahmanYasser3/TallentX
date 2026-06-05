@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#c0c1ff",
+              "inverse-on-surface": "#eff1f3",
+              "secondary": "#4648d4",
+              "on-surface-variant": "#424754",
+              "on-secondary-container": "#fffbff",
+              "on-primary-container": "#fefcff",
+              "on-secondary": "#ffffff",
+              "surface": "#f7f9fb",
+              "primary": "#0058be",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-container": "#9c48ea",
+              "error": "#ba1a1a",
+              "surface-tint": "#005ac2",
+              "primary-container": "#2170e4",
+              "tertiary-fixed": "#f0dbff",
+              "outline": "#727785",
+              "tertiary-fixed-dim": "#ddb7ff",
+              "secondary-container": "#6063ee",
+              "surface-variant": "#e0e3e5",
+              "primary-fixed": "#d8e2ff",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "on-tertiary-fixed": "#2c0051",
+              "primary-fixed-dim": "#adc6ff",
+              "on-primary-fixed": "#001a42",
+              "surface-container-high": "#e6e8ea",
+              "tertiary": "#8127cf",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed-variant": "#6900b3",
+              "surface-dim": "#d8dadc",
+              "background": "#f7f9fb",
+              "on-tertiary-container": "#fffbff",
+              "on-error": "#ffffff",
+              "surface-bright": "#f7f9fb",
+              "outline-variant": "#c2c6d6",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-secondary-fixed": "#07006c",
+              "on-surface": "#191c1e",
+              "error-container": "#ffdad6",
+              "surface-container": "#eceef0",
+              "inverse-primary": "#adc6ff",
+              "inverse-surface": "#2d3133",
+              "secondary-fixed": "#e1e0ff",
+              "on-background": "#191c1e",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#004395"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .ai-gradient {
+        background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(16px);
+      }
+      .dark .glass-card {
+        background: rgba(25, 28, 30, 0.7);
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/20">
+<!-- Top Navigation Bar -->
+<nav class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl docked full-width top-0 sticky z-50 shadow-sm dark:shadow-none font-inter antialiased tracking-tight">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-blue-700 dark:text-indigo-400">IES</span>
+<div class="hidden md:flex gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-indigo-300 transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-indigo-300 transition-colors" href="#">Jobs</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-indigo-300 transition-colors" href="#">Talent</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-indigo-300 transition-colors" href="#">Insights</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 mr-2">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all duration-200 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all duration-200 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all duration-200 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden ring-2 ring-white dark:ring-slate-800 shadow-sm">
+<img alt="User profile avatar" data-alt="close-up portrait of a professional man with a friendly expression in a bright modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB25Y0tuMjEQf4KoeghjMgDWEAZjknCa_U2oDz0PlmsUfycEvgCHtktWI6ZWfm7wbddhpxfvVkHJXqjA-X3uGC4vm3A7peaud7_WMBsgOAu4QHa4oEE5OyD10FpEJHzcwUHMoNeV60oZE_kcB1srmb6Pzidp2IZgsWlayyT-QEjuzY6rDYu09KiuiT5HDdpxqKCcHvLmj-Zob44SaQQPzAIcnB8SLCR-ksNYs_9Wval4-U-9hSReoM25eJpIwIS5q5pATzRg4BCDl4"/>
+</div>
+</div>
+</div>
+<div class="bg-slate-100/50 dark:bg-slate-800/50 h-[1px] w-full"></div>
+</nav>
+<main class="relative overflow-hidden">
+<!-- Hero Section -->
+<section class="relative pt-24 pb-32 px-6 overflow-hidden">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
+<div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-tertiary/5 blur-[120px]"></div>
+</div>
+<div class="max-w-5xl mx-auto text-center">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-container/10 border border-secondary-container/20 text-secondary font-medium text-sm mb-8">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                    Next-Gen Intelligent Employment System
+                </div>
+<h1 class="text-6xl md:text-7xl font-headline font-black tracking-tighter text-on-surface mb-8 leading-[1.1]">
+                    Find your <span class="text-primary">perfect</span> career match with AI.
+                </h1>
+<p class="text-xl text-on-surface-variant max-w-2xl mx-auto mb-12">
+                    IES uses advanced cognitive neural networks to bridge the gap between world-class talent and industry-leading opportunities.
+                </p>
+<!-- Massive Search Bar -->
+<div class="glass-card p-2 rounded-2xl shadow-2xl shadow-primary/10 max-w-4xl mx-auto border border-outline-variant/10">
+<div class="flex flex-col md:flex-row items-center gap-2">
+<div class="flex-1 flex items-center gap-3 px-6 py-4 w-full">
+<span class="material-symbols-outlined text-slate-400" data-icon="work">work</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-lg font-medium placeholder:text-slate-400" placeholder="Job title, keywords, or company" type="text"/>
+</div>
+<div class="hidden md:block w-px h-8 bg-slate-200 dark:bg-slate-700"></div>
+<div class="flex-1 flex items-center gap-3 px-6 py-4 w-full">
+<span class="material-symbols-outlined text-slate-400" data-icon="location_on">location_on</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-lg font-medium placeholder:text-slate-400" placeholder="City or remote" type="text"/>
+</div>
+<button class="w-full md:w-auto ai-gradient text-white px-10 py-4 rounded-xl font-bold text-lg hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-secondary/20">
+                            Search
+                            <span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</div>
+</div>
+<div class="mt-12 flex flex-wrap justify-center gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<span class="font-bold text-xl text-slate-400">Trusted by:</span>
+<span class="text-2xl font-black">VOLT</span>
+<span class="text-2xl font-black">NEXUS</span>
+<span class="text-2xl font-black">ORBIT</span>
+<span class="text-2xl font-black">SYNERGY</span>
+<span class="text-2xl font-black">CORE</span>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-20 px-6 bg-surface-container-low">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/5 shadow-sm hover:shadow-md transition-shadow">
+<div class="text-primary font-black text-5xl mb-2">10k+</div>
+<div class="text-on-surface-variant font-medium text-lg">Active Job Openings</div>
+<p class="text-slate-500 text-sm mt-4">New opportunities from Fortune 500 companies added daily across all sectors.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/5 shadow-sm hover:shadow-md transition-shadow translate-y-4">
+<div class="text-secondary font-black text-5xl mb-2">5k+</div>
+<div class="text-on-surface-variant font-medium text-lg">Verified Companies</div>
+<p class="text-slate-500 text-sm mt-4">Top-tier recruiters using our AI engine to find their next strategic hire.</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/5 shadow-sm hover:shadow-md transition-shadow">
+<div class="text-tertiary font-black text-5xl mb-2">98%</div>
+<div class="text-on-surface-variant font-medium text-lg">Match Accuracy</div>
+<p class="text-slate-500 text-sm mt-4">Our proprietary neural matching ensures better alignment and higher retention.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Value Props - Bento Grid -->
+<section class="py-32 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div class="max-w-2xl">
+<h2 class="text-4xl md:text-5xl font-headline font-bold tracking-tight mb-6">Experience the future of <span class="text-tertiary">hiring intelligence</span>.</h2>
+<p class="text-lg text-on-surface-variant">We've removed the guesswork from recruitment. Our AI doesn't just scan keywords; it understands career trajectories and cultural alignment.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-8 py-3 rounded-full border border-primary text-primary font-bold hover:bg-primary/5 transition-colors">Learn More</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[300px]">
+<!-- Large Feature Card -->
+<div class="md:col-span-8 bg-slate-900 rounded-3xl overflow-hidden relative group">
+<img alt="Data visualization dashboard" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="high-tech abstract data visualization with glowing blue and purple lines representing neural connections and growth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq1HAxD5py55J38HDNhc66_KC8wLULcL4mee1xufUViA7_oW9A2N32f82bVsTi_QNxk5U-BAxHI1f17ZyYdVWs_sO_3loavwYha_xIQY4eXPmOdP0AeQx3HgBdOk2Ht29MQk7xuUXnKcgOl1B8eJzjwVpjMLeKs3ajMIkUKt56X-6e8nnZgPcdRbdpsYvtMSLNFndKBhpaWZHxkcWgaXLzLvskFw1G7tdBswUFPUtmjleJMK4p0WHUc2GAytKxFyKx3vq4Z78MK7A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent p-10 flex flex-col justify-end">
+<div class="flex items-center gap-2 mb-4">
+<span class="px-3 py-1 rounded-full ai-gradient text-[10px] font-bold text-white uppercase tracking-widest">Core AI</span>
+</div>
+<h3 class="text-3xl font-bold text-white mb-2">Predictive Matching Neural Engine</h3>
+<p class="text-slate-300 max-w-md">Our algorithm predicts your next 5 years of career growth to match you with roles that help you scale.</p>
+</div>
+</div>
+<!-- Side Card 1 -->
+<div class="md:col-span-4 bg-primary rounded-3xl p-8 flex flex-col justify-between text-white group">
+<div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="psychology" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold mb-2">Smart Resume Analysis</h3>
+<p class="text-white/80">Instant feedback on how to optimize your profile for the roles you actually want.</p>
+</div>
+</div>
+<!-- Side Card 2 -->
+<div class="md:col-span-4 bg-tertiary rounded-3xl p-8 flex flex-col justify-between text-white group">
+<div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h3 class="text-2xl font-bold mb-2">Magic Outreach</h3>
+<p class="text-white/80">AI-generated personalized messages that increase response rates by up to 400%.</p>
+</div>
+</div>
+<!-- Wide Card -->
+<div class="md:col-span-8 bg-surface-container-highest rounded-3xl p-8 flex flex-col md:flex-row items-center gap-10 overflow-hidden group">
+<div class="flex-1">
+<h3 class="text-2xl font-bold mb-4">Interview Copilot</h3>
+<p class="text-on-surface-variant mb-6">Get real-time insights and preparation guides customized for each specific company and interviewer.</p>
+<div class="flex gap-2">
+<span class="bg-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm">Real-time coaching</span>
+<span class="bg-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm">Sentiment analysis</span>
+</div>
+</div>
+<div class="flex-1 h-full w-full relative min-h-[200px]">
+<img alt="Professional in a meeting" class="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-xl group-hover:-rotate-2 transition-transform duration-500" data-alt="professional woman in a business meeting wearing headphones looking focused and smiling slightly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5r_H43AsICWAy-nXUv-kxmnZw52XF_LhMisXZUEpXzXs6pZQ95J_X9nhDok-x_4pve2HOxrbxzB3nNrxHjgptFakjjWZTcfAItlXnq_rfOU9y0_uffI-TzHTjNtxj3cNTAgB6dKHfb3YvSNJhtTweXRJOyZ30KlzOiVR-A4lhXEYTj-KrvhfOpE3r3Cyv1QK-PMiEpMmiSbzxUcjXxFadyMF7tSA9-2XCn4dreRoKmxGuOD_xT7rMCvNwMHUsRt8YlLRkSo0t5hc"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-32 px-6">
+<div class="max-w-6xl mx-auto rounded-[3rem] overflow-hidden relative">
+<div class="absolute inset-0 ai-gradient opacity-90"></div>
+<img alt="Office space" class="absolute inset-0 w-full h-full object-cover -z-10" data-alt="ultra-modern minimalist office interior with floor-to-ceiling windows and clean architectural lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARnUQnXatyxKIZ2tB587E-M_KUpH8AU1esZ12-IZbFkX4fPD90YO6yx4s2OtdhsfQ5BjPIpG3kPGFUGuDO6wHsv9WdW2MkwaCdqqImSJiqnWN1Xo3QKQjdpCdpzbB5k0_LXYXXsJtZkyk1iCEyWwZ3NFyhZQdpEZ3SeC326OEXuEGTxv2QIM_O8QurEfmvrVBKcZDyOrFZE-7YpUzZ8PiDr2Z41OO68EfjGVpgQZfZOSRxWd_GU4QSTAAiKHucpqaxIsZgItncd_0"/>
+<div class="relative z-10 p-12 md:p-24 text-center text-white">
+<h2 class="text-4xl md:text-6xl font-headline font-black mb-8">Ready to evolve your career?</h2>
+<p class="text-xl text-white/80 max-w-2xl mx-auto mb-12">Join thousands of professionals and recruiters who are already using IES to redefine what's possible.</p>
+<div class="flex flex-col md:flex-row gap-6 justify-center">
+<button class="bg-white text-primary px-10 py-5 rounded-2xl font-black text-xl hover:scale-105 active:scale-95 transition-all shadow-xl">
+                            Join as Candidate
+                        </button>
+<button class="bg-transparent border-2 border-white/30 backdrop-blur-md text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-white/10 transition-all">
+                            Join as Recruiter
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-900 w-full py-12 border-t border-slate-100 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<span class="font-bold text-2xl text-slate-700 dark:text-slate-300">IES</span>
+<p class="text-xs font-inter text-slate-500 dark:text-slate-400 max-w-xs text-center md:text-left">
+                    The Intelligent Employment System is a property of IES Corp. Built for the future of work.
+                </p>
+<p class="text-xs font-inter text-slate-400 dark:text-slate-500">© 2024 IES Intelligent Employment System</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<div class="flex flex-col gap-3">
+<span class="font-bold text-sm text-slate-900 dark:text-slate-100">Product</span>
+<a class="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Features</a>
+<a class="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">AI Matching</a>
+<a class="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Pricing</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-bold text-sm text-slate-900 dark:text-slate-100">Resources</span>
+<a class="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Help Center</a>
+<a class="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Blog</a>
+<a class="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Documentation</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-bold text-sm text-slate-900 dark:text-slate-100">Company</span>
+<a class="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Privacy Policy</a>
+<a class="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Terms of Service</a>
+<a class="text-xs text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Cookie Settings</a>
+</div>
+</div>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="public">public</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="share">share</span>
+</button>
+</div>
+</div>
+</footer>
+</body></html>

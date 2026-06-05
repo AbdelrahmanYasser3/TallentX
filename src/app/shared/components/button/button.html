@@ -1,0 +1,11 @@
+<button
+  [type]="type()"
+  [class]="buttonClasses"
+  [disabled]="disabled() || loading()"
+  (click)="handleClick($event)"
+>
+  @if (loading()) {
+    <i class="fa-solid fa-spinner fa-spin"></i>
+  }
+  <ng-content></ng-content>
+</button>

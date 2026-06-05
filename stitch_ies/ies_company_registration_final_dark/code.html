@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Join IES Portal | Neural Architect Registration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-secondary-container": "#b0b2ff",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-background": "#dae2fd",
+            "outline-variant": "#424754",
+            "inverse-on-surface": "#283044",
+            "on-tertiary-container": "#00311f",
+            "on-primary": "#002e6a",
+            "surface-dim": "#0b1326",
+            "primary-container": "#4d8eff",
+            "inverse-primary": "#005ac2",
+            "on-secondary": "#1000a9",
+            "tertiary-fixed-dim": "#4edea3",
+            "surface-container-highest": "#2d3449",
+            "surface-container": "#171f33",
+            "surface-tint": "#adc6ff",
+            "on-secondary-fixed": "#07006c",
+            "tertiary-container": "#00a572",
+            "primary-fixed": "#d8e2ff",
+            "primary": "#adc6ff",
+            "on-error-container": "#ffdad6",
+            "surface-container-lowest": "#060e20",
+            "inverse-surface": "#dae2fd",
+            "background": "#0b1326",
+            "surface-container-low": "#131b2e",
+            "error": "#ffb4ab",
+            "surface": "#0b1326",
+            "on-primary-container": "#00285d",
+            "outline": "#8c909f",
+            "on-surface": "#dae2fd",
+            "on-error": "#690005",
+            "tertiary-fixed": "#6ffbbe",
+            "on-surface-variant": "#c2c6d6",
+            "error-container": "#93000a",
+            "on-tertiary-fixed": "#002113",
+            "secondary-fixed-dim": "#c0c1ff",
+            "primary-fixed-dim": "#adc6ff",
+            "on-tertiary": "#003824",
+            "secondary": "#c0c1ff",
+            "secondary-container": "#3131c0",
+            "tertiary": "#4edea3",
+            "on-primary-fixed": "#001a42",
+            "on-primary-fixed-variant": "#004395",
+            "surface-variant": "#2d3449",
+            "secondary-fixed": "#e1e0ff",
+            "surface-container-high": "#222a3d",
+            "surface-bright": "#31394d",
+            "on-secondary-fixed-variant": "#2f2ebe"
+          },
+          fontFamily: {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    .glass-panel {
+      background: rgba(34, 42, 61, 0.6);
+      backdrop-filter: blur(16px);
+    }
+    .neural-glow {
+      box-shadow: 0 0 40px rgba(173, 198, 255, 0.08);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col selection:bg-primary/30">
+<!-- TopNavBar (Transactional/Focused State: Simplified) -->
+<nav class="fixed top-0 w-full z-50 bg-[#0b1326]/80 backdrop-blur-xl shadow-[0_0_40px_rgba(173,198,255,0.08)]">
+<div class="flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="text-xl font-bold tracking-tighter text-[#adc6ff]">IES Portal</span>
+</div>
+<div class="flex items-center gap-6">
+<button class="p-2 text-[#c0c1ff]/60 hover:text-[#c0c1ff] transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-24 pb-12 px-6 flex items-center justify-center relative overflow-hidden">
+<!-- Decorative Background Elements -->
+<div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px]"></div>
+<div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Editorial Content & Progress -->
+<div class="lg:col-span-5 space-y-8">
+<div class="space-y-4">
+<h1 class="text-5xl font-extrabold tracking-tight text-on-surface leading-tight">
+            Architect Your <br/>
+<span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Future Workforce</span>
+</h1>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-md">
+            Join the Intelligent Employment System. Leverage neural pattern matching to find talent that doesn't just fit the job, but evolves the company.
+          </p>
+</div>
+<!-- Visual Progress Tracker -->
+<div class="space-y-6 pt-4">
+<div class="flex items-center gap-4 group">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-primary text-on-primary font-bold shadow-[0_0_15px_rgba(173,198,255,0.4)] transition-transform duration-300 group-hover:scale-110">1</div>
+<div>
+<p class="text-on-surface font-semibold">Recruiter Identity</p>
+<p class="text-on-surface-variant text-sm">Personal access &amp; credentials</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group opacity-50">
+<div class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-high border border-outline-variant text-on-surface-variant font-bold">2</div>
+<div>
+<p class="text-on-surface font-semibold">Company Architecture</p>
+<p class="text-on-surface-variant text-sm">Tax verification &amp; industry profile</p>
+</div>
+</div>
+</div>
+<div class="p-6 rounded-xl bg-surface-container-low border-l-4 border-secondary neural-glow">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<div>
+<p class="text-sm font-bold text-secondary uppercase tracking-wider">AI Verification</p>
+<p class="text-on-surface-variant text-sm mt-1">Our Neural Architect automatically verifies company tax numbers and industry codes to streamline your onboarding.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Step 1 Wizard Form -->
+<div class="lg:col-span-7">
+<div class="glass-panel p-8 md:p-12 rounded-2xl border border-outline-variant/20 neural-glow">
+<div class="mb-8">
+<h2 class="text-2xl font-bold text-on-surface">Step 1: Recruiter Profile</h2>
+<p class="text-on-surface-variant mt-1">Establish your administrative credentials within the portal.</p>
+</div>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-primary uppercase tracking-widest ml-1">Full Name</label>
+<input class="w-full bg-surface-container-lowest text-on-surface px-4 py-3 rounded-xl border-none focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-on-surface-variant/30" placeholder="Alex Sterling" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-primary uppercase tracking-widest ml-1">Work Email</label>
+<input class="w-full bg-surface-container-lowest text-on-surface px-4 py-3 rounded-xl border-none focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-on-surface-variant/30" placeholder="alex@company.ai" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-primary uppercase tracking-widest ml-1">Password</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest text-on-surface px-4 py-3 rounded-xl border-none focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-on-surface-variant/30" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-primary uppercase tracking-widest ml-1">Invite Code (Optional)</label>
+<div class="flex gap-3">
+<input class="flex-grow bg-surface-container-lowest text-on-surface px-4 py-3 rounded-xl border-none focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-on-surface-variant/30" placeholder="IES-XXXX-XXXX" type="text"/>
+<div class="bg-surface-container-high px-4 py-3 rounded-xl flex items-center justify-center border border-outline-variant/20">
+<span class="material-symbols-outlined text-secondary" data-icon="qr_code_scanner">qr_code_scanner</span>
+</div>
+</div>
+</div>
+<div class="pt-6 flex flex-col sm:flex-row items-center gap-4">
+<button class="w-full sm:w-auto px-10 py-4 bg-primary text-on-primary font-bold rounded-xl shadow-[0_0_20px_rgba(173,198,255,0.3)] hover:scale-[1.02] active:scale-95 transition-all duration-300 flex items-center justify-center gap-2" type="button">
+                Continue to Company Profile
+                <span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-xs text-on-surface-variant text-center sm:text-left">
+                Already have an account? <a class="text-secondary hover:underline underline-offset-4" href="#">Log in</a>
+</p>
+</div>
+</form>
+</div>
+<!-- Social Proof/Trust Section -->
+<div class="mt-8 grid grid-cols-3 gap-4">
+<div class="p-4 rounded-xl bg-surface-container-low text-center flex flex-col items-center gap-2">
+<span class="text-primary font-bold text-xl">500+</span>
+<span class="text-[10px] uppercase tracking-tighter text-on-surface-variant font-bold">Verified Partners</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low text-center flex flex-col items-center gap-2">
+<span class="text-tertiary font-bold text-xl">98%</span>
+<span class="text-[10px] uppercase tracking-tighter text-on-surface-variant font-bold">Match Accuracy</span>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low text-center flex flex-col items-center gap-2">
+<span class="text-secondary font-bold text-xl">24/7</span>
+<span class="text-[10px] uppercase tracking-tighter text-on-surface-variant font-bold">AI Support</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-8 mt-auto bg-[#0b1326] border-t border-[#adc6ff]/5">
+<div class="flex flex-col md:flex-row items-center justify-between px-12 gap-6">
+<p class="text-xs text-[#c0c1ff]/40 font-['Inter']">© 2024 Intelligent Employment System. Powered by Neural Architect AI.</p>
+<div class="flex gap-8">
+<a class="text-xs text-[#c0c1ff]/40 font-['Inter'] hover:text-[#adc6ff] transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs text-[#c0c1ff]/40 font-['Inter'] hover:text-[#adc6ff] transition-colors" href="#">Terms of Service</a>
+<a class="text-xs text-[#c0c1ff]/40 font-['Inter'] hover:text-[#adc6ff] transition-colors" href="#">API Docs</a>
+<a class="text-xs text-[#c0c1ff]/40 font-['Inter'] hover:text-[#adc6ff] transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+<!-- Floating Sparkle Element (Decorative Component) -->
+<div class="fixed bottom-8 right-8 pointer-events-none opacity-20">
+<span class="material-symbols-outlined text-8xl text-secondary animate-pulse" data-icon="sparkles" style="font-variation-settings: 'FILL' 1;">colors_spark</span>
+</div>
+</body></html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Candidate Registration | IES Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-container": "#b0b2ff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-background": "#dae2fd",
+                        "outline-variant": "#424754",
+                        "inverse-on-surface": "#283044",
+                        "on-tertiary-container": "#00311f",
+                        "on-primary": "#002e6a",
+                        "surface-dim": "#0b1326",
+                        "primary-container": "#4d8eff",
+                        "inverse-primary": "#005ac2",
+                        "on-secondary": "#1000a9",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-container-highest": "#2d3449",
+                        "surface-container": "#171f33",
+                        "surface-tint": "#adc6ff",
+                        "on-secondary-fixed": "#07006c",
+                        "tertiary-container": "#00a572",
+                        "primary-fixed": "#d8e2ff",
+                        "primary": "#adc6ff",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-lowest": "#060e20",
+                        "inverse-surface": "#dae2fd",
+                        "background": "#0b1326",
+                        "surface-container-low": "#131b2e",
+                        "error": "#ffb4ab",
+                        "surface": "#0b1326",
+                        "on-primary-container": "#00285d",
+                        "outline": "#8c909f",
+                        "on-surface": "#dae2fd",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-surface-variant": "#c2c6d6",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#002113",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-tertiary": "#003824",
+                        "secondary": "#c0c1ff",
+                        "secondary-container": "#3131c0",
+                        "tertiary": "#4edea3",
+                        "on-primary-fixed": "#001a42",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface-variant": "#2d3449",
+                        "secondary-fixed": "#e1e0ff",
+                        "surface-container-high": "#222a3d",
+                        "surface-bright": "#31394d",
+                        "on-secondary-fixed-variant": "#2f2ebe"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(34, 42, 61, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .neural-glow {
+            box-shadow: 0 0 40px rgba(173, 198, 255, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0b1326]/80 backdrop-blur-xl flex items-center justify-between px-6 h-16 shadow-[0_0_40px_rgba(173,198,255,0.08)]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#adc6ff] antialiased">IES Portal</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-[#c0c1ff]/60 hover:text-[#c0c1ff] transition-all duration-300 text-sm font-medium" href="#">Dashboard</a>
+<a class="text-[#c0c1ff]/60 hover:text-[#c0c1ff] transition-all duration-300 text-sm font-medium" href="#">Talent Pool</a>
+<a class="text-[#c0c1ff]/60 hover:text-[#c0c1ff] transition-all duration-300 text-sm font-medium" href="#">Analytics</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#adc6ff] hover:bg-[#222a3d] rounded-lg transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="sparkles">colors_spark</span>
+</button>
+<button class="p-2 text-[#adc6ff] hover:bg-[#222a3d] rounded-lg transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="md:hidden p-2 text-[#adc6ff]">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</div>
+<img alt="Recruiter Profile" class="w-8 h-8 rounded-full border border-primary/20" data-alt="portrait of a professional recruiter with a friendly smile, clean corporate background, soft professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8lemDKLlXAtvHug2bEIzIFtuWTNbzGHuU5-edcmXZ97n8gdU2O9KuXH5_pvJKZXh62AtL1rOStJmFv6weGaDVTWzY1O5AUp5cEMhounQWW1IPL_Vas502SfXDrZqlhT-sP2sFIkxJgXHYvIQBjTOJJvjJVmvGYY6BbDGmgRQvl2WuS8gXd6Kw-A-nUCV0VcN6IF7savxh5WkqC6Kq_3qZgQG0y2FF4ci6kMaGO-HG-kP2DPiD6svVFym8kaj7unqs7ElfktW5uEI"/>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-24 pb-12 px-6 flex items-center justify-center">
+<!-- Asymmetric Decorative Background Elements -->
+<div class="fixed top-1/4 -left-20 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -z-10"></div>
+<div class="fixed bottom-1/4 -right-20 w-96 h-96 bg-secondary/5 rounded-full blur-[100px] -z-10"></div>
+<div class="w-full max-w-4xl grid md:grid-cols-12 gap-8 items-start">
+<!-- Left Side: Editorial Branding -->
+<div class="md:col-span-5 space-y-6 pt-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/30 border border-secondary/20 text-secondary text-xs font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                    AI-DRIVEN ONBOARDING
+                </div>
+<h1 class="text-5xl font-black tracking-tight leading-tight text-on-background">
+                    Architect Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Future.</span>
+</h1>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-sm">
+                    Join the Neural Architect network. Our AI maps your unique skills to the world's most innovative engineering roles.
+                </p>
+<div class="grid grid-cols-2 gap-4 pt-4">
+<div class="p-4 rounded-xl bg-surface-container-low border-l-2 border-tertiary">
+<div class="text-tertiary text-2xl font-bold">98%</div>
+<div class="text-on-surface-variant text-xs uppercase tracking-wider">Match Accuracy</div>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low border-l-2 border-primary">
+<div class="text-primary text-2xl font-bold">12k+</div>
+<div class="text-on-surface-variant text-xs uppercase tracking-wider">Active Roles</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Registration Form Card -->
+<div class="md:col-span-7">
+<div class="glass-panel p-8 rounded-xl border border-outline-variant/20 neural-glow">
+<h2 class="text-2xl font-bold mb-8 text-on-surface flex items-center gap-3">
+                        Candidate Registration
+                        <span class="material-symbols-outlined text-secondary" data-icon="person_add">person_add</span>
+</h2>
+<form class="space-y-6">
+<!-- Names Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest px-1">First Name</label>
+<input class="w-full bg-surface-container-highest border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-on-surface-variant/30" placeholder="e.g. Alex" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest px-1">Last Name</label>
+<input class="w-full bg-surface-container-highest border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-on-surface-variant/30" placeholder="e.g. Chen" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest px-1">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50" data-icon="mail">mail</span>
+<input class="w-full bg-surface-container-highest border-none rounded-xl pl-12 pr-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-on-surface-variant/30" placeholder="alex.chen@neural.io" type="email"/>
+</div>
+</div>
+<!-- Password & Strength -->
+<div class="space-y-2">
+<label class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest px-1">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50" data-icon="lock">lock</span>
+<input class="w-full bg-surface-container-highest border-none rounded-xl pl-12 pr-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-on-surface-variant/30" placeholder="••••••••••••" type="password"/>
+</div>
+<!-- Strength Indicator -->
+<div class="flex items-center gap-1.5 pt-2 px-1">
+<div class="h-1 flex-grow rounded-full bg-tertiary"></div>
+<div class="h-1 flex-grow rounded-full bg-tertiary"></div>
+<div class="h-1 flex-grow rounded-full bg-tertiary"></div>
+<div class="h-1 flex-grow rounded-full bg-surface-container-highest"></div>
+<span class="text-[10px] font-bold text-tertiary ml-2 uppercase">Neural-Strong</span>
+</div>
+</div>
+<!-- DOB & Gender -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest px-1">Date of Birth</label>
+<input class="w-full bg-surface-container-highest border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/50 transition-all [color-scheme:dark]" type="date"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest px-1">Gender Identity</label>
+<select class="w-full bg-surface-container-highest border-none rounded-xl px-4 py-3 text-on-surface focus:ring-2 focus:ring-primary/50 transition-all">
+<option>Prefer not to say</option>
+<option>Non-Binary</option>
+<option>Female</option>
+<option>Male</option>
+<option>Other</option>
+</select>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="pt-4 space-y-4">
+<button class="w-full bg-primary text-on-primary font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(173,198,255,0.3)] hover:shadow-[0_0_30px_rgba(173,198,255,0.5)] transition-all active:scale-[0.98]" type="submit">
+<span class="material-symbols-outlined text-[20px]" data-icon="rocket_launch">rocket_launch</span>
+                                Initialize Profile
+                            </button>
+<p class="text-center text-xs text-on-surface-variant/60">
+                                By registering, you agree to our <a class="text-primary hover:underline" href="#">Neural Data Policy</a> and <a class="text-primary hover:underline" href="#">Terms of Intelligence</a>.
+                            </p>
+</div>
+</form>
+</div>
+<!-- Social Auth Alternative -->
+<div class="mt-6 flex items-center justify-center gap-6">
+<span class="h-px bg-outline-variant/20 flex-grow"></span>
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Or Connect Via</span>
+<span class="h-px bg-outline-variant/20 flex-grow"></span>
+</div>
+<div class="mt-6 grid grid-cols-2 gap-4">
+<button class="bg-surface-container-low border border-outline-variant/10 py-3 rounded-xl flex items-center justify-center gap-2 text-sm font-medium hover:bg-surface-container-high transition-colors">
+<img alt="Google" class="w-4 h-4 grayscale opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV5CfxSSczGU2JX5YNT5HbEaPZMY0XEwMbXa5gX58HItLYtFSOy__YlDHS_OfAh8yQiEs_F8zHfrYgzt5Ns95T1WTKzbgrkPCh3rb1UN51ChCwmpYTY4PfWpzDg6ExKWrSNl-mfHnhua0poVd8nBxF5ZHq2t5belOtAQQtEPdLANTkg7qsnGVk57mkmRhmxyHf_NGTbl5htXWJwhwJ34j3T0Y-hF8NFf4JxK3SwTTYeRO4uzXa3lP7hLpvzdPRI3tXp-MX9iW0nj0"/>
+                        Network ID
+                    </button>
+<button class="bg-surface-container-low border border-outline-variant/10 py-3 rounded-xl flex items-center justify-center gap-2 text-sm font-medium hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="terminal">terminal</span>
+                        Dev Connect
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 mt-auto border-t border-[#adc6ff]/5 bg-[#0b1326] flex flex-col md:flex-row items-center justify-between px-12">
+<p class="text-xs text-[#c0c1ff]/40 font-['Inter'] mb-4 md:mb-0">
+            © 2024 Intelligent Employment System. Powered by Neural Architect AI.
+        </p>
+<div class="flex gap-8">
+<a class="text-xs text-[#c0c1ff]/40 hover:text-[#adc6ff] transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs text-[#c0c1ff]/40 hover:text-[#adc6ff] transition-colors" href="#">Terms of Service</a>
+<a class="text-xs text-[#c0c1ff]/40 hover:text-[#adc6ff] transition-colors" href="#">API Docs</a>
+<a class="text-xs text-[#c0c1ff]/40 hover:text-[#adc6ff] transition-colors" href="#">Support</a>
+</div>
+</footer>
+</body></html>

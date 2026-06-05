@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#6b739d",
+              "secondary-dim": "#6063ee",
+              "surface-variant": "#142156",
+              "secondary-container": "#2f2ebe",
+              "on-tertiary": "#33005b",
+              "primary-fixed": "#6e9fff",
+              "primary-fixed-dim": "#5391ff",
+              "on-tertiary-fixed": "#270048",
+              "inverse-on-surface": "#4b537a",
+              "on-secondary": "#080079",
+              "primary": "#85adff",
+              "surface-container-lowest": "#000000",
+              "tertiary-container": "#af5cfe",
+              "error": "#ff716c",
+              "outline-variant": "#3d466c",
+              "error-container": "#9f0519",
+              "primary-dim": "#699cff",
+              "on-secondary-fixed": "#160bae",
+              "secondary-fixed": "#cdcdff",
+              "inverse-primary": "#005bc4",
+              "tertiary": "#c180ff",
+              "on-error-container": "#ffa8a3",
+              "on-tertiary-fixed-variant": "#560094",
+              "surface-dim": "#020a2f",
+              "on-error": "#490006",
+              "on-tertiary-container": "#000000",
+              "tertiary-fixed": "#ce9bff",
+              "tertiary-fixed-dim": "#c488ff",
+              "surface-container-highest": "#142156",
+              "on-primary-fixed": "#000000",
+              "on-secondary-container": "#ccccff",
+              "on-primary-container": "#002150",
+              "secondary-fixed-dim": "#bdbeff",
+              "secondary": "#9093ff",
+              "on-surface-variant": "#a1a9d5",
+              "surface": "#020a2f",
+              "error-dim": "#d7383b",
+              "surface-tint": "#85adff",
+              "primary-container": "#6e9fff",
+              "surface-bright": "#192760",
+              "on-surface": "#e1e4ff",
+              "surface-container": "#091542",
+              "on-secondary-fixed-variant": "#3a3ac8",
+              "inverse-surface": "#fbf8ff",
+              "on-background": "#e1e4ff",
+              "on-primary-fixed-variant": "#002a62",
+              "on-primary": "#002c66",
+              "surface-container-high": "#0e1b4c",
+              "tertiary-dim": "#9c48ea",
+              "surface-container-low": "#050f38",
+              "background": "#020a2f"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Inter', sans-serif; }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-panel {
+        background: rgba(14, 27, 76, 0.6);
+        backdrop-filter: blur(24px);
+      }
+      .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: #3d466c; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 hidden lg:flex flex-col bg-[#020a2f] z-40 border-r border-outline-variant/15">
+<div class="p-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-surface text-xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<h1 class="text-lg font-black text-[#85adff] leading-none">IES Recruiter</h1>
+<p class="text-[10px] text-slate-400 uppercase tracking-widest mt-1">AI-Powered Hiring</p>
+</div>
+</div>
+<nav class="flex flex-col gap-y-2 py-6 px-4">
+<a class="text-slate-400 px-4 py-3 hover:bg-white/5 flex items-center gap-3 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</a>
+<a class="text-slate-400 px-4 py-3 hover:bg-white/5 flex items-center gap-3 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="text-sm font-medium">Active Jobs</span>
+</a>
+<a class="text-slate-400 px-4 py-3 hover:bg-white/5 flex items-center gap-3 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm font-medium">Talent Pool</span>
+</a>
+<a class="bg-gradient-to-r from-[#9093ff]/20 to-[#c180ff]/20 text-[#c180ff] border-r-4 border-[#c180ff] px-4 py-3 flex items-center gap-3 transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm font-medium">Schedule</span>
+</a>
+<a class="text-slate-400 px-4 py-3 hover:bg-white/5 flex items-center gap-3 rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-sm font-medium">AI Insights</span>
+</a>
+</nav>
+<div class="mt-auto p-4 mb-4">
+<button class="w-full py-3 px-4 rounded-xl bg-primary text-on-primary font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-primary/10 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">add</span>
+                Post New Job
+            </button>
+</div>
+<div class="border-t border-outline-variant/10 p-4 flex flex-col gap-2">
+<a class="text-slate-500 hover:text-white flex items-center gap-3 px-4 py-2 text-xs transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+                Help Center
+            </a>
+<a class="text-slate-500 hover:text-white flex items-center gap-3 px-4 py-2 text-xs transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:ml-64 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 lg:left-64 right-0 h-20 glass-panel z-30 border-b border-[#85adff]/15 px-8 flex items-center justify-between">
+<div class="flex items-center gap-6">
+<h2 class="text-2xl font-bold tracking-tighter text-white uppercase font-headline">Interviews</h2>
+<div class="hidden md:flex items-center bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-slate-400 text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-on-surface w-64 placeholder:text-slate-500" placeholder="Search candidates or dates..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-400 hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-slate-400 hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/20 mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="text-right">
+<p class="text-xs font-bold text-white group-hover:text-primary transition-colors">Sarah Jenkins</p>
+<p class="text-[10px] text-slate-400">Lead Recruiter</p>
+</div>
+<img alt="Recruiter Profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-outline-variant/20 group-hover:ring-primary/40 transition-all" data-alt="professional portrait of a woman with a friendly smile in a modern office setting with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8kR3o8MFC1uyVN_EW8ZicX6X2g8MEMcaEb-sO8K_bluWGL1TZsfAnb45TW2y7jJmvoxA6WuOQQ_3k_DaxSdgBeOTDREMYPEZdFibSv_Gcyp001jITwCja8TGkrn85mdQsVbHYehYvGUB86RjdBL_zp4rbjXDysqZW7CB_PxsOB4Wz5Yaz4HcYBDtwijmyhCzhJLX2RDc-hH2XvnYJb-y7MnklIy9veg2p_htd7k1G0eugEPvTDDhmTo0pLV20fCKzQ2T3GbaOcH8"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="pt-24 p-8 flex flex-col xl:flex-row gap-8 flex-1">
+<!-- Main Calendar Section -->
+<div class="flex-1 space-y-8">
+<!-- Calendar Header & Controls -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h3 class="text-4xl font-extrabold text-white tracking-tight">October 2024</h3>
+<p class="text-primary font-medium mt-1">12 Scheduled Interviews Today</p>
+</div>
+<div class="flex bg-surface-container-low p-1 rounded-xl border border-outline-variant/20">
+<button class="px-6 py-2 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white">Day</button>
+<button class="px-6 py-2 rounded-lg text-xs font-bold transition-all bg-surface-container-high text-primary shadow-sm">Week</button>
+<button class="px-6 py-2 rounded-lg text-xs font-bold transition-all text-slate-400 hover:text-white">Month</button>
+</div>
+</div>
+<!-- Calendar Grid (Asymmetric Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-7 gap-4">
+<!-- Weekdays Header -->
+<div class="hidden md:contents">
+<div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold px-2">Mon</div>
+<div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold px-2">Tue</div>
+<div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold px-2">Wed</div>
+<div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold px-2">Thu</div>
+<div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold px-2">Fri</div>
+<div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold px-2">Sat</div>
+<div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold px-2">Sun</div>
+</div>
+<!-- Calendar Cells (Simulated for October 21-27) -->
+<!-- Monday -->
+<div class="min-h-[180px] p-4 rounded-xl border border-outline-variant/10 bg-surface-container-low/30 space-y-3">
+<span class="text-sm font-bold text-slate-500">21</span>
+<div class="p-3 rounded-lg bg-surface-container-high border-l-4 border-primary">
+<p class="text-[10px] font-bold text-primary mb-1">09:00 AM</p>
+<p class="text-xs text-white font-medium truncate">Alex Rivera</p>
+<p class="text-[9px] text-slate-400">Senior Dev</p>
+</div>
+</div>
+<!-- Tuesday -->
+<div class="min-h-[180px] p-4 rounded-xl border border-outline-variant/10 bg-surface-container-low/30 space-y-3">
+<span class="text-sm font-bold text-slate-500">22</span>
+<div class="p-3 rounded-lg bg-tertiary/10 border-l-4 border-tertiary relative overflow-hidden">
+<div class="absolute -right-2 -top-2 opacity-20">
+<span class="material-symbols-outlined text-4xl text-tertiary">psychology</span>
+</div>
+<div class="flex items-center gap-1 mb-1">
+<p class="text-[10px] font-bold text-tertiary">11:30 AM</p>
+<span class="material-symbols-outlined text-[12px] text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<p class="text-xs text-white font-medium truncate">Mila Kunis</p>
+<p class="text-[9px] text-slate-400">UI Designer</p>
+</div>
+</div>
+<!-- Wednesday (Active Day) -->
+<div class="min-h-[180px] p-4 rounded-xl border-2 border-primary/40 bg-surface-container-high/40 space-y-3 shadow-[0_0_40px_rgba(133,173,255,0.05)]">
+<span class="text-sm font-bold text-primary">23</span>
+<div class="p-3 rounded-lg bg-surface-container-highest border-l-4 border-primary">
+<p class="text-[10px] font-bold text-primary mb-1">10:00 AM</p>
+<p class="text-xs text-white font-medium truncate">Jordan Smith</p>
+<p class="text-[9px] text-slate-400">Product Lead</p>
+</div>
+<div class="p-3 rounded-lg bg-tertiary/10 border-l-4 border-tertiary">
+<div class="flex items-center gap-1 mb-1">
+<p class="text-[10px] font-bold text-tertiary">02:30 PM</p>
+<span class="material-symbols-outlined text-[12px] text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<p class="text-xs text-white font-medium truncate">Sarah Chen</p>
+</div>
+</div>
+<!-- Thursday -->
+<div class="min-h-[180px] p-4 rounded-xl border border-outline-variant/10 bg-surface-container-low/30 space-y-3">
+<span class="text-sm font-bold text-slate-500">24</span>
+</div>
+<!-- Friday -->
+<div class="min-h-[180px] p-4 rounded-xl border border-outline-variant/10 bg-surface-container-low/30 space-y-3">
+<span class="text-sm font-bold text-slate-500">25</span>
+<div class="p-3 rounded-lg bg-surface-container-high border-l-4 border-primary">
+<p class="text-[10px] font-bold text-primary mb-1">04:00 PM</p>
+<p class="text-xs text-white font-medium truncate">James Wilson</p>
+</div>
+</div>
+<!-- Saturday/Sunday -->
+<div class="min-h-[180px] p-4 rounded-xl border border-outline-variant/5 bg-slate-900/10 md:col-span-2 flex items-center justify-center">
+<p class="text-[10px] uppercase tracking-tighter text-slate-600 font-bold">No interviews scheduled</p>
+</div>
+</div>
+<!-- AI Insights Section -->
+<div class="p-8 rounded-2xl border border-tertiary/20 bg-gradient-to-br from-tertiary/5 to-transparent relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-64 h-64 bg-tertiary/5 blur-[100px] -z-10 group-hover:bg-tertiary/10 transition-all"></div>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-12 h-12 rounded-full bg-tertiary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div>
+<h4 class="text-lg font-bold text-white">AI Scheduling Assistant</h4>
+<p class="text-sm text-slate-400">3 candidates are highly compatible with your available slots tomorrow.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/15 hover:border-tertiary/40 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-tertiary bg-tertiary/10 px-2 py-0.5 rounded uppercase tracking-wider">Top Match</span>
+<span class="material-symbols-outlined text-slate-600 text-sm">more_vert</span>
+</div>
+<p class="text-sm font-bold text-white mb-1">David Goggins</p>
+<p class="text-[11px] text-slate-400 mb-4">Operations Manager • 98% Match</p>
+<button class="w-full py-2 rounded-lg bg-tertiary/20 text-tertiary text-xs font-bold hover:bg-tertiary hover:text-white transition-all">Auto-Schedule</button>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/15 hover:border-tertiary/40 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-tertiary bg-tertiary/10 px-2 py-0.5 rounded uppercase tracking-wider">Fast-Track</span>
+<span class="material-symbols-outlined text-slate-600 text-sm">more_vert</span>
+</div>
+<p class="text-sm font-bold text-white mb-1">Emily Blunt</p>
+<p class="text-[11px] text-slate-400 mb-4">Content Strategist • 94% Match</p>
+<button class="w-full py-2 rounded-lg bg-tertiary/20 text-tertiary text-xs font-bold hover:bg-tertiary hover:text-white transition-all">Auto-Schedule</button>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/15 hover:border-tertiary/40 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-bold text-slate-500 bg-slate-500/10 px-2 py-0.5 rounded uppercase tracking-wider">New</span>
+<span class="material-symbols-outlined text-slate-600 text-sm">more_vert</span>
+</div>
+<p class="text-sm font-bold text-white mb-1">Marcus Aurelius</p>
+<p class="text-[11px] text-slate-400 mb-4">Leadership Coach • 89% Match</p>
+<button class="w-full py-2 rounded-lg bg-tertiary/20 text-tertiary text-xs font-bold hover:bg-tertiary hover:text-white transition-all">Auto-Schedule</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Pending Candidates -->
+<aside class="w-full xl:w-80 flex flex-col gap-6">
+<!-- Schedule New Trigger (Bento-style card) -->
+<div class="p-6 rounded-2xl bg-gradient-to-br from-primary to-secondary-container flex flex-col justify-between min-h-[160px] shadow-2xl shadow-primary/20 relative overflow-hidden group cursor-pointer active:scale-95 transition-all">
+<span class="material-symbols-outlined absolute top-4 right-4 text-white/40 text-4xl group-hover:scale-110 transition-transform">calendar_add_on</span>
+<div>
+<p class="text-[10px] font-bold text-on-primary-container/80 uppercase tracking-widest mb-1">Quick Action</p>
+<h3 class="text-2xl font-black text-white leading-tight">Schedule<br/>Interview</h3>
+</div>
+<div class="flex items-center gap-2 mt-4 text-xs font-bold text-white">
+<span>New Entry</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+<!-- Awaiting Scheduling Panel -->
+<div class="bg-surface-container p-6 rounded-2xl border border-outline-variant/15 flex-1 flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-sm font-bold text-white">Awaiting Scheduling</h4>
+<span class="text-[10px] bg-outline-variant/30 text-slate-300 px-2 py-1 rounded-full font-bold">14</span>
+</div>
+<div class="space-y-4 overflow-y-auto custom-scrollbar pr-2 max-h-[600px]">
+<!-- Candidate Item -->
+<div class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container-high border border-outline-variant/10 transition-colors group">
+<div class="flex items-center gap-3">
+<img alt="Candidate" class="w-10 h-10 rounded-full object-cover" data-alt="portrait of a professional man in a business casual attire with a blurred urban backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBJJIQdUSy8ma7gf9vmnXIQYacvrsfa6-60Q8bTxFFr3SsSkVt_v1GxOzuzoFX2gKQTFXoEbsjJEocT9OvDQ3bDGbafuKWhNmnTgn203x8QS5Jbtocg8D85z4zaMTlaaX_QH6AAPBKUcLiz8RoMUK996DQXJIWpyFaAqCzWUtU2sLDimYas9ATMwJdjS7llufNPC2QV01_v-Bke-pCjPy1CE3rpQkJNBg_Q0cDnm1-lY3v4AZc-ZYc5wt-OTKYtkTsgNikyCqbhcc"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-white truncate">Robert Downey</p>
+<p class="text-[10px] text-slate-400">Applied 2h ago</p>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between">
+<div class="flex gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<button class="p-1 rounded bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-base">calendar_month</span>
+</button>
+</div>
+</div>
+<!-- Candidate Item -->
+<div class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container-high border border-outline-variant/10 transition-colors group">
+<div class="flex items-center gap-3">
+<img alt="Candidate" class="w-10 h-10 rounded-full object-cover" data-alt="close-up of a smiling professional woman with dark hair and a confident expression in a clean studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp0NaPQFnuIsFq84McNrQCj5JJSjziux_Uq-vW99V_vvlHIEpSsHaTgyyRoSifuHXr9cDbCuLr6UJzLilWmgnYp9rTuEdv_ChSsBUcyOMZVy3p9WZKmqaw-7_SftFph2OhBHVCxVkiWMTRMKGXVoRfaQPAQcBH5QM1Yn0Q6TG_GKznqY0gYvr4_WWwlAtWMYA8AV7wkfkbWAj8wGwjiC4YEUXnLC52S4Uw6UNSBe0NCnFRbkrTqDEX_uXd6iMtd-0L0_gpiXTxP6Y"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-white truncate">Sophia Loren</p>
+<p class="text-[10px] text-slate-400">Applied 5h ago</p>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between">
+<div class="flex gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</div>
+<button class="p-1 rounded bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-base">calendar_month</span>
+</button>
+</div>
+</div>
+<!-- Candidate Item -->
+<div class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container-high border border-outline-variant/10 transition-colors group">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-xs font-bold text-slate-500">
+                                    TK
+                                </div>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-white truncate">Tom Kennedy</p>
+<p class="text-[10px] text-slate-400">Applied 1d ago</p>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between">
+<div class="flex gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<button class="p-1 rounded bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-base">calendar_month</span>
+</button>
+</div>
+</div>
+<!-- Candidate Item -->
+<div class="p-4 rounded-xl bg-surface-container-low hover:bg-surface-container-high border border-outline-variant/10 transition-colors group">
+<div class="flex items-center gap-3">
+<img alt="Candidate" class="w-10 h-10 rounded-full object-cover" data-alt="headshot of a young professional with glasses and a friendly, focused look in a minimal office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWS3Z9h4-amcpFxyoBaW-lTC6NcXq510Ve3GF-4S91laqZ_q6rVxmdjX2GDaiI7HVOJahnMGq10vLIyL4XrAys7R9owehcrdx9sbUhhAhemgdu7JmXvD47-OL1fUTgc4-81orXirk-3WvBjED1qnh0huZ8Fgf8WtTc2Lkdmw60xP42MwWh6nfNrJxV2zsGqPSdOdqiAelU9V_nojVep2G1Vvr73eyAu40DdbcrgGxt3gEb3Ie2WxZ1hO17lEErRGoD5IBFTXDsE4w"/>
+<div class="flex-1 min-w-0">
+<p class="text-sm font-bold text-white truncate">Grace Hopper</p>
+<p class="text-[10px] text-slate-400">Applied 2d ago</p>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between">
+<div class="flex gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="w-1.5 h-1.5 rounded-full bg-slate-700"></span>
+</div>
+<button class="p-1 rounded bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-base">calendar_month</span>
+</button>
+</div>
+</div>
+</div>
+<button class="mt-6 w-full text-center py-2 text-xs font-bold text-slate-500 hover:text-primary transition-colors uppercase tracking-widest">
+                        View All (14)
+                    </button>
+</div>
+</aside>
+</div>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 mt-auto border-t border-[#85adff]/10 flex flex-col md:flex-row justify-between items-center gap-4 bg-[#020a2f]">
+<div class="flex flex-col items-center md:items-start gap-2">
+<p class="font-bold text-white">TallentX AI</p>
+<p class="text-xs font-normal text-slate-500">© 2024 Intelligent Employment System. Powered by TallentX AI.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-xs font-normal text-slate-500 hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs font-normal text-slate-500 hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="text-xs font-normal text-slate-500 hover:text-white transition-colors" href="#">AI Ethics</a>
+<a class="text-xs font-normal text-slate-500 hover:text-white transition-colors" href="#">Contact Support</a>
+</div>
+</footer>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-8 right-8 w-16 h-16 rounded-full bg-tertiary text-on-tertiary shadow-[0_20px_40px_rgba(193,128,255,0.3)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</button>
+</body></html>

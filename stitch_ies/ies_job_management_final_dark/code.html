@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IES | Job Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error": "#ffb4ab",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "on-surface": "#dae2fd",
+                        "surface-tint": "#adc6ff",
+                        "surface-container-high": "#222a3d",
+                        "surface-container": "#171f33",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "on-surface-variant": "#c2c6d6",
+                        "primary": "#adc6ff",
+                        "secondary-container": "#3131c0",
+                        "surface-bright": "#31394d",
+                        "on-secondary": "#1000a9",
+                        "error-container": "#93000a",
+                        "background": "#0b1326",
+                        "tertiary-fixed": "#6ffbbe",
+                        "tertiary-container": "#00a572",
+                        "surface-container-low": "#131b2e",
+                        "surface-container-highest": "#2d3449",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "inverse-surface": "#dae2fd",
+                        "inverse-on-surface": "#283044",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#d8e2ff",
+                        "secondary-fixed": "#e1e0ff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-tertiary-container": "#00311f",
+                        "surface-variant": "#2d3449",
+                        "on-background": "#dae2fd",
+                        "on-tertiary": "#003824",
+                        "surface-container-lowest": "#060e20",
+                        "on-primary-fixed": "#001a42",
+                        "surface-dim": "#0b1326",
+                        "surface": "#0b1326",
+                        "on-primary-fixed-variant": "#004395",
+                        "on-secondary-container": "#b0b2ff",
+                        "outline": "#8c909f",
+                        "on-primary-container": "#00285d",
+                        "secondary": "#c0c1ff",
+                        "inverse-primary": "#005ac2",
+                        "on-error": "#690005",
+                        "outline-variant": "#424754",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-secondary-fixed": "#07006c",
+                        "on-primary": "#002e6a",
+                        "primary-container": "#4d8eff",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary": "#4edea3"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(34, 42, 61, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .neural-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #c0c1ff 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#0b1326]/60 backdrop-blur-xl flex justify-between items-center px-6 h-16 w-full shadow-[0_8px_32px_0_rgba(11,19,38,0.37)]">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2">
+<img alt="IES Logo" class="h-8 w-8" data-alt="high-tech abstract geometric logo representing a neural network with glowing blue nodes on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx89jw_0PFSbHGt-3-B3oYHWkRVKuzczGY8GNFog-8HQVk6ihrHYp6CSxgS3dYDFEZSbzKXsjV8w18BoS6sRc2XdNx7MjaipG-dRExkE2naOS50BZBwSw3rmWgjKzOhXjFk1nD3rZF9k0lDhnGwKiqkvj--28VMasQRT7dPvXLMo_U84ExLYvfIp0MYaROEc5SOOye7qAC23XH7e2PpG5OIfRMD78lsqSZn6Jb5LYPk_6nDxbpYNLVJt4W4A6NJvtiPxdBUpxw_20"/>
+<span class="text-2xl font-black tracking-tighter text-[#adc6ff]">IES</span>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-['Inter'] text-sm tracking-wide text-[#adc6ff] border-b-2 border-[#adc6ff] h-16 flex items-center" href="#">Dashboard</a>
+<a class="font-['Inter'] text-sm tracking-wide text-[#c0c1ff]/70 hover:bg-[#adc6ff]/10 hover:text-[#adc6ff] transition-all px-2 py-1 rounded" href="#">Jobs</a>
+<a class="font-['Inter'] text-sm tracking-wide text-[#c0c1ff]/70 hover:bg-[#adc6ff]/10 hover:text-[#adc6ff] transition-all px-2 py-1 rounded" href="#">Candidates</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-highest border-none rounded-full px-10 py-2 text-sm focus:ring-1 focus:ring-primary w-64 placeholder:text-outline" placeholder="Search neural index..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+</div>
+<button class="text-[#adc6ff] active:scale-95 duration-200"><span class="material-symbols-outlined">notifications</span></button>
+<button class="text-[#adc6ff] active:scale-95 duration-200"><span class="material-symbols-outlined">settings</span></button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/20">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="professional portrait of a recruiter in a modern office setting with soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP7Iu_Qf0D-tiz5I3YeZAZ5f689avBR8bYnP1OjF35DLgxCLaIkuAwVTb2CR3klRFGy2QpGiaqNnTjcnchTwjrX-mx0g8PfMEhzyFIAexjKdefvEVakW1H9hCHPQDfBKhkUwlq84MpjhHSC_1uY7pM6_byxVRtYZTWSGA7raPTujgrh-zPrOsH1rIUC8PlTa-aX-WsWyK-fo3ubdm1lEa1yKvFUU6wCjSThA0QkHkUizfhxjKI7rT2DnugQfHD6wyt-1Rhl5Rv6ec"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 z-40 bg-[#0b1326] flex flex-col pt-20 pb-6 hidden lg:flex">
+<div class="px-6 mb-8">
+<h2 class="text-xl font-bold text-[#adc6ff]">Recruiter Portal</h2>
+<p class="text-[10px] text-[#4edea3] flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4edea3] animate-pulse"></span>
+                Neural Engine Active
+            </p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-[#c0c1ff]/60 px-4 py-3 hover:bg-[#222a3d] hover:text-[#adc6ff] transition-colors font-['Inter'] font-medium text-sm hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 bg-[#adc6ff]/10 text-[#adc6ff] border-l-4 border-[#4edea3] px-4 py-3 font-['Inter'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined">temp_preferences_custom</span>
+                Job Management
+            </a>
+<a class="flex items-center gap-3 text-[#c0c1ff]/60 px-4 py-3 hover:bg-[#222a3d] hover:text-[#adc6ff] transition-colors font-['Inter'] font-medium text-sm hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">groups</span>
+                Talent Pool
+            </a>
+<a class="flex items-center gap-3 text-[#c0c1ff]/60 px-4 py-3 hover:bg-[#222a3d] hover:text-[#adc6ff] transition-colors font-['Inter'] font-medium text-sm hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 text-[#c0c1ff]/60 px-4 py-3 hover:bg-[#222a3d] hover:text-[#adc6ff] transition-colors font-['Inter'] font-medium text-sm hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined">forum</span>
+                Messages
+            </a>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full neural-gradient text-on-primary-container font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(173,198,255,0.3)] hover:scale-[1.02] active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+                Post New Role
+            </button>
+<a class="flex items-center gap-3 text-[#c0c1ff]/60 px-4 py-3 mt-4 hover:text-[#adc6ff] font-['Inter'] font-medium text-sm" href="#">
+<span class="material-symbols-outlined">help</span>
+                Help Center
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-24 px-6 pb-12">
+<div class="max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<h1 class="text-4xl font-black text-on-surface tracking-tight mb-2">Job Management</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl">Optimizing human capital through neural matching. Orchestrate your open mandates with precision.</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-container-highest text-on-surface px-6 py-2.5 rounded-xl font-medium border border-outline-variant/20 hover:bg-surface-bright transition-all">
+                        Export Report
+                    </button>
+<button class="neural-gradient text-on-primary-container px-8 py-2.5 rounded-xl font-bold flex items-center gap-2 shadow-lg hover:shadow-primary/20 transition-all">
+<span class="material-symbols-outlined">bolt</span>
+                        Post New Job
+                    </button>
+</div>
+</div>
+<!-- Dashboard Stats Bento -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+<div class="bg-surface-container-low p-6 rounded-2xl border-l-4 border-primary">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Active Roles</p>
+<p class="text-3xl font-black text-primary">24</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Total Applicants</p>
+<p class="text-3xl font-black text-on-surface">1,842</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Avg. Match Score</p>
+<p class="text-3xl font-black text-tertiary">92%</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-2xl">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-1">Drafts</p>
+<p class="text-3xl font-black text-on-surface-variant">05</p>
+</div>
+</div>
+<!-- Job List Table Container -->
+<div class="bg-surface-container-low rounded-3xl overflow-hidden shadow-2xl border border-outline-variant/10">
+<!-- Filters Bar -->
+<div class="px-8 py-4 bg-surface-container-high/50 flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-6">
+<button class="text-primary font-bold text-sm border-b-2 border-primary pb-1">All Postings</button>
+<button class="text-on-surface-variant font-medium text-sm hover:text-on-surface transition-colors">Active</button>
+<button class="text-on-surface-variant font-medium text-sm hover:text-on-surface transition-colors">Drafts</button>
+<button class="text-on-surface-variant font-medium text-sm hover:text-on-surface transition-colors">Archived</button>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-xs text-on-surface-variant font-medium">Sort by:</span>
+<select class="bg-surface-container-highest border-none rounded-lg text-xs font-bold py-1.5 pl-3 pr-8 focus:ring-1 focus:ring-primary text-on-surface">
+<option>Recently Created</option>
+<option>Applicants Count</option>
+<option>Match Quality</option>
+</select>
+</div>
+</div>
+<!-- High Density Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-on-surface-variant text-[10px] uppercase tracking-[0.2em] font-black border-b border-outline-variant/10">
+<th class="px-8 py-5">Job Title &amp; Neural ID</th>
+<th class="px-6 py-5">Applicants</th>
+<th class="px-6 py-5">Match Quality</th>
+<th class="px-6 py-5">Status</th>
+<th class="px-6 py-5 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Job Row 1 -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+<span class="material-symbols-outlined">terminal</span>
+</div>
+<div>
+<p class="font-bold text-on-surface text-base group-hover:text-primary transition-colors">Senior Neural Architect</p>
+<p class="text-xs text-on-surface-variant font-mono">ID: IES-992-QX</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container" data-alt="face of a man for applicant profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4Kmz6oK8sRm5ZF9-sDqT8JZQmraRMQpNubI7ueTdMDAugbBTHD0A9_BpjQWbPp3FZ4IrOu0PjPhjeRx7ixS8aqaoM_DvFCX82rzPQzkgAsI1i071ZeGlTqtO8DAlrDdmix6xLOZnd5HZwuN7TCdf9AOs6ZmHyI3H_6WU1bhLQuo9OZXyl0UJW-V3nrxIWefLo2ZaW28s-yv29jLyUMqaINudlRqpkyqokUosRXVE-3rFx4n4OGXstJlVHu6LepjgP-owEyZ-VJBU"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container" data-alt="face of a woman for applicant profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYOVxuK_TxnSM8rAJ4cNFjK40kxeD6zfseA1QPbR1z175VMO2O8eEIez64WVTwyrCrHaSJgrAMhVgtTRy1tSpYyiNb6pxLuAaNaTEfw5vhqyFeRU8ctUcny79J4yX5FSyQ88blMwY6nam2kk3d-fC7nROF3OoyvcfV8QTJWjF3JF0L-1aFonXWMRC4ED_JcZnvOdvNeWJ_gdENFSN8jQUSYQjtDmAo2loiPZxrRPGECxlZ-x8ozWVXLwDmMya0ebYWYTv5-YIQI64"/>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-surface-container flex items-center justify-center text-[10px] font-bold text-primary">
+                                            +42
+                                        </div>
+</div>
+<p class="text-[10px] mt-1 text-on-surface-variant font-bold">12 New today</p>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary" style="width: 94%"></div>
+</div>
+<span class="text-xs font-black text-tertiary">94%</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<span class="px-3 py-1 rounded-full bg-tertiary/10 text-tertiary text-[10px] font-black uppercase tracking-wider border border-tertiary/20">Active</span>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Job Row 2 -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary border border-secondary/20">
+<span class="material-symbols-outlined">palette</span>
+</div>
+<div>
+<p class="font-bold text-on-surface text-base group-hover:text-secondary transition-colors">UX Cognitive Designer</p>
+<p class="text-xs text-on-surface-variant font-mono">ID: IES-441-BP</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container" data-alt="face of a woman for applicant profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBch6oxibuX9jv9YWFsCh4QElh2Itl7-u5Xtg2EndCaOsoW34ELt-FA3qHdzAqv9-vhPLX2jfH5SHxBGt-MiFzYr3WOtZiLWYjR0EYf5OuGbVn7MeNwsU3gngENM60_wosyA1xiDUoPGWiapoOXpjUCLd4CA_v-ISsN9GIvupSrz-YC7brqoEqIGKwBttt5UHXZKR-kYQFbtBWoNONAtV_zo2W2oV7cd8p7wXnnp8S6gwO0dQN6elR39717ySUPyfTtP0_CWZ7aIfU"/>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-surface-container flex items-center justify-center text-[10px] font-bold text-secondary">
+                                            +15
+                                        </div>
+</div>
+<p class="text-[10px] mt-1 text-on-surface-variant font-bold">5 New today</p>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 82%"></div>
+</div>
+<span class="text-xs font-black text-secondary">82%</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant text-[10px] font-black uppercase tracking-wider border border-outline-variant/20">Draft</span>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined">edit</span>
+</button>
+</td>
+</tr>
+<!-- Job Row 3 -->
+<tr class="hover:bg-surface-container-highest/30 transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary border border-primary/20">
+<span class="material-symbols-outlined">data_object</span>
+</div>
+<div>
+<p class="font-bold text-on-surface text-base group-hover:text-primary transition-colors">Lead Data Ethicist</p>
+<p class="text-xs text-on-surface-variant font-mono">ID: IES-112-LZ</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container" data-alt="face of a man for applicant profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3wy4y3xVu3ruhNrBbGsYxGY6WyHpnhMnfq9ieZDkg_blgL91Nw4Sq9lUUP11dNLe4Rx7v1bpDtk5tFu4w9A-iZNT7VjV_huFRO_JdBOlvcNS6g5723TXrIQ8HxHvI87MTj9The6sdpyhzPiPPu9a5IyTbxUbqZ3LwFXY8zLvHbw82t0HYXm6q-9kHHC1vimkcfF1LgZnghDVLYyCKb3ONCNPe3Ce1q0rjy5JVXBYV7b8Id-D75wb6KpsDo9jl7z2_V7bVPJBa5sI"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container" data-alt="face of a woman for applicant profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpKcX0aWrkrXPPDniG0nNCwJK0NZldavtClmq3R-ujNI_ShczoninmzEqGoRAuNjYtbFLczr2Cv_qQiw8gpd0ghKIdjil46ziWVvLiRmmvynmxzmysYY9VXbucxwl7gzAv7B_4Dy6nqaSodwsuR9HjaRtKxfvcAtfu1kGchzW69J-pyv2924_0XJJRDuWTmrQE7FtmqzQPibOlLzzE2KRDoE1Q3vvqM0SLvcZCku_yPNNpfwzPzPYYNxjiJhKKeK6MlNlsf9wBLoI"/>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-surface-container flex items-center justify-center text-[10px] font-bold text-primary">
+                                            +201
+                                        </div>
+</div>
+<p class="text-[10px] mt-1 text-on-surface-variant font-bold">54 New today</p>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary" style="width: 98%"></div>
+</div>
+<span class="text-xs font-black text-tertiary">98%</span>
+</div>
+</td>
+<td class="px-6 py-6">
+<span class="px-3 py-1 rounded-full bg-tertiary/10 text-tertiary text-[10px] font-black uppercase tracking-wider border border-tertiary/20">Active</span>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="p-2 hover:bg-surface-container-highest rounded-lg text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination/Footer -->
+<div class="px-8 py-6 bg-surface-container-low flex items-center justify-between border-t border-outline-variant/10">
+<p class="text-xs text-on-surface-variant">Showing 1 to 10 of 29 postings</p>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-highest rounded-lg text-on-surface-variant hover:text-primary disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-3 py-1 bg-primary/10 text-primary rounded-lg text-xs font-bold">1</button>
+<button class="px-3 py-1 hover:bg-surface-container-highest text-on-surface-variant rounded-lg text-xs font-bold">2</button>
+<button class="px-3 py-1 hover:bg-surface-container-highest text-on-surface-variant rounded-lg text-xs font-bold">3</button>
+<button class="p-2 bg-surface-container-highest rounded-lg text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Insights Section (Asymmetric Side Feature) -->
+<div class="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 glass-panel p-8 rounded-3xl relative overflow-hidden group">
+<div class="relative z-10">
+<h3 class="text-2xl font-bold mb-4">Neural Supply Forecast</h3>
+<p class="text-on-surface-variant mb-6 max-w-lg">Predictive analysis suggests a 15% surge in Engineering talent availability next month. We recommend scheduling 12 high-priority interviews for the "Lead Data Ethicist" role this week.</p>
+<button class="text-primary font-bold flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+                            View Detailed Forecast
+                            <span class="material-symbols-outlined">trending_up</span>
+</button>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -right-16 -bottom-16 w-64 h-64 bg-primary/10 rounded-full blur-[100px]"></div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-3xl flex flex-col items-center text-center">
+<div class="w-20 h-20 mb-6 relative">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container-highest" cx="40" cy="40" fill="transparent" r="36" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-tertiary" cx="40" cy="40" fill="transparent" r="36" stroke="currentColor" stroke-dasharray="226.2" stroke-dashoffset="45.2" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-black text-lg">80%</div>
+</div>
+<h3 class="font-bold mb-2">Efficiency Index</h3>
+<p class="text-xs text-on-surface-variant mb-4">Your current time-to-hire is 12% faster than last quarter.</p>
+<button class="w-full bg-surface-container-highest py-3 rounded-xl text-sm font-bold hover:bg-surface-bright transition-all">Optimize Workflow</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar for Mobile -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-[#0b1326]/60 backdrop-blur-xl flex justify-around items-center h-16 shadow-[0_-8px_32px_0_rgba(11,19,38,0.37)]">
+<button class="flex flex-col items-center text-[#adc6ff]"><span class="material-symbols-outlined">dashboard</span><span class="text-[10px]">Home</span></button>
+<button class="flex flex-col items-center text-[#adc6ff]"><span class="material-symbols-outlined">temp_preferences_custom</span><span class="text-[10px]">Jobs</span></button>
+<button class="w-12 h-12 -mt-10 neural-gradient rounded-full flex items-center justify-center text-on-primary-container shadow-lg"><span class="material-symbols-outlined">add</span></button>
+<button class="flex flex-col items-center text-[#c0c1ff]/70"><span class="material-symbols-outlined">groups</span><span class="text-[10px]">Pool</span></button>
+<button class="flex flex-col items-center text-[#c0c1ff]/70"><span class="material-symbols-outlined">forum</span><span class="text-[10px]">Chat</span></button>
+</nav>
+</body></html>

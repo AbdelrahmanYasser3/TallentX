@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IES | Reset Your Password</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-container": "#fffbff",
+                        "surface-dim": "#d8dadc",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-tertiary-fixed": "#2c0051",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface-variant": "#e0e3e5",
+                        "surface-bright": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "primary-container": "#2170e4",
+                        "on-surface-variant": "#424754",
+                        "surface-container-highest": "#e0e3e5",
+                        "outline-variant": "#c2c6d6",
+                        "on-surface": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "inverse-primary": "#adc6ff",
+                        "surface": "#f7f9fb",
+                        "primary": "#0058be",
+                        "on-tertiary-container": "#fffbff",
+                        "surface-tint": "#005ac2",
+                        "on-primary-container": "#fefcff",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "tertiary": "#8127cf",
+                        "surface-container-low": "#f2f4f6",
+                        "secondary": "#4648d4",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "primary-fixed": "#d8e2ff",
+                        "on-secondary-fixed": "#07006c",
+                        "on-background": "#191c1e",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#727785",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-fixed-dim": "#adc6ff",
+                        "tertiary-fixed": "#f0dbff",
+                        "tertiary-container": "#9c48ea",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "tertiary-fixed-dim": "#ddb7ff",
+                        "secondary-container": "#6063ee",
+                        "on-tertiary-fixed-variant": "#6900b3",
+                        "on-primary-fixed": "#001a42",
+                        "background": "#020617",
+                        "on-primary": "#ffffff"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(24px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-gradient {
+            background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+        }
+    </style>
+</head>
+<body class="bg-[#020617] text-slate-100 min-h-screen flex items-center justify-center p-6 selection:bg-primary/30">
+<!-- Background Decorative Elements -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-[120px]"></div>
+<div class="absolute bottom-[-5%] right-[-5%] w-[30%] h-[30%] rounded-full bg-tertiary/10 blur-[100px]"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 w-full max-w-md">
+<!-- Brand Identity -->
+<div class="flex flex-col items-center mb-10">
+<div class="w-14 h-14 rounded-2xl ai-gradient flex items-center justify-center mb-6 shadow-2xl shadow-indigo-500/20">
+<span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<h2 class="text-3xl font-black tracking-tighter bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+                IES
+            </h2>
+</div>
+<!-- Recovery Card -->
+<div class="glass-panel rounded-3xl p-8 border border-white/5 shadow-2xl">
+<header class="mb-8">
+<h1 class="text-2xl font-bold text-white tracking-tight mb-2">Reset Your Password</h1>
+<p class="text-slate-400 text-sm leading-relaxed">
+                    Enter your email and we will send you a recovery link.
+                </p>
+</header>
+<form class="space-y-6" onsubmit="return false;">
+<!-- Email Input Field -->
+<div class="space-y-2">
+<label class="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-1" for="email">Work Email Address</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-500 text-xl group-focus-within:text-primary transition-colors">alternate_email</span>
+</div>
+<input class="w-full bg-slate-900/50 border border-slate-800 rounded-xl py-4 pl-12 pr-4 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-all duration-200" id="email" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full bg-primary hover:bg-primary-container text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all duration-200 active:scale-[0.98] flex items-center justify-center gap-2">
+<span>Send Reset Link</span>
+<span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</form>
+<!-- Footer Navigation -->
+<footer class="mt-8 pt-8 border-t border-white/5 flex flex-col items-center gap-4">
+<a class="text-sm font-medium text-slate-400 hover:text-white transition-colors flex items-center gap-2 group" href="#">
+<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    Back to Sign In
+                </a>
+</footer>
+</div>
+<!-- Decorative "AI Intelligence" Insight Chip -->
+<div class="mt-8 flex justify-center">
+<div class="flex items-center gap-3 px-4 py-2 rounded-full bg-secondary/10 border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[11px] font-semibold text-secondary-fixed uppercase tracking-wider">Secure AES-256 Encryption</span>
+</div>
+</div>
+</main>
+<!-- Support Link -->
+<div class="fixed bottom-8 text-center w-full">
+<p class="text-slate-500 text-xs tracking-wide">
+            Having trouble? <a class="text-blue-400 hover:underline font-medium" href="#">Contact IES Support</a>
+</p>
+</div>
+</body></html>

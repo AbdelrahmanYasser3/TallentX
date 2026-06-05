@@ -1,0 +1,136 @@
+<div class="min-h-screen bg-surface-container-lowest p-6 md:p-8">
+  <div class="mx-auto max-w-7xl space-y-6">
+    <header class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div>
+        <p class="text-label-md uppercase tracking-widest text-tertiary">Lumina Nexus</p>
+        <h1 class="mt-1 text-display-sm text-on-surface">Messages</h1>
+        <p class="mt-2 text-body-md text-on-surface-variant">Central inbox for recruiter and candidate communication with AI drafting support.</p>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <button class="rounded-xl bg-surface-container px-4 py-2 text-label-md text-on-surface">Archived</button>
+        <button class="rounded-xl bg-primary px-4 py-2 text-label-md text-on-primary">New message</button>
+      </div>
+    </header>
+
+    <section class="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <article class="rounded-2xl bg-surface-container p-4 shadow-sm">
+        <p class="text-label-sm uppercase text-on-surface-variant">Unread</p>
+        <p class="mt-2 text-headline-sm text-on-surface">{{ unreadCount() }}</p>
+      </article>
+      <article class="rounded-2xl bg-surface-container p-4 shadow-sm">
+        <p class="text-label-sm uppercase text-on-surface-variant">Interviews</p>
+        <p class="mt-2 text-headline-sm text-on-surface">{{ interviewsCount() }}</p>
+      </article>
+      <article class="rounded-2xl bg-surface-container p-4 shadow-sm">
+        <p class="text-label-sm uppercase text-on-surface-variant">Avg Response</p>
+        <p class="mt-2 text-headline-sm text-on-surface">{{ avgResponse() }}</p>
+      </article>
+      <article class="rounded-2xl bg-surface-container p-4 shadow-sm">
+        <p class="text-label-sm uppercase text-on-surface-variant">AI Drafts</p>
+        <p class="mt-2 text-headline-sm text-on-surface">{{ aiDrafts() }}</p>
+      </article>
+    </section>
+
+    <div class="grid grid-cols-1 gap-6 xl:grid-cols-12">
+      <section class="space-y-4 rounded-2xl bg-surface-container p-4 shadow-sm xl:col-span-3">
+        <div class="relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant"></i>
+          <input
+            type="text"
+            [ngModel]="searchQuery()"
+            (ngModelChange)="searchQuery.set($event)"
+            placeholder="Search conversations"
+            class="w-full rounded-xl bg-surface-container-lowest py-2.5 pl-9 pr-3 text-body-sm text-on-surface placeholder:text-on-surface-variant"
+          />
+        </div>
+
+        <div class="flex gap-2 overflow-x-auto pb-1">
+          <button class="whitespace-nowrap rounded-full bg-primary px-4 py-1.5 text-label-md text-on-primary">All</button>
+          <button class="whitespace-nowrap rounded-full bg-surface-container-high px-4 py-1.5 text-label-md text-on-surface-variant">Candidates</button>
+          <button class="whitespace-nowrap rounded-full bg-surface-container-high px-4 py-1.5 text-label-md text-on-surface-variant">Hiring Team</button>
+        </div>
+
+        <div class="space-y-2">
+          <!-- Dynamic Threads List -->
+            <article *ngFor="let convo of filteredConversations" 
+                  (click)="selectConversation(convo.id)"
+                  class="rounded-xl p-3 cursor-pointer transition-colors"
+                  [ngClass]="activeConversationId() === convo.id ? 'bg-surface-container-lowest' : 'hover:bg-surface-container-lowest'">
+            <div class="mb-1 flex items-start justify-between gap-3">
+              <h3 class="text-title-md text-on-surface">{{ convo.name }}</h3>
+              <span *ngIf="convo.unread" class="rounded-full bg-primary px-2 py-0.5 text-label-sm text-on-primary">{{ convo.unread }}</span>
+              <span *ngIf="!convo.unread" class="text-label-sm text-on-surface-variant">{{ convo.timestamp }}</span>
+            </div>
+            <p class="text-body-sm text-on-surface-variant truncate">{{ convo.lastMessage }}</p>
+            <p *ngIf="convo.unread" class="mt-2 text-label-sm uppercase tracking-wide text-on-surface-variant">{{ convo.timestamp }}</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="flex min-h-[560px] flex-col rounded-2xl bg-surface-container p-5 shadow-sm xl:col-span-6">
+        <div class="mb-4 flex items-center justify-between rounded-xl bg-surface-container-lowest p-4" *ngIf="activeConversation">
+          <div>
+            <h2 class="text-title-lg text-on-surface">{{ activeConversation.name }}</h2>
+            <p class="text-body-sm text-on-surface-variant">{{ activeConversation.role }}</p>
+          </div>
+          <button class="rounded-lg bg-surface-container px-3 py-2 text-label-md text-on-surface">Schedule interview</button>
+        </div>
+
+        <!-- Dynamic Chat List -->
+        <div class="flex-1 space-y-4 overflow-y-auto pr-1 flex flex-col justify-end">
+          <div *ngFor="let msg of activeMessages()" 
+               class="max-w-[80%] rounded-2xl p-3"
+               [ngClass]="{
+                 'bg-primary text-on-primary ml-auto': msg.sender === 'me',
+                 'bg-surface-container-lowest text-on-surface': msg.sender === 'them'
+               }">
+            <p class="text-body-sm">{{ msg.content }}</p>
+            <p class="mt-2 text-label-sm uppercase tracking-wide opacity-80">{{ msg.timestamp }}</p>
+          </div>
+        </div>
+
+        <div class="mt-4 rounded-xl bg-surface-container-lowest p-3">
+          <p class="mb-2 text-label-md uppercase tracking-wider text-tertiary">AI suggested reply</p>
+          <p class="text-body-sm text-on-surface-variant">"Great. I have also attached a short architecture scenario so we can use interview time effectively."</p>
+        </div>
+
+        <div class="mt-3 flex gap-2">
+          <input
+            type="text"
+            [ngModel]="newMessage()"
+            (ngModelChange)="newMessage.set($event)"
+            (keyup.enter)="sendMessage()"
+            placeholder="Write a message..."
+            class="flex-1 rounded-xl bg-surface-container-lowest px-4 py-3 text-body-sm text-on-surface"
+          />
+          <button class="rounded-xl bg-surface-container px-4 py-3 text-on-surface">
+            <i class="fa-solid fa-paperclip"></i>
+          </button>
+          <button (click)="sendMessage()" class="rounded-xl bg-primary px-5 py-3 text-label-md text-on-primary">
+            <i class="fa-regular fa-paper-plane"></i>
+          </button>
+        </div>
+      </section>
+
+      <aside class="space-y-4 xl:col-span-3">
+        <article class="rounded-2xl bg-surface-container p-5 shadow-sm">
+          <h3 class="text-title-md text-on-surface">Conversation Health</h3>
+          <ul class="mt-4 space-y-3 text-body-sm text-on-surface-variant">
+            <li class="flex items-center justify-between"><span>Response speed</span><strong class="text-on-surface">Excellent</strong></li>
+            <li class="flex items-center justify-between"><span>Candidate sentiment</span><strong class="text-success">Positive</strong></li>
+            <li class="flex items-center justify-between"><span>Follow-up risk</span><strong class="text-warning">Medium</strong></li>
+          </ul>
+        </article>
+
+        <article class="rounded-2xl bg-surface-container p-5 shadow-sm">
+          <h3 class="text-title-md text-on-surface">Quick Actions</h3>
+          <div class="mt-3 grid gap-2">
+            <button class="rounded-lg bg-surface-container-lowest px-3 py-2 text-left text-label-md text-on-surface">Send interview prep</button>
+            <button class="rounded-lg bg-surface-container-lowest px-3 py-2 text-left text-label-md text-on-surface">Request portfolio update</button>
+            <button class="rounded-lg bg-surface-container-lowest px-3 py-2 text-left text-label-md text-on-surface">Escalate to hiring manager</button>
+          </div>
+        </article>
+      </aside>
+    </div>
+  </div>
+</div>

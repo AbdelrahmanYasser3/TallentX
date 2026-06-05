@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notifications Center | IES Neural Architect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-secondary-container": "#b0b2ff",
+            "tertiary": "#4edea3",
+            "surface-container-high": "#222a3d",
+            "inverse-on-surface": "#283044",
+            "on-primary-container": "#00285d",
+            "secondary-fixed-dim": "#c0c1ff",
+            "surface-variant": "#2d3449",
+            "surface-tint": "#adc6ff",
+            "outline": "#8c909f",
+            "background": "#0b1326",
+            "on-error-container": "#ffdad6",
+            "on-error": "#690005",
+            "surface-container-lowest": "#060e20",
+            "secondary-fixed": "#e1e0ff",
+            "on-tertiary": "#003824",
+            "surface-dim": "#0b1326",
+            "on-tertiary-fixed": "#002113",
+            "on-background": "#dae2fd",
+            "surface-container-low": "#131b2e",
+            "error": "#ffb4ab",
+            "primary-container": "#4d8eff",
+            "error-container": "#93000a",
+            "on-primary": "#002e6a",
+            "tertiary-fixed": "#6ffbbe",
+            "surface-container-highest": "#2d3449",
+            "inverse-surface": "#dae2fd",
+            "on-secondary-fixed": "#07006c",
+            "secondary": "#c0c1ff",
+            "secondary-container": "#3131c0",
+            "primary": "#adc6ff",
+            "on-secondary-fixed-variant": "#2f2ebe",
+            "on-primary-fixed-variant": "#004395",
+            "outline-variant": "#424754",
+            "on-surface-variant": "#c2c6d6",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-tertiary-container": "#00311f",
+            "on-primary-fixed": "#001a42",
+            "surface-bright": "#31394d",
+            "tertiary-fixed-dim": "#4edea3",
+            "surface": "#0b1326",
+            "primary-fixed": "#d8e2ff",
+            "on-secondary": "#1000a9",
+            "inverse-primary": "#005ac2",
+            "surface-container": "#171f33",
+            "on-surface": "#dae2fd",
+            "primary-fixed-dim": "#adc6ff",
+            "tertiary-container": "#00a572"
+          },
+          fontFamily: {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-panel {
+      background: rgba(34, 42, 61, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .neural-border {
+      position: relative;
+      background: linear-gradient(135deg, #adc6ff 0%, #c0c1ff 100%);
+      padding: 1px;
+    }
+    .neural-border-content {
+      background: #131b2e;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#0b1326] border-r border-[#adc6ff]/10 flex flex-col py-8 z-40 hidden md:flex">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary text-2xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-[#adc6ff] leading-none">Neural Architect</h1>
+<p class="text-[10px] text-on-surface-variant tracking-widest mt-1 opacity-70">AI RECRUITMENT ENGINE</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1 px-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#222a3d] hover:text-[#adc6ff] hover:bg-[#131b2e] transition-colors duration-200 font-['Inter'] text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#222a3d] hover:text-[#adc6ff] hover:bg-[#131b2e] transition-colors duration-200 font-['Inter'] text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span>AI Matches</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#222a3d] hover:text-[#adc6ff] hover:bg-[#131b2e] transition-colors duration-200 font-['Inter'] text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined">work</span>
+<span>Applications</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#222a3d] hover:text-[#adc6ff] hover:bg-[#131b2e] transition-colors duration-200 font-['Inter'] text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span>Messages</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#222a3d] hover:text-[#adc6ff] hover:bg-[#131b2e] transition-colors duration-200 font-['Inter'] text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined">insert_chart</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#222a3d] hover:text-[#adc6ff] hover:bg-[#131b2e] transition-colors duration-200 font-['Inter'] text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="px-4 mt-auto space-y-1">
+<button class="w-full mb-6 bg-gradient-to-r from-primary to-secondary text-on-primary font-bold py-3 px-4 rounded-xl shadow-lg shadow-primary/10 hover:scale-[1.02] active:scale-95 transition-all">
+        Post New Job
+      </button>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#222a3d] hover:text-[#adc6ff] hover:bg-[#131b2e] transition-colors duration-200 font-['Inter'] text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#222a3d] hover:text-[#adc6ff] hover:bg-[#131b2e] transition-colors duration-200 font-['Inter'] text-[13px] font-medium" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0b1326]/80 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] h-16 flex justify-between items-center px-6 md:pl-72">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-black tracking-tighter bg-gradient-to-br from-[#adc6ff] to-[#c0c1ff] bg-clip-text text-transparent md:hidden">IES</span>
+<div class="hidden sm:flex items-center bg-surface-container-low px-4 py-1.5 rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm text-on-surface placeholder:text-on-surface-variant/50 w-64" placeholder="Search system logs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-[#adc6ff] font-semibold hover:bg-[#222a3d] transition-all duration-300 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-[#adc6ff] hover:bg-[#222a3d] transition-all duration-300">
+<span class="material-symbols-outlined">auto_awesome</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 p-0.5">
+<img alt="User Profile Avatar" class="w-full h-full rounded-full object-cover" data-alt="Close up portrait of a professional male architect in a dark studio setting with soft blue cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8-Zmca7inwDk9BzP_fVrOIwnKZ6T3uFybFmgC5Pc6zuv8cfaSzhYBRMT4lhhOHHckSzeeU4o4-Q5yNV4JM98RBi_4EcWl1gVZMo8Y7D0IX0JMjmNlZGB8S4UXCLoQXO9UlRvIqh84M9Q4JELunpg-VfTJ8pq5YhfwvJz6iaJ5Idhyih_pqD0trLOCRvreAR2SkNTWQGaKRzWvjObsPJ3cLmhCL6o3zzWyVSK3b19je985LGGDSgaXzN0DC76jsDGxfZX8HAUJ9_w"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-24 pb-12 px-6 md:pl-72 min-h-screen">
+<div class="max-w-5xl mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+<div>
+<h2 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Notification Center</h2>
+<p class="text-on-surface-variant body-md max-w-xl">Monitor your AI-driven talent pipeline and platform updates in real-time. System status: <span class="text-tertiary">Operational</span>.</p>
+</div>
+<div class="flex gap-2 p-1 bg-surface-container-low rounded-xl">
+<button class="px-4 py-2 rounded-lg text-sm font-semibold bg-surface-container-high text-primary shadow-sm">All</button>
+<button class="px-4 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">Unread</button>
+<button class="px-4 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">AI Insights</button>
+<button class="px-4 py-2 rounded-lg text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors">Applications</button>
+</div>
+</div>
+<!-- Notifications Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Featured AI Insight (Large Span) -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-2xl p-[1px] bg-gradient-to-br from-primary to-secondary/30">
+<div class="bg-surface-container-low h-full rounded-[15px] p-6 relative overflow-hidden">
+<!-- Background Decorative Pulse -->
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full"></div>
+<div class="flex items-start justify-between relative z-10">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/30 flex items-center justify-center text-secondary shadow-[0_0_20px_rgba(49,49,192,0.3)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[10px] font-bold tracking-[0.2em] text-secondary uppercase">Neural Priority</span>
+<span class="w-1 h-1 rounded-full bg-secondary-variant"></span>
+<span class="text-[10px] font-medium text-on-surface-variant">2 mins ago</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface leading-tight mb-2">98% Fit Detected: Lead Frontend Engineer</h3>
+<p class="text-on-surface-variant body-md mb-4 max-w-lg">Our Neural Architect just identified a passive candidate matching your "Hyper-Growth" criteria. Their recent open-source activity in React Server Components aligns with your core stack.</p>
+<div class="flex gap-3">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg text-sm font-bold shadow-md hover:shadow-primary/20 transition-all">Review Candidate</button>
+<button class="bg-surface-container-high text-on-surface px-4 py-2 rounded-lg text-sm font-semibold hover:bg-surface-bright transition-colors">Dismiss</button>
+</div>
+</div>
+</div>
+<span class="text-secondary text-2xl">✨</span>
+</div>
+</div>
+</div>
+<!-- Sidebar Stats Card -->
+<div class="md:col-span-4 bg-surface-container-low rounded-2xl p-6 border-l-4 border-primary">
+<h4 class="text-sm font-bold text-on-surface-variant uppercase tracking-widest mb-4">Pipeline Health</h4>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-xs font-semibold mb-2">
+<span class="text-on-surface">Unread Alerts</span>
+<span class="text-primary">12</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%] rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-semibold mb-2">
+<span class="text-on-surface">AI Match Rate</span>
+<span class="text-tertiary">+14%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[82%] rounded-full"></div>
+</div>
+</div>
+<div class="pt-4 mt-4 border-t border-outline-variant/10">
+<p class="text-xs text-on-surface-variant leading-relaxed">Neural processing at peak efficiency. Last scan completed 45 seconds ago.</p>
+</div>
+</div>
+</div>
+<!-- Standard Notification List (Asymmetric Grid) -->
+<div class="md:col-span-12 space-y-4">
+<!-- Notification Item: Application Status -->
+<div class="bg-surface-container-low/50 hover:bg-surface-container-low p-4 rounded-2xl flex items-center justify-between transition-all group">
+<div class="flex items-center gap-5">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined">work_history</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<h4 class="text-sm font-bold text-on-surface">Application Milestone</h4>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container/20 text-tertiary text-[10px] font-black uppercase">Phase 2</span>
+</div>
+<p class="text-sm text-on-surface-variant">Alexander Pierce has completed the Technical Assessment for <span class="text-on-surface">Senior UX Designer</span>.</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-xs text-on-surface-variant/60 font-medium">1 hour ago</span>
+<button class="opacity-0 group-hover:opacity-100 p-2 hover:bg-surface-bright rounded-lg transition-all text-on-surface-variant">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Notification Item: System Update -->
+<div class="bg-surface-container-low/50 hover:bg-surface-container-low p-4 rounded-2xl flex items-center justify-between transition-all group">
+<div class="flex items-center gap-5">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">cloud_done</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<h4 class="text-sm font-bold text-on-surface">System Indexing Complete</h4>
+</div>
+<p class="text-sm text-on-surface-variant">4,200 candidates re-indexed with new Neural v4.2 parameters. Match precision increased by 4.8%.</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-xs text-on-surface-variant/60 font-medium">3 hours ago</span>
+<button class="opacity-0 group-hover:opacity-100 p-2 hover:bg-surface-bright rounded-lg transition-all text-on-surface-variant">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Notification Item: AI Match (Indigo Highlight) -->
+<div class="neural-border rounded-2xl group transition-transform hover:scale-[1.01]">
+<div class="neural-border-content p-4 rounded-[15px] flex items-center justify-between">
+<div class="flex items-center gap-5">
+<div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">colors_spark</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<h4 class="text-sm font-bold text-on-surface">New High-Priority Match</h4>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container/40 text-on-secondary-container text-[10px] font-black uppercase">AI Match</span>
+</div>
+<p class="text-sm text-on-surface-variant">A candidate from your "Talent Pool" has updated their profile with GraphQL skills. 94% match for <span class="text-on-surface">API Architect</span>.</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-xs text-on-surface-variant/60 font-medium">5 hours ago</span>
+<button class="p-2 bg-surface-container-high hover:bg-surface-bright rounded-lg transition-all text-secondary">
+<span class="material-symbols-outlined text-xl">bolt</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Notification Item: Message -->
+<div class="bg-surface-container-low/50 hover:bg-surface-container-low p-4 rounded-2xl flex items-center justify-between transition-all group">
+<div class="flex items-center gap-5">
+<div class="relative">
+<img alt="Sarah Chen" class="w-12 h-12 rounded-full object-cover" data-alt="Professional headshot of a female executive in her 30s with short dark hair, smiling warmly in a bright office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnhiu2HYCaEAhJZUiv9F4P2388Ujb7DTbRPxV4an3BhBMqXNxkn8aI3euXB05lYisEWzy3GkjIsQu-0YUS_5vGBuBhZtWWFGO50qbwayZ69tgquPiHcxLdERJl_jI76dx3lOCJ13Rnzs07wExC5B5w--uZQCCqV6oUzSBxC26_HOh3OMRaSGg926jRynQmZLJRSK4QvrFNk57kXr5pvZHdKeh0o0B1i2B45DurH_0JtSGsoOhLLuUzU2ersFjCiduKITiWR9CCyJk"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-tertiary border-2 border-surface rounded-full"></span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-0.5">
+<h4 class="text-sm font-bold text-on-surface">New Message: Sarah Chen</h4>
+</div>
+<p class="text-sm text-on-surface-variant">"I've attached the references as requested. Looking forward to our next..."</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-xs text-on-surface-variant/60 font-medium">8 hours ago</span>
+<button class="opacity-0 group-hover:opacity-100 p-2 hover:bg-surface-bright rounded-lg transition-all text-on-surface-variant">
+<span class="material-symbols-outlined text-xl">chat</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="mt-10 flex justify-center">
+<button class="px-8 py-3 bg-surface-container-high hover:bg-surface-bright text-on-surface font-semibold rounded-xl transition-all border border-outline-variant/10">
+          Load Archive History
+        </button>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-12 bg-[#0b1326] flex flex-col items-center justify-center space-y-4 md:pl-64">
+<div class="flex gap-8">
+<a class="text-xs text-[#222a3d] hover:text-[#c0c1ff] transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs text-[#222a3d] hover:text-[#c0c1ff] transition-colors" href="#">Terms of Service</a>
+<a class="text-xs text-[#222a3d] hover:text-[#c0c1ff] transition-colors" href="#">AI Ethics</a>
+<a class="text-xs text-[#222a3d] hover:text-[#c0c1ff] transition-colors" href="#">Contact</a>
+</div>
+<p class="text-xs text-[#222a3d] font-['Inter']">© 2024 Intelligent Employment System. Powered by Neural Architect AI.</p>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 right-0 bg-[#0b1326]/90 backdrop-blur-lg md:hidden border-t border-outline-variant/10 flex justify-around items-center h-16 z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">auto_awesome</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</nav>
+</body></html>

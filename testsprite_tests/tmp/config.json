@@ -1,0 +1,20 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:4200",
+  "executionArgs": {
+    "projectName": "TallentX",
+    "projectPath": "d:\\Important_Files\\Projects\\Employment System\\TallentX",
+    "testIds": [
+      "TC001"
+    ],
+    "additionalInstruction": "Before interactions, wait until app-root and at least one form input/button are visible (up to 25 seconds). If page is blank, reload once and retry wait. Do not mark blocked unless two waits fail.",
+    "serverMode": "development",
+    "envs": {
+      "API_KEY": "sk-user-xebLy2I8iKCHBNqYxZLmTNG9ssYifDrT-q6s5zn2guKU576z7bIJ1_0lRUSfY3D-8CoebO9uqBM1cRhiJ99tHYw1cqlvTqpLHeySeMKlrqYuaCHroQUbwDEwqE6-8mb7Nzo"
+    }
+  },
+  "serverPort": 51543,
+  "proxy": "http://4e3eeafc-1af8-41c7-9696-34072974ba05:rbm3E8fjeAP8EgrGtQibsNViy3Ke13sr@tun.testsprite.com:8080"
+}

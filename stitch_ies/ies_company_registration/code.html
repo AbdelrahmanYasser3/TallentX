@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Company Registration | TallentX IES</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#3a3ac8",
+              "error-container": "#9f0519",
+              "on-tertiary-fixed-variant": "#560094",
+              "surface-container": "#091542",
+              "outline": "#6b739d",
+              "secondary-fixed": "#cdcdff",
+              "on-secondary-fixed": "#160bae",
+              "secondary-fixed-dim": "#bdbeff",
+              "on-tertiary-container": "#000000",
+              "error": "#ff716c",
+              "secondary": "#9093ff",
+              "on-surface-variant": "#a1a9d5",
+              "tertiary-fixed": "#ce9bff",
+              "tertiary": "#c180ff",
+              "error-dim": "#d7383b",
+              "on-background": "#e1e4ff",
+              "primary-container": "#6e9fff",
+              "surface-container-lowest": "#000000",
+              "secondary-dim": "#6063ee",
+              "surface-dim": "#020a2f",
+              "on-error-container": "#ffa8a3",
+              "surface-bright": "#192760",
+              "tertiary-dim": "#9c48ea",
+              "primary-dim": "#699cff",
+              "primary": "#85adff",
+              "inverse-on-surface": "#4b537a",
+              "on-secondary-container": "#ccccff",
+              "inverse-primary": "#005bc4",
+              "surface-container-highest": "#142156",
+              "on-primary-fixed-variant": "#002a62",
+              "on-secondary": "#080079",
+              "tertiary-fixed-dim": "#c488ff",
+              "background": "#020a2f",
+              "outline-variant": "#3d466c",
+              "tertiary-container": "#af5cfe",
+              "primary-fixed": "#6e9fff",
+              "on-primary-fixed": "#000000",
+              "on-error": "#490006",
+              "surface-container-high": "#0e1b4c",
+              "surface": "#020a2f",
+              "on-surface": "#e1e4ff",
+              "surface-variant": "#142156",
+              "on-tertiary": "#33005b",
+              "on-primary": "#002c66",
+              "surface-tint": "#85adff",
+              "on-primary-container": "#002150",
+              "on-tertiary-fixed": "#270048",
+              "inverse-surface": "#fbf8ff",
+              "surface-container-low": "#050f38",
+              "primary-fixed-dim": "#5391ff",
+              "secondary-container": "#2f2ebe"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-glass {
+            background: rgba(14, 27, 76, 0.6);
+            backdrop-filter: blur(24px);
+        }
+        .ai-gradient-border {
+            border: 1px solid rgba(193, 128, 255, 0.2);
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(133, 173, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container/30">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/60 dark:bg-[#020a2f]/60 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-blue-900/20 flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<img alt="TallentX Logo" class="h-8" data-alt="Professional minimalist logo for TallentX showing a stylized geometric letter T in vibrant electric blue and white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU2P1iLDTTaZn47zb68maAwuU0vR9VXiJcR_obkxP3U6MraaXTROTZaqzOLH8ddkGYh4mJKvyAMYGbZata2jdr5M8GOaYmOfIoHVX-yLTxyEKSHIFI-JYMlulrJFvTgauo5rLJlQPq4q6y7PWCUU1yL7KvvxRl3z2RCe9-afqFLtJvY7EzhBLZ80-bUI0BBdx02BcdUUqHUyueR3XuFFWyqo1_SX768O2bVIqUvPbbslcpUO5M5q4glQ7bKdLOgwKwiHtiTXT1Wk8"/>
+<span class="text-2xl font-bold tracking-tighter text-white font-['Inter'] antialiased tracking-tight">TallentX</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#85adff] font-semibold transition-all duration-300 active:scale-95 cursor-pointer" href="#">Registration</a>
+<a class="text-slate-400 hover:bg-white/10 px-3 py-1 rounded-lg transition-all duration-300 active:scale-95 cursor-pointer" href="#">Support</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="p-2 hover:bg-white/10 rounded-full transition-all duration-300 cursor-pointer text-slate-400">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<div class="p-2 hover:bg-white/10 rounded-full transition-all duration-300 cursor-pointer text-slate-400">
+<span class="material-symbols-outlined">account_circle</span>
+</div>
+</div>
+</nav>
+<main class="min-h-screen pt-32 pb-20 px-4 md:px-8">
+<div class="max-w-4xl mx-auto">
+<!-- Header Section -->
+<div class="mb-12">
+<h1 class="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">Recruiter Onboarding</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed">Complete your profile and company details to start accessing our intelligent talent ecosystem powered by IES AI.</p>
+</div>
+<!-- Progress Tracker -->
+<div class="mb-12 flex items-center justify-between relative">
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-surface-container-highest -z-10"></div>
+<!-- Step 1 Active -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center text-white font-bold shadow-lg shadow-primary/20 ring-4 ring-surface">
+                        1
+                    </div>
+<span class="text-sm font-bold text-primary uppercase tracking-widest">Recruiter Details</span>
+</div>
+<!-- Step 2 Inactive -->
+<div class="flex flex-col items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center text-on-surface-variant font-bold ring-4 ring-surface">
+                        2
+                    </div>
+<span class="text-sm font-medium text-on-surface-variant uppercase tracking-widest">Company Profile</span>
+</div>
+</div>
+<!-- Wizard Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Main Form Section -->
+<div class="lg:col-span-8 bg-surface-container-low rounded-xl p-8 ai-gradient-border shadow-2xl relative overflow-hidden">
+<!-- Subtle AI Background Glow -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-tertiary/10 blur-[100px] rounded-full"></div>
+<form class="space-y-8">
+<!-- Step 1 Content: Recruiter Details -->
+<div class="space-y-6">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary" data-weight="fill">person</span>
+<h2 class="text-xl font-bold text-white">Recruiter Personal Details</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider px-1">Full Name</label>
+<input class="w-full bg-surface-container-high border-b-2 border-transparent focus:border-primary focus:ring-0 text-on-surface py-3 px-4 rounded-lg transition-all outline-none placeholder:text-outline-variant" placeholder="Alex Rivera" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider px-1">Work Email</label>
+<input class="w-full bg-surface-container-high border-b-2 border-transparent focus:border-primary focus:ring-0 text-on-surface py-3 px-4 rounded-lg transition-all outline-none placeholder:text-outline-variant" placeholder="alex@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider px-1">Invite Code</label>
+<div class="relative">
+<input class="w-full bg-surface-container-high border-b-2 border-transparent focus:border-primary focus:ring-0 text-on-surface py-3 px-4 rounded-lg transition-all outline-none placeholder:text-outline-variant" placeholder="IES-XXXX-XXXX" type="text"/>
+<span class="absolute right-4 top-3 text-tertiary">
+<span class="material-symbols-outlined" data-weight="fill">auto_awesome</span>
+</span>
+</div>
+<p class="text-[10px] text-outline px-1">Provided by your workspace administrator.</p>
+</div>
+</div>
+<!-- Step 2 Content: Company Details (Collapsed in first view, shown here for structure) -->
+<div class="pt-8 border-t border-outline-variant/30 space-y-6 opacity-40 grayscale pointer-events-none">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-on-surface-variant">business</span>
+<h2 class="text-xl font-bold text-on-surface-variant">Company Profile Details</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider px-1">Company Name</label>
+<input class="w-full bg-surface-container-high border-none text-on-surface py-3 px-4 rounded-lg" disabled="" placeholder="Nexus Innovations" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider px-1">Industry</label>
+<select class="w-full bg-surface-container-high border-none text-on-surface py-3 px-4 rounded-lg" disabled="">
+<option>Technology &amp; SaaS</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider px-1">Website</label>
+<input class="w-full bg-surface-container-high border-none text-on-surface py-3 px-4 rounded-lg" disabled="" placeholder="https://nexus.com" type="url"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider px-1">Tax Number (VAT)</label>
+<input class="w-full bg-surface-container-high border-none text-on-surface py-3 px-4 rounded-lg" disabled="" placeholder="DE123456789" type="text"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider px-1">Short Description</label>
+<textarea class="w-full bg-surface-container-high border-none text-on-surface py-3 px-4 rounded-lg resize-none" disabled="" placeholder="Briefly describe your company's mission..." rows="3"></textarea>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex justify-end items-center gap-4 pt-4">
+<button class="px-8 py-3 rounded-lg font-bold text-slate-400 hover:text-white transition-colors" type="button">Save Draft</button>
+<button class="px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-2" type="button">
+                                Next Step
+                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Info Sidebar (Asymmetric Design) -->
+<div class="lg:col-span-4 space-y-6">
+<!-- AI Insights Component -->
+<div class="p-6 rounded-xl bg-gradient-to-br from-surface-container-high to-surface-container-highest border border-tertiary/20 shadow-xl relative overflow-hidden group">
+<div class="absolute -bottom-8 -left-8 w-32 h-32 bg-primary/10 blur-[40px] rounded-full group-hover:bg-primary/20 transition-all"></div>
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-tertiary animate-pulse" data-weight="fill">auto_awesome</span>
+<span class="text-xs font-black uppercase tracking-[0.2em] text-tertiary-fixed-dim">AI Setup Assistant</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                            Complete your registration to unlock <strong>IES Match Analytics</strong>. We'll use your recruiter profile to tailor candidates specifically for your domain.
+                        </p>
+<div class="mt-6 flex flex-col gap-3">
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full w-1/2 bg-gradient-to-r from-secondary to-tertiary"></div>
+</div>
+<span class="text-[10px] text-outline font-bold uppercase">50% Verification Complete</span>
+</div>
+</div>
+<!-- Visual Accent Card -->
+<div class="h-48 rounded-xl bg-surface-container overflow-hidden relative border border-white/5">
+<img alt="Abstract architectural blue design" class="w-full h-full object-cover opacity-60" data-alt="High-contrast architectural abstract with deep blue glass, sharp geometric lines, and kinetic light trails in a dark technical setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXr749XLPP0aod21DVoOvd6IrXqCWfZRidSmxu3FsLwRWaNzzD0R2VPRNvqx7iZrhheBnWLytgr9SmCPG5JrLUiwR0WZOsP4L600lnCbrbBJawXat1FZMuSifIkxkDwZjMv94hXaTd-0uAFPMsCDc-Yv12DX1uKBlvphaOmu16dlT-LJXmRz9mobnTYTedmyqprqiAmEbHQbNzlWqoY8RcTsP3JjZNkKleZhYiuqP6Ia05r_k35zyZCmlnKlceRO3FhVvYHGruXFY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<span class="text-xs font-bold text-white/50 block mb-1">PRO TIP</span>
+<p class="text-xs text-white leading-snug">Ensure your tax number is valid for instant VAT verification.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 bg-[#020a2f] mt-20 border-t border-white/5">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-8">
+<div class="mb-4 md:mb-0">
+<p class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500">© 2024 Intelligent Employment System. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500 hover:text-[#85adff] transition-colors underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500 hover:text-[#85adff] transition-colors underline-offset-4 hover:underline" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500 hover:text-[#85adff] transition-colors underline-offset-4 hover:underline" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

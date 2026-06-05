@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Assessment Engine | Lumina Nexus Light</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#e1e0ff",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-dim": "#d8dadc",
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed": "#2c0051",
+              "on-background": "#191c1e",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#fffbff",
+              "tertiary": "#8127cf",
+              "surface-container-high": "#e6e8ea",
+              "inverse-on-surface": "#eff1f3",
+              "secondary-fixed-dim": "#c0c1ff",
+              "on-primary-container": "#fefcff",
+              "outline": "#727785",
+              "background": "#f7f9fb",
+              "surface-variant": "#e0e3e5",
+              "surface-tint": "#005ac2",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-primary-fixed-variant": "#004395",
+              "secondary-container": "#6063ee",
+              "primary": "#0058be",
+              "outline-variant": "#c2c6d6",
+              "on-surface-variant": "#424754",
+              "surface-bright": "#f7f9fb",
+              "on-tertiary-fixed-variant": "#6900b3",
+              "on-tertiary-container": "#fffbff",
+              "on-primary-fixed": "#001a42",
+              "surface": "#f7f9fb",
+              "primary-fixed": "#d8e2ff",
+              "tertiary-fixed-dim": "#ddb7ff",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#adc6ff",
+              "on-surface": "#191c1e",
+              "surface-container": "#eceef0",
+              "primary-fixed-dim": "#adc6ff",
+              "tertiary-container": "#9c48ea",
+              "primary-container": "#2170e4",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "tertiary-fixed": "#f0dbff",
+              "surface-container-highest": "#e0e3e5",
+              "on-secondary-fixed": "#07006c",
+              "inverse-surface": "#2d3133",
+              "secondary": "#4648d4"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .ai-gradient {
+            background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Top Navigation Rail -->
+<nav class="w-full top-0 z-50 flex justify-between items-center px-8 py-4 w-full bg-[#f2f4f6] dark:bg-slate-800">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-[#0058be] dark:text-blue-500 tracking-tighter">IES</span>
+<div class="hidden md:flex gap-6">
+<a class="font-['Inter'] font-semibold tracking-tight text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Jobs</a>
+<a class="font-['Inter'] font-semibold tracking-tight text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Candidates</a>
+<a class="font-['Inter'] font-semibold tracking-tight text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Reports</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant">settings</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User Profile Avatar" data-alt="professional headshot of a recruitment manager in a bright modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrbY5owUu606DzdXpclFCwarvBInO9W-C1Pm81zD3PLfl9FMo5crqS29nkV_6B00M5puineu7RjEwufFdZdG5rKAO4gXGjnL7ryd1iqSgtxaBx_JLoJ7DGIgHaasSz5WMekOoizIodHuQP9DNSE_EavOmpkzXorv9abH7KQZYbsRKu1jW0cTLlDxUrMNbTCQTTNH4kJF20fhdtKiuT7oi7T8jrwadOlcv_UQd2OaCknpfdItbtUM0Ne8WsmQ4NQLnLw8I-1D3-B6M"/>
+</div>
+</div>
+</nav>
+<!-- Sidebar Navigation -->
+<aside class="fixed left-4 top-24 bottom-4 w-64 rounded-3xl flex flex-col p-4 gap-4 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-xl shadow-blue-900/5 z-40 hidden lg:flex">
+<div class="flex flex-col gap-1 mb-4">
+<span class="text-lg font-bold text-[#0058be]">Recruit Pro</span>
+<span class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant">Intelligence Suite</span>
+</div>
+<nav class="space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Inter'] text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-['Inter'] text-sm font-medium">Talent Pool</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#4648d4] to-[#8127cf] text-white rounded-xl shadow-lg shadow-indigo-500/20 scale-98" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-['Inter'] text-sm font-medium">AI Insights</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined">event_upcoming</span>
+<span class="font-['Inter'] text-sm font-medium">Interviews</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="w-full py-4 px-4 ai-gradient text-white font-bold rounded-2xl shadow-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">add</span>
+                New Requisition
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-72 p-8 min-h-screen flex flex-col">
+<header class="mb-12">
+<div class="flex items-center gap-2 text-tertiary font-bold tracking-widest text-[0.75rem] uppercase mb-2">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+                Lumina Nexus Light
+            </div>
+<h1 class="text-4xl md:text-5xl font-black text-on-surface tracking-tight mb-4">AI Assessment <span class="text-primary">Engine</span></h1>
+<p class="text-on-surface-variant max-w-2xl text-lg">Define parameters or leverage neural parsing to generate high-fidelity behavioral and technical assessments in seconds.</p>
+</header>
+<!-- Configuration Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+<!-- Left: Manual Parameters -->
+<section class="xl:col-span-7 flex flex-col gap-8">
+<div class="bg-surface-container-lowest rounded-[1.5rem] p-8 shadow-sm">
+<h3 class="text-xl font-bold mb-6 text-on-surface">Core Parameters</h3>
+<div class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-[0.6875rem] uppercase tracking-widest font-bold text-on-surface-variant px-1">Role Title</label>
+<input class="bg-surface-container-low border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/40 text-on-surface placeholder:text-outline-variant" placeholder="e.g. Principal Software Architect" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[0.6875rem] uppercase tracking-widest font-bold text-on-surface-variant px-1">Seniority Level</label>
+<select class="bg-surface-container-low border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/40 text-on-surface">
+<option>Entry Level</option>
+<option>Mid-Level</option>
+<option selected="">Senior Executive</option>
+<option>C-Suite</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[0.6875rem] uppercase tracking-widest font-bold text-on-surface-variant px-1">Target Competencies</label>
+<div class="flex flex-wrap gap-2 p-2 bg-surface-container-low rounded-xl">
+<span class="bg-primary/10 text-primary px-3 py-1.5 rounded-lg text-sm font-semibold flex items-center gap-1">Distributed Systems <span class="material-symbols-outlined text-xs">close</span></span>
+<span class="bg-primary/10 text-primary px-3 py-1.5 rounded-lg text-sm font-semibold flex items-center gap-1">Stakeholder Mgmt <span class="material-symbols-outlined text-xs">close</span></span>
+<span class="bg-tertiary/10 text-tertiary px-3 py-1.5 rounded-lg text-sm font-semibold flex items-center gap-1">Neural Design <span class="material-symbols-outlined text-xs">close</span></span>
+<button class="px-3 py-1.5 border border-dashed border-outline-variant rounded-lg text-sm text-on-surface-variant hover:bg-white transition-colors">+ Add</button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-[0.6875rem] uppercase tracking-widest font-bold text-on-surface-variant px-1">Job Description Context</label>
+<textarea class="bg-surface-container-low border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/40 text-on-surface placeholder:text-outline-variant resize-none" placeholder="Paste the JD here for AI contextualization..." rows="6"></textarea>
+</div>
+</div>
+</div>
+<!-- AI Massive Action Button -->
+<button class="w-full p-1 ai-gradient rounded-[2rem] shadow-2xl shadow-tertiary/30 hover:scale-[1.02] active:scale-95 transition-all group overflow-hidden">
+<div class="w-full h-full glass-panel rounded-[1.9rem] flex flex-col md:flex-row items-center justify-between px-8 py-8 md:py-10 gap-6">
+<div class="flex flex-col items-center md:items-start text-center md:text-left">
+<h2 class="text-2xl md:text-3xl font-black text-on-surface tracking-tighter">Auto-Generate Assessment via AI</h2>
+<p class="text-on-surface-variant font-medium">Neural engine will synthesize JD context into 5 customized modules</p>
+</div>
+<div class="bg-tertiary w-16 h-16 rounded-full flex items-center justify-center text-white shadow-xl group-hover:rotate-12 transition-transform">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</div>
+</button>
+</section>
+<!-- Right: Assessment Preview / Strategy -->
+<section class="xl:col-span-5 flex flex-col gap-8">
+<div class="bg-white rounded-[1.5rem] p-8 shadow-sm">
+<h3 class="text-[0.75rem] uppercase tracking-widest font-black text-primary mb-6">Assessment Blueprint</h3>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-surface-container-low transition-colors group">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="font-bold text-on-surface">Cognitive Load Test</span>
+<span class="text-xs font-bold text-tertiary bg-tertiary/5 px-2 py-1 rounded">AI Suggested</span>
+</div>
+<p class="text-sm text-on-surface-variant">Measures ability to prioritize high-stakes tasks under simulated pressure.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-surface-container-low transition-colors">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">video_chat</span>
+</div>
+<div class="flex-1">
+<span class="font-bold text-on-surface">Asynchronous Video Panel</span>
+<p class="text-sm text-on-surface-variant">3 Behavioral prompts with real-time sentiment analysis calibration.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-surface-container-low transition-colors">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">terminal</span>
+</div>
+<div class="flex-1">
+<span class="font-bold text-on-surface">Live Coding Sandbox</span>
+<p class="text-sm text-on-surface-variant">Collaborative environment with system design focus.</p>
+</div>
+</div>
+</div>
+<div class="mt-10 pt-8 border-t border-outline-variant/15">
+<div class="flex justify-between items-center mb-4">
+<span class="text-sm font-bold text-on-surface-variant">Predicted Fidelity</span>
+<span class="text-sm font-black text-primary">94% Accuracy</span>
+</div>
+<div class="w-full bg-surface-container-low h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[94%]"></div>
+</div>
+</div>
+</div>
+<!-- Dynamic Preview Card -->
+<div class="relative group cursor-pointer">
+<img class="w-full h-48 object-cover rounded-[1.5rem] brightness-75 group-hover:brightness-90 transition-all" data-alt="high-end minimalist office space with soft daylight and blurry architectural elements representing professional focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEQCesYI_6XRIC4-gKvUVhlOpfZebT2KhyIQ8sEuxfpzqWGa0cKGOciP7PagwE-1K2Aay3HqJjK7shkJTV-ixj_uoJ5uiUaG1hukpGlwL0Hehoq75tREcsjPoX1gWj40SjG9ezn_DFTOGetGtS0j7teyUK7TbhMSK9grVWJfb1kFbTyifbzMg0lo4mFr3_4wXTlfuw0CJf88aqBrP8xr2TxPj1lCpfNpaTvo2l5JOmb2zwuYxubbLKkKzy7AsL_Un_F9OuDmeLtv8"/>
+<div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent rounded-[1.5rem]">
+<span class="text-white font-black text-xl">Candidate Experience View</span>
+<p class="text-white/80 text-sm">Preview the assessment portal from the talent's perspective.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Shell -->
+<footer class="w-full py-8 mt-auto flex flex-col md:flex-row justify-between items-center px-12 w-full border-t border-[#e0e3e5]/15">
+<span class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] dark:text-slate-400">© 2024 Intelligent Employment System</span>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+</main>
+</body></html>

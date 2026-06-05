@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Interview Configuration | IES</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#c0c1ff",
+              "inverse-on-surface": "#eff1f3",
+              "secondary": "#4648d4",
+              "on-surface-variant": "#424754",
+              "on-secondary-container": "#fffbff",
+              "on-primary-container": "#fefcff",
+              "on-secondary": "#ffffff",
+              "surface": "#f7f9fb",
+              "primary": "#0058be",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-container": "#9c48ea",
+              "error": "#ba1a1a",
+              "surface-tint": "#005ac2",
+              "primary-container": "#2170e4",
+              "tertiary-fixed": "#f0dbff",
+              "outline": "#727785",
+              "tertiary-fixed-dim": "#ddb7ff",
+              "secondary-container": "#6063ee",
+              "surface-variant": "#e0e3e5",
+              "primary-fixed": "#d8e2ff",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "on-tertiary-fixed": "#2c0051",
+              "primary-fixed-dim": "#adc6ff",
+              "on-primary-fixed": "#001a42",
+              "surface-container-high": "#e6e8ea",
+              "tertiary": "#8127cf",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed-variant": "#6900b3",
+              "surface-dim": "#d8dadc",
+              "background": "#f7f9fb",
+              "on-tertiary-container": "#fffbff",
+              "on-error": "#ffffff",
+              "surface-bright": "#f7f9fb",
+              "outline-variant": "#c2c6d6",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-secondary-fixed": "#07006c",
+              "on-surface": "#191c1e",
+              "error-container": "#ffdad6",
+              "surface-container": "#eceef0",
+              "inverse-primary": "#adc6ff",
+              "inverse-surface": "#2d3133",
+              "secondary-fixed": "#e1e0ff",
+              "on-background": "#191c1e",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#004395"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .ai-gradient-bg {
+        background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+      }
+      .glass-card {
+        background: rgba(25, 28, 30, 0.7);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-body min-h-screen">
+<!-- SideNavBar (Authority Source: JSON) -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-slate-800 bg-slate-950 flex flex-col p-4 gap-2 z-40">
+<div class="mb-8 px-4 py-2">
+<h1 class="text-lg font-bold text-slate-100">IES Portal</h1>
+<p class="text-xs text-slate-500 font-medium">Intelligent Management</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="bg-white dark:bg-slate-900 text-blue-700 dark:text-indigo-400 shadow-sm rounded-xl px-4 py-3 flex items-center gap-3 active:scale-98 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>Applications</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span>Interviews</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-slate-800 flex flex-col gap-1">
+<button class="w-full ai-gradient-bg text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 mb-4 hover:opacity-90 transition-opacity">
+<span>✨ AI Insights</span>
+</button>
+<a class="text-slate-500 px-4 py-2 flex items-center gap-3 text-sm hover:text-slate-300" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+<span>Help Center</span>
+</a>
+<a class="text-slate-500 px-4 py-2 flex items-center gap-3 text-sm hover:text-slate-300" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar (Authority Source: JSON) -->
+<header class="bg-slate-900/70 backdrop-blur-xl sticky top-0 z-30 shadow-sm dark:shadow-none w-full border-b border-slate-800">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-blue-700 dark:text-indigo-400">IES</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-indigo-300 transition-colors font-inter text-sm font-medium" href="#">Dashboard</a>
+<a class="text-blue-700 dark:text-indigo-400 font-semibold border-b-2 border-blue-600 dark:border-indigo-500 pb-1 font-inter text-sm" href="#">Jobs</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-indigo-300 transition-colors font-inter text-sm font-medium" href="#">Talent</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-indigo-300 transition-colors font-inter text-sm font-medium" href="#">Insights</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-800 rounded-lg transition-all"><span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span></button>
+<button class="p-2 hover:bg-slate-800 rounded-lg transition-all"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+<button class="p-2 hover:bg-slate-800 rounded-lg transition-all"><span class="material-symbols-outlined" data-icon="settings">settings</span></button>
+<div class="w-10 h-10 rounded-full bg-slate-800 overflow-hidden border-2 border-indigo-500/30">
+<img alt="Recruiter Avatar" data-alt="professional headshot of a corporate recruiter in a modern office setting with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvKgR2LZTMNl29MF2Rp9kDOiaCrJlC1Mzxl3YgFT9G9_d4mqRkZ8n8z5GSGVd--H5roLdx1oTMINSNyrQsog8zHRXC1_hveF-Bt2P97pjJPc8BuJwsZ_rCh8RkhmI_QGvup-M2XY8Dx5Uq9mo2ieYvj0ggUO8tne34Wt-WRxyZTEgTieCIXeOpegVu-FgZb7nhaDFIseZheWqhWwJj-df18065lvvNYrqHcWjwl2UgpGCB-btUpBzG6yKnqq-s8LLJFDz0fiXTppE"/>
+</div>
+</div>
+</div>
+</header>
+<div class="p-12 max-w-6xl mx-auto space-y-12">
+<!-- Header Section -->
+<section class="space-y-4">
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 text-xs font-bold tracking-widest uppercase">AI Interview Architect</span>
+</div>
+<h2 class="text-5xl font-black tracking-tight text-slate-100 max-w-2xl leading-tight">
+                    Configure your next <span class="text-transparent bg-clip-text ai-gradient-bg">Intelligent Assessment</span>
+</h2>
+<p class="text-slate-400 text-lg max-w-xl">Define the parameters and let our neural engine craft specific technical and behavioral challenges tailored for your candidate.</p>
+</section>
+<!-- Configuration Bento Grid -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Role Selection Card -->
+<div class="col-span-12 lg:col-span-7 bg-slate-900/40 rounded-xl p-8 border border-slate-800/50 space-y-8">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-blue-600/20 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">Role Parameters</h3>
+<p class="text-sm text-slate-500">Specify the target position details</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-slate-500">Target Role</label>
+<select class="w-full bg-slate-950 border-0 ring-1 ring-slate-800 focus:ring-2 focus:ring-blue-600 rounded-xl py-3 px-4 text-slate-200">
+<option>Senior Full Stack Engineer</option>
+<option>Product Design Lead</option>
+<option>Backend Architect</option>
+<option>DevOps Specialist</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-slate-500">Challenge Level</label>
+<div class="flex gap-2">
+<button class="flex-1 py-3 px-2 rounded-xl border border-slate-800 text-sm font-medium hover:border-blue-600 transition-colors">Associate</button>
+<button class="flex-1 py-3 px-2 rounded-xl border-2 border-blue-600 bg-blue-600/10 text-sm font-bold text-blue-400 transition-colors">Senior</button>
+<button class="flex-1 py-3 px-2 rounded-xl border border-slate-800 text-sm font-medium hover:border-blue-600 transition-colors">Expert</button>
+</div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-slate-500">Key Focus Areas</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 rounded-full bg-slate-800 text-xs font-medium border border-slate-700 flex items-center gap-2">
+                                System Design <span class="material-symbols-outlined text-xs" data-icon="close">close</span>
+</span>
+<span class="px-4 py-2 rounded-full bg-slate-800 text-xs font-medium border border-slate-700 flex items-center gap-2">
+                                Scalability <span class="material-symbols-outlined text-xs" data-icon="close">close</span>
+</span>
+<span class="px-4 py-2 rounded-full bg-slate-800 text-xs font-medium border border-slate-700 flex items-center gap-2">
+                                Team Leadership <span class="material-symbols-outlined text-xs" data-icon="close">close</span>
+</span>
+<button class="px-4 py-2 rounded-full bg-blue-600/20 text-blue-400 text-xs font-bold border border-blue-600/30 flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="add">add</span> Add Focus
+                            </button>
+</div>
+</div>
+<button class="w-full py-4 ai-gradient-bg rounded-xl font-bold flex items-center justify-center gap-3 text-lg hover:scale-[1.02] transition-transform active:scale-95 shadow-xl shadow-indigo-500/20">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                        ✨ Auto-Generate Questions via AI
+                    </button>
+</div>
+<!-- Stats/Brief Card -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-6">
+<div class="bg-indigo-600/10 border border-indigo-500/30 rounded-xl p-8 flex-grow relative overflow-hidden">
+<div class="relative z-10 space-y-6">
+<div class="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="tips_and_updates">tips_and_updates</span>
+</div>
+<h4 class="text-xl font-bold text-indigo-100">AI Logic Brief</h4>
+<p class="text-slate-400 text-sm leading-relaxed">
+                                Our engine will generate 5 behavioral questions and 3 technical deep-dives based on the "Senior Full Stack Engineer" profile. Questions will focus on <span class="text-indigo-400 font-bold">distributed systems</span> and <span class="text-indigo-400 font-bold">micro-frontend architecture</span>.
+                            </p>
+<div class="pt-4 flex items-center gap-4">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[10px] font-bold">JS</div>
+<div class="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[10px] font-bold">TS</div>
+<div class="w-8 h-8 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[10px] font-bold">K8s</div>
+</div>
+<span class="text-xs text-slate-500 font-bold uppercase tracking-widest">Stack detected</span>
+</div>
+</div>
+<!-- Abstract BG Shape -->
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl"></div>
+</div>
+<div class="glass-card rounded-xl p-6 border border-slate-800/50">
+<div class="flex justify-between items-center mb-4">
+<span class="text-xs font-bold text-slate-500 uppercase">Recent Templates</span>
+<span class="material-symbols-outlined text-slate-500 text-sm" data-icon="history">history</span>
+</div>
+<ul class="space-y-3">
+<li class="flex items-center justify-between p-3 rounded-lg hover:bg-slate-800/50 transition-colors cursor-pointer group">
+<span class="text-sm font-medium text-slate-300 group-hover:text-blue-400">Mobile Dev v2</span>
+<span class="text-[10px] text-slate-500">2 days ago</span>
+</li>
+<li class="flex items-center justify-between p-3 rounded-lg hover:bg-slate-800/50 transition-colors cursor-pointer group">
+<span class="text-sm font-medium text-slate-300 group-hover:text-blue-400">Data Scientist I</span>
+<span class="text-[10px] text-slate-500">5 days ago</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Live Preview Section -->
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-indigo-400" data-icon="visibility">visibility</span>
+<h3 class="text-2xl font-bold">Generated Question Preview</h3>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 rounded-lg bg-slate-800 text-slate-300 text-sm font-bold hover:bg-slate-700">Regenerate</button>
+<button class="px-4 py-2 rounded-lg bg-emerald-600/20 text-emerald-400 text-sm font-bold border border-emerald-500/30">Approve List</button>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Question 1 -->
+<div class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition-all group">
+<div class="flex gap-6">
+<div class="flex flex-col items-center gap-1">
+<span class="text-xs font-black text-slate-600 uppercase tracking-tighter">Q.01</span>
+<div class="w-[2px] h-full bg-slate-800"></div>
+</div>
+<div class="flex-grow space-y-3">
+<div class="flex justify-between">
+<span class="px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 text-[10px] font-bold uppercase">System Design</span>
+<span class="material-symbols-outlined text-slate-700 group-hover:text-slate-500 transition-colors cursor-pointer" data-icon="edit">edit</span>
+</div>
+<h4 class="text-lg font-semibold text-slate-200">"Describe a scenario where you had to transition a legacy monolithic application to a microservices architecture. What was the biggest technical hurdle?"</h4>
+<div class="flex gap-4 pt-2">
+<span class="text-xs text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="timer">timer</span> 5-8 min</span>
+<span class="text-xs text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span> Hard</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Question 2 -->
+<div class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 hover:border-indigo-500/50 transition-all group">
+<div class="flex gap-6">
+<div class="flex flex-col items-center gap-1">
+<span class="text-xs font-black text-slate-600 uppercase tracking-tighter">Q.02</span>
+<div class="w-[2px] h-full bg-slate-800"></div>
+</div>
+<div class="flex-grow space-y-3">
+<div class="flex justify-between">
+<span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 text-[10px] font-bold uppercase">Soft Skills</span>
+<span class="material-symbols-outlined text-slate-700 group-hover:text-slate-500 transition-colors cursor-pointer" data-icon="edit">edit</span>
+</div>
+<h4 class="text-lg font-semibold text-slate-200">"How do you handle technical disagreements within a cross-functional squad of engineers and product owners?"</h4>
+<div class="flex gap-4 pt-2">
+<span class="text-xs text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="timer">timer</span> 3-5 min</span>
+<span class="text-xs text-slate-500 flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span> Medium</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Placeholder/Empty State for future gen -->
+<div class="border-2 border-dashed border-slate-800 rounded-xl p-12 flex flex-col items-center justify-center text-slate-600 gap-3">
+<span class="material-symbols-outlined text-4xl" data-icon="add_circle">add_circle</span>
+<p class="font-medium">Add manual question or generate more via AI</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer (Authority Source: JSON) -->
+<footer class="w-full py-8 border-t border-slate-800 bg-slate-950 mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+<span class="font-bold text-slate-300">IES</span>
+<p class="text-xs font-inter text-slate-500 dark:text-slate-400">© 2024 IES Intelligent Employment System</p>
+<div class="flex gap-6">
+<a class="text-slate-400 hover:text-slate-300 text-xs transition-opacity" href="#">Privacy Policy</a>
+<a class="text-slate-400 hover:text-slate-300 text-xs transition-opacity" href="#">Terms of Service</a>
+<a class="text-slate-400 hover:text-slate-300 text-xs transition-opacity" href="#">Cookie Settings</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Floating Action Drawer Indicator -->
+<div class="fixed bottom-8 right-8 flex flex-col gap-3">
+<button class="w-14 h-14 rounded-full bg-blue-600 text-white shadow-2xl flex items-center justify-center hover:scale-110 active:scale-90 transition-transform shadow-blue-500/40">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+</button>
+</div>
+</body></html>

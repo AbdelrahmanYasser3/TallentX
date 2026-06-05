@@ -1,0 +1,83 @@
+<div class="min-h-screen bg-surface-container-lowest p-6 md:p-8">
+  <div class="mx-auto max-w-3xl space-y-6">
+    <header class="flex items-center justify-between">
+      <div>
+        <p class="text-label-md uppercase tracking-widest text-primary">Recruiter Workspace</p>
+        <h1 class="mt-1 text-display-sm text-on-surface">Edit Job</h1>
+      </div>
+      <a routerLink="/recruiter/jobs" class="rounded-xl bg-surface-container px-4 py-2 text-label-md text-on-surface">Back</a>
+    </header>
+
+    <section *ngIf="isLoading()" class="space-y-3">
+      <div class="skeleton h-12 w-full rounded-xl"></div>
+      <div class="skeleton h-40 w-full rounded-xl"></div>
+      <div class="skeleton h-12 w-full rounded-xl"></div>
+    </section>
+
+    <form *ngIf="!isLoading()" [formGroup]="form" (ngSubmit)="save()" class="space-y-4 rounded-2xl bg-surface-container p-6 shadow-sm">
+      <div>
+        <label class="mb-1 block text-label-md text-on-surface">Title</label>
+        <input formControlName="title" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface" />
+      </div>
+
+      <div>
+        <label class="mb-1 block text-label-md text-on-surface">Description</label>
+        <textarea formControlName="description" rows="5" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface"></textarea>
+      </div>
+
+      <div>
+        <label class="mb-1 block text-label-md text-on-surface">Requirements (one per line)</label>
+        <textarea formControlName="requirementsText" rows="4" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface"></textarea>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div>
+          <label class="mb-1 block text-label-md text-on-surface">Employment Type</label>
+          <select formControlName="employmentType" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface">
+            <option value="FullTime">FullTime</option>
+            <option value="PartTime">PartTime</option>
+            <option value="Contract">Contract</option>
+            <option value="Internship">Internship</option>
+          </select>
+        </div>
+        <div>
+          <label class="mb-1 block text-label-md text-on-surface">Application Deadline</label>
+          <input type="datetime-local" formControlName="applicationDeadline" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface" />
+        </div>
+        <div>
+          <label class="mb-1 block text-label-md text-on-surface">Currency</label>
+          <select formControlName="currency" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface">
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+            <option value="EGP">EGP (E£)</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="mb-1 block text-label-md text-on-surface">Required Skills (comma separated)</label>
+        <input type="text" formControlName="requiredSkills" placeholder="e.g. Angular, TypeScript, HTML" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface" />
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div>
+          <label class="mb-1 block text-label-md text-on-surface">Location</label>
+          <input formControlName="location" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface" />
+        </div>
+        <div>
+          <label class="mb-1 block text-label-md text-on-surface">Salary Min</label>
+          <input type="number" formControlName="salaryMin" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface" />
+        </div>
+        <div>
+          <label class="mb-1 block text-label-md text-on-surface">Salary Max</label>
+          <input type="number" formControlName="salaryMax" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface" />
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="isSaving()" class="w-full rounded-xl bg-primary px-4 py-3 text-label-lg text-on-primary disabled:opacity-60">
+        {{ isSaving() ? 'Saving...' : 'Save Changes' }}
+      </button>
+    </form>
+  </div>
+</div>

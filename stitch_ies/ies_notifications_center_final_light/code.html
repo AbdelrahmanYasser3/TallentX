@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumina Nexus | Notifications Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#e1e0ff",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-dim": "#d8dadc",
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed": "#2c0051",
+              "on-background": "#191c1e",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#fffbff",
+              "tertiary": "#8127cf",
+              "surface-container-high": "#e6e8ea",
+              "inverse-on-surface": "#eff1f3",
+              "secondary-fixed-dim": "#c0c1ff",
+              "on-primary-container": "#fefcff",
+              "outline": "#727785",
+              "background": "#f7f9fb",
+              "surface-variant": "#e0e3e5",
+              "surface-tint": "#005ac2",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-primary-fixed-variant": "#004395",
+              "secondary-container": "#6063ee",
+              "primary": "#0058be",
+              "outline-variant": "#c2c6d6",
+              "on-surface-variant": "#424754",
+              "surface-bright": "#f7f9fb",
+              "on-tertiary-fixed-variant": "#6900b3",
+              "on-tertiary-container": "#fffbff",
+              "on-primary-fixed": "#001a42",
+              "surface": "#f7f9fb",
+              "primary-fixed": "#d8e2ff",
+              "tertiary-fixed-dim": "#ddb7ff",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#adc6ff",
+              "on-surface": "#191c1e",
+              "surface-container": "#eceef0",
+              "primary-fixed-dim": "#adc6ff",
+              "tertiary-container": "#9c48ea",
+              "primary-container": "#2170e4",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "tertiary-fixed": "#f0dbff",
+              "surface-container-highest": "#e0e3e5",
+              "on-secondary-fixed": "#07006c",
+              "inverse-surface": "#2d3133",
+              "secondary": "#4648d4"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-gradient {
+            background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="w-full top-0 z-50 flex justify-between items-center px-8 py-4 w-full bg-[#f2f4f6] dark:bg-slate-800">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-[#0058be] dark:text-blue-500 tracking-tighter">IES</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="font-['Inter'] font-semibold tracking-tight text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Jobs</a>
+<a class="font-['Inter'] font-semibold tracking-tight text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Candidates</a>
+<a class="font-['Inter'] font-semibold tracking-tight text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-lowest rounded-xl border-none ring-1 ring-outline-variant/20 focus:ring-primary/40 text-sm w-64" placeholder="Search activities..." type="text"/>
+</div>
+<button class="p-2 text-[#0058be] border-b-2 border-[#0058be] pb-1 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-[#424754] hover:text-[#0058be] transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden ring-2 ring-primary/10">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="professional headshot of a male executive with a confident smile in a bright modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBygCjON6crbhI0DAt5tBHdQyztdgHy6K5oiMd_eUCosN0rj5SmV7IRGfDQ9SvqRfcpd-WcFl7iQnhXHZlmxYpxe0DlF81FvlNKeQbwFi6c3gsYMbbR6RUEXxiJ_UAT2cvBP15nHeN73sdlM4Vr66uXq8CIAJwBcShjoTiNXHoe2A1jFi9IR-rfEB0BfuYVm0zdfgoWLyvb_q8BeDZzvXJrMe9TkUCM0Jz8CiHuA0SPvML-Ii8VPCL8VsJ8VKBMQwkV11cl0cRcj8U"/>
+</div>
+</div>
+</header>
+<div class="flex flex-1 relative px-8 gap-8 mt-6">
+<!-- Side Navigation Bar (Anchored) -->
+<aside class="hidden lg:flex flex-col p-4 gap-4 fixed left-4 top-24 bottom-4 w-64 rounded-3xl bg-white/80 backdrop-blur-xl shadow-xl shadow-blue-900/5 z-40">
+<div class="flex items-center gap-3 px-2 mb-4">
+<div class="w-8 h-8 ai-gradient rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+</div>
+<div>
+<h2 class="text-lg font-bold text-[#0058be] leading-none">Recruit Pro</h2>
+<p class="text-[0.65rem] uppercase tracking-wider text-on-surface-variant/70 font-bold">Intelligence Suite</p>
+</div>
+</div>
+<nav class="space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] rounded-xl font-['Inter'] text-sm font-medium hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] rounded-xl font-['Inter'] text-sm font-medium hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">group</span> Talent Pool
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] rounded-xl font-['Inter'] text-sm font-medium hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">alt_route</span> Pipeline
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] rounded-xl font-['Inter'] text-sm font-medium hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">event_upcoming</span> Interviews
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#4648d4] to-[#8127cf] text-white rounded-xl shadow-lg shadow-indigo-500/20 font-['Inter'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span> AI Insights
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] hover:bg-[#f2f4f6] rounded-xl font-['Inter'] text-sm font-medium hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+                </a>
+</nav>
+<button class="mt-auto mx-2 bg-primary text-white py-3 px-4 rounded-xl font-bold text-sm shadow-md shadow-primary/20 hover:opacity-90 active:scale-95 transition-all">
+                New Requisition
+            </button>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:ml-72 pb-12">
+<header class="mb-10">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-xs font-bold uppercase tracking-[0.2em] text-tertiary">Lumina Nexus Light</span>
+<div class="h-px flex-1 bg-outline-variant/20"></div>
+</div>
+<h1 class="text-5xl font-black text-on-surface tracking-tighter mb-4">Notification Center</h1>
+<p class="text-on-surface-variant max-w-2xl leading-relaxed">Stay synchronized with your hiring ecosystem. Real-time updates, scheduling reminders, and intelligent pipeline optimizations.</p>
+</header>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Main Feed Section -->
+<div class="xl:col-span-2 space-y-6">
+<!-- Filter Chips -->
+<div class="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+<button class="px-5 py-2 rounded-full bg-primary text-white text-xs font-bold whitespace-nowrap">All Activity</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-highest text-on-surface-variant text-xs font-bold whitespace-nowrap hover:bg-surface-container-high transition-colors">Applications</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-highest text-on-surface-variant text-xs font-bold whitespace-nowrap hover:bg-surface-container-high transition-colors">Interviews</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-highest text-on-surface-variant text-xs font-bold whitespace-nowrap hover:bg-surface-container-high transition-colors">AI Alerts</button>
+</div>
+<!-- Notification Cards -->
+<div class="space-y-4">
+<!-- AI INSIGHT CARD (Premium Style) -->
+<div class="p-1 rounded-[1.75rem] ai-gradient shadow-lg shadow-indigo-500/10">
+<div class="bg-white rounded-[1.5rem] p-6 flex gap-5">
+<div class="w-12 h-12 rounded-2xl ai-gradient flex items-center justify-center text-white shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-bold text-on-surface text-lg">Predictive Talent Match</h3>
+<span class="text-[0.7rem] font-bold uppercase tracking-wider text-tertiary">Just Now</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-4">We found a "Strong Match" for <span class="text-primary font-semibold">Senior UX Lead</span>. Alex Rivera's portfolio aligns 94% with your current design system requirements.</p>
+<div class="flex gap-3">
+<button class="text-xs font-bold text-white ai-gradient px-4 py-2 rounded-lg hover:opacity-90">View Candidate</button>
+<button class="text-xs font-bold text-tertiary px-4 py-2 rounded-lg bg-tertiary/5 hover:bg-tertiary/10">Dismiss</button>
+</div>
+</div>
+</div>
+</div>
+<!-- STANDARD NOTIFICATION: Interview -->
+<div class="bg-surface-container-lowest p-6 rounded-[1.5rem] flex gap-5 shadow-sm ring-1 ring-outline-variant/10">
+<div class="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-bold text-on-surface text-lg">Interview Reminder</h3>
+<span class="text-[0.7rem] font-bold uppercase tracking-wider text-on-surface-variant/60">2 hours ago</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-2">Final round interview with <span class="font-semibold text-on-surface">Sarah Jenkins</span> for the Backend Developer position starts in 30 minutes.</p>
+<div class="flex items-center gap-4 text-xs">
+<span class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-sm">videocam</span> Google Meet</span>
+<a class="text-primary font-bold hover:underline" href="#">Join Meeting</a>
+</div>
+</div>
+</div>
+<!-- STANDARD NOTIFICATION: Application -->
+<div class="bg-surface-container-lowest p-6 rounded-[1.5rem] flex gap-5 shadow-sm ring-1 ring-outline-variant/10 opacity-75 grayscale-[0.2]">
+<div class="w-12 h-12 rounded-2xl bg-success/10 flex items-center justify-center text-success shrink-0">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-bold text-on-surface text-lg">New Application Received</h3>
+<span class="text-[0.7rem] font-bold uppercase tracking-wider text-on-surface-variant/60">5 hours ago</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-1"><span class="font-semibold text-on-surface">Marcus Thorne</span> applied for <span class="font-semibold text-on-surface">Product Manager</span>. Experience at Google &amp; Meta.</p>
+<p class="text-xs text-on-surface-variant/60">Auto-screened: Passed all critical criteria.</p>
+</div>
+</div>
+<!-- STATUS UPDATE CARD -->
+<div class="bg-surface-container-low p-6 rounded-[1.5rem] flex gap-5 border-l-4 border-primary">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined">sync_alt</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-bold text-on-surface text-lg">Pipeline Update</h3>
+<span class="text-[0.7rem] font-bold uppercase tracking-wider text-on-surface-variant/60">Yesterday</span>
+</div>
+<p class="text-on-surface-variant text-sm">Your requisition for <span class="font-semibold text-on-surface">Cloud Architect</span> has been moved to "Offer Phase" by HR Operations.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Insights -->
+<div class="space-y-8">
+<!-- Summary Card -->
+<section class="bg-white p-8 rounded-[2rem] shadow-xl shadow-blue-900/5 relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors"></div>
+<h4 class="text-[0.7rem] font-bold uppercase tracking-[0.2em] text-on-surface-variant/70 mb-6">Weekly Pulse</h4>
+<div class="space-y-6">
+<div class="flex items-end justify-between">
+<div>
+<p class="text-4xl font-black text-on-surface tracking-tighter">42</p>
+<p class="text-xs font-medium text-on-surface-variant">Active Notifications</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-success">+12%</p>
+<p class="text-[0.6rem] text-on-surface-variant uppercase">vs last week</p>
+</div>
+</div>
+<div class="flex gap-2 h-2">
+<div class="w-[60%] bg-primary rounded-full"></div>
+<div class="w-[25%] bg-secondary rounded-full"></div>
+<div class="w-[15%] bg-tertiary rounded-full"></div>
+</div>
+<div class="grid grid-cols-3 gap-2 text-[0.65rem] font-bold">
+<span class="text-primary">TASKS</span>
+<span class="text-secondary">SOCIAL</span>
+<span class="text-tertiary">AI</span>
+</div>
+</div>
+</section>
+<!-- AI Assistant Context -->
+<section class="bg-surface-container-lowest rounded-[2rem] p-6 ring-1 ring-outline-variant/15">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<h4 class="text-sm font-bold text-on-surface">Lumina Assistant</h4>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl text-xs leading-relaxed text-on-surface-variant mb-4">
+                            "You have 3 interviews today. I've prepared summarized candidate profiles and suggested icebreaker questions based on their recent GitHub activity."
+                        </div>
+<button class="w-full py-3 text-xs font-bold text-tertiary bg-tertiary/5 rounded-xl hover:bg-tertiary/10 transition-colors">Prepare Meeting Notes</button>
+</section>
+<!-- Profile Quick Look -->
+<section class="relative group cursor-pointer">
+<div class="absolute inset-0 bg-primary/5 rounded-[2rem] -rotate-2 group-hover:rotate-0 transition-transform"></div>
+<div class="relative bg-white p-6 rounded-[2rem] shadow-sm flex items-center gap-4">
+<div class="w-14 h-14 rounded-2xl overflow-hidden shadow-md">
+<img alt="Hiring Manager" class="w-full h-full object-cover" data-alt="close up profile of a professional woman with a warm expression wearing designer glasses in a minimal creative studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe0I1exsZc8TQNr7AKUVEf5uNBiepICLVqBcx3iviKipMmuY2k6UQjK2uF2-OaJ_2bPyJ5giQdZWcyyQ-WMr_4zUxaGBkUlL9CCqX4srd-pj0V1vwHAI8sKa0sWCbfUwOjMH8ltMze-LJJwD13xRyYEExHYt7_rmu0uJZmVS0JnLNFGyFmjSly3V_LKDcS4OITGaMHHkF2YYFVq2dKccW96V5udpCIFl1egHyryY4jFFEkl9cgUPOpvA_NHTstqEg7W7LqpJ-BG0E"/>
+</div>
+<div>
+<h5 class="font-bold text-on-surface">Elena Rodriguez</h5>
+<p class="text-[0.7rem] text-on-surface-variant">Director of Talent Acquisition</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-outline-variant">chevron_right</span>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer Component -->
+<footer class="w-full py-8 mt-auto border-t border-[#e0e3e5]/15 bg-[#f7f9fb] dark:bg-slate-900 flex flex-col md:flex-row justify-between items-center px-12">
+<div class="flex items-center gap-2 mb-4 md:mb-0">
+<span class="text-[0.75rem] font-['Inter'] uppercase tracking-widest text-[#424754] dark:text-slate-400">© 2024 Intelligent Employment System</span>
+</div>
+<div class="flex gap-8">
+<a class="text-[0.75rem] font-['Inter'] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Privacy Policy</a>
+<a class="text-[0.75rem] font-['Inter'] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Terms of Service</a>
+<a class="text-[0.75rem] font-['Inter'] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+<!-- Mobile Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 glass-panel border-t border-outline-variant/10 px-6 py-4 flex justify-between items-center z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Pool</span>
+</button>
+<div class="w-12 h-12 ai-gradient rounded-full -mt-10 flex items-center justify-center text-white shadow-lg shadow-indigo-500/40 ring-4 ring-white">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Activity</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Profile</span>
+</button>
+</nav>
+</body></html>

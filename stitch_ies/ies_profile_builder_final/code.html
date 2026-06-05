@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Candidate Profile Builder | IES</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#c0c1ff",
+              "inverse-on-surface": "#eff1f3",
+              "secondary": "#4648d4",
+              "on-surface-variant": "#424754",
+              "on-secondary-container": "#fffbff",
+              "on-primary-container": "#fefcff",
+              "on-secondary": "#ffffff",
+              "surface": "#f7f9fb",
+              "primary": "#0058be",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-container": "#9c48ea",
+              "error": "#ba1a1a",
+              "surface-tint": "#005ac2",
+              "primary-container": "#2170e4",
+              "tertiary-fixed": "#f0dbff",
+              "outline": "#727785",
+              "tertiary-fixed-dim": "#ddb7ff",
+              "secondary-container": "#6063ee",
+              "surface-variant": "#e0e3e5",
+              "primary-fixed": "#d8e2ff",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "on-tertiary-fixed": "#2c0051",
+              "primary-fixed-dim": "#adc6ff",
+              "on-primary-fixed": "#001a42",
+              "surface-container-high": "#e6e8ea",
+              "tertiary": "#8127cf",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed-variant": "#6900b3",
+              "surface-dim": "#d8dadc",
+              "background": "#f7f9fb",
+              "on-tertiary-container": "#fffbff",
+              "on-error": "#ffffff",
+              "surface-bright": "#f7f9fb",
+              "outline-variant": "#c2c6d6",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-secondary-fixed": "#07006c",
+              "on-surface": "#191c1e",
+              "error-container": "#ffdad6",
+              "surface-container": "#eceef0",
+              "inverse-primary": "#adc6ff",
+              "inverse-surface": "#2d3133",
+              "secondary-fixed": "#e1e0ff",
+              "on-background": "#191c1e",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#004395"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-ai-gradient {
+            background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-outline-variant/20 bg-slate-50 dark:bg-slate-950 flex flex-col p-4 gap-2 z-40">
+<div class="flex items-center gap-3 px-4 py-6">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm">rocket_launch</span>
+</div>
+<span class="text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight">IES Portal</span>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="bg-white dark:bg-slate-900 text-blue-700 dark:text-indigo-400 shadow-sm rounded-xl px-4 py-3 flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="text-sm font-medium">Applications</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="text-sm font-medium">Interviews</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto space-y-2">
+<button class="w-full bg-ai-gradient text-white rounded-xl py-3 px-4 flex items-center justify-center gap-2 font-medium shadow-lg shadow-secondary/20 hover:scale-[1.02] transition-transform">
+<span>✨ AI Insights</span>
+</button>
+<div class="pt-4 border-t border-outline-variant/10">
+<a class="text-slate-500 dark:text-slate-400 px-4 py-2 flex items-center gap-3 text-sm hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span> Help Center
+                </a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-2 flex items-center gap-3 text-sm hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span> Logout
+                </a>
+</div>
+</div>
+</aside>
+<main class="ml-64 min-h-screen pb-20">
+<header class="sticky top-0 z-30 bg-white/70 backdrop-blur-xl border-b border-outline-variant/10 px-8 py-4 flex justify-between items-center max-w-screen-2xl mx-auto">
+<h1 class="text-2xl font-black tracking-tighter text-blue-700">IES</h1>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm focus:ring-2 focus:ring-primary/20 w-64 transition-all" placeholder="Search profiles..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-slate-100 rounded-lg text-slate-600 transition-colors">
+<span class="material-symbols-outlined" data-icon="dark_mode">dark_mode</span>
+</button>
+<button class="p-2 hover:bg-slate-100 rounded-lg text-slate-600 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<img class="w-10 h-10 rounded-full object-cover ring-2 ring-primary/10" data-alt="Close-up professional headshot of a smiling man with clean-cut appearance in a bright modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCgMsZMapH6H3Y9QZgser7HmjFSO_Hl75DZRBCYuOhzjCHkzCI7AgTcoXA0Xl6haRkJaLug1kwONBBtg4nVRyoCTqW-VcSUvEPIjodG1puLyzgddadUlwrrX2GwA0UnFKbW6dD7srYjIb7DMHBoSg2UssI0dzFHDofswsq61KIDntC9Ef3Dj7Iedb5I6KB1OJQAcBowpgwpFQKR2Gh4eSL0CnY51jF5vt2XtKI3FRrbgY1ZjXY5d6OP55eHwYQAtae6tb291KYBKM"/>
+</div>
+</div>
+</header>
+<div class="max-w-7xl mx-auto px-8 py-12">
+<div class="relative mb-16">
+<div class="h-48 w-full bg-slate-200 rounded-3xl overflow-hidden relative group">
+<img class="w-full h-full object-cover" data-alt="Wide angle shot of a minimalist high-end architectural space with soft afternoon sunlight casting long shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZP4p8NvX2e_-MJID8jfVfCMUdH0z5gsPJRiqg9qf-J4UevEMWNp37eL1E6t5xWwDBOPa7rDcYnzvBUeRhm8FYDLtpXocJQ0hYL53bQykASRp82AdB21XtCUYk--LeGr-tdP6uTWbQ3I1S8RfmB6VKAtyWLAxEeRGZeo_iOC8weALkgUUWxcTULrpTnHvLCFE3lwq1JhEh7ijw9EnCfPU96GoyKXrmM1ssZheWs8jqFrdONz2fx8jyRe-GBcirrB5XNzb21mOs0ls"/>
+<button class="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 hover:bg-white transition-all shadow-sm">
+<span class="material-symbols-outlined text-sm">edit</span> Change Cover
+                    </button>
+</div>
+<div class="absolute -bottom-12 left-12 flex items-end gap-8">
+<div class="relative w-40 h-40 group">
+<div class="absolute inset-0 rounded-full border-4 border-white shadow-xl overflow-hidden bg-white">
+<img class="w-full h-full object-cover" data-alt="Close-up professional headshot of a smiling man with clean-cut appearance in a bright modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe7ow_d7IgZyFCzVuLYCtoo9cYxKmDKGuuah9NXJRWqM2jX_LfPRkVtmJEZ1G_mrH7ahOTO8QVrI--zEWCRtEBK7hUq22tr34InlQf_1gxbUGZBsiG7MKZxSqafP-gb8qyZj1z0Ay5QwxLvjsTV6NMD0612mS8Ps3bALsGOK3kkqNzKqz5h14lpb00vDxVG9D7VI1-AY0bhjT5yXu1mIPniMTjHjj2KcU7L6RXEkviGa4SbNltEchD-gRnF5q4gW8bYT4hOlPqtPg"/>
+</div>
+<button class="absolute bottom-1 right-1 bg-primary text-white p-2.5 rounded-full border-4 border-white shadow-lg hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-base">photo_camera</span>
+</button>
+</div>
+<div class="pb-2">
+<h2 class="text-4xl font-bold tracking-tight text-on-surface">Alexander Sterling</h2>
+<p class="text-lg text-secondary font-medium mt-1">Senior Full-Stack Engineer &amp; AI Architect</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-8 mt-24">
+<div class="col-span-8 space-y-12">
+<section>
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xl font-bold flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">work_history</span>
+                                Professional Journey
+                            </h3>
+<button class="text-primary font-semibold text-sm hover:underline">Add Experience</button>
+</div>
+<div class="space-y-0 relative before:absolute before:left-6 before:top-2 before:bottom-2 before:w-[2px] before:bg-slate-200">
+<div class="relative pl-16 pb-12 group">
+<div class="absolute left-4 top-1 w-4 h-4 rounded-full bg-primary border-4 border-white ring-2 ring-primary/20 z-10"></div>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-outline-variant/10 group-hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="text-lg font-bold">Principal Software Architect</h4>
+<p class="text-secondary font-medium">Lumina Tech Solutions • San Francisco, CA</p>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400">2021 — Present</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">Spearheaded the migration of monolithic infrastructure to microservices. Improved system latency by 45% through aggressive caching strategies and optimized DB queries.</p>
+<div class="mt-4 flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-medium">Node.js</span>
+<span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-medium">Kubernetes</span>
+<span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-medium">PostgreSQL</span>
+</div>
+</div>
+</div>
+<div class="relative pl-16 pb-2 group">
+<div class="absolute left-4 top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white z-10"></div>
+<div class="bg-white p-6 rounded-2xl shadow-sm border border-outline-variant/10 group-hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h4 class="text-lg font-bold">Senior Web Developer</h4>
+<p class="text-secondary font-medium">Innovate Digital • Austin, TX</p>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400">2018 — 2021</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">Built and maintained responsive web applications using React and TypeScript. Managed a team of 4 junior developers and established internal coding standards.</p>
+</div>
+</div>
+</div>
+</section>
+<section>
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xl font-bold flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">school</span>
+                                Education
+                            </h3>
+<button class="text-primary font-semibold text-sm hover:underline">Add Education</button>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="p-6 bg-white rounded-2xl border border-outline-variant/10 shadow-sm">
+<span class="text-xs font-bold text-primary tracking-tighter bg-primary/5 px-2 py-1 rounded">2014 - 2018</span>
+<h4 class="text-lg font-bold mt-3">M.S. in Computer Science</h4>
+<p class="text-on-surface-variant text-sm mt-1">Stanford University</p>
+<p class="text-slate-400 text-xs mt-4 italic">Specialization in Distributed Systems</p>
+</div>
+<div class="p-6 bg-white rounded-2xl border border-outline-variant/10 shadow-sm">
+<span class="text-xs font-bold text-primary tracking-tighter bg-primary/5 px-2 py-1 rounded">2010 - 2014</span>
+<h4 class="text-lg font-bold mt-3">B.S. in Software Engineering</h4>
+<p class="text-on-surface-variant text-sm mt-1">MIT</p>
+<p class="text-slate-400 text-xs mt-4 italic">Minor in Data Analytics</p>
+</div>
+</div>
+</section>
+</div>
+<div class="col-span-4 space-y-8">
+<section class="p-8 bg-slate-900 rounded-3xl text-white relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-3xl rounded-full"></div>
+<h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">rocket</span>
+                            Resume Engine
+                        </h3>
+<div class="border-2 border-dashed border-slate-700 rounded-2xl p-8 text-center bg-slate-800/50">
+<span class="material-symbols-outlined text-4xl text-slate-500 mb-4" data-icon="cloud_upload">cloud_upload</span>
+<p class="text-sm font-medium text-slate-300">alexander_cv_2024.pdf</p>
+<p class="text-xs text-slate-500 mt-1">Uploaded Oct 12, 2024</p>
+</div>
+<button class="w-full mt-6 bg-ai-gradient text-white py-4 px-6 rounded-2xl flex items-center justify-center gap-3 font-bold text-sm shadow-xl hover:scale-105 transition-all">
+<span class="material-symbols-outlined text-xl">colors_spark</span>
+                            AI ENHANCE CV
+                        </button>
+</section>
+<section class="p-8 bg-white rounded-3xl border border-outline-variant/10 shadow-sm">
+<h3 class="text-xl font-bold mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">bolt</span>
+                            Top Skills
+                        </h3>
+<div class="space-y-5">
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-semibold">React &amp; Next.js</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 px-2 py-0.5 rounded">Expert</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[95%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-semibold">Python (Django/FastAPI)</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary bg-secondary/10 px-2 py-0.5 rounded">Expert</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[90%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-semibold">AWS Architecture</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 bg-slate-100 px-2 py-0.5 rounded">Intermediate</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-slate-300 w-[65%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="text-sm font-semibold">Rust</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 bg-slate-50 px-2 py-0.5 rounded">Beginner</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-slate-200 w-[30%]"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex justify-end invisible opacity-0 pointer-events-none transition-all duration-300">
+<div class="w-[500px] bg-white h-full shadow-2xl flex flex-col translate-x-full transition-transform duration-500 ease-out">
+<div class="p-8 border-b border-outline-variant/10 flex items-center justify-between">
+<div>
+<h3 class="text-2xl font-bold">Edit Experience</h3>
+<p class="text-sm text-slate-500 mt-1">Update your professional journey details</p>
+</div>
+<button class="p-2 hover:bg-slate-100 rounded-full transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-8 space-y-6">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Job Title</label>
+<input class="w-full bg-surface-container-highest border-none rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary/20 transition-all" type="text" value="Principal Software Architect"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Company Name</label>
+<input class="w-full bg-surface-container-highest border-none rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary/20 transition-all" type="text" value="Lumina Tech Solutions"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Start Date</label>
+<input class="w-full bg-surface-container-highest border-none rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary/20 transition-all" type="month" value="2021-06"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">End Date</label>
+<input class="w-full bg-surface-container-highest border-none rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Present" type="month"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-slate-500">Description</label>
+<textarea class="w-full bg-surface-container-highest border-none rounded-xl py-3 px-4 focus:ring-2 focus:ring-primary/20 transition-all" rows="5">Spearheaded the migration of monolithic infrastructure to microservices. Improved system latency by 45% through aggressive caching strategies and optimized DB queries.</textarea>
+</div>
+</div>
+<div class="p-8 border-t border-outline-variant/10 flex gap-4">
+<button class="flex-1 bg-primary text-white py-4 rounded-2xl font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">Save Changes</button>
+<button class="px-8 bg-slate-100 text-slate-600 rounded-2xl font-bold hover:bg-slate-200 transition-colors">Cancel</button>
+</div>
+</div>
+</div>
+<footer class="w-full py-8 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 ml-64 max-w-[calc(100%-16rem)]">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+<span class="text-xs font-inter text-slate-500 dark:text-slate-400">© 2024 IES Intelligent Employment System</span>
+<div class="flex gap-6">
+<a class="text-xs font-inter text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Privacy Policy</a>
+<a class="text-xs font-inter text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Terms of Service</a>
+<a class="text-xs font-inter text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Cookie Settings</a>
+</div>
+</div>
+</footer>
+</body></html>

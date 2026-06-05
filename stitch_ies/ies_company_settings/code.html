@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Company Settings - TallentX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#e1e4ff",
+              "secondary": "#9093ff",
+              "surface-dim": "#020a2f",
+              "on-tertiary-container": "#000000",
+              "on-tertiary": "#33005b",
+              "on-error-container": "#ffa8a3",
+              "on-tertiary-fixed-variant": "#560094",
+              "tertiary-fixed-dim": "#c488ff",
+              "outline": "#6b739d",
+              "background": "#020a2f",
+              "outline-variant": "#3d466c",
+              "surface": "#020a2f",
+              "on-primary-fixed-variant": "#002a62",
+              "error": "#ff716c",
+              "on-background": "#e1e4ff",
+              "surface-container-lowest": "#000000",
+              "on-primary-fixed": "#000000",
+              "surface-container-low": "#050f38",
+              "secondary-container": "#2f2ebe",
+              "on-primary": "#002c66",
+              "secondary-fixed": "#cdcdff",
+              "surface-bright": "#192760",
+              "error-container": "#9f0519",
+              "primary": "#85adff",
+              "primary-fixed": "#6e9fff",
+              "surface-container-highest": "#142156",
+              "surface-container": "#091542",
+              "inverse-on-surface": "#4b537a",
+              "on-secondary": "#080079",
+              "surface-tint": "#85adff",
+              "inverse-primary": "#005bc4",
+              "tertiary-container": "#af5cfe",
+              "secondary-dim": "#6063ee",
+              "on-tertiary-fixed": "#270048",
+              "tertiary": "#c180ff",
+              "primary-fixed-dim": "#5391ff",
+              "surface-variant": "#142156",
+              "on-surface-variant": "#a1a9d5",
+              "on-primary-container": "#002150",
+              "error-dim": "#d7383b",
+              "primary-container": "#6e9fff",
+              "secondary-fixed-dim": "#bdbeff",
+              "primary-dim": "#699cff",
+              "tertiary-fixed": "#ce9bff",
+              "on-secondary-fixed-variant": "#3a3ac8",
+              "on-error": "#490006",
+              "inverse-surface": "#fbf8ff",
+              "surface-container-high": "#0e1b4c",
+              "on-secondary-fixed": "#160bae",
+              "tertiary-dim": "#9c48ea",
+              "on-secondary-container": "#ccccff"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-morphism {
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #3d466c;
+        border-radius: 10px;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30 min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#020a2f]/60 backdrop-blur-xl border-b border-white/15 shadow-2xl shadow-black/20 flex justify-between items-center px-8 h-20 w-full font-['Inter'] leading-relaxed">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-white">TallentX</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-400 hover:text-white transition-colors active:scale-95 transition-all" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-white transition-colors active:scale-95 transition-all" href="#">Talent Pool</a>
+<a class="text-slate-400 hover:text-white transition-colors active:scale-95 transition-all" href="#">Insights</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#85adff] hover:bg-white/5 rounded-full transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-[#85adff] border-b-2 border-[#85adff] pb-1 hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile Avatar" class="h-full w-full object-cover" data-alt="Professional headshot of a middle-aged male executive in a dark suit with soft studio lighting and a neutral grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnEFjptLoG2odzKjurUFPZJ7IIi67y2-dPITaIOF1aEvSz6j5C9nvKbOREFmq4FTwrhuTWac7_dV6-Iw34NBNr1LrAho__sNyp-Q7Fa_2ArJ8OnMfWjdSbylyh7SOqNdk6WGjrYwMipo-mxXUgn8m11YHmdbUSdsxJK6EX9U9NwnsulG8KJ39PFgQOmGYTG6kEpnIf7wkfDp9teat9iyFF16AT2dQYlujVYEGAgU1wpR1RUSuDzz_89BlAN82YqYFlPeiYAXFJQEM"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="h-screen w-72 fixed left-0 top-0 border-r border-white/15 bg-[#020a2f] flex flex-col pt-24 pb-8 font-['Inter'] text-sm font-medium z-40">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="h-10 w-10 rounded-lg bg-surface-container-highest flex items-center justify-center border border-white/10">
+<span class="material-symbols-outlined text-primary">business</span>
+</div>
+<div>
+<h2 class="text-lg font-bold text-white">Company Settings</h2>
+<p class="text-xs text-on-surface-variant">Manage your organization</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 bg-gradient-to-r from-[#9093ff]/20 to-[#c180ff]/20 text-white border-r-4 border-[#85adff] px-6 py-4 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">business</span>
+<span>General</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 px-6 py-4 hover:bg-white/5 hover:text-[#85adff] transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Team Access</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 px-6 py-4 hover:bg-white/5 hover:text-[#85adff] transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span>Integrations</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 px-6 py-4 hover:bg-white/5 hover:text-[#85adff] transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span>Billing</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 px-6 py-4 hover:bg-white/5 hover:text-[#85adff] transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">key</span>
+<span>API Keys</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="w-full py-3 px-4 rounded-lg bg-primary-container text-on-primary-container font-bold hover:brightness-110 active:scale-95 transition-all mb-6">
+                Upgrade Plan
+            </button>
+<div class="space-y-1">
+<a class="flex items-center gap-4 text-slate-400 py-2 hover:text-[#85adff] transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-4 text-slate-400 py-2 hover:text-[#85adff] transition-colors" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span>Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-72 pt-28 px-12 pb-20 max-w-[1400px]">
+<!-- Header Section -->
+<div class="mb-12">
+<h1 class="text-4xl font-extrabold tracking-tight text-white mb-2">General Settings</h1>
+<p class="text-on-surface-variant max-w-2xl">Configure your company's core identity and AI preferences to optimize the TallentX matching engine.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Left Column: Company Profile Form -->
+<section class="col-span-12 lg:col-span-8 space-y-8">
+<div class="bg-surface-container-low rounded-xl p-8 border border-white/5">
+<h3 class="text-xl font-bold text-white mb-6">Company Profile</h3>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-1">Company Name</label>
+<input class="w-full bg-surface-container border-b-2 border-outline-variant focus:border-primary outline-none px-4 py-3 rounded-t-lg transition-all text-on-surface" type="text" value="Innovate Systems Corp"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-1">Industry</label>
+<select class="w-full bg-surface-container border-b-2 border-outline-variant focus:border-primary outline-none px-4 py-3 rounded-t-lg transition-all text-on-surface appearance-none">
+<option>Technology &amp; SaaS</option>
+<option>Financial Services</option>
+<option>Healthcare</option>
+<option>Modern Logistics</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-1">Website URL</label>
+<div class="flex items-center bg-surface-container border-b-2 border-outline-variant focus-within:border-primary rounded-t-lg transition-all">
+<span class="pl-4 text-outline">https://</span>
+<input class="w-full bg-transparent border-none focus:ring-0 px-1 py-3 text-on-surface" type="text" value="innovate-systems.ai"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-semibold uppercase tracking-wider text-on-surface-variant ml-1">Description</label>
+<textarea class="w-full bg-surface-container border-b-2 border-outline-variant focus:border-primary outline-none px-4 py-3 rounded-t-lg transition-all text-on-surface resize-none" rows="4">Leading the charge in AI-driven employment solutions. We bridge the gap between global talent and visionary enterprises through architectural intelligence.</textarea>
+</div>
+<div class="flex justify-end gap-4 pt-4">
+<button class="px-6 py-2.5 rounded-lg border border-outline-variant text-on-surface hover:bg-white/5 transition-all" type="button">Cancel</button>
+<button class="px-8 py-2.5 rounded-lg bg-primary text-on-primary font-bold hover:brightness-110 active:scale-95 transition-all" type="submit">Save Changes</button>
+</div>
+</form>
+</div>
+<!-- Team Management Section -->
+<div class="bg-surface-container-low rounded-xl p-8 border border-white/5">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-xl font-bold text-white">Team Management</h3>
+<p class="text-sm text-on-surface-variant">Manage recruiter access levels and active seats.</p>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container-high text-primary border border-primary/20 hover:bg-primary/10 transition-all">
+<span class="material-symbols-outlined text-sm">person_add</span>
+<span>Add Recruiter</span>
+</button>
+</div>
+<div class="space-y-4">
+<!-- Recruiter Row 1 -->
+<div class="flex items-center justify-between p-4 rounded-xl hover:bg-surface-container-lowest transition-all group">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="Recruiter Sarah" class="h-full w-full object-cover" data-alt="Close-up portrait of a professional woman smiling in a bright airy office with modern architectural elements in soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvQpIdVPkX2LcWFDYTAXpnh4gPKj9wZEa0nTEU5Ax7YAea9D8TBzI5nzWoO-q0V6Uasn44NYkycn9KeBf66pttEi4QjraMKAq1Mm0eD3B21he-BO6Liqt-IDWtzKp1sWCT01kQKovpwampZrg7Dq78DvdTp6xsFyJUhBmEh9JXpE84t9UDBEKFgwr8QCWCwsdrYkkrOT-LRVAcJgmYpdjonPwXu2mJfsQOZKoRJIELl30o67RAs9KHUqMtTdx9UEA37q3nFTM4qPY"/>
+</div>
+<div>
+<h4 class="font-bold text-white">Sarah Jenkins</h4>
+<p class="text-xs text-on-surface-variant">sarah.j@innovate-systems.ai</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-primary/10 text-primary border border-primary/20">Admin</span>
+<button class="text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Recruiter Row 2 -->
+<div class="flex items-center justify-between p-4 rounded-xl hover:bg-surface-container-lowest transition-all group">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full overflow-hidden border-2 border-outline-variant/50">
+<img alt="Recruiter Marcus" class="h-full w-full object-cover" data-alt="Headshot of a friendly young man wearing glasses and a minimalist sweater with neutral indoor lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1VZK-gogXab4tL-JoARhK7LRG5_tXyMQBEo9dpBnDj7uTWhFkOPUjMRODCUrFgaxeThb1HEtUZlN89-Dy7r9uno5T1KwRNi7lgMabF6zfAyWipBTH58VLVJM7K-ZnPcvj0M-DOReok-VuavtanxJGEJgsfFs-65Wgo_oMH49VHrIeLmpHqByPbTqVlv0eCePzi8ntC6diA8D3_cwGl4cycprxV6aGkuAGvvJVEleGHJEhS-HV1kBy6w9pkgyPsFxKvRAe6igd86A"/>
+</div>
+<div>
+<h4 class="font-bold text-white">Marcus Thorne</h4>
+<p class="text-xs text-on-surface-variant">m.thorne@innovate-systems.ai</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-surface-container-highest text-on-surface-variant border border-outline-variant/30">Standard</span>
+<button class="text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Recruiter Row 3 -->
+<div class="flex items-center justify-between p-4 rounded-xl hover:bg-surface-container-lowest transition-all group">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full overflow-hidden border-2 border-outline-variant/50">
+<img alt="Recruiter Elena" class="h-full w-full object-cover" data-alt="Confident professional woman of color in corporate attire, looking forward with a slight smile in a modern glass-walled office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_V7QLpZSUwcXHD0VZVD7dyvku2zVphBDGoH2L_-5Q9apK8hsmfgMW2JQbTVzKHU2cXcG4W6_S1wcimXnbScgZ2xubKWvDgU_xFbdkDzmXvqusPdu2jvQk_FujcysIbKjtAUFzlwHhHPPC9k6eMyc-MoFg9JgBh4CqsxZ4Bd3NnsCY-_7MXbIquaWLEDHckydVHA2sKH5Yp9S0tUDM__B8zV-4vRJZQNy6IcWMudLdnFnqiQtjDkr0SCzqLng05qObWZIzaSEeK34"/>
+</div>
+<div>
+<h4 class="font-bold text-white">Elena Rodriguez</h4>
+<p class="text-xs text-on-surface-variant">elena.r@innovate-systems.ai</p>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest bg-surface-container-highest text-on-surface-variant border border-outline-variant/30">Standard</span>
+<button class="text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: AI & Stats -->
+<aside class="col-span-12 lg:col-span-4 space-y-8">
+<!-- AI Settings Component (Custom) -->
+<div class="relative overflow-hidden bg-surface-container-low rounded-xl p-8 border border-tertiary/20">
+<!-- Animated Gradient Mesh Effect -->
+<div class="absolute inset-0 opacity-10 pointer-events-none bg-gradient-to-br from-tertiary via-secondary to-primary"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="text-xl font-bold text-white">AI Intelligence</h3>
+</div>
+<div class="space-y-8">
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium text-white">Match Score Sensitivity</span>
+<span class="text-xs font-bold text-tertiary">Strict (85%+)</span>
+</div>
+<div class="relative h-2 w-full bg-surface-container-highest rounded-full">
+<div class="absolute top-0 left-0 h-full w-[85%] bg-gradient-to-r from-secondary to-tertiary rounded-full shadow-[0_0_12px_rgba(193,128,255,0.4)]"></div>
+<div class="absolute top-1/2 left-[85%] -translate-y-1/2 h-5 w-5 bg-white rounded-full border-4 border-tertiary shadow-lg cursor-pointer"></div>
+</div>
+<p class="text-xs text-on-surface-variant">Controls how aggressively the AI filters talent based on project requirements.</p>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<span class="block text-sm font-medium text-white">Smart Auto-Shortlist</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Enabled for 12 open roles</span>
+</div>
+<button class="relative inline-flex h-6 w-11 items-center rounded-full bg-gradient-to-r from-secondary to-tertiary">
+<span class="inline-block h-4 w-4 transform rounded-full bg-white transition translate-x-6"></span>
+</button>
+</div>
+<div class="pt-6 border-t border-white/5">
+<div class="flex items-center justify-between mb-4">
+<span class="text-sm font-medium text-white">AI Model Version</span>
+<span class="px-2 py-1 rounded bg-tertiary/10 text-tertiary text-[10px] font-bold">V4.2 KINETIC</span>
+</div>
+<button class="w-full py-2.5 rounded-lg border border-tertiary/40 text-tertiary text-xs font-bold hover:bg-tertiary/5 transition-all">
+                                    View Performance Metrics
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Plan Usage Card -->
+<div class="bg-surface-container-high rounded-xl p-8 border border-white/5">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-6">Plan Utilization</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs">
+<span class="text-on-surface">Active Recruiter Seats</span>
+<span class="text-white font-bold">3 / 5</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full w-[60%] bg-primary"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs">
+<span class="text-on-surface">Monthly Matches</span>
+<span class="text-white font-bold">1.2k / 5k</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full w-[24%] bg-primary"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 p-4 rounded-lg bg-surface-container-low border border-outline-variant/30 flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl">info</span>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                            Your billing cycle ends in <span class="text-white font-bold">12 days</span>. Unused match credits do not roll over.
+                        </p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Background Decoration -->
+<div class="fixed top-0 right-0 -z-10 w-1/2 h-full bg-gradient-to-bl from-primary/5 via-transparent to-transparent pointer-events-none"></div>
+<div class="fixed bottom-0 left-0 -z-10 w-full h-1/2 bg-gradient-to-t from-background via-transparent to-transparent pointer-events-none"></div>
+</body></html>

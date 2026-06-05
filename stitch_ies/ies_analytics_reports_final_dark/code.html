@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-low": "#131b2e",
+              "on-tertiary-fixed": "#002113",
+              "on-background": "#dae2fd",
+              "surface-dim": "#0b1326",
+              "error": "#ffb4ab",
+              "on-error-container": "#ffdad6",
+              "surface-container-lowest": "#060e20",
+              "secondary-fixed": "#e1e0ff",
+              "on-tertiary": "#003824",
+              "on-error": "#690005",
+              "secondary-fixed-dim": "#c0c1ff",
+              "on-primary-container": "#00285d",
+              "inverse-on-surface": "#283044",
+              "outline": "#8c909f",
+              "background": "#0b1326",
+              "surface-variant": "#2d3449",
+              "surface-tint": "#adc6ff",
+              "tertiary": "#4edea3",
+              "on-secondary-container": "#b0b2ff",
+              "surface-container-high": "#222a3d",
+              "on-surface": "#dae2fd",
+              "surface-container": "#171f33",
+              "on-secondary": "#1000a9",
+              "inverse-primary": "#005ac2",
+              "tertiary-container": "#00a572",
+              "primary-fixed-dim": "#adc6ff",
+              "outline-variant": "#424754",
+              "on-surface-variant": "#c2c6d6",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-primary-fixed-variant": "#004395",
+              "secondary-container": "#3131c0",
+              "primary": "#adc6ff",
+              "surface": "#0b1326",
+              "primary-fixed": "#d8e2ff",
+              "tertiary-fixed-dim": "#4edea3",
+              "surface-bright": "#31394d",
+              "on-tertiary-fixed-variant": "#005236",
+              "on-tertiary-container": "#00311f",
+              "on-primary-fixed": "#001a42",
+              "on-secondary-fixed": "#07006c",
+              "inverse-surface": "#dae2fd",
+              "tertiary-fixed": "#6ffbbe",
+              "surface-container-highest": "#2d3449",
+              "secondary": "#c0c1ff",
+              "error-container": "#93000a",
+              "primary-container": "#4d8eff",
+              "on-primary": "#002e6a"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(34, 42, 61, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .neural-gradient {
+            background: linear-gradient(135deg, #adc6ff 0%, #c0c1ff 100%);
+        }
+        .chart-glow-primary {
+            filter: drop-shadow(0 0 8px rgba(173, 198, 255, 0.3));
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0b1326; }
+        ::-webkit-scrollbar-thumb { background: #222a3d; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#0b1326]/80 backdrop-blur-xl flex items-center justify-between px-6 py-3 w-full shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black tracking-tighter text-[#adc6ff]">IES</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#c0c1ff]/60 hover:text-[#c0c1ff] transition-colors font-['Inter'] antialiased" href="#">Dashboard</a>
+<a class="text-[#c0c1ff]/60 hover:text-[#c0c1ff] transition-colors font-['Inter'] antialiased" href="#">Candidates</a>
+<a class="text-[#adc6ff] border-b-2 border-[#adc6ff] pb-1 font-['Inter'] antialiased" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container-high border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 w-64 text-on-surface" placeholder="Search analytics..." type="text"/>
+</div>
+<button class="p-2 text-[#c0c1ff]/60 hover:bg-[#222a3d]/50 transition-all duration-200 rounded-full active:scale-95 duration-100">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-[#c0c1ff]/60 hover:bg-[#222a3d]/50 transition-all duration-200 rounded-full active:scale-95 duration-100">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/20">
+<img alt="User Avatar" data-alt="professional headshot of a creative director with dramatic studio lighting and a dark minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLK4h9yygsLwEjjveLV6NYyJ-k27mjWYTn92HM_IIHdLejz3wE3YFi4O9bZb_DFmnS9JSLAufodzN0Qen0gSLJ7MManvQeHVZAiv7TSlu1fEhAAg2ULBmgfFSoU3uRaTjB0AkaNmxjD58qQjaGFlu36lB-n4z8bk2awdDAal-RP56zQhSZflPB4lS9b8IhG9SCFQ0_ZT2L_6G7uPmUkTCsY6e9DfKLGM0YXJ-rcIp-3pBkMIhJuiGCgcvy-qAxRSAv_sr5A0GCvcc"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 z-40 bg-[#0b1326] flex flex-col h-full p-4 gap-2 border-r border-outline-variant/10 hidden lg:flex">
+<div class="pt-16 pb-8 px-4 flex items-center gap-3">
+<div class="h-10 w-10 rounded-xl neural-gradient flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-on-primary">psychology</span>
+</div>
+<div>
+<h2 class="text-lg font-bold text-[#adc6ff] leading-none">Neural Architect</h2>
+<p class="text-[10px] uppercase tracking-widest text-[#c0c1ff]/50 font-bold mt-1">Recruitment Engine</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-[#c0c1ff]/70 hover:bg-[#131b2e] hover:text-[#c0c1ff] font-['Inter'] text-sm font-medium hover:translate-x-1 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c0c1ff]/70 hover:bg-[#131b2e] hover:text-[#c0c1ff] font-['Inter'] text-sm font-medium hover:translate-x-1 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Talent Pool</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c0c1ff]/70 hover:bg-[#131b2e] hover:text-[#c0c1ff] font-['Inter'] text-sm font-medium hover:translate-x-1 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span>Messages</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c0c1ff]/70 hover:bg-[#131b2e] hover:text-[#c0c1ff] font-['Inter'] text-sm font-medium hover:translate-x-1 transition-transform duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+<span>Activity</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-[#222a3d] text-[#adc6ff] rounded-lg border-l-4 border-[#4edea3] font-['Inter'] text-sm font-medium transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">insert_chart</span>
+<span>Analytics</span>
+</a>
+</nav>
+<button class="mx-2 mt-4 py-3 neural-gradient rounded-xl font-bold text-on-primary text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-lg shadow-primary/10 hover:shadow-primary/30 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">add</span>
+            New Requisition
+        </button>
+<div class="mt-auto border-t border-outline-variant/10 pt-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-[#c0c1ff]/70 hover:text-[#c0c1ff] font-['Inter'] text-sm font-medium hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-[#c0c1ff]/70 hover:text-error font-['Inter'] text-sm font-medium hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-20 px-6 pb-12 min-h-screen">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="h-2 w-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="text-xs font-bold tracking-[0.2em] text-tertiary uppercase">Live Intelligence Engine</span>
+</div>
+<h1 class="text-4xl lg:text-5xl font-black text-on-surface tracking-tight mb-2">Analytics Reports</h1>
+<p class="text-on-surface-variant max-w-xl text-lg">Harness neural-mapped data to optimize your hiring velocity and talent quality metrics.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex bg-surface-container-low p-1 rounded-lg">
+<button class="px-4 py-2 text-xs font-bold rounded bg-surface-container-high text-primary">Last 30 Days</button>
+<button class="px-4 py-2 text-xs font-bold text-on-surface-variant hover:text-on-surface">Q3 2023</button>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 glass-panel rounded-xl text-sm font-bold border border-outline-variant/20 hover:border-primary/50 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">download</span>
+                    Export PDF
+                </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[160px]">
+<!-- AI PREDICTIONS WIDGET (Hero) -->
+<div class="md:col-span-8 md:row-span-2 glass-panel rounded-3xl p-8 relative overflow-hidden group">
+<!-- Background decorative element -->
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute -left-20 -bottom-20 w-80 h-80 bg-secondary/10 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="relative z-10 h-full flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-3xl">bolt</span>
+<h2 class="text-2xl font-black tracking-tight">AI Recruitment Prediction</h2>
+</div>
+<span class="px-3 py-1 rounded-full bg-secondary/20 text-secondary text-[10px] font-black uppercase tracking-widest border border-secondary/30">94% Confidence</span>
+</div>
+<div class="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-10">
+<div class="space-y-6">
+<div>
+<p class="text-on-surface-variant text-sm mb-2 uppercase tracking-widest font-bold">Predicted Need (Next 90 Days)</p>
+<div class="text-5xl font-black text-primary">42 <span class="text-lg font-medium text-on-surface-variant">New Roles</span></div>
+</div>
+<div class="p-4 rounded-2xl bg-surface-container-lowest border-l-4 border-secondary border-outline-variant/5">
+<p class="text-xs text-on-surface-variant italic leading-relaxed">"Neural analysis suggests a 15% uptick in Engineering churn. We recommend opening 4 'Senior Architect' requisitions immediately to prevent productivity lag."</p>
+</div>
+</div>
+<div class="flex flex-col justify-end">
+<div class="flex justify-between items-end mb-4">
+<div class="space-y-1">
+<p class="text-xs text-on-surface-variant">Hiring Capacity</p>
+<p class="text-xl font-bold">78% Utilization</p>
+</div>
+<div class="h-16 w-32 flex items-end gap-1">
+<div class="w-full bg-surface-container-highest rounded-t h-2/3 transition-all group-hover:h-3/4"></div>
+<div class="w-full bg-surface-container-highest rounded-t h-1/2 transition-all group-hover:h-2/3"></div>
+<div class="w-full bg-primary/60 rounded-t h-4/5 transition-all group-hover:h-full shadow-[0_0_15px_rgba(173,198,255,0.4)]"></div>
+<div class="w-full bg-surface-container-highest rounded-t h-1/3 transition-all group-hover:h-1/2"></div>
+<div class="w-full bg-surface-container-highest rounded-t h-2/5 transition-all group-hover:h-3/5"></div>
+</div>
+</div>
+<button class="w-full py-4 neural-gradient rounded-xl font-bold text-on-primary shadow-xl shadow-primary/20 hover:scale-[1.02] transition-all">Execute Predicted Plan</button>
+</div>
+</div>
+</div>
+</div>
+<!-- TIME TO HIRE WIDGET -->
+<div class="md:col-span-4 md:row-span-2 glass-panel rounded-3xl p-6 flex flex-col justify-between border-l-4 border-primary">
+<div>
+<div class="flex justify-between items-start mb-6">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Time to Hire</h3>
+<span class="text-tertiary text-xs font-bold flex items-center">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+                            -12%
+                        </span>
+</div>
+<div class="text-6xl font-black text-on-surface mb-2">18.4<span class="text-xl text-on-surface-variant ml-1">days</span></div>
+<p class="text-xs text-on-surface-variant font-medium">Industry Average: 24.5 days</p>
+</div>
+<div class="space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-bold uppercase text-on-surface-variant">
+<span>Sourcing</span>
+<span>4.2 Days</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[25%] rounded-full shadow-[0_0_8px_rgba(173,198,255,0.5)]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-bold uppercase text-on-surface-variant">
+<span>Interviewing</span>
+<span>9.8 Days</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[60%] rounded-full shadow-[0_0_8px_rgba(192,193,255,0.5)]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-bold uppercase text-on-surface-variant">
+<span>Closing</span>
+<span>4.4 Days</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[30%] rounded-full shadow-[0_0_8px_rgba(78,222,163,0.5)]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- HIRING FUNNEL WIDGET -->
+<div class="md:col-span-7 md:row-span-2 glass-panel rounded-3xl p-6 overflow-hidden">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-lg font-black tracking-tight">Neural Hiring Funnel</h3>
+<div class="flex gap-2">
+<span class="h-3 w-3 rounded-full bg-primary"></span>
+<span class="h-3 w-3 rounded-full bg-secondary"></span>
+<span class="h-3 w-3 rounded-full bg-tertiary"></span>
+</div>
+</div>
+<div class="flex flex-col gap-2 h-[220px]">
+<!-- Funnel Stage: Awareness -->
+<div class="flex items-center gap-4 group">
+<div class="w-32 text-right">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant">Applications</span>
+</div>
+<div class="flex-1 h-12 bg-surface-container-low rounded-xl relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/20 w-full group-hover:bg-primary/30 transition-all"></div>
+<div class="absolute inset-y-0 left-0 bg-primary w-[85%] rounded-r-lg shadow-[4px_0_15px_rgba(173,198,255,0.2)]"></div>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 font-black text-sm">1,280</span>
+</div>
+</div>
+<!-- Funnel Stage: Qualified -->
+<div class="flex items-center gap-4 group">
+<div class="w-32 text-right">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant">AI Screened</span>
+</div>
+<div class="flex-1 h-12 bg-surface-container-low rounded-xl relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/20 w-full group-hover:bg-primary/30 transition-all"></div>
+<div class="absolute inset-y-0 left-0 bg-primary/80 w-[45%] rounded-r-lg"></div>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 font-black text-sm">542</span>
+</div>
+</div>
+<!-- Funnel Stage: Interview -->
+<div class="flex items-center gap-4 group">
+<div class="w-32 text-right">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant">Interviewed</span>
+</div>
+<div class="flex-1 h-12 bg-surface-container-low rounded-xl relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/20 w-full group-hover:bg-primary/30 transition-all"></div>
+<div class="absolute inset-y-0 left-0 bg-primary/60 w-[12%] rounded-r-lg"></div>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 font-black text-sm">158</span>
+</div>
+</div>
+<!-- Funnel Stage: Hired -->
+<div class="flex items-center gap-4 group">
+<div class="w-32 text-right">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant">Hired</span>
+</div>
+<div class="flex-1 h-12 bg-surface-container-low rounded-xl relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/20 w-full group-hover:bg-primary/30 transition-all"></div>
+<div class="absolute inset-y-0 left-0 bg-tertiary w-[3%] rounded-r-lg shadow-[4px_0_15px_rgba(78,222,163,0.3)]"></div>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 font-black text-sm text-tertiary">38</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CANDIDATE SOURCE DISTRIBUTION -->
+<div class="md:col-span-5 md:row-span-2 glass-panel rounded-3xl p-6 flex flex-col">
+<h3 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-6">Source Distribution</h3>
+<div class="flex-1 flex items-center justify-center relative">
+<!-- Semi-pie chart approximation using CSS borders -->
+<div class="w-48 h-48 rounded-full border-[20px] border-surface-container-low flex items-center justify-center relative">
+<div class="absolute inset-0 rounded-full border-[20px] border-primary border-b-transparent border-l-transparent -rotate-45 chart-glow-primary"></div>
+<div class="absolute inset-0 rounded-full border-[20px] border-secondary border-t-transparent border-r-transparent rotate-[30deg]"></div>
+<div class="absolute inset-0 rounded-full border-[20px] border-tertiary border-t-transparent border-r-transparent border-b-transparent -rotate-[120deg]"></div>
+<div class="flex flex-col items-center">
+<span class="text-3xl font-black">100%</span>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">Attribution</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-6">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-xs font-medium text-on-surface-variant">LinkedIn (45%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="text-xs font-medium text-on-surface-variant">Referrals (30%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<span class="text-xs font-medium text-on-surface-variant">Direct (15%)</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+<span class="text-xs font-medium text-on-surface-variant">Other (10%)</span>
+</div>
+</div>
+</div>
+<!-- MATCH QUALITY TRENDS -->
+<div class="md:col-span-12 md:row-span-2 glass-panel rounded-3xl p-8">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-2xl font-black tracking-tight">Match Quality Trends</h3>
+<p class="text-sm text-on-surface-variant mt-1">AI-scored candidate quality across all active channels.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-primary"></span>
+<span class="text-xs font-bold text-on-surface-variant">Current</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-surface-container-highest"></span>
+<span class="text-xs font-bold text-on-surface-variant">Avg Industry</span>
+</div>
+</div>
+</div>
+<div class="h-[200px] w-full relative flex items-end justify-between px-2">
+<!-- Fake Line Chart Path using SVG -->
+<svg class="absolute inset-0 w-full h-full preserve-3d" preserveaspectratio="none" viewbox="0 0 1000 200">
+<path class="chart-glow-primary" d="M0,180 Q100,160 200,100 T400,120 T600,60 T800,80 T1000,40" fill="none" stroke="url(#lineGradient)" stroke-width="4"></path>
+<path d="M0,170 Q100,150 200,140 T400,150 T600,130 T800,140 T1000,120" fill="none" stroke="#222a3d" stroke-dasharray="8 4" stroke-width="2"></path>
+<defs>
+<lineargradient id="lineGradient" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#adc6ff"></stop>
+<stop offset="100%" stop-color="#4edea3"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- Chart Grid Labels -->
+<div class="flex flex-col h-full justify-between absolute left-0 text-[10px] font-bold text-on-surface-variant/40 -ml-8">
+<span>100%</span>
+<span>75%</span>
+<span>50%</span>
+<span>25%</span>
+<span>0%</span>
+</div>
+<!-- Chart X-Axis Labels -->
+<div class="flex w-full justify-between pt-4 mt-auto">
+<span class="text-[10px] font-bold text-on-surface-variant">Jan</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Feb</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Mar</span>
+<span class="text-[10px] font-bold text-primary">Apr (AI Peak)</span>
+<span class="text-[10px] font-bold text-on-surface-variant">May</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Jun</span>
+<span class="text-[10px] font-bold text-on-surface-variant">Jul</span>
+</div>
+</div>
+</div>
+<!-- ASYMMETRIC INSIGHTS CARDS -->
+<div class="md:col-span-4 md:row-span-1 glass-panel rounded-3xl p-6 border-l-4 border-tertiary flex items-center gap-4">
+<div class="h-12 w-12 rounded-xl bg-tertiary/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div>
+<h4 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Top Match Quality</h4>
+<p class="text-xl font-black">98.2% Accuracy</p>
+</div>
+</div>
+<div class="md:col-span-4 md:row-span-1 glass-panel rounded-3xl p-6 border-l-4 border-secondary flex items-center gap-4">
+<div class="h-12 w-12 rounded-xl bg-secondary/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div>
+<h4 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Offer Acceptance</h4>
+<p class="text-xl font-black">89% Rate</p>
+</div>
+</div>
+<div class="md:col-span-4 md:row-span-1 glass-panel rounded-3xl p-6 border-l-4 border-primary flex items-center gap-4">
+<div class="h-12 w-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">group_add</span>
+</div>
+<div>
+<h4 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Retention Signal</h4>
+<p class="text-xl font-black">+14% Growth</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Neural Pulse FAB (Contextual for Home/Analytics) -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="h-16 w-16 neural-gradient rounded-full shadow-[0_0_30px_rgba(173,198,255,0.4)] flex items-center justify-center group relative active:scale-90 transition-transform">
+<span class="absolute inset-0 rounded-full neural-gradient animate-ping opacity-20"></span>
+<span class="material-symbols-outlined text-3xl text-on-primary group-hover:rotate-12 transition-transform" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<!-- Tooltip -->
+<div class="absolute bottom-20 right-0 bg-surface-container-high text-on-surface text-xs font-bold px-4 py-3 rounded-2xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity shadow-2xl pointer-events-none border border-outline-variant/20">
+                AI Assistant: "Need an insight?"
+            </div>
+</button>
+</div>
+</body></html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-variant": "#142156",
+            "tertiary-container": "#af5cfe",
+            "tertiary-fixed": "#ce9bff",
+            "surface-dim": "#020a2f",
+            "primary-fixed": "#6e9fff",
+            "outline": "#6b739d",
+            "surface-bright": "#192760",
+            "error-container": "#9f0519",
+            "surface-container-highest": "#142156",
+            "secondary-fixed-dim": "#bdbeff",
+            "tertiary": "#c180ff",
+            "on-tertiary-container": "#000000",
+            "primary-dim": "#699cff",
+            "on-secondary": "#080079",
+            "primary": "#85adff",
+            "on-surface": "#e1e4ff",
+            "on-primary-container": "#002150",
+            "secondary-fixed": "#cdcdff",
+            "secondary-dim": "#6063ee",
+            "background": "#020a2f",
+            "on-secondary-container": "#ccccff",
+            "on-primary-fixed-variant": "#002a62",
+            "primary-fixed-dim": "#5391ff",
+            "surface-tint": "#85adff",
+            "on-tertiary-fixed": "#270048",
+            "surface-container-low": "#050f38",
+            "on-primary-fixed": "#000000",
+            "on-primary": "#002c66",
+            "surface-container-lowest": "#000000",
+            "on-tertiary": "#33005b",
+            "tertiary-fixed-dim": "#c488ff",
+            "error-dim": "#d7383b",
+            "on-error": "#490006",
+            "secondary-container": "#2f2ebe",
+            "inverse-surface": "#fbf8ff",
+            "on-background": "#e1e4ff",
+            "inverse-on-surface": "#4b537a",
+            "on-surface-variant": "#a1a9d5",
+            "inverse-primary": "#005bc4",
+            "on-error-container": "#ffa8a3",
+            "outline-variant": "#3d466c",
+            "tertiary-dim": "#9c48ea",
+            "on-secondary-fixed-variant": "#3a3ac8",
+            "surface-container": "#091542",
+            "surface": "#020a2f",
+            "error": "#ff716c",
+            "on-tertiary-fixed-variant": "#560094",
+            "surface-container-high": "#0e1b4c",
+            "secondary": "#9093ff",
+            "primary-container": "#6e9fff",
+            "on-secondary-fixed": "#160bae"
+          },
+          fontFamily: {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; background-color: #020a2f; color: #e1e4ff; -webkit-font-smoothing: antialiased; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .ai-gradient-text { background: linear-gradient(to right, #9093ff, #c180ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .ai-gradient-bg { background: linear-gradient(135deg, #9093ff 0%, #c180ff 100%); }
+    .glass-panel { background: rgba(20, 33, 86, 0.6); backdrop-filter: blur(24px); }
+  </style>
+</head>
+<body class="bg-surface overflow-x-hidden">
+<!-- Focus Mode Sticky Top Bar -->
+<header class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-outline-variant/15 px-6 lg:px-12 h-20 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="text-2xl font-black tracking-tighter text-white">TallentX</span>
+<div class="h-4 w-[1px] bg-outline-variant/30 hidden md:block"></div>
+<span class="text-sm font-medium text-on-surface-variant hidden md:block">Senior Product Engineer Assessment</span>
+</div>
+</div>
+<!-- Red Countdown Timer -->
+<div class="flex items-center gap-6">
+<div class="bg-error-container/20 border border-error-dim/30 px-4 py-2 rounded-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-error-dim animate-pulse" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="font-mono text-xl font-bold text-error-dim tracking-wider">42:18</span>
+</div>
+<button class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface px-5 py-2 rounded-xl text-sm font-bold transition-all active:scale-95">
+        Quit Assessment
+      </button>
+</div>
+</header>
+<main class="pt-32 pb-40 min-h-screen flex flex-col items-center max-w-4xl mx-auto px-6">
+<!-- AI Header Section -->
+<div class="w-full mb-16 flex flex-col items-center text-center">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-tertiary/20 bg-tertiary/5 mb-6">
+<span class="material-symbols-outlined text-tertiary text-lg" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-xs font-bold tracking-widest uppercase ai-gradient-text">AI-Generated Assessment</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-black tracking-tight text-white mb-4">Adaptive Intelligence Test</h1>
+<p class="text-on-surface-variant max-w-lg leading-relaxed">
+        The system has calibrated these questions based on your previous technical performance. Respond naturally; there is no single right path.
+      </p>
+</div>
+<!-- Chat-like Interface Canvas -->
+<div class="w-full space-y-12 relative">
+<!-- Previous Question (History) -->
+<div class="flex flex-col gap-4 opacity-40 transition-opacity hover:opacity-100 group">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 border border-outline-variant/20">
+<span class="material-symbols-outlined text-primary text-sm">psychology</span>
+</div>
+<div class="flex-1 space-y-4">
+<h3 class="text-xl font-medium text-on-surface leading-snug">
+              How would you architect a real-time analytics pipeline for 10M concurrent users without using a traditional relational database?
+            </h3>
+</div>
+</div>
+<div class="flex justify-end pr-4">
+<div class="bg-primary/10 text-primary-fixed border border-primary/20 px-6 py-4 rounded-2xl rounded-tr-none max-w-xl text-sm leading-relaxed italic">
+            "I would implement a Kappa architecture using Apache Kafka as the immutable log, processed by Flink for real-time state management, and project that into a specialized NoSQL store like ScyllaDB for low-latency queries..."
+          </div>
+</div>
+</div>
+<!-- Active Question (Focused) -->
+<div class="relative pt-8">
+<div class="absolute -left-12 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-tertiary/40 to-transparent hidden lg:block"></div>
+<div class="flex flex-col gap-8">
+<div class="flex items-start gap-6">
+<div class="w-12 h-12 rounded-2xl ai-gradient-bg flex items-center justify-center shrink-0 shadow-[0_0_32px_rgba(144,147,255,0.3)]">
+<span class="material-symbols-outlined text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div class="flex-1 space-y-6">
+<span class="text-xs font-bold text-tertiary tracking-widest uppercase">Active Question 08 / 20</span>
+<h2 class="text-2xl md:text-3xl font-bold text-white leading-tight">
+                Consider a scenario where your distributed system experiences a network partition. Which trade-off would you prioritize between Consistency and Availability for an e-commerce checkout service, and why?
+              </h2>
+</div>
+</div>
+<!-- Answer Input Area -->
+<div class="bg-surface-container-low rounded-3xl p-8 border border-outline-variant/10 shadow-2xl">
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-xl font-medium text-on-surface placeholder-outline-variant/40 min-h-[200px] resize-none" placeholder="Type your strategic response here..."></textarea>
+<div class="mt-6 pt-6 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">keyboard_command_key</span>
+<span class="text-xs font-medium">Enter to submit</span>
+</div>
+<div class="w-1.5 h-1.5 rounded-full bg-outline-variant/30"></div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium">Word count: 0</span>
+</div>
+</div>
+<button class="ai-gradient-bg text-on-tertiary-container font-bold px-8 py-3 rounded-xl flex items-center gap-2 shadow-lg shadow-tertiary/20 hover:scale-[1.02] active:scale-95 transition-all">
+                Submit Answer
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Navigation Shell (Contextual Bottom Control) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 glass-panel border-t border-outline-variant/15 flex items-center justify-center px-6 py-6 lg:hidden">
+<div class="flex gap-8 items-center">
+<div class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined text-on-surface">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface">Overview</span>
+</div>
+<div class="flex flex-col items-center gap-2 px-6 py-2 bg-gradient-to-br from-secondary to-tertiary text-on-primary-container rounded-2xl">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Active</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-40">
+<span class="material-symbols-outlined text-on-surface">person</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface">Profile</span>
+</div>
+</div>
+</nav>
+<!-- Desktop Side Progress Indicators -->
+<aside class="fixed right-12 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-8">
+<div class="flex flex-col items-end group">
+<span class="text-[10px] font-bold text-on-surface-variant mb-4 uppercase tracking-[0.2em]">Milestones</span>
+<div class="flex flex-col items-center gap-3">
+<div class="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_12px_rgba(133,173,255,0.6)]"></div>
+<div class="w-[1px] h-8 bg-outline-variant/30"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary shadow-[0_0_12px_rgba(133,173,255,0.6)]"></div>
+<div class="w-[1px] h-8 bg-outline-variant/30"></div>
+<div class="w-4 h-4 rounded-full border-2 border-tertiary flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></div>
+</div>
+<div class="w-[1px] h-8 bg-outline-variant/30"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-surface-container-highest border border-outline-variant/40"></div>
+<div class="w-[1px] h-8 bg-outline-variant/30"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-surface-container-highest border border-outline-variant/40"></div>
+</div>
+</div>
+</aside>
+<!-- Subtle AI Pulse Texture in background -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
+<div class="absolute top-[10%] right-[10%] w-[500px] h-[500px] bg-tertiary/10 blur-[150px] rounded-full"></div>
+<div class="absolute bottom-[20%] left-[-5%] w-[400px] h-[400px] bg-primary/10 blur-[120px] rounded-full"></div>
+</div>
+</body></html>

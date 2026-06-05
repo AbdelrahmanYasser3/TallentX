@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#e1e0ff",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-dim": "#d8dadc",
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed": "#2c0051",
+              "on-background": "#191c1e",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#fffbff",
+              "tertiary": "#8127cf",
+              "surface-container-high": "#e6e8ea",
+              "inverse-on-surface": "#eff1f3",
+              "secondary-fixed-dim": "#c0c1ff",
+              "on-primary-container": "#fefcff",
+              "outline": "#727785",
+              "background": "#f7f9fb",
+              "surface-variant": "#e0e3e5",
+              "surface-tint": "#005ac2",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-primary-fixed-variant": "#004395",
+              "secondary-container": "#6063ee",
+              "primary": "#0058be",
+              "outline-variant": "#c2c6d6",
+              "on-surface-variant": "#424754",
+              "surface-bright": "#f7f9fb",
+              "on-tertiary-fixed-variant": "#6900b3",
+              "on-tertiary-container": "#fffbff",
+              "on-primary-fixed": "#001a42",
+              "surface": "#f7f9fb",
+              "primary-fixed": "#d8e2ff",
+              "tertiary-fixed-dim": "#ddb7ff",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#adc6ff",
+              "on-surface": "#191c1e",
+              "surface-container": "#eceef0",
+              "primary-fixed-dim": "#adc6ff",
+              "tertiary-container": "#9c48ea",
+              "primary-container": "#2170e4",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "tertiary-fixed": "#f0dbff",
+              "surface-container-highest": "#e0e3e5",
+              "on-secondary-fixed": "#07006c",
+              "inverse-surface": "#2d3133",
+              "secondary": "#4648d4"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Rail -->
+<nav class="w-full top-0 z-50 flex justify-between items-center px-8 py-4 w-full bg-[#f2f4f6] dark:bg-slate-800 font-['Inter'] font-semibold tracking-tight">
+<div class="text-2xl font-black text-[#0058be] dark:text-blue-500 tracking-tighter">IES</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Jobs</a>
+<a class="text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Candidates</a>
+<a class="text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Reports</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-high rounded-full transition-all">notifications</button>
+<button class="material-symbols-outlined text-[#0058be] border-b-2 border-[#0058be] pb-1 p-2">settings</button>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional male executive in a bright, modern office setting with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1yWrwKcz0CiMl2fYjiRV2dHBryzBNpF-_SCY-NH8Vvi17GYN2EsCt8HDJK_RhiWQl8NqpqV6kiJzwQKRYVK2hZkCEA3vLkCasM1QbmSrxb6p8iwac6_wne3EbFSKNgz7a5VBsN1PTGrhOcMBqCXBLTtsG4lmn7u657r2TzXEjxZ28RjJJsfJ0GOk6L6wBuhpbYVwaLlDVoXEavD2dTzzyNSLGbOJ6QhkloXZo3Np3xZ2owZfPC6re6k-eGRpVkdyh2ygNdnhL0JQ"/>
+</div>
+</div>
+</nav>
+<div class="flex min-h-screen">
+<!-- Side Navigation (The Intelligence Rail) -->
+<aside class="fixed left-4 top-24 bottom-4 w-64 rounded-3xl bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-xl shadow-blue-900/5 flex flex-col p-4 gap-4 z-40">
+<div class="flex items-center gap-3 px-2 mb-4">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h2 class="text-lg font-bold text-[#0058be] leading-none">Recruit Pro</h2>
+<p class="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant opacity-70">Intelligence Suite</p>
+</div>
+</div>
+<div class="space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] dark:text-slate-300 hover:bg-[#f2f4f6] rounded-xl transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] dark:text-slate-300 hover:bg-[#f2f4f6] rounded-xl transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium text-sm">Talent Pool</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] dark:text-slate-300 hover:bg-[#f2f4f6] rounded-xl transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">alt_route</span>
+<span class="font-medium text-sm">Pipeline</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] dark:text-slate-300 hover:bg-[#f2f4f6] rounded-xl transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">event_upcoming</span>
+<span class="font-medium text-sm">Interviews</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#424754] dark:text-slate-300 hover:bg-[#f2f4f6] rounded-xl transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-medium text-sm">AI Insights</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-[#4648d4] to-[#8127cf] text-white rounded-xl shadow-lg shadow-indigo-500/20 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium text-sm">Settings</span>
+</a>
+</div>
+<div class="mt-auto">
+<button class="w-full py-4 bg-primary text-white rounded-xl font-semibold shadow-lg shadow-primary/20 hover:opacity-90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span>
+<span>New Requisition</span>
+</button>
+</div>
+</aside>
+<!-- Main Content (The Cognitive Canvas) -->
+<main class="ml-80 flex-1 px-12 py-8 overflow-y-auto">
+<header class="mb-12">
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Company Settings</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl">Configure your organizational profile, manage administrative access, and fine-tune your autonomous recruitment intelligence.</p>
+</header>
+<div class="grid grid-cols-12 gap-8 items-start">
+<!-- Profile Section (Asymmetric) -->
+<section class="col-span-12 lg:col-span-8 space-y-8">
+<!-- Company Branding Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 shadow-xl shadow-blue-900/5">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xl font-bold tracking-tight">Organization Profile</h3>
+<span class="px-3 py-1 bg-surface-container-low text-primary text-[0.6875rem] font-bold rounded-full uppercase tracking-wider">Lumina Nexus Light</span>
+</div>
+<div class="flex flex-col md:flex-row gap-12">
+<div class="shrink-0 flex flex-col items-center gap-4">
+<div class="w-32 h-32 rounded-2xl bg-surface-container-low flex items-center justify-center border-2 border-dashed border-outline-variant group hover:border-primary transition-colors cursor-pointer relative overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Minimalist abstract corporate logo with geometric shapes on a clean white background, professional and high-tech" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_aWR5E6CcfxekDTKCNgaKVkQ3fvChRXIERs0RolchQOzdWTbH4OsymFg3XxR8M0b3EYi-F5IPSGCoKT3hNjU6ml2Fm65RlQhoQsoLlZr9KAa8jAaVIE3m-Z2d-KbDfb_s_vP2BZYk7B3plaxNfQUBabGQQIW-TUscjLyNHCu3NPZ9BmwIRHdh2GV9S7qHe6m5jMjT6puyel_as_oJaK_lyBEvWH7gSEz-i7_CpjPisz6_Gq1Ym0re8PAiBks01JE0jTeTboB74Vg"/>
+<div class="z-10 bg-white/90 px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-sm">upload</span>
+<span class="text-[0.6875rem] font-bold uppercase tracking-wider">Update</span>
+</div>
+</div>
+<p class="text-[0.6875rem] font-medium text-on-surface-variant text-center">PNG, JPG up to 5MB<br/>Recommended 512x512</p>
+</div>
+<div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-[0.75rem] font-bold uppercase tracking-widest text-on-surface-variant">Company Name</label>
+<input class="w-full bg-surface-container-lowest border-0 ring-1 ring-outline-variant/30 focus:ring-2 focus:ring-primary/40 rounded-xl px-4 py-3 outline-none transition-all" type="text" value="Nexus Tech Solutions"/>
+</div>
+<div class="space-y-2">
+<label class="text-[0.75rem] font-bold uppercase tracking-widest text-on-surface-variant">Industry</label>
+<input class="w-full bg-surface-container-lowest border-0 ring-1 ring-outline-variant/30 focus:ring-2 focus:ring-primary/40 rounded-xl px-4 py-3 outline-none transition-all" type="text" value="Artificial Intelligence &amp; Cloud"/>
+</div>
+<div class="col-span-full space-y-2">
+<label class="text-[0.75rem] font-bold uppercase tracking-widest text-on-surface-variant">Corporate Bio</label>
+<textarea class="w-full bg-surface-container-lowest border-0 ring-1 ring-outline-variant/30 focus:ring-2 focus:ring-primary/40 rounded-xl px-4 py-3 outline-none transition-all resize-none" rows="3">Leading the transition to cognitive labor markets through automated pipeline management and neuro-linguistic candidate evaluation.</textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Recruiter Management Section -->
+<div class="bg-surface-container-lowest rounded-3xl p-8 shadow-xl shadow-blue-900/5">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xl font-bold tracking-tight">Administrative Team</h3>
+<button class="text-primary font-bold text-sm flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                                Add Manager
+                            </button>
+</div>
+<div class="space-y-4">
+<!-- Team Member Row -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-low rounded-2xl transition-colors group">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Headshot of a middle-aged male HR director with a confident smile in a bright airy studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPELe073IJWQnKnBNNIa7VGz9TlmJrUveGrvaZYYT0HTMkrJWA9w3jvx0tMc2XiqOasSFP-LvgtwP6hTZhiEkBwXk6jzUGrtL7faRojvvMzXPCDOLL29-IcZQDfg_5bZg410hp0EZHXkBXO8h5sTVzviRyvQBt_GBG9xlCesodReu2Y8IVXP2j4YUlX_CD6LzFLzR-B_RLYqssDykdEn5JWTDYtAwW4x8-owurAKiY4qCe-VQ3NNXqWNQYWnLNfVsrjYbbuuegF90"/>
+<div>
+<h4 class="font-bold text-on-surface">Marcus Thorne</h4>
+<p class="text-sm text-on-surface-variant">Head of Talent Acquisition</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[0.6875rem] font-bold rounded-full uppercase tracking-wider">Owner</span>
+<button class="material-symbols-outlined text-outline-variant hover:text-error transition-colors">more_vert</button>
+</div>
+</div>
+<!-- Team Member Row -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-low rounded-2xl transition-colors group">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Professional young woman with dark hair in a modern office, wearing glasses and a smart casual outfit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChc9w6X6nsIKntKixAxjmxIBw1v9Rpl4aybLOLj1F-3OwseKURf7Z1LFMYKa1SNGTtSun4ub6OoCGz-jxXRFt42FHOpF9mO9Wb4qY0UeC3kNsZmqvL7CBzCwP_Z2ORZNo4k7ibdyZSYs-qCu6LNk5x0ztC-6bSZnyPkckKiAiyLprCD7Ux5wItgcjvFBvk4DtMN35xjku-h7K6z4YNXc4o2pwykUobcjRSZMfRJxjN3e3UU06rsQIYtUVphmXR5X8dGT5dYaXbWfI"/>
+<div>
+<h4 class="font-bold text-on-surface">Elena Rodriguez</h4>
+<p class="text-sm text-on-surface-variant">Senior Technical Recruiter</p>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="px-3 py-1 bg-surface-container-high text-on-surface-variant text-[0.6875rem] font-bold rounded-full uppercase tracking-wider">Admin</span>
+<button class="material-symbols-outlined text-outline-variant hover:text-error transition-colors">more_vert</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Sensitivity Controls (Intelligence Rail Inspired) -->
+<section class="col-span-12 lg:col-span-4 sticky top-24">
+<div class="bg-gradient-to-br from-[#4648d4] to-[#8127cf] rounded-3xl p-8 text-white shadow-2xl shadow-indigo-900/20 mb-8 overflow-hidden relative">
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h3 class="text-xl font-bold">Matching Engine</h3>
+</div>
+<p class="text-white/80 text-sm mb-8">Adjust the Lumina AI neural matching sensitivity. Higher sensitivity reduces false positives but may narrow the candidate pool.</p>
+<div class="space-y-8">
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<label class="text-[0.6875rem] font-bold uppercase tracking-widest text-white/70">Skill Matching Stringency</label>
+<span class="text-2xl font-black">84%</span>
+</div>
+<div class="h-1.5 w-full bg-white/20 rounded-full">
+<div class="h-full w-[84%] bg-white rounded-full relative">
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg"></div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<label class="text-[0.6875rem] font-bold uppercase tracking-widest text-white/70">Cultural Resonance Factor</label>
+<span class="text-2xl font-black">62%</span>
+</div>
+<div class="h-1.5 w-full bg-white/20 rounded-full">
+<div class="h-full w-[62%] bg-white rounded-full relative">
+<div class="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-10 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/10">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed">info</span>
+<p class="text-xs leading-relaxed italic text-white/90">Lumina currently predicts a 94% retention rate for candidates matching above your 80% threshold.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-3xl p-6 shadow-xl shadow-blue-900/5">
+<h4 class="font-bold text-on-surface mb-4">Security Policies</h4>
+<div class="space-y-3">
+<label class="flex items-center justify-between cursor-pointer group">
+<span class="text-sm font-medium text-on-surface-variant group-hover:text-on-surface transition-colors">Two-Factor Authentication</span>
+<div class="w-10 h-6 bg-primary rounded-full relative">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</label>
+<label class="flex items-center justify-between cursor-pointer group opacity-60">
+<span class="text-sm font-medium text-on-surface-variant">SSO Enforcement (SAML)</span>
+<div class="w-10 h-6 bg-surface-container-high rounded-full relative">
+<div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</label>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 mt-auto flex flex-col md:flex-row justify-between items-center px-12 w-full bg-[#f7f9fb] dark:bg-slate-900 border-t border-[#e0e3e5]/15 font-['Inter'] text-[0.75rem] uppercase tracking-widest">
+<div class="text-[#424754] dark:text-slate-400 mb-4 md:mb-0">
+            © 2024 Intelligent Employment System
+        </div>
+<div class="flex gap-8">
+<a class="text-[#424754] hover:text-[#0058be] transition-colors" href="#">Privacy Policy</a>
+<a class="text-[#424754] hover:text-[#0058be] transition-colors" href="#">Terms of Service</a>
+<a class="text-[#424754] hover:text-[#0058be] transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+</body></html>

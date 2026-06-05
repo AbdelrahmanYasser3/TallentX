@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create New Position | IES</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#005ac2",
+                        "secondary-container": "#6063ee",
+                        "on-tertiary-fixed-variant": "#6900b3",
+                        "tertiary": "#8127cf",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-tertiary-container": "#fffbff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ddb7ff",
+                        "secondary": "#4648d4",
+                        "primary": "#0058be",
+                        "on-background": "#191c1e",
+                        "on-surface-variant": "#424754",
+                        "on-primary-fixed-variant": "#004395",
+                        "surface-bright": "#f7f9fb",
+                        "outline-variant": "#c2c6d6",
+                        "on-primary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#07006c",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#adc6ff",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-low": "#f2f4f6",
+                        "on-primary-container": "#fefcff",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "surface-container": "#eceef0",
+                        "inverse-primary": "#adc6ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-container": "#2170e4",
+                        "error": "#ba1a1a",
+                        "background": "#f7f9fb",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#fffbff",
+                        "primary-fixed": "#d8e2ff",
+                        "on-surface": "#191c1e",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-fixed": "#001a42",
+                        "outline": "#727785",
+                        "on-tertiary-fixed": "#2c0051",
+                        "tertiary-fixed": "#f0dbff",
+                        "tertiary-container": "#9c48ea",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-high": "#e6e8ea"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .ai-gradient {
+            background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-[#f7f9fb] dark:bg-slate-900 sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-[1920px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-[#0058be] dark:text-blue-400">IES</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#424754] hover:text-[#0058be] transition-colors font-['Inter'] leading-tight tracking-tight" href="#">Candidates</a>
+<a class="text-[#0058be] font-bold border-b-2 border-[#0058be] pb-1 font-['Inter'] leading-tight tracking-tight" href="#">Jobs</a>
+<a class="text-[#424754] hover:text-[#0058be] transition-colors font-['Inter'] leading-tight tracking-tight" href="#">Analytics</a>
+<a class="text-[#424754] hover:text-[#0058be] transition-colors font-['Inter'] leading-tight tracking-tight" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-lg transition-all text-[#424754]">
+<span class="material-symbols-outlined">auto_awesome</span>
+</button>
+<button class="p-2 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-lg transition-all text-[#424754]">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-[#f2f4f6] dark:hover:bg-slate-800 rounded-lg transition-all text-[#424754]">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest ml-2">
+<img alt="Recruiter profile avatar" data-alt="close-up professional headshot of a smiling recruiter in a modern office with soft bokeh background lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXuhdKSLgYF75UhNqp8U1D1kKloVcFrCxJ90d3qtMCsQJQY2qPNz0Pra0oRMuGBF8kabkmmWyBA-gx4OgNsuRjXc7mugjfDd8KHf9ADRi05R5QcrJ-Z_sejU8h4QfgPZAEvg1HkN006YiBFf37SQPzY1H8FhOUTudzwu5YDJjXnXiVnDcYVHBrX_cfwI7uTfcNUVzbe9FW5cDE0hfcm_or7GhvJ6ycLaFYA4lyhXpR9tajIZxce0BPekT0zEZpzKrXRAEx7Ec25TE"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto px-8 py-12 flex gap-12">
+<!-- Main Form Column -->
+<div class="flex-1 max-w-4xl">
+<!-- Header Section -->
+<div class="mb-12 flex items-end justify-between">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="add_circle">add_circle</span>
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface">Create New Position</h1>
+</div>
+<p class="text-on-surface-variant font-medium uppercase tracking-[0.05em] text-xs">Configure your next high-impact hire within the Cognitive Canvas</p>
+</div>
+<div class="px-4 py-1.5 bg-surface-container-highest rounded-full flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+<span class="text-sm font-bold text-on-surface-variant tracking-wide">DRAFT</span>
+</div>
+</div>
+<form class="space-y-16">
+<!-- SECTION 1 — Position Details -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<div class="w-10 h-10 rounded-xl bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">description</span>
+</div>
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">Position Details</h2>
+</div>
+<div class="space-y-8">
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-on-surface-variant px-1">Job Title</label>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary/40 shadow-sm transition-all placeholder:text-outline text-on-surface font-medium" placeholder="e.g. Senior UX Architect" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-on-surface-variant px-1">Department</label>
+<select class="w-full bg-surface-container-lowest border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary/40 shadow-sm transition-all text-on-surface font-medium appearance-none">
+<option>Product &amp; Design</option>
+<option>Engineering</option>
+<option>Sales &amp; Marketing</option>
+<option>Human Resources</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-on-surface-variant px-1">Job Description</label>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="flex items-center gap-4 px-4 py-3 bg-surface-container-low border-b border-surface-variant/20">
+<span class="material-symbols-outlined text-sm cursor-pointer hover:text-primary transition-colors">format_bold</span>
+<span class="material-symbols-outlined text-sm cursor-pointer hover:text-primary transition-colors">format_italic</span>
+<span class="material-symbols-outlined text-sm cursor-pointer hover:text-primary transition-colors">format_list_bulleted</span>
+<span class="material-symbols-outlined text-sm cursor-pointer hover:text-primary transition-colors">link</span>
+<div class="flex-grow"></div>
+<span class="material-symbols-outlined text-sm cursor-pointer hover:text-primary transition-colors text-tertiary">auto_awesome</span>
+</div>
+<textarea class="w-full border-none focus:ring-0 px-5 py-4 text-on-surface-variant resize-none" placeholder="Describe the mission and scope of this role..." rows="6"></textarea>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-on-surface-variant px-1">Requirements</label>
+<textarea class="w-full bg-surface-container-lowest border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary/40 shadow-sm transition-all placeholder:text-outline text-on-surface" placeholder="List key qualifications and expectations..." rows="4"></textarea>
+</div>
+</div>
+</section>
+<!-- SECTION 2 — Job Configuration -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<div class="w-10 h-10 rounded-xl bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">settings_applications</span>
+</div>
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">Job Configuration</h2>
+</div>
+<div class="space-y-10">
+<div class="space-y-4">
+<label class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-on-surface-variant px-1">Employment Type</label>
+<div class="grid grid-cols-4 gap-4">
+<button class="p-4 bg-surface-container-lowest border-2 border-primary rounded-xl text-center shadow-sm" type="button">
+<span class="block font-bold text-primary">Full-Time</span>
+</button>
+<button class="p-4 bg-surface-container-lowest border-2 border-transparent hover:border-surface-variant rounded-xl text-center shadow-sm transition-all" type="button">
+<span class="block font-bold text-on-surface-variant">Part-Time</span>
+</button>
+<button class="p-4 bg-surface-container-lowest border-2 border-transparent hover:border-surface-variant rounded-xl text-center shadow-sm transition-all" type="button">
+<span class="block font-bold text-on-surface-variant">Contract</span>
+</button>
+<button class="p-4 bg-surface-container-lowest border-2 border-transparent hover:border-surface-variant rounded-xl text-center shadow-sm transition-all" type="button">
+<span class="block font-bold text-on-surface-variant">Internship</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<label class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-on-surface-variant px-1">Work Location</label>
+<div class="flex flex-col gap-3">
+<label class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl cursor-pointer shadow-sm border-2 border-transparent has-[:checked]:border-primary transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">apartment</span>
+<span class="font-bold text-on-surface">On-Site</span>
+</div>
+<input class="text-primary focus:ring-primary" name="location_type" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl cursor-pointer shadow-sm border-2 border-primary transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">home_work</span>
+<span class="font-bold text-primary">Remote</span>
+</div>
+<input checked="" class="text-primary focus:ring-primary" name="location_type" type="radio"/>
+</label>
+<label class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl cursor-pointer shadow-sm border-2 border-transparent has-[:checked]:border-primary transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">shuffle</span>
+<span class="font-bold text-on-surface">Hybrid</span>
+</div>
+<input class="text-primary focus:ring-primary" name="location_type" type="radio"/>
+</label>
+</div>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-on-surface-variant px-1">Career Level</label>
+<select class="w-full bg-surface-container-lowest border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary/40 shadow-sm transition-all text-on-surface font-medium appearance-none">
+<option>Senior (5+ years)</option>
+<option>Lead / Principal</option>
+<option>Mid-Level (3-5 years)</option>
+<option>Junior (1-2 years)</option>
+<option>Entry-Level</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-on-surface-variant px-1">Location</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">location_on</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-4 pl-12 pr-5 focus:ring-2 focus:ring-primary/40 shadow-sm transition-all text-on-surface font-medium" placeholder="e.g. San Francisco, CA" type="text"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3 — Compensation -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<div class="w-10 h-10 rounded-xl bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">Compensation</h2>
+</div>
+<div class="p-8 bg-surface-container-low rounded-3xl space-y-8">
+<div class="grid grid-cols-12 gap-8 items-end">
+<div class="col-span-4 space-y-2">
+<label class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-on-surface-variant px-1">Min Salary</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-on-surface-variant">$</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-4 pl-8 pr-5 focus:ring-2 focus:ring-primary/40 shadow-sm transition-all text-on-surface font-bold" placeholder="120,000" type="number"/>
+</div>
+</div>
+<div class="col-span-4 space-y-2">
+<label class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-on-surface-variant px-1">Max Salary</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-on-surface-variant">$</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-4 pl-8 pr-5 focus:ring-2 focus:ring-primary/40 shadow-sm transition-all text-on-surface font-bold" placeholder="180,000" type="number"/>
+</div>
+</div>
+<div class="col-span-4 space-y-2">
+<label class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-on-surface-variant px-1">Currency</label>
+<select class="w-full bg-surface-container-lowest border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary/40 shadow-sm transition-all text-on-surface font-medium appearance-none">
+<option>USD - US Dollar</option>
+<option>EUR - Euro</option>
+<option>GBP - British Pound</option>
+</select>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-2xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">visibility</span>
+<div>
+<p class="font-bold text-on-surface">Show salary on listing</p>
+<p class="text-xs text-on-surface-variant">Transparency increases application rate by up to 30%.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- SECTION 4 — Required Skills -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<div class="w-10 h-10 rounded-xl bg-tertiary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">psychology</span>
+</div>
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">Required Skills</h2>
+</div>
+<div class="space-y-6">
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-none rounded-2xl py-6 px-6 focus:ring-2 focus:ring-tertiary/40 shadow-sm transition-all text-on-surface font-medium" placeholder="Type a skill and press Enter..." type="text"/>
+<div class="absolute right-6 top-1/2 -translate-y-1/2 flex gap-2">
+<div class="px-3 py-1 bg-surface-container-high rounded-full text-sm font-semibold text-on-surface-variant flex items-center gap-1">
+                                    Product Strategy <span class="material-symbols-outlined text-xs cursor-pointer">close</span>
+</div>
+<div class="px-3 py-1 bg-surface-container-high rounded-full text-sm font-semibold text-on-surface-variant flex items-center gap-1">
+                                    Figma <span class="material-symbols-outlined text-xs cursor-pointer">close</span>
+</div>
+</div>
+</div>
+<div class="p-6 bg-tertiary-fixed/30 rounded-3xl border border-tertiary-fixed-dim/20">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-xs font-black uppercase tracking-widest text-tertiary">AI Suggestions based on Title</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 bg-white rounded-full text-sm font-bold text-on-tertiary-fixed-variant hover:bg-tertiary-fixed transition-colors flex items-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-xs">add</span> Design Systems
+                                </button>
+<button class="px-4 py-2 bg-white rounded-full text-sm font-bold text-on-tertiary-fixed-variant hover:bg-tertiary-fixed transition-colors flex items-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-xs">add</span> User Research
+                                </button>
+<button class="px-4 py-2 bg-white rounded-full text-sm font-bold text-on-tertiary-fixed-variant hover:bg-tertiary-fixed transition-colors flex items-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-xs">add</span> Prototyping
+                                </button>
+<button class="px-4 py-2 bg-white rounded-full text-sm font-bold text-on-tertiary-fixed-variant hover:bg-tertiary-fixed transition-colors flex items-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-xs">add</span> Behavioral Psychology
+                                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5 — Timeline -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<div class="w-10 h-10 rounded-xl bg-primary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">calendar_today</span>
+</div>
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">Timeline</h2>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-2">
+<label class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-on-surface-variant px-1">Application Deadline</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline">event</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary/40 shadow-sm transition-all text-on-surface font-medium appearance-none" type="date"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-[0.6875rem] font-bold uppercase tracking-[0.05em] text-on-surface-variant px-1">Expected Start Date</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline">rocket</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-4 px-5 focus:ring-2 focus:ring-primary/40 shadow-sm transition-all text-on-surface font-medium appearance-none" type="date"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Final Actions -->
+<div class="pt-12 flex items-center justify-end gap-6 border-t border-surface-container-highest">
+<button class="px-8 py-4 border-2 border-outline-variant text-on-surface-variant font-bold rounded-xl hover:bg-surface-container-low transition-all" type="button">
+                        Save as Draft
+                    </button>
+<button class="ai-gradient px-10 py-4 text-white font-bold rounded-xl shadow-lg shadow-primary/20 flex items-center gap-3 active:scale-95 duration-150 ease-in-out" type="button">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+                        Publish Job Listing
+                    </button>
+</div>
+</form>
+</div>
+<!-- Intelligence Rail (Sidebar) -->
+<aside class="w-80 hidden xl:block">
+<div class="sticky top-32 glass-nav p-8 rounded-[2rem] shadow-xl border border-white/50 space-y-10">
+<div>
+<h3 class="text-[0.6875rem] font-black uppercase tracking-[0.1em] text-tertiary mb-4">Posting Score</h3>
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full border-4 border-tertiary flex items-center justify-center">
+<span class="text-xl font-black text-on-surface">82</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Excellent Quality</p>
+<p class="text-xs text-on-surface-variant">Your job description is clear and likely to attract top talent.</p>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<h3 class="text-[0.6875rem] font-black uppercase tracking-[0.1em] text-on-surface-variant">Quick Insights</h3>
+<div class="p-4 bg-surface-container-low rounded-2xl space-y-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm">trending_up</span>
+<p class="text-xs font-medium text-on-surface-variant">Market demand for <span class="text-on-surface font-bold">UX Architects</span> is up 12% this month.</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">payments</span>
+<p class="text-xs font-medium text-on-surface-variant">Your salary range is in the <span class="text-on-surface font-bold">top 15%</span> for your location.</p>
+</div>
+</div>
+</div>
+<div class="rounded-2xl overflow-hidden grayscale contrast-125">
+<img class="w-full h-32 object-cover" data-alt="abstract architectural blueprint with glowing digital lines representing high-tech recruitment data analytics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCffyilEitRxeaixKyFR4MBIbNNEIfgYbGbTeUx3qssfr8C8aAtClAy0CI9ZBSiLPew_J_sq5LckMCz8_WJ_zNfL5x0D3Pp7CuSY0zE7X0lIAt-O6Un5n4r1QsoAeQEC2_Bfii_R7wWUeQvdiniESobZZsVUyXAXNJlNGeaAeDlNTRwOyvis2CNXNUcX-LqGJt0njBwoWLGU518wT_3U3VO_GbqCaD0o0m9LQ6fjEln9LadnVE1p-P9XT8DX0l0-Vd_AeSBeRIdyfw"/>
+</div>
+<div class="pt-4">
+<button class="w-full py-4 text-primary font-bold text-sm border border-primary/20 rounded-xl hover:bg-primary/5 transition-all">
+                        Preview Listing
+                    </button>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f7f9fb] dark:bg-slate-950 full-width py-12 border-t border-[#e0e3e5]/15 mt-20">
+<div class="flex flex-col items-center justify-center w-full gap-4 max-w-[1440px] mx-auto">
+<span class="font-['Inter'] text-xs text-[#424754] tracking-tight">© 2024 Intelligent Employment System. All rights reserved.</span>
+<div class="flex gap-8">
+<a class="text-[#424754] hover:text-[#0058be] font-['Inter'] text-xs" href="#">Privacy Policy</a>
+<a class="text-[#424754] hover:text-[#0058be] font-['Inter'] text-xs" href="#">Terms of Service</a>
+<a class="text-[#424754] hover:text-[#0058be] font-['Inter'] text-xs" href="#">Cookie Settings</a>
+<a class="text-[#424754] hover:text-[#0058be] font-['Inter'] text-xs" href="#">Accessibility</a>
+</div>
+</div>
+</footer>
+</body></html>

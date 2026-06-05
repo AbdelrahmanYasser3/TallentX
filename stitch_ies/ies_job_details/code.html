@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Job Details - TallentX</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#3a3ac8",
+              "error-container": "#9f0519",
+              "on-tertiary-fixed-variant": "#560094",
+              "surface-container": "#091542",
+              "outline": "#6b739d",
+              "secondary-fixed": "#cdcdff",
+              "on-secondary-fixed": "#160bae",
+              "secondary-fixed-dim": "#bdbeff",
+              "on-tertiary-container": "#000000",
+              "error": "#ff716c",
+              "secondary": "#9093ff",
+              "on-surface-variant": "#a1a9d5",
+              "tertiary-fixed": "#ce9bff",
+              "tertiary": "#c180ff",
+              "error-dim": "#d7383b",
+              "on-background": "#e1e4ff",
+              "primary-container": "#6e9fff",
+              "surface-container-lowest": "#000000",
+              "secondary-dim": "#6063ee",
+              "surface-dim": "#020a2f",
+              "on-error-container": "#ffa8a3",
+              "surface-bright": "#192760",
+              "tertiary-dim": "#9c48ea",
+              "primary-dim": "#699cff",
+              "primary": "#85adff",
+              "inverse-on-surface": "#4b537a",
+              "on-secondary-container": "#ccccff",
+              "inverse-primary": "#005bc4",
+              "surface-container-highest": "#142156",
+              "on-primary-fixed-variant": "#002a62",
+              "on-secondary": "#080079",
+              "tertiary-fixed-dim": "#c488ff",
+              "background": "#020a2f",
+              "outline-variant": "#3d466c",
+              "tertiary-container": "#af5cfe",
+              "primary-fixed": "#6e9fff",
+              "on-primary-fixed": "#000000",
+              "on-error": "#490006",
+              "surface-container-high": "#0e1b4c",
+              "surface": "#020a2f",
+              "on-surface": "#e1e4ff",
+              "surface-variant": "#142156",
+              "on-tertiary": "#33005b",
+              "on-primary": "#002c66",
+              "surface-tint": "#85adff",
+              "on-primary-container": "#002150",
+              "on-tertiary-fixed": "#270048",
+              "inverse-surface": "#fbf8ff",
+              "surface-container-low": "#050f38",
+              "primary-fixed-dim": "#5391ff",
+              "secondary-container": "#2f2ebe"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .ai-gradient {
+        background: linear-gradient(135deg, #9093ff 0%, #c180ff 100%);
+      }
+      .glass-effect {
+        backdrop-filter: blur(24px);
+        background-color: rgba(20, 33, 86, 0.6);
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #020a2f;
+        color: #e1e4ff;
+      }
+    </style>
+</head>
+<body class="selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/60 dark:bg-[#020a2f]/60 backdrop-blur-xl border-b border-white/10 shadow-2xl shadow-blue-900/20 font-['Inter'] antialiased tracking-tight">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<img alt="TallentX Logo" class="h-8 w-auto" data-alt="Professional tech logo for TallentX featuring clean geometric lines and a modern blue and white color palette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrGPduX37KuTOjFwltHcd85fWgUU_7XBX--EJB4uI5kaFU1YaLR2HZyFF9qJDxJ4YNPcrliuPj7atZDzDwAe22y1gvizlbkxBvu9tXijI2TJQauPDkZkKp2wibG2iQNVUlmWVy1nDXB8Lrzlczuddaj9gLnn0lmWpdfjnl5Lay3LC7btagPo5tCapuQqg2ItIDBkKteA6lKpw61ZBWs8ELqbxjs2sxfKtE4V8lXHHcz5xs7SBopCljydiKvW7uEsPLXzzv17DWTG8"/>
+<span class="text-2xl font-bold tracking-tighter text-white">TallentX</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-400 hover:bg-white/10 transition-all duration-300 active:scale-95 cursor-pointer px-3 py-1 rounded-lg" href="#">Dashboard</a>
+<a class="text-[#85adff] font-semibold hover:bg-white/10 transition-all duration-300 active:scale-95 cursor-pointer px-3 py-1 rounded-lg" href="#">Jobs</a>
+<a class="text-slate-400 hover:bg-white/10 transition-all duration-300 active:scale-95 cursor-pointer px-3 py-1 rounded-lg" href="#">Applications</a>
+<a class="text-slate-400 hover:bg-white/10 transition-all duration-300 active:scale-95 cursor-pointer px-3 py-1 rounded-lg" href="#">AI Insights</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:bg-white/10 transition-all duration-300 rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/10 transition-all duration-300 rounded-full">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Sticky Job Header -->
+<section class="mt-20 sticky top-[72px] z-40 glass-effect border-b border-outline-variant/20 shadow-lg">
+<div class="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="flex items-start gap-5">
+<div class="w-16 h-16 bg-surface-container rounded-xl flex items-center justify-center border border-outline-variant/30">
+<img alt="Company Logo" class="w-10 h-10 object-contain" data-alt="Modern tech company logo with abstract minimalist design in blue and white on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjkzR6Im5ToQj60GqKFTbuFNyjjKPGzO1k9QJIvOQbvbz_oHEZE79lRimQyoT5jMtfP23Y2y0JckJYo9CM5pxTS0a1OuYy1UAZQzrjcielBhU1qETL9DdWKNnmU8YYrfTqcPbS008rcfXDsRr3IYvmyOpsMpykqDbjytDTg1wUAytyvStoSZIqJyUmKRljtvVDWbq_H7fip6ZIsXnkOTIQm1Cc7NuqPSMAbzUkysCgc-O9Mqa3Es7bGWQmC9LwGd6iakc9lW3GgMI"/>
+</div>
+<div>
+<h1 class="text-3xl font-extrabold tracking-tight text-white mb-1">Senior AI Systems Architect</h1>
+<div class="flex flex-wrap items-center gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-sm" data-icon="business">business</span> NexaCore AI</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-sm" data-icon="payments">payments</span> $185k – $240k • Equity</span>
+<span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span> Remote / San Francisco</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-6 py-3 rounded-xl border border-outline-variant/40 font-semibold text-primary hover:bg-white/5 transition-colors active:scale-95">Save Job</button>
+<button class="px-8 py-3 rounded-xl ai-gradient text-white font-bold shadow-xl shadow-tertiary/20 hover:opacity-90 transition-all active:scale-95">Apply Now</button>
+</div>
+</div>
+</section>
+<main class="max-w-7xl mx-auto px-6 py-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- Left Column: Detailed Content -->
+<div class="lg:col-span-8 space-y-12">
+<!-- AI Insights Section -->
+<div class="p-8 rounded-xl bg-surface-container-low border border-tertiary/20 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-20 pointer-events-none">
+<span class="material-symbols-outlined text-9xl text-tertiary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="flex items-center gap-2 mb-4 text-tertiary font-bold tracking-wide uppercase text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                        AI Match Insight
+                    </div>
+<h3 class="text-2xl font-bold text-white mb-4">98% Match Probability</h3>
+<p class="text-on-surface-variant leading-relaxed mb-6">Based on your experience with Large Language Models and Distributed Systems at your previous roles, you are in the top 2% of candidates for this position. The role requires a deep understanding of neural scaling laws, which matches your recent publication.</p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="bg-surface-container-high/50 p-4 rounded-lg border border-outline-variant/10">
+<span class="text-tertiary text-xs font-bold block mb-1">Key Match</span>
+<span class="text-white text-sm">PyTorch Architecture</span>
+</div>
+<div class="bg-surface-container-high/50 p-4 rounded-lg border border-outline-variant/10">
+<span class="text-tertiary text-xs font-bold block mb-1">Skill Gap</span>
+<span class="text-white text-sm">CUDA Optimization</span>
+</div>
+<div class="bg-surface-container-high/50 p-4 rounded-lg border border-outline-variant/10">
+<span class="text-tertiary text-xs font-bold block mb-1">Hiring Speed</span>
+<span class="text-white text-sm">Fast (Avg 12 days)</span>
+</div>
+</div>
+</div>
+<!-- Job Description -->
+<section>
+<h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        Job Description
+                        <div class="h-px flex-grow bg-gradient-to-r from-outline-variant/40 to-transparent"></div>
+</h2>
+<div class="prose prose-invert max-w-none text-on-surface-variant space-y-4">
+<p>NexaCore AI is seeking a Senior AI Systems Architect to lead the development of our next-generation inference engine. You will be responsible for designing scalable, high-performance systems that serve multi-billion parameter models to millions of users worldwide.</p>
+<h4 class="text-white font-bold mt-6">Core Responsibilities:</h4>
+<ul class="list-disc pl-5 space-y-2">
+<li>Architect and implement low-latency distributed inference systems using C++ and Python.</li>
+<li>Optimize model performance across heterogeneous hardware (NVIDIA, AMD, TPU).</li>
+<li>Collaborate with research scientists to productionize cutting-edge transformer architectures.</li>
+<li>Lead the technical roadmap for our proprietary model serving platform.</li>
+</ul>
+</div>
+</section>
+<!-- Required Skills -->
+<section>
+<h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                        Required Skills
+                        <div class="h-px flex-grow bg-gradient-to-r from-outline-variant/40 to-transparent"></div>
+</h2>
+<div class="flex flex-wrap gap-3">
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full border border-primary/20">
+<span class="text-white font-medium">Large Language Models</span>
+<span class="bg-primary/20 text-primary text-[10px] px-2 py-0.5 rounded-full font-bold uppercase">Expert</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full border border-primary/20">
+<span class="text-white font-medium">Distributed Computing</span>
+<span class="bg-primary/20 text-primary text-[10px] px-2 py-0.5 rounded-full font-bold uppercase">Advanced</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full border border-outline-variant/30">
+<span class="text-white font-medium">CUDA / C++</span>
+<span class="bg-outline-variant/20 text-on-surface-variant text-[10px] px-2 py-0.5 rounded-full font-bold uppercase">Advanced</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full border border-outline-variant/30">
+<span class="text-white font-medium">Kubernetes</span>
+<span class="bg-outline-variant/20 text-on-surface-variant text-[10px] px-2 py-0.5 rounded-full font-bold uppercase">Intermediate</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-full border border-primary/20">
+<span class="text-white font-medium">PyTorch</span>
+<span class="bg-primary/20 text-primary text-[10px] px-2 py-0.5 rounded-full font-bold uppercase">Expert</span>
+</div>
+</div>
+</section>
+<!-- Company Info -->
+<section class="p-8 rounded-xl bg-surface-container border border-outline-variant/10">
+<div class="flex items-center gap-6 mb-6">
+<img alt="Company Office" class="w-24 h-24 rounded-lg object-cover" data-alt="Futuristic high-tech office space with neon blue lighting, large glass windows, and ergonomic workstations in a dark atmospheric setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5ZYKse-bhIiDLt426Sc364Zh5pPPXrf4Yjcyq4fbxXVQDAALrb7H0Dq9RWEWBftWLkfgF9Y2vRyQWN81XkPo4jXjPEbS0YbE-R5DD9-34pX5oKV5X_viUzWwG0Cs1ey4QI6UNVeW_dpcH_MytYH_vTCGdOremRL8N9Qg9eM9pqG4EgDCFpl9pGJgk92pOBO-3NtML2dtIKGDnODfCkmJcsGeB4qpaYwujGkcMAij6eW3N7zBLohqKazEIcRJTNWtTP0dS1GenoII"/>
+<div>
+<h3 class="text-xl font-bold text-white">About NexaCore AI</h3>
+<p class="text-primary text-sm font-semibold">Artificial Intelligence &amp; Cloud Computing</p>
+<p class="text-on-surface-variant text-sm mt-1">Founded 2021 • 50-200 Employees</p>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">NexaCore AI is building the foundational infrastructure for the AI-first era. We empower developers to build and scale intelligent applications with unprecedented speed and efficiency. Our team consists of pioneers from OpenAI, DeepMind, and Meta FAIR.</p>
+</section>
+</div>
+<!-- Right Column: Sidebar -->
+<aside class="lg:col-span-4 space-y-8">
+<!-- Similar Jobs Bento Grid Style -->
+<div class="space-y-6">
+<h2 class="text-xl font-bold text-white flex items-center justify-between">
+                        Similar Jobs
+                        <span class="text-primary text-xs font-bold cursor-pointer hover:underline uppercase tracking-wider">View All</span>
+</h2>
+<div class="group p-5 rounded-xl bg-surface-container-low border border-outline-variant/10 hover:border-primary/40 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="w-10 h-10 bg-surface-container rounded-lg border border-outline-variant/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="cloud">cloud</span>
+</div>
+<span class="text-[10px] bg-secondary-container/30 text-secondary-fixed-dim px-2 py-1 rounded font-bold">NEW</span>
+</div>
+<h4 class="text-white font-bold group-hover:text-primary transition-colors">Distributed Systems Engineer</h4>
+<p class="text-on-surface-variant text-xs mt-1">CloudScalers • London, UK (Remote)</p>
+<div class="mt-4 flex items-center justify-between text-xs font-semibold text-primary">
+<span>$160k - $210k</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<div class="group p-5 rounded-xl bg-surface-container-low border border-outline-variant/10 hover:border-primary/40 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="w-10 h-10 bg-surface-container rounded-lg border border-outline-variant/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-lg" data-icon="psychology">psychology</span>
+</div>
+<span class="text-[10px] bg-tertiary-container/20 text-tertiary-fixed-dim px-2 py-1 rounded font-bold">HOT</span>
+</div>
+<h4 class="text-white font-bold group-hover:text-primary transition-colors">MLOps Infrastructure Lead</h4>
+<p class="text-on-surface-variant text-xs mt-1">DeepLogic Systems • Seattle, WA</p>
+<div class="mt-4 flex items-center justify-between text-xs font-semibold text-primary">
+<span>$190k - $250k</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<div class="group p-5 rounded-xl bg-surface-container-low border border-outline-variant/10 hover:border-primary/40 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="w-10 h-10 bg-surface-container rounded-lg border border-outline-variant/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg" data-icon="memory">memory</span>
+</div>
+</div>
+<h4 class="text-white font-bold group-hover:text-primary transition-colors">Kernel Engineer (AI Accelerators)</h4>
+<p class="text-on-surface-variant text-xs mt-1">Inference Tech • Austin, TX</p>
+<div class="mt-4 flex items-center justify-between text-xs font-semibold text-primary">
+<span>$175k - $230k</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Recruitment Process Card -->
+<div class="p-6 rounded-xl bg-gradient-to-br from-surface-container-high to-surface-container-highest border border-outline-variant/20">
+<h3 class="text-lg font-bold text-white mb-4">Hiring Process</h3>
+<div class="space-y-4">
+<div class="flex gap-4">
+<div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[10px] font-bold text-primary border border-primary/40">1</div>
+<div class="text-sm">
+<p class="text-white font-semibold">Initial Screening</p>
+<p class="text-on-surface-variant text-xs">30 min call with Talent Partner</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-6 h-6 rounded-full bg-outline-variant/20 flex items-center justify-center text-[10px] font-bold text-slate-400 border border-outline-variant/40">2</div>
+<div class="text-sm">
+<p class="text-white font-semibold">Technical Assessment</p>
+<p class="text-on-surface-variant text-xs">Deep-dive architecture review</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-6 h-6 rounded-full bg-outline-variant/20 flex items-center justify-center text-[10px] font-bold text-slate-400 border border-outline-variant/40">3</div>
+<div class="text-sm">
+<p class="text-white font-semibold">Final Panel</p>
+<p class="text-on-surface-variant text-xs">Values fit and technical leadership</p>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 mt-20 border-t border-white/5 bg-[#020a2f]">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-8">
+<p class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500">© 2024 Intelligent Employment System. All rights reserved.</p>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500 hover:text-[#85adff] transition-colors underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500 hover:text-[#85adff] transition-colors underline-offset-4 hover:underline" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500 hover:text-[#85adff] transition-colors underline-offset-4 hover:underline" href="#">Support</a>
+</div>
+</div>
+</footer>
+</body></html>

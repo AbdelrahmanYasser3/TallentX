@@ -1,0 +1,30 @@
+<div class="flex flex-col gap-1 w-full">
+  @if (label()) {
+    <label class="text-label-md text-on-surface">{{ label() }}</label>
+  }
+  
+  <div class="relative w-full">
+    @if (icon()) {
+      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-on-surface-variant">
+        <i [class]="icon()"></i>
+      </div>
+    }
+    
+    <input
+      [type]="type()"
+      [class]="inputClasses"
+      [placeholder]="placeholder()"
+      [value]="value"
+      [disabled]="disabled() || isDisabled"
+      (input)="handleInput($event)"
+      (blur)="handleBlur()"
+    />
+  </div>
+
+  @if (error()) {
+    <small class="text-label-sm text-error mt-0.5 flex items-center gap-1">
+      <i class="fa-solid fa-circle-exclamation text-[10px]"></i>
+      {{ error() }}
+    </small>
+  }
+</div>

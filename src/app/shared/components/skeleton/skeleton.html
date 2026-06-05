@@ -1,0 +1,11 @@
+@for (line of linesArray; track $index) {
+  <div 
+    class="skeleton" 
+    [class.skeleton-text]="variant() === 'text'"
+    [class.skeleton-circle]="variant() === 'circle'"
+    [style.width]="variant() === 'circle' ? height() : width()"
+    [style.height]="height()"
+    [style.margin-bottom]="lines() > 1 && !$last ? '0.5rem' : '0'"
+    [style.border-radius]="variant() === 'circle' ? '9999px' : (variant() === 'text' ? '4px' : '12px')"
+  ></div>
+}

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lumina Nexus Light - Resume Viewer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#e1e0ff",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-dim": "#d8dadc",
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed": "#2c0051",
+              "on-background": "#191c1e",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#fffbff",
+              "tertiary": "#8127cf",
+              "surface-container-high": "#e6e8ea",
+              "inverse-on-surface": "#eff1f3",
+              "secondary-fixed-dim": "#c0c1ff",
+              "on-primary-container": "#fefcff",
+              "outline": "#727785",
+              "background": "#f7f9fb",
+              "surface-variant": "#e0e3e5",
+              "surface-tint": "#005ac2",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-primary-fixed-variant": "#004395",
+              "secondary-container": "#6063ee",
+              "primary": "#0058be",
+              "outline-variant": "#c2c6d6",
+              "on-surface-variant": "#424754",
+              "surface-bright": "#f7f9fb",
+              "on-tertiary-fixed-variant": "#6900b3",
+              "on-tertiary-container": "#fffbff",
+              "on-primary-fixed": "#001a42",
+              "surface": "#f7f9fb",
+              "primary-fixed": "#d8e2ff",
+              "tertiary-fixed-dim": "#ddb7ff",
+              "on-secondary": "#ffffff",
+              "inverse-primary": "#adc6ff",
+              "on-surface": "#191c1e",
+              "surface-container": "#eceef0",
+              "primary-fixed-dim": "#adc6ff",
+              "tertiary-container": "#9c48ea",
+              "primary-container": "#2170e4",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "tertiary-fixed": "#f0dbff",
+              "surface-container-highest": "#e0e3e5",
+              "on-secondary-fixed": "#07006c",
+              "inverse-surface": "#2d3133",
+              "secondary": "#4648d4"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .ai-gradient-text {
+            background: linear-gradient(to right, #4648d4, #8127cf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .ai-gradient-bg {
+            background: linear-gradient(135deg, #4648d4, #8127cf);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary/20">
+<!-- TopNavBar -->
+<header class="w-full top-0 z-50 flex justify-between items-center px-8 py-4 w-full bg-[#f2f4f6] dark:bg-slate-800">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-[#0058be] dark:text-blue-500 tracking-tighter">IES</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-['Inter'] font-semibold tracking-tight text-[#0058be] border-b-2 border-[#0058be] pb-1 hover:text-[#0058be] transition-colors duration-200" href="#">Jobs</a>
+<a class="font-['Inter'] font-semibold tracking-tight text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Candidates</a>
+<a class="font-['Inter'] font-semibold tracking-tight text-[#424754] dark:text-slate-400 hover:text-[#0058be] transition-colors duration-200" href="#">Reports</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User Profile Avatar" data-alt="professional corporate headshot of a woman with a confident smile in a modern bright office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-aU0RXH9dj93GgjzwURF1s4Caqm5gCexQoFRzP2Bg7kas4FyRH5ouNXzHVtYtnl-L9ZTSldllVObHh4Ls-MGxpqNnUoZPZxlO-yEI3lK3lISpEDeLTpM2pRITcdp61N-uoTPeQ-EVNKkBYNR5hiT7M-7Ve1XxFsfB-9UsYsLwJ71Rk12_GiibnsfIv7dP9dGzKj2aUUe0iLg1ZBNPUAYxiMH_-K0yeCytiKLguObdy7iu_7IVB03Y48BgD5tHsaGUm-Cq84-keuY"/>
+</div>
+</div>
+</header>
+<main class="flex min-h-screen">
+<!-- Background Content (Simulating Candidate List) -->
+<section class="flex-1 p-8 bg-surface">
+<div class="max-w-5xl mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h1 class="text-4xl font-black tracking-tight mb-2">Senior Product Designer</h1>
+<p class="text-on-surface-variant uppercase tracking-widest text-xs font-bold">Pipeline • 24 Applicants</p>
+</div>
+<button class="ai-gradient-bg text-white px-6 py-3 rounded-xl font-bold flex items-center gap-2 shadow-lg shadow-indigo-500/20 active:scale-95 transition-all">
+<span class="material-symbols-outlined">auto_awesome</span>
+                        Rank with AI
+                    </button>
+</div>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-12 gap-6">
+<div class="col-span-8 space-y-6">
+<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-sm border border-outline-variant/10">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-bold">Top Match</h3>
+<span class="text-primary font-bold text-sm">98% Fit</span>
+</div>
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-2xl">
+<div class="w-16 h-16 rounded-2xl overflow-hidden">
+<img alt="Candidate" data-alt="portrait of a creative professional man with glasses and stylish short hair against a clean studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRAx9F0FcpP2YYrYlpvnzjWhaQeg4S9EOAKvbcUbt7ViIVetqo2Y64OwAGEwT5ra9b-m6uxeUTsCViMC1oBwRhVMkG8SKXfqw7fL6D6qJw_45LR5pwR_WfMTpVPKHsTkkldQXfSVI5gg5cHTJY7df7sJY9U9sYe7QBzoElyZEH-dhOJHTRH6mMXOs47QVcO4Ol9j8pGRJ-RqWz_eORmgzmqQeDsKWIMlf_EMgDCJoQTznJN5Iu9ySHnxZasquA7SGWVXUivFAhPMc"/>
+</div>
+<div>
+<p class="font-bold text-lg">Alex Rivera</p>
+<p class="text-on-surface-variant text-sm">Lead UI/UX Designer • 8 yrs exp</p>
+</div>
+<button class="ml-auto bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold">View Profile</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-sm border border-outline-variant/10 h-40">
+<span class="material-symbols-outlined text-secondary mb-2">group</span>
+<h4 class="text-sm font-bold opacity-60 uppercase">In Review</h4>
+<p class="text-3xl font-black">12</p>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-3xl shadow-sm border border-outline-variant/10 h-40">
+<span class="material-symbols-outlined text-tertiary mb-2">auto_awesome</span>
+<h4 class="text-sm font-bold opacity-60 uppercase">AI Shortlist</h4>
+<p class="text-3xl font-black">04</p>
+</div>
+</div>
+</div>
+<div class="col-span-4 bg-primary-container text-white p-8 rounded-3xl flex flex-col justify-between">
+<div>
+<h3 class="text-2xl font-black mb-4 leading-tight">Intelligence Quotient</h3>
+<p class="opacity-80 text-sm">Our AI has identified Alex Rivera as the strongest cultural and technical fit for the IES vision.</p>
+</div>
+<div class="mt-8">
+<div class="h-2 w-full bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-white w-[92%]"></div>
+</div>
+<p class="mt-2 text-xs font-bold uppercase tracking-wider">Hiring Confidence: 92%</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Slide-out Drawer Overlay -->
+<div class="fixed inset-0 bg-on-background/30 backdrop-blur-sm z-50 flex justify-end">
+<!-- The Drawer -->
+<div class="w-[90%] md:w-[85%] lg:w-[1000px] h-full glass-panel shadow-2xl flex flex-col md:flex-row overflow-hidden rounded-l-[40px]">
+<!-- Left: Resume Viewer Area -->
+<div class="flex-1 h-full bg-surface-container-low p-8 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 rounded-full hover:bg-surface-container-high flex items-center justify-center transition-all">
+<span class="material-symbols-outlined">close</span>
+</button>
+<h2 class="text-xl font-bold tracking-tight">rivera_alex_cv_2024.pdf</h2>
+</div>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-lg"><span class="material-symbols-outlined">zoom_in</span></button>
+<button class="p-2 hover:bg-surface-container-high rounded-lg"><span class="material-symbols-outlined">download</span></button>
+<button class="p-2 hover:bg-surface-container-high rounded-lg"><span class="material-symbols-outlined">print</span></button>
+</div>
+</div>
+<!-- Resume Canvas -->
+<div class="flex-1 bg-white rounded-2xl shadow-inner overflow-y-auto p-12 relative border border-outline-variant/10">
+<div class="max-w-2xl mx-auto space-y-8">
+<header class="border-b-2 border-surface-container-low pb-8">
+<h1 class="text-3xl font-bold mb-1">Alex Rivera</h1>
+<p class="text-on-surface-variant">Lead Product Designer • San Francisco, CA</p>
+<div class="flex gap-4 mt-4 text-xs font-bold text-primary">
+<span>alex.rivera@design.com</span>
+<span>linkedin.com/in/arivera</span>
+<span>+1 (555) 012-3456</span>
+</div>
+</header>
+<section>
+<h3 class="text-xs font-black uppercase tracking-widest text-on-surface-variant mb-4">Professional Summary</h3>
+<p class="text-sm leading-relaxed text-on-surface/80">
+                                    Visionary Product Designer with 8+ years of experience building scalable design systems and high-performing digital products for fintech and enterprise SaaS. Proven track record in leading cross-functional teams to deliver user-centric solutions that drive 40%+ increase in engagement.
+                                </p>
+</section>
+<section>
+<h3 class="text-xs font-black uppercase tracking-widest text-on-surface-variant mb-4">Experience</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between">
+<p class="font-bold">Lead Product Designer @ FinStream</p>
+<span class="text-xs text-on-surface-variant">2020 — Present</span>
+</div>
+<p class="text-sm mt-2 leading-relaxed text-on-surface/80">Architected the core design system used by 50+ engineers. Managed a team of 4 designers overseeing the evolution of mobile and web banking platforms.</p>
+</div>
+<div>
+<div class="flex justify-between">
+<p class="font-bold">Senior UX Designer @ CloudScale</p>
+<span class="text-xs text-on-surface-variant">2017 — 2020</span>
+</div>
+<p class="text-sm mt-2 leading-relaxed text-on-surface/80">Redesigned the main enterprise dashboard resulting in a 25% reduction in support tickets and improved NPS scores.</p>
+</div>
+</div>
+</section>
+<section>
+<h3 class="text-xs font-black uppercase tracking-widest text-on-surface-variant mb-4">Skills</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium">Design Systems</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium">React / Tailwind</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium">User Research</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium">Figma Mastery</span>
+<span class="px-3 py-1 bg-surface-container-low rounded-full text-xs font-medium">Prototyping</span>
+</div>
+</section>
+</div>
+</div>
+</div>
+<!-- Right: AI Analysis Panel -->
+<div class="w-full md:w-[380px] h-full bg-white border-l border-outline-variant/10 p-8 flex flex-col overflow-y-auto">
+<div class="mb-8">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined ai-gradient-text" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="text-xs font-black uppercase tracking-widest ai-gradient-text">Lumina AI Insight</h3>
+</div>
+<h2 class="text-2xl font-black">Candidate Match</h2>
+</div>
+<!-- Match Score Circular -->
+<div class="flex flex-col items-center mb-10">
+<div class="relative flex items-center justify-center">
+<svg class="w-32 h-32 transform -rotate-90">
+<circle class="text-surface-container-low" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
+<circle cx="64" cy="64" fill="transparent" r="58" stroke="url(#ai-grad)" stroke-dasharray="364.4" stroke-dashoffset="18.2" stroke-linecap="round" stroke-width="8"></circle>
+<defs>
+<lineargradient id="ai-grad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#4648d4"></stop>
+<stop offset="100%" stop-color="#8127cf"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute text-center">
+<span class="text-3xl font-black">95</span>
+<span class="text-xs block font-bold opacity-40">%</span>
+</div>
+</div>
+<p class="mt-4 text-center text-sm font-medium text-on-surface-variant">Strong Recommendation</p>
+</div>
+<!-- Skill Gap Analysis -->
+<div class="space-y-6 flex-1">
+<div>
+<h4 class="text-[0.6875rem] font-black uppercase tracking-widest text-on-surface-variant mb-4">Competency Map</h4>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-sm font-bold">Design Systems</span>
+<span class="material-symbols-outlined text-emerald-500" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm font-bold">SaaS Strategy</span>
+<span class="material-symbols-outlined text-emerald-500" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex justify-between items-center opacity-60">
+<span class="text-sm font-bold">Node.js Basics</span>
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded text-on-surface-variant">SKILL GAP</span>
+</div>
+</div>
+</div>
+<div class="p-5 bg-tertiary/5 rounded-2xl border border-tertiary/10">
+<h4 class="text-[0.6875rem] font-black uppercase tracking-widest text-tertiary mb-3">AI Reasoning</h4>
+<p class="text-xs leading-relaxed text-on-surface/70">
+                                Rivera's work at FinStream directly aligns with your requirements for <span class="font-bold">scalable multi-tenant architecture</span>. While they lack backend knowledge, their research methodology is superior to 90% of current applicants.
+                            </p>
+</div>
+</div>
+<!-- CTA Actions -->
+<div class="mt-8 space-y-3">
+<button class="w-full bg-primary text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">event_upcoming</span>
+                            Schedule Interview
+                        </button>
+<button class="w-full bg-surface-container-high text-on-surface-variant py-4 rounded-xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm">share</span>
+                            Share with Team
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 mt-auto border-t border-[#e0e3e5]/15 flex flex-col md:flex-row justify-between items-center px-12 w-full bg-[#f7f9fb] dark:bg-slate-900">
+<p class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] dark:text-slate-400">© 2024 Intelligent Employment System</p>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-[0.75rem] uppercase tracking-widest text-[#424754] hover:text-[#0058be] transition-colors" href="#">Help Center</a>
+</div>
+</footer>
+</body></html>

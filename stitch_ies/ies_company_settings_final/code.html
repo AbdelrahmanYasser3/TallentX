@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Company Settings | IES Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#c0c1ff",
+              "inverse-on-surface": "#eff1f3",
+              "secondary": "#4648d4",
+              "on-surface-variant": "#424754",
+              "on-secondary-container": "#fffbff",
+              "on-primary-container": "#fefcff",
+              "on-secondary": "#ffffff",
+              "surface": "#f7f9fb",
+              "primary": "#0058be",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-container": "#9c48ea",
+              "error": "#ba1a1a",
+              "surface-tint": "#005ac2",
+              "primary-container": "#2170e4",
+              "tertiary-fixed": "#f0dbff",
+              "outline": "#727785",
+              "tertiary-fixed-dim": "#ddb7ff",
+              "secondary-container": "#6063ee",
+              "surface-variant": "#e0e3e5",
+              "primary-fixed": "#d8e2ff",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "on-tertiary-fixed": "#2c0051",
+              "primary-fixed-dim": "#adc6ff",
+              "on-primary-fixed": "#001a42",
+              "surface-container-high": "#e6e8ea",
+              "tertiary": "#8127cf",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed-variant": "#6900b3",
+              "surface-dim": "#d8dadc",
+              "background": "#f7f9fb",
+              "on-tertiary-container": "#fffbff",
+              "on-error": "#ffffff",
+              "surface-bright": "#f7f9fb",
+              "outline-variant": "#c2c6d6",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-secondary-fixed": "#07006c",
+              "on-surface": "#191c1e",
+              "error-container": "#ffdad6",
+              "surface-container": "#eceef0",
+              "inverse-primary": "#adc6ff",
+              "inverse-surface": "#2d3133",
+              "secondary-fixed": "#e1e0ff",
+              "on-background": "#191c1e",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#004395"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-ai-gradient {
+        background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(16px);
+      }
+      .dark .glass-card {
+        background: rgba(25, 28, 30, 0.7);
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- Sidebar Navigation -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 flex flex-col p-4 gap-2 z-40">
+<div class="mb-8 px-4">
+<h1 class="text-lg font-bold text-slate-900 dark:text-slate-100">IES Portal</h1>
+<p class="text-xs text-slate-500 font-medium">Intelligent Management</p>
+</div>
+<nav class="flex flex-col gap-1 flex-1">
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-sm font-medium">Applications</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900/50 rounded-xl transition-all hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="text-sm font-medium">Interviews</span>
+</a>
+<a class="bg-white dark:bg-slate-900 text-blue-700 dark:text-indigo-400 shadow-sm rounded-xl px-4 py-3 flex items-center gap-3 scale-98" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-1">
+<button class="bg-ai-gradient text-white px-4 py-3 rounded-xl flex items-center justify-center gap-2 font-semibold text-sm shadow-lg shadow-secondary/20 hover:scale-105 active:scale-95 transition-all">
+<span>✨ AI Insights</span>
+</button>
+<a class="text-slate-400 dark:text-slate-500 px-4 py-3 flex items-center gap-3 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-sm">Help Center</span>
+</a>
+<a class="text-slate-400 dark:text-slate-500 px-4 py-3 flex items-center gap-3 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen p-8 lg:p-12 max-w-[1600px] mx-auto">
+<!-- Header Section -->
+<header class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-2">
+<h2 class="text-4xl font-extrabold tracking-tight text-on-surface">Company Settings</h2>
+<p class="text-on-surface-variant text-lg max-w-2xl">Configure your corporate identity, manage recruiter permissions, and fine-tune the cognitive engine for your talent pipeline.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-6 py-2.5 rounded-xl font-semibold text-sm border border-outline-variant hover:bg-surface-container-low transition-all">Discard</button>
+<button class="px-6 py-2.5 rounded-xl font-semibold text-sm bg-primary text-on-primary shadow-lg shadow-primary/20 hover:scale-102 active:scale-98 transition-all">Save Changes</button>
+</div>
+</header>
+<!-- Content Grid (Bento Style) -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Company Profile (Asymmetric Large Card) -->
+<section class="col-span-12 lg:col-span-7 bg-surface-container-lowest rounded-xl p-8 border border-transparent shadow-sm">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center overflow-hidden">
+<img alt="Company Logo" class="w-full h-full object-cover" data-alt="minimalist corporate logo of a tech company on a clean white background with geometric shapes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4rmwmwi21p2gbFQ3DsLdoqmd5aMUVUJE34i-Iq01-jWAvb7cXgrj8xXwwYOGsbniISRt8QksORwdg61Po52TsRE5K30ufontNwi0lw7FHDJF8HeGu6R56dFki8GUXMbNZr4E783AMCGuSJ7wL3HES9jrO11bC8g0hwhh2Lg7yHcAsRJVyvIyFCY3AT_KC_cbpVsKBfirWypgIj6jviLCOSWcw5FpXIWrMOGCezS85DStEXyjtxjTm5k-Wa3BaGvzyht5BQQhXQNs"/>
+</div>
+<div>
+<h3 class="text-xl font-bold">General Information</h3>
+<p class="text-sm text-on-surface-variant">Your public company profile displayed to candidates.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-outline">Company Name</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 transition-all" type="text" value="Innovate Engineering Systems"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-outline">Website</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 transition-all" type="url" value="https://ies-global.tech"/>
+</div>
+<div class="col-span-full space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-outline">Industry</label>
+<select class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 transition-all appearance-none">
+<option>Information Technology &amp; Services</option>
+<option>Financial Technology</option>
+<option>Healthcare Engineering</option>
+</select>
+</div>
+<div class="col-span-full space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-outline">Description</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/20 transition-all" rows="4">At IES, we bridge the gap between world-class engineering talent and high-impact projects using our proprietary Intelligent Employment System. We value precision, innovation, and human-centric design.</textarea>
+</div>
+</div>
+</section>
+<!-- AI Cognitive Engine (Interactive Side Card) -->
+<section class="col-span-12 lg:col-span-5 flex flex-col gap-6">
+<div class="bg-ai-gradient rounded-xl p-8 text-white relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="text-xl font-bold">Match Score Sensitivity</h3>
+</div>
+<p class="text-white/80 text-sm mb-8 leading-relaxed">Adjust how the AI engine prioritizes candidate matches. Higher sensitivity results in stricter filtering based on skill proximity and experience depth.</p>
+<div class="space-y-6">
+<div class="space-y-3">
+<div class="flex justify-between text-xs font-bold uppercase tracking-widest opacity-80">
+<span>Broad Match</span>
+<span>Precision Match</span>
+</div>
+<input class="w-full h-1.5 bg-white/20 rounded-lg appearance-none cursor-pointer accent-white" max="100" min="1" type="range" value="82"/>
+<div class="flex justify-between items-center mt-2">
+<span class="text-3xl font-black">82%</span>
+<span class="bg-white/20 px-3 py-1 rounded-full text-[10px] font-bold uppercase">Optimal Level</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-white/10 p-4 rounded-xl backdrop-blur-sm">
+<span class="material-symbols-outlined text-secondary-fixed-dim">info</span>
+<p class="text-xs leading-tight">Match scores are recalculated every 6 hours based on these global parameters.</p>
+</div>
+</div>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+</div>
+<!-- Integration Status -->
+<div class="bg-surface-container-lowest rounded-xl p-8 border border-transparent shadow-sm flex-1">
+<h3 class="text-lg font-bold mb-4">API &amp; Integrations</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-sm">
+<img alt="Slack Logo" class="w-6 h-6 object-contain" data-alt="iconic slack messaging app logo colorful on white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuHqHWSW-ir41hkAFIJTDRw2IByWq6YUHdU3mZ_9EtxZgH5FgjOdngC1vl2jXu5iq9oejoPmdFukD8Whx8Xe4o89qEhWu9Y9qpFFglaEZoUJHvDkFFCctd19rU_tLLQ2G0eaqhEO2X2ymu2zUAjlS_ZAj-tyqlWN2Me1LCYlYyhvDUFrEXYxxdBa1sgCFJJgoqjh5FjOHG3XX9AljddOtBcb2-lZ2NT1_a6M1zPu1wUbyVhjp4cB6uRYJOxsz-szZQLjRXdny1q_E"/>
+</div>
+<div>
+<p class="text-sm font-bold">Slack Notifications</p>
+<p class="text-xs text-on-surface-variant">Active in #hiring-alerts</p>
+</div>
+</div>
+<span class="w-2 h-2 rounded-full bg-emerald-500 shadow-lg shadow-emerald-500/50"></span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl opacity-60">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-surface-variant">calendar_month</span>
+</div>
+<div>
+<p class="text-sm font-bold">Google Calendar</p>
+<p class="text-xs text-on-surface-variant">Not connected</p>
+</div>
+</div>
+<button class="text-xs font-bold text-primary hover:underline">Connect</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Recruiter Management Table (Full Width) -->
+<section class="col-span-12 bg-surface-container-lowest rounded-xl p-8 border border-transparent shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h3 class="text-xl font-bold">Recruiter Management</h3>
+<p class="text-sm text-on-surface-variant">Manage team access and administrative privileges.</p>
+</div>
+<button class="flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-sm bg-primary text-on-primary hover:bg-primary-container transition-all">
+<span class="material-symbols-outlined text-lg">person_add</span>
+                        Add Recruiter
+                    </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-container-high">
+<th class="pb-4 text-xs font-bold uppercase tracking-wider text-outline px-4">User</th>
+<th class="pb-4 text-xs font-bold uppercase tracking-wider text-outline px-4">Role</th>
+<th class="pb-4 text-xs font-bold uppercase tracking-wider text-outline px-4">Joined</th>
+<th class="pb-4 text-xs font-bold uppercase tracking-wider text-outline px-4">Performance</th>
+<th class="pb-4 text-xs font-bold uppercase tracking-wider text-outline text-right px-4">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/10">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="professional portrait of a confident woman smiling in an office setting with natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEwWlddfRs1scTShsXJc2IfK9xK13Q1EHDYhkJxw7kpVLjqiDME6PoROPWczOMBm0fQIpkTzArBu5ZYxKF9mEKW-bvYTNd2NJP8WQvBxHKj4vSzMRyVerQNgy_qugl1294csXmcuOwPJtka8t-eXm3lwpKrTzgQRt5V6E4Ned2CszLlQPiBmy0s8L_tN-a6QmymGuwqA4j_2bEWjt9fSmJ_EXSXfaPCi3UOsJzO5SxcIjVCqraIGXpOUeF1r2e91S8njjTxbob3Rs"/>
+</div>
+<div>
+<p class="text-sm font-bold">Sarah Jenkins</p>
+<p class="text-xs text-on-surface-variant">sarah.j@ies.com</p>
+</div>
+</div>
+</td>
+<td class="py-5 px-4">
+<span class="bg-primary-container/10 text-primary-container text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-primary-container/20">Admin</span>
+</td>
+<td class="py-5 px-4 text-sm text-on-surface-variant">Oct 12, 2023</td>
+<td class="py-5 px-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 w-24 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 w-[94%]"></div>
+</div>
+<span class="text-xs font-bold text-on-surface-variant">94%</span>
+</div>
+</td>
+<td class="py-5 px-4 text-right">
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-outline transition-colors"><span class="material-symbols-outlined">more_vert</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-5 px-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-transparent">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="professional portrait of a young man with a slight beard in corporate attire with soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHvt4Xw3qD9xravZbnv0Dp3_8FzoeYJCGdy0cYs5JhAOiTPbUvzJHrLdTxy1496gNEzRlog75ekC_-BOPY_G5vsiYMIa5gjQN_ngTQkDT2uJdOStAW6vQOuGSz483pxO6xPQy4brkaxdxzg19_mJfFVMfjbxx-kYHUtJwoNVCSWNjTTfJECxrfLnOJ8_8aACso5STUhMxwjFkgeYmiw7Ro4zKXyOMUVBBBjYAEymSH4VvjJjBC4OI0xl3VnYA6Ky8L2b9lrS0ifHk"/>
+</div>
+<div>
+<p class="text-sm font-bold">David Chen</p>
+<p class="text-xs text-on-surface-variant">d.chen@ies.com</p>
+</div>
+</div>
+</td>
+<td class="py-5 px-4">
+<span class="bg-surface-container-high text-on-surface-variant text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full border border-outline-variant/30">Recruiter</span>
+</td>
+<td class="py-5 px-4 text-sm text-on-surface-variant">Jan 05, 2024</td>
+<td class="py-5 px-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 h-1.5 w-24 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[78%]"></div>
+</div>
+<span class="text-xs font-bold text-on-surface-variant">78%</span>
+</div>
+</td>
+<td class="py-5 px-4 text-right">
+<div class="flex justify-end gap-1">
+<button class="px-3 py-1.5 text-[10px] font-bold uppercase text-primary border border-primary/20 rounded-lg hover:bg-primary/5 transition-all">Make Admin</button>
+<button class="p-2 hover:bg-error/10 rounded-lg text-error transition-colors"><span class="material-symbols-outlined">delete_outline</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Footer Shell -->
+<footer class="mt-20 py-8 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-xs font-inter text-slate-500 dark:text-slate-400">© 2024 IES Intelligent Employment System</p>
+<div class="flex gap-6">
+<a class="text-xs font-inter text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Privacy Policy</a>
+<a class="text-xs font-inter text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Terms of Service</a>
+<a class="text-xs font-inter text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-opacity" href="#">Cookie Settings</a>
+</div>
+</footer>
+</main>
+</body></html>

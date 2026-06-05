@@ -1,0 +1,299 @@
+version: "2"
+type: frontend
+tech_stack:
+  - TypeScript
+  - Angular 21 standalone components
+  - Tailwind CSS
+  - RxJS
+  - Playwright
+routes:
+  - path: /
+    file: src/app/app.routes.ts
+    auth_required: false
+    description: Redirects to /landing
+  - path: /landing
+    file: src/app/pages/landing/landing.ts
+    auth_required: false
+    description: Public landing page
+  - path: /login
+    file: src/app/pages/login/login.ts
+    auth_required: false
+    description: User login page
+  - path: /register
+    file: src/app/pages/register/register.ts
+    auth_required: false
+    description: Generic registration page
+  - path: /forgot-password
+    file: src/app/pages/forgot-password/forgot-password.ts
+    auth_required: false
+    description: Password reset initiation
+  - path: /register/candidate
+    file: src/app/pages/register/register.ts
+    auth_required: false
+    description: Candidate registration flow
+  - path: /register/company
+    file: src/app/pages/employer-register/employer-register.ts
+    auth_required: false
+    description: Company registration flow
+  - path: /register/recruiter
+    file: src/app/pages/register/register.ts
+    auth_required: false
+    description: Recruiter registration flow
+  - path: /candidate/dashboard
+    file: src/app/pages/candidate-dashboard/dashboard.page.ts
+    auth_required: true
+    description: Candidate dashboard overview
+  - path: /candidate/profile
+    file: src/app/pages/profile/profile.ts
+    auth_required: true
+    description: Candidate profile management
+  - path: /candidate/interviews
+    file: src/app/pages/candidate-interviews/candidate-interviews.ts
+    auth_required: true
+    description: Candidate interview list
+  - path: /candidate/assessments/:id
+    file: src/app/pages/take-assessment/take-assessment.ts
+    auth_required: true
+    description: Candidate assessment taking page
+  - path: /dashboard/saved-jobs
+    file: src/app/pages/dashboard-saved-jobs/saved-jobs.ts
+    auth_required: true
+    description: Saved jobs page
+  - path: /dashboard/applications
+    file: src/app/pages/dashboard-applications/applications.ts
+    auth_required: true
+    description: Candidate applications page
+  - path: /recruiter/dashboard
+    file: src/app/pages/recruiter-dashboard/recruiter-dashboard.ts
+    auth_required: true
+    description: Recruiter dashboard overview
+  - path: /recruiter/jobs
+    file: src/app/pages/recruiter-jobs/recruiter-jobs.ts
+    auth_required: true
+    description: Recruiter job management
+  - path: /recruiter/jobs/new
+    file: src/app/pages/create-job/create-job.ts
+    auth_required: true
+    description: Create new job posting
+  - path: /recruiter/jobs/edit/:id
+    file: src/app/pages/edit-job/edit-job.ts
+    auth_required: true
+    description: Edit existing job posting
+  - path: /recruiter/jobs/:jobId/applications
+    file: src/app/pages/recruiter-applicants/recruiter-applicants.ts
+    auth_required: true
+    description: View applications per job
+  - path: /recruiter/interviews
+    file: src/app/pages/interview-scheduling/interview-scheduling.ts
+    auth_required: true
+    description: Recruiter interview scheduling
+  - path: /recruiter/assessments/new
+    file: src/app/pages/create-ai-interview/create-ai-interview.ts
+    auth_required: true
+    description: Create AI assessment
+  - path: /company/settings
+    file: src/app/pages/company-settings/company-settings.ts
+    auth_required: true
+    description: Company settings and admin controls
+  - path: /jobs
+    file: src/app/pages/job-search/job-search.ts
+    auth_required: false
+    description: Public job listing and search
+  - path: /jobs/:id
+    file: src/app/pages/job-details/job-details.ts
+    auth_required: false
+    description: Public job details page
+  - path: /companies
+    file: src/app/pages/companies/companies.ts
+    auth_required: false
+    description: Companies directory
+  - path: /public-company-profile
+    file: src/app/pages/public-company-profile/public-company-profile.ts
+    auth_required: false
+    description: Public company profile page
+  - path: /about
+    file: src/app/pages/about/about.ts
+    auth_required: false
+    description: About page
+  - path: /terms
+    file: src/app/pages/terms/terms.ts
+    auth_required: false
+    description: Terms and conditions page
+  - path: /privacy
+    file: src/app/pages/privacy/privacy.ts
+    auth_required: false
+    description: Privacy policy page
+  - path: /settings
+    file: src/app/pages/settings/settings.ts
+    auth_required: true
+    description: Account settings page
+  - path: /messages
+    file: src/app/pages/messages/messages.ts
+    auth_required: true
+    description: Messaging center
+  - path: /notifications
+    file: src/app/pages/notifications/notifications.ts
+    auth_required: true
+    description: Notifications center
+  - path: /resume-viewer
+    file: src/app/pages/resume-viewer/resume-viewer.ts
+    auth_required: true
+    description: Resume preview page
+  - path: /analytics-reports
+    file: src/app/pages/analytics-reports/analytics-reports.ts
+    auth_required: true
+    description: Analytics reports page
+  - path: /activity-logs
+    file: src/app/pages/activity-logs/activity-logs.ts
+    auth_required: true
+    description: Activity logs page
+  - path: /404
+    file: src/app/pages/not-found/not-found.ts
+    auth_required: false
+    description: Not found page
+features:
+  - name: Authentication and registration
+    description: Login, role-based registration, and password recovery flows
+    files:
+      - src/app/pages/login/login.ts
+      - src/app/pages/register/register.ts
+      - src/app/pages/forgot-password/forgot-password.ts
+      - src/app/core/services/auth.service.ts
+    entry_route: /login
+    user_interactions:
+      - Enter credentials and submit login form
+      - Register candidate, recruiter, or company account
+      - Request password reset from forgot password screen
+    api_calls:
+      - method: POST
+        endpoint: /Auth/login
+      - method: POST
+        endpoint: /Auth/register
+      - method: POST
+        endpoint: /Auth/register/company
+      - method: POST
+        endpoint: /Auth/register/recruiter
+      - method: POST
+        endpoint: /Auth/forgot-password
+    auth_required: false
+  - name: Candidate profile and assets
+    description: Candidate profile editing, skills, resume, and profile picture management
+    files:
+      - src/app/pages/profile/profile.ts
+      - src/app/core/services/candidate.service.ts
+      - src/app/core/services/skill.service.ts
+      - src/app/core/services/education.service.ts
+      - src/app/core/services/experience.service.ts
+    entry_route: /candidate/profile
+    user_interactions:
+      - Update personal profile fields
+      - Add and edit skills, education, and experience
+      - Upload or remove resume
+      - Upload profile picture
+    api_calls:
+      - method: GET
+        endpoint: /Candidates/profile
+      - method: PUT
+        endpoint: /Candidates/profile
+      - method: POST
+        endpoint: /Candidates/resume
+      - method: DELETE
+        endpoint: /Candidates/resume/:resumeId
+      - method: PUT
+        endpoint: /Candidates/profile-picture
+    auth_required: true
+  - name: Job browsing and application lifecycle
+    description: Public job search and authenticated candidate application actions
+    files:
+      - src/app/pages/job-search/job-search.ts
+      - src/app/pages/job-details/job-details.ts
+      - src/app/pages/dashboard-applications/applications.ts
+      - src/app/pages/dashboard-saved-jobs/saved-jobs.ts
+      - src/app/core/services/job.ts
+      - src/app/core/services/candidate.service.ts
+    entry_route: /jobs
+    user_interactions:
+      - Browse and filter available jobs
+      - Open job details
+      - Apply to a job
+      - Save and unsave jobs
+      - Withdraw an application
+    api_calls:
+      - method: GET
+        endpoint: /JobPosting
+      - method: GET
+        endpoint: /JobPosting/:id
+      - method: POST
+        endpoint: /JobApplication/apply
+      - method: POST
+        endpoint: /Candidates/saved-jobs/:jobPostId
+      - method: DELETE
+        endpoint: /JobApplication/:applicationId/withdraw
+    auth_required: false
+  - name: Recruiter hiring operations
+    description: Recruiter dashboard, job posting CRUD, applicant tracking, and interview scheduling
+    files:
+      - src/app/pages/recruiter-dashboard/recruiter-dashboard.ts
+      - src/app/pages/recruiter-jobs/recruiter-jobs.ts
+      - src/app/pages/recruiter-applicants/recruiter-applicants.ts
+      - src/app/pages/interview-scheduling/interview-scheduling.ts
+      - src/app/core/services/recruiter.ts
+      - src/app/core/services/interview.service.ts
+    entry_route: /recruiter/dashboard
+    user_interactions:
+      - Create, edit, and manage job postings
+      - Review applicants and update application statuses
+      - Schedule and manage interviews
+      - Export applicants for a job posting
+    api_calls:
+      - method: GET
+        endpoint: /Dashboards/company/:companyId
+      - method: POST
+        endpoint: /JobPosting
+      - method: PUT
+        endpoint: /JobPosting/:id
+      - method: GET
+        endpoint: /JobApplication/job/:jobPostId
+      - method: PUT
+        endpoint: /JobApplication/:id/status
+      - method: POST
+        endpoint: /Interview/schedule
+    auth_required: true
+  - name: Collaboration and account utilities
+    description: Messaging, notifications, company settings, and reporting pages
+    files:
+      - src/app/pages/messages/messages.ts
+      - src/app/pages/notifications/notifications.ts
+      - src/app/pages/company-settings/company-settings.ts
+      - src/app/pages/analytics-reports/analytics-reports.ts
+      - src/app/pages/activity-logs/activity-logs.ts
+      - src/app/core/services/message.service.ts
+      - src/app/core/services/notification.service.ts
+      - src/app/core/services/company.service.ts
+      - src/app/core/services/analytics.service.ts
+      - src/app/core/services/activity-log.service.ts
+    entry_route: /messages
+    user_interactions:
+      - Send and read direct messages
+      - View and mark notifications as read
+      - Update company settings and transfer admin ownership
+      - Open analytics and activity reports
+    api_calls:
+      - method: POST
+        endpoint: /Messages/send
+      - method: GET
+        endpoint: /Messages/conversations
+      - method: GET
+        endpoint: /Notifications
+      - method: PATCH
+        endpoint: /Notifications/:id/mark-read
+      - method: PUT
+        endpoint: /Company/:id
+    auth_required: true
+known_limitations:
+  - issue: Several legacy route aliases are implemented as redirects and not dedicated pages
+    location: src/app/app.routes.ts
+    impact: Multiple URLs point to the same screen, which may cause duplicate navigation paths in tests
+  - issue: Some protected pages depend on backend seed data and authenticated role claims
+    location: src/app/core/guards/auth.guard.ts
+    impact: End-to-end flows can fail in clean environments without test fixtures and valid JWT tokens

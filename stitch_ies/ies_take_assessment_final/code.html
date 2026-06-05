@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IES Assessment - Focus Mode</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary": "#4648d4",
+                        "on-surface-variant": "#424754",
+                        "on-secondary-container": "#fffbff",
+                        "on-primary-container": "#fefcff",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "primary": "#0058be",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#9c48ea",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#005ac2",
+                        "primary-container": "#2170e4",
+                        "tertiary-fixed": "#f0dbff",
+                        "outline": "#727785",
+                        "tertiary-fixed-dim": "#ddb7ff",
+                        "secondary-container": "#6063ee",
+                        "surface-variant": "#e0e3e5",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed": "#2c0051",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-fixed": "#001a42",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary": "#8127cf",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-fixed-variant": "#6900b3",
+                        "surface-dim": "#d8dadc",
+                        "background": "#f7f9fb",
+                        "on-tertiary-container": "#fffbff",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "outline-variant": "#c2c6d6",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "on-secondary-fixed": "#07006c",
+                        "on-surface": "#191c1e",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eceef0",
+                        "inverse-primary": "#adc6ff",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-background": "#191c1e",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#004395"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-gradient {
+            background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+        }
+        .glass-panel {
+            background: rgba(247, 249, 251, 0.7);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- Sticky Focus Header -->
+<header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-outline-variant/15">
+<div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-black tracking-tighter text-primary">IES</span>
+<div class="h-6 w-[1px] bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant leading-none">Assessment</span>
+<span class="text-sm font-semibold text-on-surface">Senior Systems Architect Role</span>
+</div>
+</div>
+<!-- Progress & Timer -->
+<div class="flex items-center gap-8">
+<div class="hidden md:flex flex-col items-end gap-1.5">
+<div class="flex justify-between w-48 text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">
+<span>Progress</span>
+<span>65%</span>
+</div>
+<div class="w-48 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 65%"></div>
+</div>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-error-container text-on-error-container rounded-xl font-mono font-bold text-lg shadow-sm">
+<span class="material-symbols-outlined text-error" data-icon="timer">timer</span>
+<span>24:18</span>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-40 px-6">
+<div class="max-w-3xl mx-auto space-y-12">
+<!-- Chat-like Question Flow -->
+<!-- Previous Question (Faded) -->
+<div class="opacity-40 scale-95 origin-bottom transition-all duration-500">
+<div class="flex gap-4 mb-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="text-xs font-bold text-on-surface-variant">11</span>
+</div>
+<p class="text-lg font-medium text-on-surface-variant">Which architectural pattern best supports high-availability in distributed cloud environments?</p>
+</div>
+<div class="ml-12 p-4 bg-surface-container-low rounded-xl inline-block border border-outline-variant/10">
+<span class="text-sm font-semibold text-primary">Selected: Microservices with Event Sourcing</span>
+</div>
+</div>
+<!-- Current Active Question -->
+<div class="relative group">
+<!-- AI Sparkle Indicator -->
+<div class="absolute -left-16 top-2 hidden lg:flex flex-col items-center gap-2">
+<div class="w-10 h-10 rounded-full ai-gradient flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-white text-xl" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-tighter">AI Focus</span>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-primary text-on-primary flex items-center justify-center text-xl font-bold shadow-md">
+                        12
+                    </div>
+<div class="flex-1 space-y-8">
+<h2 class="text-3xl md:text-4xl font-headline font-semibold tracking-tight text-on-surface leading-tight">
+                            Analyze the following scenario: A sudden spike in latency occurs during read operations on a global database. What is your primary diagnostic step?
+                        </h2>
+<!-- Options Bento Grid -->
+<div class="grid grid-cols-1 gap-4">
+<!-- Option A -->
+<button class="flex items-center gap-6 p-6 text-left rounded-2xl bg-surface-container-lowest border-2 border-transparent hover:border-primary/20 hover:bg-surface-bright transition-all duration-200 group/opt shadow-sm hover:shadow-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center font-bold text-on-surface-variant group-hover/opt:bg-primary group-hover/opt:text-on-primary transition-colors">A</div>
+<span class="text-xl font-medium text-on-surface-variant group-hover/opt:text-on-surface">Immediately scale the write-replica nodes across all available regions.</span>
+</button>
+<!-- Option B (Selected State Example) -->
+<button class="flex items-center gap-6 p-6 text-left rounded-2xl bg-white border-2 border-primary shadow-xl shadow-primary/5 transition-all duration-200 group/opt relative overflow-hidden">
+<div class="absolute top-0 right-0 p-3">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center font-bold text-on-primary">B</div>
+<span class="text-xl font-semibold text-on-surface">Inspect the regional replication lag metrics and check for cross-region network congestion.</span>
+</button>
+<!-- Option C -->
+<button class="flex items-center gap-6 p-6 text-left rounded-2xl bg-surface-container-lowest border-2 border-transparent hover:border-primary/20 hover:bg-surface-bright transition-all duration-200 group/opt shadow-sm hover:shadow-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center font-bold text-on-surface-variant group-hover/opt:bg-primary group-hover/opt:text-on-primary transition-colors">C</div>
+<span class="text-xl font-medium text-on-surface-variant group-hover/opt:text-on-surface">Flush the global cache layer to ensure all read operations hit the disk directly.</span>
+</button>
+<!-- Option D -->
+<button class="flex items-center gap-6 p-6 text-left rounded-2xl bg-surface-container-lowest border-2 border-transparent hover:border-primary/20 hover:bg-surface-bright transition-all duration-200 group/opt shadow-sm hover:shadow-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center font-bold text-on-surface-variant group-hover/opt:bg-primary group-hover/opt:text-on-primary transition-colors">D</div>
+<span class="text-xl font-medium text-on-surface-variant group-hover/opt:text-on-surface">Downgrade the consistency level from 'Strong' to 'Eventual' for all clusters.</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Future Question (Placeholder) -->
+<div class="opacity-20 blur-[2px] pointer-events-none">
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-surface-container-high flex items-center justify-center text-xl font-bold text-outline">13</div>
+<div class="h-8 bg-surface-container-high rounded-lg w-full"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Focus Specific) -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 p-6 pointer-events-none">
+<div class="max-w-3xl mx-auto flex justify-between items-center pointer-events-auto">
+<button class="flex items-center gap-2 px-8 py-4 rounded-xl bg-surface-container-highest text-on-surface-variant font-bold text-sm uppercase tracking-widest hover:bg-surface-dim transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                Previous
+            </button>
+<!-- AI Insight Chip (Contextual) -->
+<div class="hidden md:flex items-center gap-2 px-4 py-2 bg-secondary-container/10 border border-secondary-container/20 rounded-full">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-xs font-bold text-secondary uppercase tracking-tighter">Matches Core Talent Skills</span>
+</div>
+<button class="flex items-center gap-2 px-10 py-4 rounded-xl ai-gradient text-white font-bold text-sm uppercase tracking-widest shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+                Next Question
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</nav>
+<!-- Decorative Subtle Elements -->
+<div class="fixed top-1/4 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="fixed bottom-1/4 -right-20 w-80 h-80 bg-tertiary/5 rounded-full blur-[120px] pointer-events-none"></div>
+</body></html>

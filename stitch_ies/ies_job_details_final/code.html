@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Job Details | IES Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#c0c1ff",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary": "#4648d4",
+                        "on-surface-variant": "#424754",
+                        "on-secondary-container": "#fffbff",
+                        "on-primary-container": "#fefcff",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "primary": "#0058be",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#9c48ea",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#005ac2",
+                        "primary-container": "#2170e4",
+                        "tertiary-fixed": "#f0dbff",
+                        "outline": "#727785",
+                        "tertiary-fixed-dim": "#ddb7ff",
+                        "secondary-container": "#6063ee",
+                        "surface-variant": "#e0e3e5",
+                        "primary-fixed": "#d8e2ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed": "#2c0051",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-fixed": "#001a42",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary": "#8127cf",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-fixed-variant": "#6900b3",
+                        "surface-dim": "#d8dadc",
+                        "background": "#f7f9fb",
+                        "on-tertiary-container": "#fffbff",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "outline-variant": "#c2c6d6",
+                        "on-secondary-fixed-variant": "#2f2ebe",
+                        "on-secondary-fixed": "#07006c",
+                        "on-surface": "#191c1e",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eceef0",
+                        "inverse-primary": "#adc6ff",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed": "#e1e0ff",
+                        "on-background": "#191c1e",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#004395"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+        }
+        .dark .glass-effect {
+            background: rgba(15, 23, 42, 0.7);
+        }
+        .ai-gradient {
+            background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+        }
+        .text-ai-gradient {
+            background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl docked full-width top-0 sticky z-50 shadow-sm dark:shadow-none font-inter antialiased tracking-tight">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-blue-700 dark:text-indigo-400">IES</span>
+<div class="hidden md:flex gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-indigo-300 transition-colors" href="#">Dashboard</a>
+<a class="text-blue-700 dark:text-indigo-400 font-semibold border-b-2 border-blue-600 dark:border-indigo-500 pb-1" href="#">Jobs</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-indigo-300 transition-colors" href="#">Talent</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-indigo-300 transition-colors" href="#">Insights</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg px-3 py-1.5">
+<span class="material-symbols-outlined text-slate-500 mr-2 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48" placeholder="Search jobs..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all"><span class="material-symbols-outlined">dark_mode</span></button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all relative"><span class="material-symbols-outlined">notifications</span><span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span></button>
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden ml-2">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Portrait of a professional young man with a friendly smile, clean studio lighting, corporate headshot style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTR_Ma5m19hxw0PFG1oWoGfWaKs7FE3kZpTptbU4h6D3TfUG2D1PVFBhmrccsdPXQ3I9WYn6wd_meautHfYT2OUI-ah1QLC__ZrHgyi4Xi_QgN464D7fSIvM-B-sOKd4yQmD8CGDhJMXT14_x_B-m6PdWYFoNgIRJ8JMltmnfRqWFAobkPNXOrFK4IWP_i7kO04mj4tqiClpdbwUcN3bWBTuJe-Gei9-i4oJh8GqubV2WjAXQGIrh_WozCTwqyoM7TVSKgSkv5DP8"/>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-slate-100/50 dark:bg-slate-800/50 h-[1px] w-full"></div>
+</nav>
+<!-- Sticky Job Action Bar (Mobile & Desktop) -->
+<div class="sticky top-[65px] z-40 w-full bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant/10 px-6 py-4">
+<div class="max-w-7xl mx-auto flex justify-between items-center">
+<div class="flex items-center gap-4 overflow-hidden">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors flex-shrink-0">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="truncate">
+<h2 class="text-sm font-semibold text-on-surface truncate">Senior Principal Product Designer</h2>
+<p class="text-xs text-on-surface-variant">Lumina Systems • San Francisco, CA</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl text-primary font-medium hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+                    Save
+                </button>
+<button class="px-8 py-2.5 rounded-xl bg-primary text-on-primary font-bold shadow-lg shadow-primary/20 hover:scale-102 active:scale-98 transition-all">
+                    Apply Now
+                </button>
+</div>
+</div>
+</div>
+<main class="max-w-7xl mx-auto px-6 py-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Main Content Area (Column 1-8) -->
+<div class="lg:col-span-8 space-y-12">
+<!-- Hero Header -->
+<section>
+<div class="flex flex-col gap-6">
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold tracking-wider uppercase">Active</span>
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold tracking-wider uppercase">Full-Time</span>
+<span class="px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed text-xs font-bold tracking-wider uppercase">Remote Friendly</span>
+</div>
+<h1 class="text-5xl md:text-6xl font-black tracking-tighter text-on-surface leading-tight">
+                            Senior Principal <br/>Product Designer
+                        </h1>
+<div class="flex flex-wrap items-center gap-x-8 gap-y-4 text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">apartment</span>
+<span class="font-semibold text-on-surface">Lumina Systems</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span>San Francisco / Remote</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">payments</span>
+<span class="text-on-surface font-bold">$185k — $240k</span>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Insight Banner -->
+<section class="p-8 rounded-2xl ai-gradient text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-secondary/20">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">✨ AI Match Score: 94%</h3>
+<p class="text-white/80 text-sm max-w-md">Your experience with Figma and Design Systems perfectly aligns with this role's requirements. We've highlighted key areas where you stand out.</p>
+</div>
+</div>
+<button class="px-6 py-3 rounded-xl bg-white text-secondary font-bold hover:bg-slate-50 transition-colors whitespace-nowrap">
+                        View Analysis
+                    </button>
+</section>
+<!-- Job Description -->
+<article class="prose prose-slate max-w-none">
+<h3 class="text-2xl font-bold text-on-surface mb-6">The Opportunity</h3>
+<p class="text-lg text-on-surface-variant leading-relaxed mb-8">
+                        As a Senior Principal Product Designer at Lumina Systems, you will be at the forefront of defining the next generation of intelligent workflow tools. You will lead the design vision for our core platform, bridging the gap between complex machine learning capabilities and elegant, human-centric interfaces.
+                    </p>
+<h3 class="text-2xl font-bold text-on-surface mb-6">Key Responsibilities</h3>
+<ul class="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0">
+<li class="flex items-start gap-3 p-4 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-on-surface-variant">Lead the evolution of our Lumina Nexus design system across web and mobile.</span>
+</li>
+<li class="flex items-start gap-3 p-4 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-on-surface-variant">Partner with engineering to deploy high-fidelity components and complex interactions.</span>
+</li>
+<li class="flex items-start gap-3 p-4 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-on-surface-variant">Mentor junior and mid-level designers, fostering a culture of design excellence.</span>
+</li>
+<li class="flex items-start gap-3 p-4 rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span class="text-on-surface-variant">Collaborate with PMs to translate business requirements into intuitive UX.</span>
+</li>
+</ul>
+<div class="mt-12">
+<h3 class="text-2xl font-bold text-on-surface mb-6">Required Skills &amp; Proficiency</h3>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-3 pl-4 pr-2 py-2 rounded-full border border-outline-variant bg-surface-container-lowest shadow-sm">
+<span class="text-sm font-medium">Design Systems</span>
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest">Expert</span>
+</div>
+<div class="flex items-center gap-3 pl-4 pr-2 py-2 rounded-full border border-outline-variant bg-surface-container-lowest shadow-sm">
+<span class="text-sm font-medium">Figma &amp; Variables</span>
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest">Expert</span>
+</div>
+<div class="flex items-center gap-3 pl-4 pr-2 py-2 rounded-full border border-outline-variant bg-surface-container-lowest shadow-sm">
+<span class="text-sm font-medium">React / Framer Motion</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary/10 text-secondary text-[10px] font-bold uppercase tracking-widest">Intermediate</span>
+</div>
+<div class="flex items-center gap-3 pl-4 pr-2 py-2 rounded-full border border-outline-variant bg-surface-container-lowest shadow-sm">
+<span class="text-sm font-medium">Product Strategy</span>
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest">Expert</span>
+</div>
+<div class="flex items-center gap-3 pl-4 pr-2 py-2 rounded-full border border-outline-variant bg-surface-container-lowest shadow-sm">
+<span class="text-sm font-medium">Stakeholder Mgmt</span>
+<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest">Advanced</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Company Info -->
+<section class="pt-12 border-t border-outline-variant/30">
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div class="w-24 h-24 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+<img alt="Company logo branding" class="w-full h-full object-cover" data-alt="Modern minimalist office lobby with plants and glass walls, soft natural light, corporate tech aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx-g4dAg-Ja4DBAxjjyG5K-y3FrnaHUJjEgqXNk764SIWv1WSyLhM0Jpl9sy9HqFcZJqm6-DRfH-NWQ2T0KhsEb2UEn2d99D9dR1q_FsGRORqUhVPcuLtcCg_kBHQlUK84UeiDm8NDa7b82-juam1jV213toNvU0Dopr2W91gUzM9KzjV10nDvH47nUS-UNiSWSMXYkNgw6jzsJ8fMEZXrgJ3jyjDJdPNvUj7_0W3BO9yspJN-By1N7b3wo9KKTV6-4c4gGu_WqZM"/>
+</div>
+<div class="space-y-4">
+<h4 class="text-xl font-bold">About Lumina Systems</h4>
+<p class="text-on-surface-variant leading-relaxed">
+                                Lumina is a venture-backed startup building the intelligence layer for employment. We believe that technology should empower people to find meaningful work through data-driven matching and transparent career paths.
+                            </p>
+<div class="flex gap-4">
+<a class="text-primary font-bold hover:underline flex items-center gap-1" href="#">Company Profile <span class="material-symbols-outlined text-sm">open_in_new</span></a>
+<a class="text-primary font-bold hover:underline flex items-center gap-1" href="#">Our Culture <span class="material-symbols-outlined text-sm">open_in_new</span></a>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Sidebar (Column 9-12) -->
+<aside class="lg:col-span-4 space-y-8 lg:sticky lg:top-40">
+<!-- Hiring Team -->
+<div class="p-6 rounded-2xl bg-surface-container-low space-y-6">
+<h5 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Hiring Team</h5>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img alt="Hiring Manager" class="w-full h-full object-cover" data-alt="Professional woman in business casual attire smiling warmly, clean background, executive headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAylInrAry--j3NDM3Nr7_NAW6MVntv0OsoPI3XsWlWLUxXH8vM_ocELucpd5IWqzojszeThAl7MvnnXPsQCgilZxsJtJOUmnwESAsNvmrJuGnftfeG2cYBXW8yaXsULd855f2KsBzwoC7VbUpryWBsT4dInc5WU51J2jE-0-ogqX7-5Tm7QZD4JtdXCBy4BgYEkb1cajxgIiFTtZx31ajXtthcjDMimPHoiYvNgWQ5KF1U81auXF384-wF9FGe3cU-Hw6sZGIe644"/>
+</div>
+<div>
+<p class="font-bold">Sarah Chen</p>
+<p class="text-xs text-on-surface-variant">VP of Product Design</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img alt="Recruiter" class="w-full h-full object-cover" data-alt="Confident man with glasses in a modern office setting, soft professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRgm4tQ_VNm2WRTJclvb4VaReHeootSqynp-YvXxczpnZvA_bSKaSpJP9zS15HM2ykboaVuUVf6KIvGA3VrieEBaVSqNpsGW-evHuBexE92vzD35HOF-lScXws4518Kqn-2Nb7P-gnNZVZ7ZMX_76qKj6mIiQ1cdWXI4rQL_N5WPGuB5Z_JXmYo3KwHTv6Pl8qe85dPXHBDJI-qiwb-ybG7hEP3kxyM9g9cZbTKs_uC63z4iTxpZy2A1OICiat0nEKZszsxhz3DNA"/>
+</div>
+<div>
+<p class="font-bold">Marcus Thorne</p>
+<p class="text-xs text-on-surface-variant">Technical Recruiter</p>
+</div>
+</div>
+</div>
+<!-- Job Stats/Meta -->
+<div class="p-6 rounded-2xl border border-outline-variant bg-surface-container-lowest space-y-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Applications</p>
+<p class="text-xl font-bold">142</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Posted</p>
+<p class="text-xl font-bold">2d ago</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Job ID</p>
+<p class="text-xl font-bold">#49102</p>
+</div>
+<div class="space-y-1">
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Category</p>
+<p class="text-xl font-bold">Design</p>
+</div>
+</div>
+</div>
+<!-- Similar Jobs Bento Mini -->
+<div class="space-y-4">
+<h5 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Similar Matches</h5>
+<div class="space-y-3">
+<div class="p-4 rounded-xl bg-white hover:bg-slate-50 border border-slate-100 transition-all cursor-pointer group">
+<div class="flex justify-between items-start">
+<div>
+<h6 class="font-bold group-hover:text-primary transition-colors">Design Technologist</h6>
+<p class="text-xs text-on-surface-variant">Nexus AI • Seattle, WA</p>
+</div>
+<span class="text-xs font-bold text-ai-gradient">91% Match</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white hover:bg-slate-50 border border-slate-100 transition-all cursor-pointer group">
+<div class="flex justify-between items-start">
+<div>
+<h6 class="font-bold group-hover:text-primary transition-colors">Creative Director</h6>
+<p class="text-xs text-on-surface-variant">Orbit Cloud • Remote</p>
+</div>
+<span class="text-xs font-bold text-slate-400">84% Match</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 mt-24">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+<span class="font-bold text-slate-700 dark:text-slate-300">IES</span>
+<div class="flex gap-6">
+<a class="text-xs font-inter text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-all duration-200" href="#">Privacy Policy</a>
+<a class="text-xs font-inter text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-all duration-200" href="#">Terms of Service</a>
+<a class="text-xs font-inter text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-all duration-200" href="#">Cookie Settings</a>
+</div>
+<span class="text-xs font-inter text-slate-500 dark:text-slate-400">© 2024 IES Intelligent Employment System</span>
+</div>
+</footer>
+</body></html>

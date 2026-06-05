@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#c0c1ff",
+              "inverse-on-surface": "#eff1f3",
+              "secondary": "#4648d4",
+              "on-surface-variant": "#424754",
+              "on-secondary-container": "#fffbff",
+              "on-primary-container": "#fefcff",
+              "on-secondary": "#ffffff",
+              "surface": "#f7f9fb",
+              "primary": "#0058be",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-container": "#9c48ea",
+              "error": "#ba1a1a",
+              "surface-tint": "#005ac2",
+              "primary-container": "#2170e4",
+              "tertiary-fixed": "#f0dbff",
+              "outline": "#727785",
+              "tertiary-fixed-dim": "#ddb7ff",
+              "secondary-container": "#6063ee",
+              "surface-variant": "#e0e3e5",
+              "primary-fixed": "#d8e2ff",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#e0e3e5",
+              "on-tertiary-fixed": "#2c0051",
+              "primary-fixed-dim": "#adc6ff",
+              "on-primary-fixed": "#001a42",
+              "surface-container-high": "#e6e8ea",
+              "tertiary": "#8127cf",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f2f4f6",
+              "on-tertiary-fixed-variant": "#6900b3",
+              "surface-dim": "#d8dadc",
+              "background": "#f7f9fb",
+              "on-tertiary-container": "#fffbff",
+              "on-error": "#ffffff",
+              "surface-bright": "#f7f9fb",
+              "outline-variant": "#c2c6d6",
+              "on-secondary-fixed-variant": "#2f2ebe",
+              "on-secondary-fixed": "#07006c",
+              "on-surface": "#191c1e",
+              "error-container": "#ffdad6",
+              "surface-container": "#eceef0",
+              "inverse-primary": "#adc6ff",
+              "inverse-surface": "#2d3133",
+              "secondary-fixed": "#e1e0ff",
+              "on-background": "#191c1e",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#004395"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ai-gradient-text {
+            background: linear-gradient(to right, #4648d4, #8127cf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .ai-gradient-bg {
+            background: linear-gradient(135deg, #4648d4 0%, #8127cf 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-body selection:bg-primary/30">
+<!-- Top Navigation Shell -->
+<nav class="bg-slate-900/70 backdrop-blur-xl font-inter antialiased tracking-tight docked full-width top-0 sticky z-50 shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-6 py-3 max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-blue-700 dark:text-indigo-400">IES</span>
+<div class="hidden md:flex gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-indigo-300 transition-colors" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-indigo-300 transition-colors" href="#">Jobs</a>
+<a class="text-blue-700 dark:text-indigo-400 font-semibold border-b-2 border-blue-600 dark:border-indigo-500 pb-1" href="#">Talent</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-indigo-300 transition-colors" href="#">Insights</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-800 rounded-lg transition-all duration-200">
+<span class="material-symbols-outlined text-slate-400">dark_mode</span>
+</button>
+<button class="p-2 hover:bg-slate-800 rounded-lg transition-all duration-200 relative">
+<span class="material-symbols-outlined text-slate-400">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full object-cover ring-2 ring-slate-800" data-alt="Professional headshot of a person with a friendly expression in a modern office setting with soft bokeh background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVS5ZXMusj4Lae5E3lQqfq7uLk-owQINioBn_SceQac5MZP53gerO-isIqUlUiMOKLKZ-N4vJxH888oVw5PbnUZLk_6HlsSdnkflKrJM19SEV5IrPoMvk-k1F3VF_b0mi2SNBi5vuSW5O5Gtc5u0tE6g7jxXGVa1xEjavCgf9hTOjXdr6ign4AFFe3BnKlf1-phenbi3ZG8Y_qvGvR5nQoA_OCW4Wi7njplMu8sOPuK1jioCYhW9jEOWnAHL1rHwzPzsiRabPjgDw"/>
+</div>
+</div>
+<div class="bg-slate-100/50 dark:bg-slate-800/50 h-[1px] w-full"></div>
+</nav>
+<main class="min-h-screen">
+<!-- Hero Banner Section -->
+<div class="relative w-full h-[400px] overflow-hidden">
+<img alt="Company Banner" class="w-full h-full object-cover" data-alt="Ultra-modern architectural office interior with expansive glass walls, clean lines, and soft indigo ambient lighting at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNvqHSs5vCZFs3XLqtz4fmXjMpoAl2q7FZd4bhLRckNIvaqXe4osF2XxDV3YAnNrJiO7RxGGnqiTD2UHOpV6Vki7h5yPU6gmsiSyR6Y6WwwIapLLq7LZGh-0DIWp0wxduC77IhWmljqpYWGCyaHnBg5eEwnUwefHTze5MGsJ-mAJuaYTjEpOyAWAy6gzkTqhMbXa2OjMcHyGpiYPOt1Q-OquSfK_GsXBSD9ke8NJex5j_g52xT5yzl8Qa8R8-wx7N69GD5iWN3bG4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full px-6 pb-12 max-w-7xl mx-auto right-0">
+<div class="flex flex-col md:flex-row items-end gap-8">
+<div class="relative">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl bg-white p-1 shadow-2xl">
+<div class="w-full h-full rounded-xl bg-primary flex items-center justify-center">
+<span class="text-white text-5xl font-black tracking-tighter">IES</span>
+</div>
+</div>
+</div>
+<div class="flex-1 space-y-2">
+<div class="flex items-center gap-3">
+<h1 class="text-4xl md:text-5xl font-black tracking-tighter text-white">Intelligent Employment System</h1>
+<span class="bg-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full border border-blue-500/30">Verified Enterprise</span>
+</div>
+<p class="text-lg text-slate-300 max-w-2xl font-light leading-relaxed">Architecting the future of human potential through autonomous talent matching and cognitive organizational design.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 bg-white text-slate-900 font-bold rounded-xl hover:scale-105 active:scale-95 transition-all duration-200">Follow Company</button>
+<button class="ai-gradient-bg px-6 py-3 text-white font-bold rounded-xl hover:scale-105 active:scale-95 transition-all duration-200 flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                            Smart Connect
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Grid -->
+<div class="max-w-7xl mx-auto px-6 py-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: Insights & Content -->
+<div class="lg:col-span-8 space-y-16">
+<!-- Why Work Here Section -->
+<section class="space-y-8">
+<div class="flex items-center gap-4">
+<h2 class="text-3xl font-bold tracking-tight text-white">Why work here?</h2>
+<div class="h-px flex-1 bg-slate-800"></div>
+</div>
+<!-- Bento-ish Grid for Culture -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-slate-900 rounded-2xl p-8 border border-slate-800/50 hover:bg-slate-900/80 transition-all group">
+<div class="w-12 h-12 bg-indigo-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-indigo-400">psychology</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-white">Cognitive Freedom</h3>
+<p class="text-slate-400 leading-relaxed">We don't track hours; we value neural output. Work from anywhere, at any rhythm that sustains your genius.</p>
+</div>
+<div class="bg-slate-900 rounded-2xl p-8 border border-slate-800/50 hover:bg-slate-900/80 transition-all group">
+<div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-blue-400">rocket_launch</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-white">Exponential Growth</h3>
+<p class="text-slate-400 leading-relaxed">Every employee is equipped with personal AI co-pilots and an annual $5,000 learning stipend for radical upskilling.</p>
+</div>
+<div class="md:col-span-2 bg-slate-900 rounded-2xl overflow-hidden border border-slate-800/50 flex flex-col md:flex-row">
+<div class="md:w-1/2 p-8 space-y-4">
+<div class="flex items-center gap-2 text-emerald-400 text-sm font-bold uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                        Impact Focus
+                                    </div>
+<h3 class="text-2xl font-bold text-white leading-tight">Solving the global talent misallocation crisis.</h3>
+<p class="text-slate-400">Join a team dedicated to ensuring that every human on earth is matched with a role that maximizes their innate purpose.</p>
+</div>
+<div class="md:w-1/2 h-48 md:h-auto">
+<img alt="Team Collaboration" class="w-full h-full object-cover" data-alt="Diverse group of tech professionals collaborating around a futuristic translucent digital table in a brightly lit workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQEOXyhBlbBOHHZVYMHaNH1QcchDe6yUFs3_so0fihXvCQM3ObgGrAvxu9wI8xZ4jvRxTe36R7JzZXwKl5MBEK7bWlCf-um0OX2m18SQboTGGpdQTndS-JmpZCVKGQNyB-WhSiCavsTREkjNLE9vad1_tp18GyPF7d051BStJWjIkg3aho_IsNY69XK6LAH2yHsGA8C0AvN8MXzXBDYa-Z436p8J5zTDNHwQXkxdceds720-Z9NCjyf6NeUgyx2MBbJEmly1jT_OM"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Open Positions Section -->
+<section class="space-y-8">
+<div class="flex justify-between items-end">
+<h2 class="text-3xl font-bold tracking-tight text-white">Open Positions</h2>
+<p class="text-slate-500 text-sm font-medium">8 Opportunities Available</p>
+</div>
+<div class="space-y-4">
+<!-- Job Card -->
+<div class="group bg-slate-900/40 hover:bg-slate-900 border border-slate-800/50 rounded-2xl p-6 transition-all cursor-pointer flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+<div class="space-y-2">
+<div class="flex items-center gap-3">
+<h4 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Senior AI Systems Architect</h4>
+<div class="bg-indigo-500/10 px-3 py-1 rounded-full flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-indigo-400" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-xs font-bold text-indigo-400 tracking-wide">98% Match</span>
+</div>
+</div>
+<div class="flex gap-4 text-sm text-slate-500">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> Remote / SF</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">payments</span> $180k – $240k</span>
+</div>
+</div>
+<button class="px-5 py-2.5 rounded-xl border border-slate-700 text-slate-300 font-bold hover:bg-white hover:text-slate-900 transition-all">Quick Apply</button>
+</div>
+<!-- Job Card -->
+<div class="group bg-slate-900/40 hover:bg-slate-900 border border-slate-800/50 rounded-2xl p-6 transition-all cursor-pointer flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+<div class="space-y-2">
+<div class="flex items-center gap-3">
+<h4 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Lead Product Designer</h4>
+<div class="bg-indigo-500/10 px-3 py-1 rounded-full flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs text-indigo-400" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-xs font-bold text-indigo-400 tracking-wide">92% Match</span>
+</div>
+</div>
+<div class="flex gap-4 text-sm text-slate-500">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> New York / Hybrid</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">payments</span> $160k – $210k</span>
+</div>
+</div>
+<button class="px-5 py-2.5 rounded-xl border border-slate-700 text-slate-300 font-bold hover:bg-white hover:text-slate-900 transition-all">Quick Apply</button>
+</div>
+<!-- Job Card (No Match indicator) -->
+<div class="group bg-slate-900/40 hover:bg-slate-900 border border-slate-800/50 rounded-2xl p-6 transition-all cursor-pointer flex flex-col md:flex-row items-start md:items-center justify-between gap-6 opacity-80">
+<div class="space-y-2">
+<h4 class="text-xl font-bold text-white group-hover:text-primary transition-colors">Enterprise Growth Lead</h4>
+<div class="flex gap-4 text-sm text-slate-500">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span> Global Remote</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">payments</span> Competitive + Equity</span>
+</div>
+</div>
+<button class="px-5 py-2.5 rounded-xl border border-slate-700 text-slate-300 font-bold hover:bg-white hover:text-slate-900 transition-all">View Role</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Company Vitals -->
+<aside class="lg:col-span-4 space-y-8">
+<div class="bg-slate-900 rounded-3xl p-8 border border-slate-800/50 sticky top-24">
+<h3 class="text-xl font-bold text-white mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                            Company Vitals
+                        </h3>
+<div class="space-y-8">
+<div class="flex justify-between items-center pb-6 border-b border-slate-800">
+<div class="space-y-1">
+<p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Company Size</p>
+<p class="text-lg font-bold text-slate-200">500 – 1,000 Employees</p>
+</div>
+<span class="material-symbols-outlined text-slate-600">groups</span>
+</div>
+<div class="flex justify-between items-center pb-6 border-b border-slate-800">
+<div class="space-y-1">
+<p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Industry</p>
+<p class="text-lg font-bold text-slate-200">AI / HR Tech</p>
+</div>
+<span class="material-symbols-outlined text-slate-600">precision_manufacturing</span>
+</div>
+<div class="flex justify-between items-center pb-6 border-b border-slate-800">
+<div class="space-y-1">
+<p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Global HQ</p>
+<p class="text-lg font-bold text-slate-200">San Francisco, CA</p>
+</div>
+<span class="material-symbols-outlined text-slate-600">public</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="space-y-1">
+<p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Founded</p>
+<p class="text-lg font-bold text-slate-200">2018</p>
+</div>
+<span class="material-symbols-outlined text-slate-600">history_edu</span>
+</div>
+</div>
+<!-- Sparkle Insight Chip -->
+<div class="mt-10 p-6 bg-secondary/10 rounded-2xl border border-secondary/20 space-y-3">
+<div class="flex items-center gap-2 text-indigo-400 font-bold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span>AI Insight</span>
+</div>
+<p class="text-sm text-indigo-200/80 leading-relaxed">IES is currently in a hyper-growth phase for their engineering pod. Candidates with LLM orchestration experience are being prioritized.</p>
+</div>
+<div class="mt-8 pt-8 space-y-4">
+<p class="text-slate-500 text-xs font-bold uppercase tracking-wider">Connect</p>
+<div class="flex gap-3">
+<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.599 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+<a class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-lg">language</span>
+</a>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-12 border-t border-slate-900 bg-slate-950 mt-12">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-8">
+<div class="flex flex-col gap-2">
+<span class="font-bold text-slate-300 text-lg">IES</span>
+<span class="text-xs font-inter text-slate-500">© 2024 IES Intelligent Employment System</span>
+</div>
+<div class="flex gap-8">
+<a class="text-slate-400 dark:text-slate-500 hover:text-slate-300 transition-opacity text-xs uppercase tracking-widest font-bold" href="#">Privacy Policy</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-slate-300 transition-opacity text-xs uppercase tracking-widest font-bold" href="#">Terms of Service</a>
+<a class="text-slate-400 dark:text-slate-500 hover:text-slate-300 transition-opacity text-xs uppercase tracking-widest font-bold" href="#">Cookie Settings</a>
+</div>
+</div>
+</footer>
+</body></html>

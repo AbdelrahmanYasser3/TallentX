@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface": "#e1e4ff",
+                        "secondary": "#9093ff",
+                        "surface-dim": "#020a2f",
+                        "on-tertiary-container": "#000000",
+                        "on-tertiary": "#33005b",
+                        "on-error-container": "#ffa8a3",
+                        "on-tertiary-fixed-variant": "#560094",
+                        "tertiary-fixed-dim": "#c488ff",
+                        "outline": "#6b739d",
+                        "background": "#020a2f",
+                        "outline-variant": "#3d466c",
+                        "surface": "#020a2f",
+                        "on-primary-fixed-variant": "#002a62",
+                        "error": "#ff716c",
+                        "on-background": "#e1e4ff",
+                        "surface-container-lowest": "#000000",
+                        "on-primary-fixed": "#000000",
+                        "surface-container-low": "#050f38",
+                        "secondary-container": "#2f2ebe",
+                        "on-primary": "#002c66",
+                        "secondary-fixed": "#cdcdff",
+                        "surface-bright": "#192760",
+                        "error-container": "#9f0519",
+                        "primary": "#85adff",
+                        "primary-fixed": "#6e9fff",
+                        "surface-container-highest": "#142156",
+                        "surface-container": "#091542",
+                        "inverse-on-surface": "#4b537a",
+                        "on-secondary": "#080079",
+                        "surface-tint": "#85adff",
+                        "inverse-primary": "#005bc4",
+                        "tertiary-container": "#af5cfe",
+                        "secondary-dim": "#6063ee",
+                        "on-tertiary-fixed": "#270048",
+                        "tertiary": "#c180ff",
+                        "primary-fixed-dim": "#5391ff",
+                        "surface-variant": "#142156",
+                        "on-surface-variant": "#a1a9d5",
+                        "on-primary-container": "#002150",
+                        "error-dim": "#d7383b",
+                        "primary-container": "#6e9fff",
+                        "secondary-fixed-dim": "#bdbeff",
+                        "primary-dim": "#699cff",
+                        "tertiary-fixed": "#ce9bff",
+                        "on-secondary-fixed-variant": "#3a3ac8",
+                        "on-error": "#490006",
+                        "inverse-surface": "#fbf8ff",
+                        "surface-container-high": "#0e1b4c",
+                        "on-secondary-fixed": "#160bae",
+                        "tertiary-dim": "#9c48ea",
+                        "on-secondary-container": "#ccccff"
+                    },
+                    fontFamily: {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "12px", "2xl": "16px", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(20, 33, 86, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .ai-gradient {
+            background: linear-gradient(135deg, #9093ff 0%, #c180ff 100%);
+        }
+        .mesh-bg {
+            background-image: radial-gradient(at 0% 0%, rgba(133, 173, 255, 0.15) 0, transparent 50%),
+                              radial-gradient(at 50% 0%, rgba(193, 128, 255, 0.1) 0, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen mesh-bg">
+<!-- TopAppBar -->
+<header class="bg-[#020a2f]/60 backdrop-blur-xl text-[#85adff] font-['Inter'] leading-relaxed fixed top-0 w-full z-50 border-b border-white/15 shadow-2xl shadow-black/20 flex justify-between items-center px-8 h-20">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-white">TallentX</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Dashboard</a>
+<a class="text-[#85adff] border-b-2 border-[#85adff] pb-1" href="#">Talent Pool</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Insights</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm">search</span>
+<input class="bg-surface-container-high border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-1 focus:ring-primary" placeholder="Search talent..." type="text"/>
+</div>
+<button class="material-symbols-outlined p-2 rounded-full hover:bg-white/5 transition-all active:scale-95">notifications</button>
+<button class="material-symbols-outlined p-2 rounded-full hover:bg-white/5 transition-all active:scale-95">settings</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border border-white/20">
+<img alt="User Profile Avatar" class="h-full w-full object-cover" data-alt="professional headshot of a person with friendly expression in soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg6bQWgrUowM0oYvRH-5d0LbB1_tAFgAOI3o_BUAAZjL-nF1n4ngqBXyfaiT3UaYVj3X3TWxsvgR6rURtTzGdTHMtDYSHogZo2X9XRxlcZFW7djUL0ahsIJduuYZlbZj3dcDRa3p4ARa9rWk8_zvYZgbmytXwxneMMU7edNwf3IC9otL2FX-L1P6dzSvQ0CkTqLEi4VmAR5a2L4iGfjqWex2iJ9c7z_mZlV1klRSKIUzPnDeFgGr35pahbXFiljKn791G4pDMwqzE"/>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-20">
+<!-- Hero Section -->
+<section class="relative w-full h-[400px]">
+<div class="absolute inset-0 overflow-hidden">
+<img alt="Company Banner" class="w-full h-full object-cover" data-alt="ultra-modern glass office interior with architectural curves and cinematic blue lighting at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2Q7R50V8HmUwr0LsKNBvSGHwWgVJ_kYYyEIzzzpTardEYiYSjuKzOnxQX6piXEYAI9nOMHWi7TyCKfVgrZP4ay9eUfGmllYHJglV0TcR7ib0q627yjlmysodwGMSOBIZaFGi1aEz7V8xhgaiA3DWHfKyceGEU2VZkv1cf7zKWlKoPCe42kKABYAJEk2wVFZwEhZP08iGgq8fBGXXU6Hffh5NxzVCvyt9iukgSoGDu85-SiJ6jBoVktkwyVKk4oqrnFJt_7Pdbgq4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+</div>
+<div class="relative max-w-7xl mx-auto px-8 h-full flex flex-col justify-end pb-12">
+<div class="flex flex-col md:flex-row items-end gap-8">
+<!-- Logo Profile -->
+<div class="w-32 h-32 md:w-44 md:h-44 rounded-2xl bg-surface-container-high p-4 shadow-2xl border border-white/10 shrink-0">
+<div class="w-full h-full bg-white rounded-xl flex items-center justify-center p-4">
+<span class="text-black font-extrabold text-4xl tracking-tighter">NX</span>
+</div>
+</div>
+<div class="flex-grow pb-2">
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded">Fortune 500</span>
+<span class="text-slate-400 text-sm">•</span>
+<span class="text-slate-400 text-sm font-medium">Enterprise Technology</span>
+</div>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight text-white mb-2">Nexalith Systems</h1>
+<p class="text-slate-300 text-lg max-w-2xl">Architecting the next era of autonomous digital infrastructure.</p>
+</div>
+<div class="flex gap-4 pb-4">
+<button class="px-8 py-3 rounded-xl border border-outline-variant hover:bg-white/5 transition-all font-semibold active:scale-95">Follow</button>
+<button class="px-8 py-3 rounded-xl bg-primary text-on-primary font-bold shadow-lg shadow-primary/20 hover:brightness-110 transition-all active:scale-95">View Jobs</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content Grid -->
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 mt-12">
+<!-- Left Column: About & Gallery -->
+<div class="lg:col-span-8 space-y-16">
+<!-- AI Insights Bento -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-3 glass-card rounded-2xl p-8 border border-tertiary/20 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-10">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-sm font-bold tracking-widest uppercase text-tertiary">AI Culture Insights</span>
+</div>
+<h2 class="text-3xl font-bold text-white mb-4">Why you'll thrive here.</h2>
+<p class="text-on-surface-variant max-w-xl mb-8 leading-relaxed">Our AI matched your profile with the top 5% of Nexalith top performers. You share a high "Architectural Thinking" score and a preference for "Asynchronous Autonomy."</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-5 rounded-xl border-l-4 border-tertiary">
+<h4 class="text-tertiary font-bold text-sm mb-1 uppercase tracking-tighter">Value Alignment</h4>
+<p class="text-white font-medium">94% match on Innovation Cycles</p>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl border-l-4 border-primary">
+<h4 class="text-primary font-bold text-sm mb-1 uppercase tracking-tighter">Growth Trajectory</h4>
+<p class="text-white font-medium">High potential for Senior Principal tracks</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Us -->
+<section>
+<h3 class="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-6">About Us</h3>
+<div class="prose prose-invert max-w-none">
+<p class="text-xl text-slate-300 leading-relaxed font-light mb-6">
+                            Founded in 2018, Nexalith Systems has redefined how enterprise entities interact with distributed networks. We don't just build software; we engineer resilient ecosystems that adapt in real-time.
+                        </p>
+<p class="text-slate-400 leading-relaxed">
+                            Our team of 400+ world-class engineers, designers, and strategists are distributed across 14 countries, working in a model that prioritizes output over hours. We believe that the best work happens when high-agency individuals are given the tools and freedom to solve impossible problems.
+                        </p>
+</div>
+</section>
+<!-- Life at Company Gallery -->
+<section>
+<div class="flex items-end justify-between mb-8">
+<div>
+<h3 class="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-2">Life at Nexalith</h3>
+<p class="text-slate-400">Sneak peak into our creative environments and summits.</p>
+</div>
+<button class="text-primary text-sm font-bold flex items-center gap-1 group">
+                            Explore Gallery 
+                            <span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 h-[500px]">
+<div class="col-span-2 row-span-2 rounded-2xl overflow-hidden group">
+<img alt="Collaborative Space" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="diverse group of creative professionals collaborating in a high-tech minimalist office with neon blue accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4VO06zDcEHOLoGZoRd4ZCzmQrwLTqOad62lRtZ0DSJplHgay-qu05wsjHZCO1yLM09y3-blgYwhiuh7clJ_SfVuaNc2KgoPQlzlO_HE0Z1xWL1ev6wtXV1ftG9Rnh3gJE9N8v6qsxUvUyyJOeTUXWGit5KiiXJEnG9dYzq10ijcDiAUQhG3ELuY9LO5n9jzMZtQMLwE0QOSgFkq1MdW3cbNUs845njfEZudqFqlreuaDxYUKOg7KMctSXjxyV1K6WU4A_IoZ8Fc0"/>
+</div>
+<div class="col-span-2 rounded-2xl overflow-hidden group">
+<img alt="Tech Summit" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="large theater stage during a tech keynote with dramatic purple and blue lighting and digital displays" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFh_T9J3tfjOlE3ULoXRshe7e4j3tD6pjOeXdHiy9wruj-1DFtpS9XGBsj4RRDI9cXmpsFb5P6Crz_GqamoVmkdmUeqtVRVRWWY2ooOPR66x_J0TY-BM876Qfz1yPpXQPl0AEDTscVk3tPmFqrao2Q5JB3WXJGChgLZ1m6n2EUC_dacWQF8tOFcdRd3sy8jdzKVo5TZ62dAHFujZL9adnK0FXHjLqFWoHP6fz00lQb2if5AVr4-AKc0rgUrtIq-TyD-U3FLKjDB0Q"/>
+</div>
+<div class="rounded-2xl overflow-hidden group">
+<img alt="Deep Focus" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="close up of high-end mechanical keyboard and curved monitor displaying complex code in a dark room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdp1mMffl5Xel9Ck96Ttbl-NkvTrIfMdFKgOBiDXY-K0ikCj_urKlFhYAINyEftTTaDYytARsIrMrnr8g-7ZKAm-i48HoklNr9IGSYv3x1dSYOrdaPOLtxBFJouXSNcV6vEl0VAZyU2KjNxIbni8KZSWbjBPQucp45Bxg-WTcpxw5CULobb1HsHRYDiZ3TxRgDnnweLsqJRhuOv2JLykHO3F25pnuANeb-6NiwljW4hHzIVWrvy2_H8u3maC6XcECFt7RIfK7V0Hc"/>
+</div>
+<div class="rounded-2xl overflow-hidden group">
+<img alt="Office Lounge" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="chic corporate lounge with mid-century modern furniture and large windows overlooking a futuristic cityscape" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUcxB8JHeUafEjNCXHO5_9xDJpwZlKk35nOwWLBo5Emu2ihn6q_KBArhS2umsfEjZDH5a5eJ0qAAE7TYmRJlR1wLUfA3fdZod_Nj5D5TRoFw_Ldzewl7O6xFUH5LjDYHrRmfkBVPaCRhy1G8Nyfg5sz4LAlZJxRoO-E19Dzvyc1UxfcBmHzPQLFuMbIuJawy98dtNm5197P_-0E_K_QM8dUpvm6VW_dLvf1zCJYCK7t04K1Fa_ADTUUEAix1pB9PKnr91REjGcCG0"/>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Sidebar Stats & Jobs -->
+<div class="lg:col-span-4 space-y-12">
+<!-- Quick Stats -->
+<div class="bg-surface-container rounded-2xl p-8 space-y-8 border border-white/5">
+<h4 class="text-white font-bold text-lg">Company Vitals</h4>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<div>
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider">Size</p>
+<p class="text-white font-semibold">250 - 500 Employees</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">public</span>
+</div>
+<div>
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider">Headquarters</p>
+<p class="text-white font-semibold">San Francisco / Remote</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<p class="text-slate-400 text-xs font-bold uppercase tracking-wider">Growth Rate</p>
+<p class="text-white font-semibold">42% YoY (Aggressive)</p>
+</div>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant text-sm font-bold hover:bg-surface-container-highest transition-colors">Visit Official Site</button>
+</div>
+</div>
+<!-- Open Positions -->
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<h4 class="text-white font-bold text-lg">Open Positions</h4>
+<span class="bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold">12 Total</span>
+</div>
+<div class="space-y-4">
+<!-- Job Card -->
+<div class="group bg-surface-container-low hover:bg-surface-container transition-all p-6 rounded-2xl border border-transparent hover:border-primary/30 cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<h5 class="text-white font-bold text-lg leading-tight group-hover:text-primary transition-colors">Lead Distributed Systems Engineer</h5>
+<span class="text-primary material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-[10px] font-bold bg-white/5 px-2 py-1 rounded text-slate-300">REMOTE</span>
+<span class="text-[10px] font-bold bg-white/5 px-2 py-1 rounded text-slate-300">$180K - $240K</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-tertiary text-xs font-bold tracking-tight">Match: 98%</span>
+</div>
+</div>
+<!-- Job Card -->
+<div class="group bg-surface-container-low hover:bg-surface-container transition-all p-6 rounded-2xl border border-transparent hover:border-primary/30 cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<h5 class="text-white font-bold text-lg leading-tight group-hover:text-primary transition-colors">Senior Product Designer (Core)</h5>
+<span class="text-primary material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-[10px] font-bold bg-white/5 px-2 py-1 rounded text-slate-300">SF / HYBRID</span>
+<span class="text-[10px] font-bold bg-white/5 px-2 py-1 rounded text-slate-300">$140K - $190K</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-tertiary text-xs font-bold tracking-tight">Match: 92%</span>
+</div>
+</div>
+<!-- Job Card -->
+<div class="group bg-surface-container-low hover:bg-surface-container transition-all p-6 rounded-2xl border border-transparent hover:border-primary/30 cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<h5 class="text-white font-bold text-lg leading-tight group-hover:text-primary transition-colors">ML Infrastructure Architect</h5>
+<span class="text-primary material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity">arrow_outward</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-[10px] font-bold bg-white/5 px-2 py-1 rounded text-slate-300">REMOTE</span>
+<span class="text-[10px] font-bold bg-white/5 px-2 py-1 rounded text-slate-300">$200K - $280K</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-tertiary text-xs font-bold tracking-tight">Match: 85%</span>
+</div>
+</div>
+</div>
+<button class="w-full flex items-center justify-center gap-2 py-4 text-primary font-bold hover:bg-primary/5 rounded-xl transition-all">
+                        View All 12 Roles
+                        <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-20 border-t border-white/5 pt-16 pb-12 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-2">
+<span class="text-2xl font-bold tracking-tighter text-white mb-6 block">TallentX</span>
+<p class="text-slate-500 max-w-sm">The world's most advanced employment system, connecting extraordinary talent with legendary companies through intelligent data architecture.</p>
+</div>
+<div>
+<h6 class="text-white font-bold mb-6">Platform</h6>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Find Companies</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">AI Skill Graph</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Salary Benchmarks</a></li>
+</ul>
+</div>
+<div>
+<h6 class="text-white font-bold mb-6">Support</h6>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Accessibility</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-white/5 flex justify-between items-center text-slate-600 text-xs">
+<p>© 2024 TallentX Intelligent Systems. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-white transition-colors" href="#">Twitter</a>
+<a class="hover:text-white transition-colors" href="#">LinkedIn</a>
+</div>
+</div>
+</footer>
+</body></html>

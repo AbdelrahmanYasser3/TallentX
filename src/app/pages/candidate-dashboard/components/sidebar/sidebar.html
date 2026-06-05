@@ -1,0 +1,88 @@
+﻿<aside class="hidden md:flex flex-col w-64 bg-surface-container-low dark:bg-surface-container h-[calc(100vh-4rem)] sticky top-16 transition-colors duration-300">
+  <div class="flex flex-col flex-1 gap-2 p-4 overflow-y-auto">
+
+    <!-- Title changes based on role -->
+    <div class="px-2 mb-2">
+      <h2 class="text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">
+        {{ isRecruiter ? 'Recruiter Menu' : 'Candidate Menu' }}
+      </h2>
+    </div>
+
+    <ng-container *ngIf="!isRecruiter">
+      <!-- Overview -->
+      <a routerLink="/dashboard"
+        routerLinkActive="bg-primary/10 text-primary font-medium"
+        [routerLinkActiveOptions]="{exact: true}"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all">
+        <i class="fa-solid fa-chart-pie w-5 text-center"></i>
+        <span>Overview</span>
+      </a>
+
+      <!-- My Profile -->
+      <a routerLink="/profile"
+        routerLinkActive="bg-primary/10 text-primary font-medium"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all">
+        <i class="fa-solid fa-user w-5 text-center"></i>
+        <span>My Profile</span>
+      </a>
+
+      <!-- Saved Jobs -->
+      <a routerLink="/dashboard/saved-jobs"
+        routerLinkActive="bg-primary/10 text-primary font-medium"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all">
+        <i class="fa-solid fa-bookmark w-5 text-center"></i>
+        <span>Saved Jobs</span>
+      </a>
+
+      <!-- Applied Jobs -->
+      <a routerLink="/dashboard/applications"
+        routerLinkActive="bg-primary/10 text-primary font-medium"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all">
+        <i class="fa-solid fa-paper-plane w-5 text-center"></i>
+        <span>Applications</span>
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="isRecruiter">
+      <!-- Recruiter Dashboard -->
+      <a routerLink="/recruiter/dashboard"
+        routerLinkActive="bg-primary/10 text-primary font-medium"
+        [routerLinkActiveOptions]="{exact: true}"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all">
+        <i class="fa-solid fa-chart-line w-5 text-center"></i>
+        <span>Dashboard</span>
+      </a>
+
+      <!-- My Jobs -->
+      <a routerLink="/recruiter/jobs"
+        routerLinkActive="bg-primary/10 text-primary font-medium"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all">
+        <i class="fa-solid fa-briefcase w-5 text-center"></i>
+        <span>My Jobs</span>
+      </a>
+
+      <!-- Applicants -->
+      <a routerLink="/recruiter/applicants"
+        routerLinkActive="bg-primary/10 text-primary font-medium"
+        class="flex items-center gap-3 px-4 py-3 rounded-xl text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all">
+        <i class="fa-solid fa-users w-5 text-center"></i>
+        <span>Applicants</span>
+      </a>
+    </ng-container>
+
+    <!-- Settings -->
+    <a routerLink="/settings"
+       routerLinkActive="bg-primary/10 text-primary font-medium"
+       class="flex items-center gap-3 px-4 py-3 rounded-xl text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container mt-auto transition-all">
+      <i class="fa-solid fa-gear w-5 text-center"></i>
+      <span>Settings</span>
+    </a>
+
+    <!-- Logout -->
+    <button (click)="logout()" class="flex items-center gap-3 px-4 py-3 rounded-xl text-body-md text-error hover:bg-error/10 transition-all text-left w-full mt-1">
+      <i class="fa-solid fa-arrow-right-from-bracket w-5 text-center"></i>      
+      <span>Logout</span>
+    </button>
+  </div>
+</aside>
+
