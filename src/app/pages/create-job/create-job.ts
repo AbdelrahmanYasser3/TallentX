@@ -164,7 +164,7 @@ export class CreateJobPage {
   // ===== Submit =====
 
   onSubmit() {
-    console.log(this.newJobForm.value);
+    
 
     if (this.newJobForm.valid) {
       if (this.newJobForm.invalid) {
@@ -173,6 +173,8 @@ export class CreateJobPage {
     }
 
     const formValue = this.newJobForm.value as NewJobFormValue;
+
+    console.log('to the back', formValue);
 
     this.createJobService.createJob(formValue).subscribe({
       next: (response) => {

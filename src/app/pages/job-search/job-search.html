@@ -103,12 +103,10 @@
           </p>
           <p class="text-on-surface-variant text-sm mt-1" *ngIf="isLoading()">Loading jobs...</p>
         </div>
-        <p class="text-xs text-on-surface-variant" *ngIf="!canApply()">
-          <a routerLink="/login" class="text-primary font-bold hover:underline">Sign in</a> as a candidate to apply
-        </p>
+        
       </div>
 
-      <div *ngIf="isLoading()" class="space-y-6">
+      <div *ngIf="isLoading()" class="space-y-10 ">
         <div *ngFor="let i of [1,2,3,4]" class="bg-surface-container-lowest rounded-3xl p-6 shadow-xl shadow-blue-900/5 animate-pulse flex flex-col sm:flex-row gap-6">
           <div class="w-16 h-16 bg-surface-variant/50 rounded-2xl flex-shrink-0"></div>
           <div class="flex-1 space-y-3">
