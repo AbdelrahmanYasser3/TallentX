@@ -127,4 +127,15 @@ export class EmployerRegisterPage {
       }
     });
   }
+
+  showPass(element: HTMLInputElement):void{
+
+    if(element.type === "password"){
+      element.type = 'text'
+    }
+    else{
+      element.type = 'password'
+    }
+
+  }
 }

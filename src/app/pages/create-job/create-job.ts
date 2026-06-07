@@ -1,124 +1,191 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule, Validators, FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { JobService } from '../../core/services/job';
-import { AuthService } from '../../core/services/auth.service';
-import { ToastService } from '../../core/services/toast.service';
-import { CreateJobPostingDto } from '../../core/models/job.models';
+import { CreateJobService } from '../../core/services/create-jop.service';
+
+// ===== Interfaces =====
+
+export type Priority = 'High' | 'Low' | 'None';
+
+export interface DegreeItem {
+  degreeName: string;
+  degreePriority: Priority;
+}
+
+export interface RoleItem {
+  roleName: string;
+  rolePriority: Priority;
+}
+
+export interface SkillItem {
+  skillName: string;
+  skillPriority: Priority;
+}
+
+export interface NewJobFormValue {
+  title: string;
+  location: string;
+  MinSalary: string;
+  MaxSalary: string;
+
+  // ✅ الـ fields الجديدة
+  EducationDiscription: string;
+  ExperienceDiscription: string;
+  TechnicalSkillDiscription: string;
+  JobDiscription: string;
+
+  department: string;
+  employmentType: string;
+  GPA: string;
+  GPAPriority: Priority;
+  ExperienceMinYears: string;
+  ExperienceMaxYears: string;
+  ExperiencePriority: Priority;
+  degrees: DegreeItem[];
+  roles: RoleItem[];
+  skills: SkillItem[];
+}
+
+// ===== Component =====
 
 @Component({
   selector: 'app-create-job-page',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
-  templateUrl: './create-job.html'
+  templateUrl: './create-job.html',
+  styleUrl: './create-job.css'
 })
 export class CreateJobPage {
-  private fb = inject(FormBuilder);
-  private jobService = inject(JobService);
-  private authService = inject(AuthService);
-  private toast = inject(ToastService);
+
+  // ===== Services =====
+  private createJobService = inject(CreateJobService);
   private router = inject(Router);
 
-  isSubmitting = signal(false);
+  // ===== Dropdowns Data =====
+  departments = ['Engineering', 'Product', 'Design'];
+  EmploymentType = ['Full-time', 'Part-time', 'Contract', 'Internship'];
+  PriorityS: Priority[] = ['High', 'Low', 'None'];
 
-  form = this.fb.group({
-    title: ['', [Validators.required, Validators.minLength(3)]],
-    description: ['', [Validators.required, Validators.minLength(20)]],
-    requirementsText: ['', [Validators.required]],
-    location: [''],
-    employmentType: ['FullTime', [Validators.required]],
-    salaryMin: [null as number | null],
-    salaryMax: [null as number | null],
-    currency: ['USD'],
-    applicationDeadline: [''],
-    requiredSkills: ['']
+  // ===== Form =====
+  newJobForm: FormGroup = new FormGroup({
+    title: new FormControl('', Validators.required),
+    location: new FormControl('', Validators.required),
+    MinSalary: new FormControl('', Validators.required),
+    MaxSalary: new FormControl('', Validators.required),
+
+    EducationDiscription: new FormControl('', Validators.required),
+    ExperienceDiscription: new FormControl('', Validators.required),
+    TechnicalSkillDiscription: new FormControl('', Validators.required),
+    JobDiscription: new FormControl('', Validators.required),
+
+    department: new FormControl('', Validators.required),
+    employmentType: new FormControl('', Validators.required),
+    GPA: new FormControl('', Validators.required),
+    GPAPriority: new FormControl('', Validators.required),
+    ExperienceMinYears: new FormControl('', Validators.required),
+    ExperienceMaxYears: new FormControl('', Validators.required),
+    ExperiencePriority: new FormControl('', Validators.required),
+    degrees: new FormArray([]),
+    roles: new FormArray([]),
+    skills: new FormArray([])
   });
 
-  submit(): void {
-    if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
-    }
+  // ===== Getters =====
 
-    const companyId = this.authService.getCompanyId();
-    if (!companyId) {
-      this.toast.error('Unable to determine company context.');
-      return;
-    }
+  get title() { return this.newJobForm.get('title'); }
+  get location() { return this.newJobForm.get('location'); }
+  get MinSalary() { return this.newJobForm.get('MinSalary'); }
+  get MaxSalary() { return this.newJobForm.get('MaxSalary'); }
 
-    const value = this.form.getRawValue();
+  // ✅ الـ getters الجديدة
+  get EducationDiscription() { return this.newJobForm.get('EducationDiscription'); }
+  get ExperienceDiscription() { return this.newJobForm.get('ExperienceDiscription'); }
+  get TechnicalSkillDiscription() { return this.newJobForm.get('TechnicalSkillDiscription'); }
+  get JobDiscription() { return this.newJobForm.get('JobDiscription'); }
 
-    // Convert multi-line requirements textarea into a single string
-    const requirements = (value.requirementsText ?? '').trim();
+  get department() { return this.newJobForm.get('department'); }
+  get employmentType() { return this.newJobForm.get('employmentType'); }
+  get GPA() { return this.newJobForm.get('GPA'); }
+  get GPAPriority() { return this.newJobForm.get('GPAPriority'); }
+  get ExperienceMinYears() { return this.newJobForm.get('ExperienceMinYears'); }
+  get ExperienceMaxYears() { return this.newJobForm.get('ExperienceMaxYears'); }
+  get ExperiencePriority() { return this.newJobForm.get('ExperiencePriority'); }
 
-    // Combine salaryMin + salaryMax into a salaryRange string
-    const salaryRange = this.buildSalaryRange(
-      value.salaryMin,
-      value.salaryMax,
-      value.currency
+  get degrees() { return this.newJobForm.get('degrees') as FormArray; }
+  get roles() { return this.newJobForm.get('roles') as FormArray; }
+  get skills() { return this.newJobForm.get('skills') as FormArray; }
+
+  // ===== Degrees Methods =====
+
+  addDegree() {
+    this.degrees.push(
+      new FormGroup({
+        degreeName: new FormControl('', Validators.required),
+        degreePriority: new FormControl('', Validators.required)
+      })
     );
+  }
 
-    // Parse comma-separated skills into an array
-    const requiredSkills = (value.requiredSkills ?? '')
-      .split(',')
-      .map((s: string) => s.trim())
-      .filter((s: string) => s.length > 0);
+  removeDegree(index: number) {
+    this.degrees.removeAt(index);
+  }
 
-    // Format application deadline to match ASP.NET expectations (append seconds)
-    let safeDeadline = value.applicationDeadline || undefined;
-    if (safeDeadline && safeDeadline.includes('T') && !safeDeadline.includes(':00', safeDeadline.length - 3)) {
-      safeDeadline = safeDeadline + ':00';
+  // ===== Roles Methods =====
+
+  addRole() {
+    this.roles.push(
+      new FormGroup({
+        roleName: new FormControl('', Validators.required),
+        rolePriority: new FormControl('', Validators.required)
+      })
+    );
+  }
+
+  removeRole(index: number) {
+    this.roles.removeAt(index);
+  }
+
+  // ===== Skills Methods =====
+
+  addSkill() {
+    this.skills.push(
+      new FormGroup({
+        skillName: new FormControl('', Validators.required),
+        skillPriority: new FormControl('', Validators.required)
+      })
+    );
+  }
+
+  removeSkill(index: number) {
+    this.skills.removeAt(index);
+  }
+
+  // ===== Submit =====
+
+  onSubmit() {
+    
+
+    if (this.newJobForm.valid) {
+      if (this.newJobForm.invalid) {
+      this.newJobForm.markAllAsTouched();
+      return;
     }
 
-    const payload: CreateJobPostingDto = {
-      title: value.title ?? '',
-      description: value.description ?? '',
-      requirements,
-      location: value.location || undefined,
-      employmentType: value.employmentType ?? 'FullTime',
-      companyId,
-      isActive: true,
-      salaryRange: salaryRange || undefined,
-      applicationDeadline: safeDeadline,
-      requiredSkills: requiredSkills.length > 0 ? requiredSkills : undefined
-    };
+    const formValue = this.newJobForm.value as NewJobFormValue;
 
-    console.log('[CreateJob] Payload:', payload);
+    console.log('to the back', formValue);
 
-    this.isSubmitting.set(true);
-    this.jobService.createJob(payload).subscribe({
-      next: () => {
-        this.isSubmitting.set(false);
-        this.toast.success('Job created successfully.');
-        this.router.navigate(['/recruiter/jobs']);
+    this.createJobService.createJob(formValue).subscribe({
+      next: (response) => {
+        console.log('jop created successfully', response);
+        this.router.navigate(['/jobs']);
       },
       error: (err) => {
-        this.isSubmitting.set(false);
-        const serverMsg = err?.error?.title || err?.error?.message || 'Failed to create job.';
-        this.toast.error(serverMsg);
-        console.error('[CreateJobPage] Submission failed:', err);
+        console.error('Error happen me', err);
       }
     });
+    }
   }
 
-  /** Combines salary fields into a human-readable range string */
-  private buildSalaryRange(
-    min: number | null,
-    max: number | null,
-    currency: string | null
-  ): string {
-    const cur = currency || 'USD';
-    if (min && max) {
-      return `${cur} ${min.toLocaleString()} - ${max.toLocaleString()}`;
-    }
-    if (min) {
-      return `${cur} ${min.toLocaleString()}+`;
-    }
-    if (max) {
-      return `Up to ${cur} ${max.toLocaleString()}`;
-    }
-    return '';
-  }
 }
-

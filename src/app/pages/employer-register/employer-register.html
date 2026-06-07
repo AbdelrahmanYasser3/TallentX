@@ -56,31 +56,48 @@
         <div class="space-y-4">
           <h2 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Recruiter Details</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- First Name -->
             <div class="space-y-2">
               <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">First Name</label>
               <input formControlName="firstName" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary/40 text-sm font-medium" placeholder="Sarah" type="text"/>
               <p *ngIf="f['firstName'].invalid && f['firstName'].touched" class="text-xs text-error mt-1">Required</p>
             </div>
+
+            <!-- Last Name -->
             <div class="space-y-2">
               <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Last Name</label>
               <input formControlName="lastName" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary/40 text-sm font-medium" placeholder="Connor" type="text"/>
               <p *ngIf="f['lastName'].invalid && f['lastName'].touched" class="text-xs text-error mt-1">Required</p>
             </div>
+
+            <!-- Email -->
             <div class="space-y-2">
               <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Email</label>
               <input formControlName="email" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary/40 text-sm font-medium" placeholder="recruiter@company.com" type="email"/>
               <p *ngIf="f['email'].invalid && f['email'].touched" class="text-xs text-error mt-1">Valid email required</p>
             </div>
-            <div class="space-y-2">
-              <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Password</label>
-              <input formControlName="password" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary/40 text-sm font-medium" placeholder="Strong password" type="password"/>
+
+            <!-- Password -->
+            <div class="space-y-2 relative">
+              <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Password </label>
+              <input
+                #pass
+              formControlName="password" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary/40 text-sm font-medium" placeholder="Strong password " type="password" />
+              <span class="absolute right-4 top-12 -translate-y-1/2 text-outline cursor-pointer" (click)="showPass(pass)" >
+                 <i class="fa-solid fa-eye" style="color:#0058BE;"></i>
+              </span>
               <p *ngIf="f['password'].invalid && f['password'].touched" class="text-xs text-error mt-1">Minimum 8 chars with uppercase, lowercase, number, and special char</p>
             </div>
+
+            <!-- Phone Number -->
             <div class="space-y-2">
               <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Phone Number</label>
               <input formControlName="phoneNumber" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary/40 text-sm font-medium" placeholder="+1 (555) 000-0000" type="text"/>
               <p *ngIf="f['phoneNumber'].invalid && f['phoneNumber'].touched" class="text-xs text-error mt-1">Required</p>
             </div>
+
+            <!-- Gender -->
             <div class="space-y-2">
               <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Gender</label>
               <select formControlName="gender" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary/40 text-sm font-medium">
@@ -89,11 +106,14 @@
                 <option value="Other">Other</option>
               </select>
             </div>
+
+            <!-- Date -->
             <div class="space-y-2 md:col-span-2">
               <label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Date Of Birth</label>
               <input formControlName="dateOfBirth" class="w-full px-4 py-3 rounded-xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary/40 text-sm font-medium" type="date"/>
               <p *ngIf="f['dateOfBirth'].invalid && f['dateOfBirth'].touched" class="text-xs text-error mt-1">Required</p>
             </div>
+
           </div>
         </div>
 

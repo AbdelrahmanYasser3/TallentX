@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
 import { candidateGuard, recruiterGuard, adminRecruiterGuard } from './core/guards/role.guard';
-import { pendingChangesGuard } from './core/guards/pending-changes.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -44,11 +43,6 @@ export const routes: Routes = [
     path: 'candidate/interviews',
     canActivate: [candidateGuard],
     loadComponent: () => import('./pages/candidate-interviews/candidate-interviews').then(m => m.CandidateInterviewsPage),
-  },
-  {
-    path: 'candidate/assessments',
-    canActivate: [candidateGuard],
-    loadComponent: () => import('./pages/take-assessment/take-assessment').then(m => m.TakeAssessmentPage),
   },
   {
     path: 'candidate/assessments/:id',
@@ -95,46 +89,13 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/recruiter-applicants/recruiter-applicants').then(m => m.RecruiterApplicantsPage),
   },
   {
-    path: 'recruiter/jobs/:jobId/pipeline',
-    canActivate: [recruiterGuard],
-    loadComponent: () => import('./pages/recruiter-applicants/recruiter-applicants').then(m => m.RecruiterApplicantsPage),
-  },
-  {
-    path: 'recruiter/jobs/:jobId/applications/:candidateId',
-    canActivate: [recruiterGuard],
-    loadComponent: () =>
-      import('./pages/recruiter-candidate-detail/recruiter-candidate-detail').then(
-        (m) => m.RecruiterCandidateDetailPage
-      ),
-  },
-  {
-    path: 'recruiter/candidates/:candidateId',
-    canActivate: [recruiterGuard],
-    loadComponent: () =>
-      import('./pages/recruiter-candidate-detail/recruiter-candidate-detail').then(
-        (m) => m.RecruiterCandidateDetailPage
-      ),
-  },
-  {
     path: 'recruiter/interviews',
     canActivate: [recruiterGuard],
     loadComponent: () => import('./pages/interview-scheduling/interview-scheduling').then(m => m.InterviewSchedulingPage),
   },
   {
-    path: 'recruiter/assessments',
-    canActivate: [recruiterGuard],
-    loadComponent: () => import('./pages/assessment-builder-list/assessment-builder-list').then(m => m.AssessmentBuilderListPage),
-  },
-  {
     path: 'recruiter/assessments/new',
     canActivate: [recruiterGuard],
-    canDeactivate: [pendingChangesGuard],
-    loadComponent: () => import('./pages/create-ai-interview/create-ai-interview').then(m => m.CreateAiInterviewPage),
-  },
-  {
-    path: 'recruiter/assessments/builder',
-    canActivate: [recruiterGuard],
-    canDeactivate: [pendingChangesGuard],
     loadComponent: () => import('./pages/create-ai-interview/create-ai-interview').then(m => m.CreateAiInterviewPage),
   },
 
@@ -157,10 +118,6 @@ export const routes: Routes = [
   {
     path: 'companies',
     loadComponent: () => import('./pages/companies/companies').then(m => m.CompaniesPage),
-  },
-  {
-    path: 'companies/:id',
-    loadComponent: () => import('./pages/public-company-profile/public-company-profile').then(m => m.PublicCompanyProfilePage),
   },
   {
     path: 'public-company-profile',

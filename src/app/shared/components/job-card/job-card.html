@@ -1,5 +1,5 @@
 <!-- Job Card - Premium UI -->
-<article class="bg-surface-container-lowest rounded-3xl p-6 shadow-xl shadow-blue-900/5 flex flex-col sm:flex-row gap-6 hover:translate-y-[-2px] transition-transform duration-300 relative group" *ngIf="job">
+<article class="bg-surface-container-lowest rounded-3xl p-6 shadow-xl shadow-blue-900/5 flex flex-col sm:flex-row gap-6 hover:translate-y-[-2px] transition-transform duration-300 relative group mt-7" *ngIf="job">
   
   <button *ngIf="showSaveButton" (click)="onSave()" [disabled]="isSaving || job.isSaved" class="absolute top-6 right-6 p-2 transition-colors z-10" [ngClass]="job.isSaved ? 'text-primary' : 'text-on-surface-variant hover:text-primary'">
     <span class="material-symbols-outlined" [style.font-variation-settings]="job.isSaved ? '\'FILL\' 1' : '\'FILL\' 0'">bookmark</span>

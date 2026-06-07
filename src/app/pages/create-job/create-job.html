@@ -1,77 +1,421 @@
-<div class="min-h-screen bg-surface-container-lowest p-6 md:p-8">
-  <div class="mx-auto max-w-3xl space-y-6">
-    <header class="flex items-center justify-between">
-      <div>
-        <p class="text-label-md uppercase tracking-widest text-primary">Recruiter Workspace</p>
-        <h1 class="mt-1 text-display-sm text-on-surface">Create Job</h1>
-      </div>
-      <a routerLink="/recruiter/jobs" class="rounded-xl bg-surface-container px-4 py-2 text-label-md text-on-surface">Back</a>
-    </header>
+<body class="text-sm" data-mode="connect">
+<form class="max-w-4xl mx-auto py-10 px-6" [formGroup]="newJobForm" (ngSubmit)="onSubmit()">
 
-    <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4 rounded-2xl bg-surface-container p-6 shadow-sm">
-      <div>
-        <label class="mb-1 block text-label-md text-on-surface">Title</label>
-        <input formControlName="title" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface" />
-      </div>
-
-      <div>
-        <label class="mb-1 block text-label-md text-on-surface">Description</label>
-        <textarea formControlName="description" rows="5" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface"></textarea>
-      </div>
-
-      <div>
-        <label class="mb-1 block text-label-md text-on-surface">Requirements (one per line)</label>
-        <textarea formControlName="requirementsText" rows="4" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface"></textarea>
-      </div>
-
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-        <div>
-          <label class="mb-1 block text-label-md text-on-surface">Employment Type</label>
-          <select formControlName="employmentType" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface">
-            <option value="FullTime">FullTime</option>
-            <option value="PartTime">PartTime</option>
-            <option value="Contract">Contract</option>
-            <option value="Internship">Internship</option>
-          </select>
-        </div>
-        <div>
-          <label class="mb-1 block text-label-md text-on-surface">Application Deadline</label>
-          <input type="datetime-local" formControlName="applicationDeadline" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface" />
-        </div>
-        <div>
-          <label class="mb-1 block text-label-md text-on-surface">Currency</label>
-          <select formControlName="currency" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface">
-            <option value="USD">USD ($)</option>
-            <option value="EUR">EUR (€)</option>
-            <option value="GBP">GBP (£)</option>
-            <option value="EGP">EGP (E£)</option>
-          </select>
-        </div>
-      </div>
-
-      <div>
-        <label class="mb-1 block text-label-md text-on-surface">Required Skills (comma separated)</label>
-        <input type="text" formControlName="requiredSkills" placeholder="e.g. Angular, TypeScript, HTML" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface" />
-      </div>
-
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
-        <div>
-          <label class="mb-1 block text-label-md text-on-surface">Location</label>
-          <input formControlName="location" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface" />
-        </div>
-        <div>
-          <label class="mb-1 block text-label-md text-on-surface">Salary Min</label>
-          <input type="number" formControlName="salaryMin" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface" />
-        </div>
-        <div>
-          <label class="mb-1 block text-label-md text-on-surface">Salary Max</label>
-          <input type="number" formControlName="salaryMax" class="w-full rounded-xl bg-surface-container-lowest px-4 py-3 text-on-surface" />
-        </div>
-      </div>
-
-      <button type="submit" [disabled]="isSubmitting()" class="w-full rounded-xl bg-primary px-4 py-3 text-label-lg text-on-primary disabled:opacity-60">
-        {{ isSubmitting() ? 'Creating...' : 'Create Job' }}
-      </button>
-    </form>
+  <!-- BEGIN: Title Section -->
+  <div class="flex justify-between items-start mb-8" data-purpose="page-title-section">
+    <div>
+      <h1 class="text-2xl font-bold text-text-heading">Create New Job Requisition</h1>
+      <p class="text-text-muted mt-1">Define the role, requirements, and AI matching parameters.</p>
+    </div>
+    <div class="flex space-x-3">
+      <button 
+      type="submit" class="px-4 py-2 bg-brand-purple text-white rounded-lg font-medium bg-indigo-600 hover:bg-indigo-700 cursor-pointer" >Publish Job</button>
+    </div>
   </div>
+  <!-- END: Title Section -->
+
+
+  <!-- BEGIN: Core Details Section -->
+  <section class="section-card p-6 mb-6" data-purpose="core-details-container">
+    <div class="flex items-center space-x-2 mb-6">
+      <div class="w-8 h-8 bg-indigo-50 rounded-md flex items-center justify-center text-brand-purple">
+        <i class="fa-regular fa-clipboard"></i>
+      </div>
+      <h2 class="text-lg font-bold text-gray-800">Core Details</h2>
+    </div>
+    <div class="grid grid-cols-2 gap-6">
+
+      <!-- Job Title -->
+      <div class="col-span-2">
+        <label class="block text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-wider">Job Title</label>
+        <input class="w-full border-gray-200 rounded-lg focus:ring-brand-purple focus:border-brand-purple py-2.5"
+          placeholder="e.g. Senior Frontend Engineer" type="text"
+          formControlName="title"
+          value="Backend Software Engineering Intern (ASP.NET Core)">
+        <p *ngIf="title?.invalid && title?.touched" class="text-red-500 text-xs mt-1">Job title is required</p>
+      </div>
+
+      <!-- Department -->
+      <div>
+        <label class="block text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-wider">Department</label>
+        <select formControlName="department"
+          class="w-full border-gray-200 rounded-lg focus:ring-brand-purple focus:border-brand-purple py-2.5">
+          <option value="" disabled>-- Select Department --</option>
+          <option *ngFor="let dept of departments" [value]="dept">{{dept}}</option>
+        </select>
+        <p *ngIf="department?.invalid && department?.touched" class="text-red-500 text-xs mt-1">
+          Please select a department
+        </p>
+      </div>
+
+      <!-- Location -->
+      <div>
+        <label class="block text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-wider">Location</label>
+        <input class="w-full border-gray-200 rounded-lg focus:ring-brand-purple focus:border-brand-purple py-2.5"
+          placeholder="e.g. San Francisco, CA or Remote" type="text"
+          formControlName="location">
+        <p *ngIf="location?.invalid && location?.touched" class="text-red-500 text-xs mt-1">Location is required</p>
+      </div>
+
+      <!-- Employment Type -->
+      <div>
+        <label class="block text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-wider">Employment Type</label>
+        <select formControlName="employmentType"
+          class="w-full border-gray-200 rounded-lg focus:ring-brand-purple focus:border-brand-purple py-2.5">
+          <option value="" disabled>-- Select Employment Type --</option>
+          <option *ngFor="let type of EmploymentType" [value]="type">{{type}}</option>
+        </select>
+        <p *ngIf="employmentType?.invalid && employmentType?.touched" class="text-red-500 text-xs mt-1">
+          Please select an employment type
+        </p>
+      </div>
+
+      <!-- Salary Range -->
+      <div>
+        <label class="block text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-wider">Salary Range (Optional)</label>
+        <div class="flex items-center space-x-2">
+          <input class="w-full border-gray-200 rounded-lg focus:ring-brand-purple focus:border-brand-purple py-2.5" placeholder="Min" type="text" formControlName="MinSalary">
+          <span class="text-gray-400">-</span>
+          <input class="w-full border-gray-200 rounded-lg focus:ring-brand-purple focus:border-brand-purple py-2.5" placeholder="Max" type="text" formControlName="MaxSalary">
+        </div>
+        <div class="flex gap-2 mt-1">
+          <p *ngIf="MinSalary?.invalid && MinSalary?.touched" class="text-red-500 text-xs mt-1">Minimum salary is required</p>
+          <p *ngIf="MaxSalary?.invalid && MaxSalary?.touched" class="text-red-500 text-xs mt-1">Maximum salary is required</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END: Core Details Section -->
+
+  <!-- BEGIN: Requirements Section -->
+  <section class="section-card p-6 mb-6" data-purpose="requirements-container">
+    <div class="flex items-center space-x-2 mb-2">
+      <div class="w-8 h-8 bg-indigo-50 rounded-md flex items-center justify-center text-brand-purple">
+        <i class="fa-solid fa-list-check"></i>
+      </div>
+      <h2 class="text-lg font-bold text-gray-800">Requirements</h2>
+    </div>
+    <p class="text-text-muted mb-6 text-xs">Build criteria for AI candidate matching.</p>
+    <div class="space-y-6">
+
+      <!-- EDUCATION SUB-SECTION -->
+      <div class="" data-purpose="education-section">
+        <div class="requirement-card bg-white">
+          <div class="flex justify-between items-start mb-4 border-b border-gray-100 pb-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-brand-purple">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800">Education</h3>
+                <p class="text-[11px] text-gray-500">Degree &amp; Academic history</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Description</label>
+            <textarea class="w-full border-gray-200 rounded-lg text-sm py-2 focus:ring-brand-purple focus:border-brand-purple" rows="2" formControlName="EducationDiscription">Currently pursuing or recently graduated with a degree in Computer Science, Software Engineering, or a related technical field.</textarea>
+            <p *ngIf="EducationDiscription?.invalid && EducationDiscription?.touched" class="text-red-500 text-xs mt-1">Education description is required</p>
+          </div>
+
+          <!-- ✅ Degrees FormArray -->
+          <div class="mb-4">
+            <div class="flex justify-between items-center mb-2">
+              <label class="text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-wider">Required Degrees</label>
+              <label class="text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-wider -translate-x-36">Priority</label>
+            </div>
+            <div formArrayName="degrees" class="space-y-2 mb-2">
+              <div *ngFor="let degree of degrees.controls; let i = index"
+                [formGroupName]="i"
+                class="flex flex-col space-y-1">
+
+                <div class="flex items-center space-x-2">
+                  <input formControlName="degreeName"
+                    class="flex-1 border-gray-200 rounded-lg text-sm py-2" type="text" placeholder="e.g. Computer Science">
+
+                  <div class="priority-container w-40">
+                    <select formControlName="degreePriority" class="priority-select w-full badge-high">
+                      <option value="" disabled>-- Priority --</option>
+                      <option *ngFor="let prio of PriorityS" [value]="prio">{{prio}}</option>
+                    </select>
+                    <div class="priority-icon"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+
+                  <button type="button" (click)="removeDegree(i)"
+                    class="p-2 text-gray-400 hover:text-red-500">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+
+                <!-- ✅ Validation Messages -->
+                <div class="flex gap-4 px-1">
+                  <div class="inline-block  " style="width: 75%;">
+                    <p *ngIf="degree.get('degreeName')?.invalid && degree.get('degreeName')?.touched"
+                    class="text-red-500 text-xs">Degree name is required</p>
+                  </div>
+                  
+                  <div class="inline-block  " style="width: 25%;">
+                    <p *ngIf="degree.get('degreePriority')?.invalid && degree.get('degreePriority')?.touched"
+                    class="text-red-500 text-xs">Priority is required</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <button type="button" (click)="addDegree()"
+              class="dashed-button text-xs font-semibold py-2">
+              <i class="fa-solid fa-plus mr-1"></i> Add Degree
+            </button>
+          </div>
+
+          <!-- GPA -->
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">GPA Minimum</label>
+              <input formControlName="GPA"
+                class="w-full border-gray-200 rounded-lg text-sm py-2" max="4.0" min="0.0" step="0.5" type="number" value="2.5">
+
+              <p *ngIf="GPA?.invalid && GPA?.touched" class="text-red-500 text-xs mt-1">
+              Please enter a valid GPA between 0.0 and 4.0
+              </p>
+
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Priority</label>
+              <div class="priority-container w-full">
+                <select formControlName="GPAPriority" class="priority-select w-full badge-low">
+                  <option value="" disabled>-- Priority --</option>
+                  <option class="text-gray-900" *ngFor="let prio of PriorityS" [value]="prio">{{prio}}</option>
+                </select>
+               
+                <div class="priority-icon"><i class="fa-solid fa-chevron-down"></i></div>
+                
+              </div>
+               <p *ngIf="GPAPriority?.invalid && GPAPriority?.touched" class="text-red-500 text-xs mt-1">
+              Please choose a priority level for GPA requirement
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- END EDUCATION -->
+
+      <!-- EXPERIENCE SUB-SECTION -->
+      <div data-purpose="experience-section">
+        <div class="requirement-card bg-white">
+          <div class="flex justify-between items-start mb-4 border-b border-gray-100 pb-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-brand-purple">
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800">Experience</h3>
+                <p class="text-[11px] text-gray-500">Professional background</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Description</label>
+            <textarea class="w-full border-gray-200 rounded-lg text-sm py-2 focus:ring-brand-purple focus:border-brand-purple" rows="2"
+              formControlName="ExperienceDiscription">Internship-level position. No prior professional experience required.</textarea>
+
+               <p *ngIf="ExperienceDiscription?.invalid && ExperienceDiscription?.touched" class="text-red-500 text-xs mt-1">
+              Experience description is required
+              </p>
+          </div>
+
+          <!-- ✅ Roles FormArray -->
+          <div class="mb-4">
+            <div class="flex justify-between items-center mb-2">
+              <label class="text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-wider">Role</label>
+              <label class="text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-wider -translate-x-36">Priority</label>
+            </div>
+            <div formArrayName="roles" class="space-y-2 mb-2">
+              <div *ngFor="let role of roles.controls; let i = index"
+                [formGroupName]="i"
+                class="flex flex-col space-y-1">
+
+                <div class="flex items-center space-x-2">
+                  <input formControlName="roleName"
+                    class="flex-1 border-gray-200 rounded-lg text-sm py-2" type="text" placeholder="e.g. Backend Developer">
+
+                  <div class="priority-container w-40">
+                    <select formControlName="rolePriority" class="priority-select w-full badge-high">
+                      <option value="" disabled>-- Priority --</option>
+                      <option class="text-gray-900" *ngFor="let prio of PriorityS" [value]="prio">{{prio}}</option>
+                    </select>
+                    <div class="priority-icon"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+
+                  <button type="button" (click)="removeRole(i)"
+                    class="p-2 text-gray-400 hover:text-red-500">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+
+                <!-- ✅ Validation Messages -->
+                <div class="flex gap-4 px-1">
+                  <div class="inline-block  " style="width: 75%;">
+                    <p *ngIf="role.get('roleName')?.invalid && role.get('roleName')?.touched"
+                    class="text-red-500 text-xs">Role name is required</p>
+                  </div>
+                  
+                  <div class="inline-block  " style="width: 25%;">
+                    <p *ngIf="role.get('rolePriority')?.invalid && role.get('rolePriority')?.touched"
+                    class="text-red-500 text-xs">Priority is required</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <button type="button" (click)="addRole()"
+              class="dashed-button text-xs font-semibold py-2">
+              <i class="fa-solid fa-plus mr-1"></i> Add Role
+            </button>
+          </div>
+
+          <!-- Experience Years -->
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+  <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Years (Min)</label>
+  <input formControlName="ExperienceMinYears"
+    class="w-full border-gray-200 rounded-lg text-sm py-2" 
+    type="number" 
+    min="0"
+    value="0">
+  <ul *ngIf="ExperienceMinYears?.invalid && ExperienceMinYears?.touched" class="text-red-500 text-xs mt-1">
+    @if(ExperienceMinYears?.value < 0){
+      <li>Must be more than 0</li>
+    } @else {
+      <li>Minimum experience is required</li>
+    }
+  </ul>
 </div>
+            <div>
+              <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Years (Max)</label>
+              <input formControlName="ExperienceMaxYears"
+                class="w-full border-gray-200 rounded-lg text-sm py-2" type="number" value="2">
+                
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Priority</label>
+              <div class="priority-container w-full">
+                <select formControlName="ExperiencePriority" class="priority-select w-full badge-low">
+                  <option value="" disabled>-- Priority --</option>
+                  <option class="text-gray-900" *ngFor="let prio of PriorityS" [value]="prio">{{prio}}</option>
+                </select>
+                <div class="priority-icon"><i class="fa-solid fa-chevron-down"></i></div>
+
+                
+              </div>
+              <p *ngIf="ExperiencePriority?.invalid && ExperiencePriority?.touched" class="text-red-500 text-xs mt-1">
+                  priority is required 
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- END EXPERIENCE -->
+
+      <!-- Technical-SECTION -->
+      <div data-purpose="skills-section">
+        <div class="requirement-card bg-white">
+          <div class="flex justify-between items-start mb-4 border-b border-gray-100 pb-4">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-brand-purple">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-800">Technical Skills</h3>
+                <p class="text-[11px] text-gray-500">Stack &amp; Tooling</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Description</label>
+            <textarea class="w-full border-gray-200 rounded-lg text-sm py-2 focus:ring-brand-purple focus:border-brand-purple" rows="2" formControlName="TechnicalSkillDiscription">Required technical skills for ASP.NET Core backend development.</textarea>
+            <p *ngIf="TechnicalSkillDiscription?.invalid && TechnicalSkillDiscription?.touched" class="text-red-500 text-xs mt-1">
+                  Technical Skill Description is required 
+              </p>
+          </div>
+
+          <!-- ✅ Skills FormArray -->
+          <div class="mb-6">
+            <div class="flex justify-between items-center mb-2">
+              <label class="text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-wider">Skills</label>
+              <label class="text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-wider -translate-x-36">Priority</label>
+            </div>
+            <div formArrayName="skills" class="space-y-2 mb-2">
+              <div *ngFor="let skill of skills.controls; let i = index"
+                [formGroupName]="i"
+                class="flex flex-col space-y-1">
+
+                <div class="flex items-center space-x-2">
+                  <input formControlName="skillName"
+                    class="flex-1 border-gray-200 rounded-lg text-sm py-2" type="text" placeholder="e.g. C#">
+
+                  <div class="priority-container w-40">
+                    <select formControlName="skillPriority" class="priority-select w-full badge-high">
+                      <option value="" disabled>-- Priority --</option>
+                      <option class="text-gray-900" *ngFor="let prio of PriorityS" [value]="prio">{{prio}}</option>
+                    </select>
+                    <div class="priority-icon"><i class="fa-solid fa-chevron-down"></i></div>
+                  </div>
+
+                  <button type="button" (click)="removeSkill(i)"
+                    class="p-2 text-gray-400 hover:text-red-500">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+
+                <!-- ✅ Validation Messages -->
+                <div class=" width-full "> 
+                  <div class="inline-block  " style="width: 75%;">
+                    <p clss=" " *ngIf="skill.get('skillName')?.invalid && skill.get('skillName')?.touched"
+                    class="text-red-500 text-xs">Skill name is required</p>
+                  </div>
+                  
+                  <div class="inline-block " style="width: 25%;">
+                    <p clss="" *ngIf="skill.get('skillPriority')?.invalid && skill.get('skillPriority')?.touched"
+                    class="text-red-500 text-xs">Priority is required</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <button type="button" (click)="addSkill()"
+              class="dashed-button text-xs font-semibold py-2">
+              <i class="fa-solid fa-plus mr-1"></i> Add Skill
+            </button>
+          </div>
+
+        </div>
+      </div>
+      <!-- END SKILLS -->
+
+    </div>
+  </section>
+  <!-- END: Requirements Section -->
+
+  <!-- BEGIN: Job Description Section -->
+  <section class="section-card p-6" data-purpose="job-description-container">
+    <div class="flex justify-between items-center mb-4">
+      <label class="block text-[10px] font-bold text-gray-500 uppercase tracking-wider">Job Description</label>
+      
+    </div>
+    <textarea class="w-full border-gray-200 rounded-lg focus:ring-brand-purple focus:border-brand-purple resize-none"
+      placeholder="Describe the role, responsibilities, and impact..." rows="6" formControlName="JobDiscription"></textarea>
+      <p *ngIf="JobDiscription?.invalid && JobDiscription?.touched" class="text-red-500 text-xs mt-1">
+                  Job Description is required 
+              </p>
+  </section>
+  <!-- END: Job Description Section -->
+
+</form>
+</body>

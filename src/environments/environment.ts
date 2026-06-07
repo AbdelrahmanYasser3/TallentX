@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://ies.runasp.net/api',
-  baseUrl: 'http://ies.runasp.net',
-  signalRUrl: 'http://ies.runasp.net/hubs'
+  apiUrl: 'https://ies.runasp.net/api',
+  baseUrl: 'https://ies.runasp.net',
+  signalRUrl: 'https://ies.runasp.net/hubs'
 };
