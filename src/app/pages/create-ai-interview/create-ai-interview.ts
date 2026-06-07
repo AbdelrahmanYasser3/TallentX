@@ -11,6 +11,7 @@ import {
   AssessmentBuilderPayload,
   AssessmentDetailDto,
   QuestionType,
+  QuestionPayload,
 } from '../../core/models/assessment.models';
 
 @Component({
@@ -34,10 +35,10 @@ export class CreateAiInterviewPage implements OnInit {
   private lastSavedSnapshot = '';
 
   readonly questionTypes: QuestionType[] = [
-    'Coding Challenge',
     'Multiple Choice',
-    'Conceptual',
+    'True/False',
     'Text Answer',
+    'Coding Challenge',
   ];
 
   readonly builderForm = this.fb.nonNullable.group({
@@ -144,6 +145,10 @@ export class CreateAiInterviewPage implements OnInit {
       ? this.assessmentService.update(id, payload)
       : this.assessmentService.create(payload);
 
+    console.log(
+      'Assessment Payload',
+      JSON.stringify(payload, null, 2)
+    );
     req$
       .pipe(finalize(() => (isPublish ? this.isPublishing : this.isSaving).set(false)))
       .subscribe({
@@ -153,37 +158,69 @@ export class CreateAiInterviewPage implements OnInit {
           this.markSnapshotAsSaved();
           this.toast.success(status === 'Published' ? 'Assessment published.' : 'Draft saved.');
         },
-        error: () => this.toast.error('Failed to save assessment.'),
+        error: (err) => {
+          const userMessage = err?.userMessage || `Failed to save assessment.`;
+          const validationErrors = err?.error?.errors?.validation;
+          if (validationErrors && Array.isArray(validationErrors)) {
+            this.toast.error(validationErrors[0] || userMessage);
+          } else {
+            this.toast.error(userMessage);
+          }
+        },
       });
   }
 
   private toPayload(status: 'Draft' | 'Published'): AssessmentBuilderPayload {
     const v = this.builderForm.getRawValue();
+
+    // Map backend AssessmentType: 0=Technical, 1=Personality, 2=Mixed
+    // For now, default to Technical (0) - can be extended to let users choose
+    const assessmentType = 0; // AssessmentType.Technical
+
     return {
       id: this.assessmentId() ?? undefined,
-      jobPostingId: Number(v.jobPostingId),
+      jobPostId: Number(v.jobPostingId),  // Changed from 'jobPostingId' to 'jobPostId'
       title: v.title.trim(),
       description: v.description.trim(),
+      type: assessmentType,               // Changed from 'status' to 'type' with numeric value
       timeLimitMinutes: Number(v.timeLimitMinutes),
-      passingScore: Number(v.passingScore || 0),
-      status,
-      questions: v.questions.map((q: any) => ({
-        id: Number(q.id),
-        type: q.type,
-        title: String(q.title || '').trim(),
-        description: String(q.description || '').trim(),
-        points: Number(q.points),
-        timeLimitMinutes: Number(q.timeLimitMinutes),
-        required: Boolean(q.required),
-        options: q.type === 'Multiple Choice'
-          ? String(q.options || '')
+      isAiGenerated: true,                // Mark as AI generated
+      questions: v.questions.map((q: any, index: number): QuestionPayload => {
+        // Convert options array to JSON string for MCQ
+        let optionsStr: string | undefined;
+        if (q.type === 'Multiple Choice' && q.options) {
+          const optionsList = typeof q.options === 'string'
+            ? String(q.options || '')
               .split('\n')
-              .map((x) => x.trim())
+              .map((x: string) => x.trim())
               .filter(Boolean)
-          : undefined,
-        starterCode: q.type === 'Coding Challenge' ? q.starterCode : undefined,
-        rubric: q.rubric ? String(q.rubric) : undefined,
-      })),
+            : Array.isArray(q.options) ? q.options : [];
+          optionsStr = JSON.stringify(optionsList);
+        }
+
+        return {
+          id: Number(q.id),
+          text: String(q.title || '').trim(),  // Changed from 'title' to 'text' (backend requirement)
+          type: q.type as QuestionType,
+          options: optionsStr,                 // JSON string for MCQ
+          correctAnswer: q.correctAnswer,      // Include answer key if provided
+          points: Number(q.points),
+          orderIndex: index,                   // REQUIRED: position in assessment
+
+          // Legacy properties for backward compatibility
+          title: String(q.title || '').trim(),
+          description: String(q.description || '').trim(),
+          timeLimitMinutes: Number(q.timeLimitMinutes),
+          required: Boolean(q.required),
+          rubric: q.rubric ? String(q.rubric) : undefined,
+          starterCode: q.type === 'Coding Challenge' ? q.starterCode : undefined,
+        };
+      }),
+
+      // Legacy properties for backward compatibility
+      jobPostingId: Number(v.jobPostingId),
+      status,
+      passingScore: Number(v.passingScore || 0),
     };
   }
 
@@ -201,9 +238,10 @@ export class CreateAiInterviewPage implements OnInit {
           this.patchFromAssessment(assessment);
           this.markSnapshotAsSaved();
         },
-        error: () => {
+        error: (err) => {
+          const userMessage = err?.userMessage || 'Unable to load assessment. Starting a new draft.';
           if (this.questions.length === 0) this.addQuestion();
-          this.toast.error('Unable to load assessment. Starting a new draft.');
+          this.toast.error(userMessage);
         },
       });
   }

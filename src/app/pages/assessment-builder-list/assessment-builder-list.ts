@@ -35,9 +35,10 @@ export class AssessmentBuilderListPage implements OnInit {
       .pipe(finalize(() => this.isLoading.set(false)))
       .subscribe({
         next: (items) => this.assessments.set(items ?? []),
-        error: () => {
+        error: (err) => {
+          const userMessage = err?.userMessage || 'Failed to load assessments.';
           this.assessments.set([]);
-          this.toast.error('Failed to load assessments.');
+          this.toast.error(userMessage);
         },
       });
   }
@@ -60,7 +61,10 @@ export class AssessmentBuilderListPage implements OnInit {
         this.toast.success('Assessment published.');
         this.load();
       },
-      error: () => this.toast.error('Failed to publish assessment.'),
+      error: (err) => {
+        const userMessage = err?.userMessage || 'Failed to publish assessment.';
+        this.toast.error(userMessage);
+      },
     });
   }
 
@@ -71,7 +75,10 @@ export class AssessmentBuilderListPage implements OnInit {
         this.toast.success('Assessment deleted.');
         this.load();
       },
-      error: () => this.toast.error('Failed to delete assessment.'),
+      error: (err) => {
+        const userMessage = err?.userMessage || 'Failed to delete assessment.';
+        this.toast.error(userMessage);
+      },
     });
   }
 }

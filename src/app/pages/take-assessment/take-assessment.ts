@@ -71,7 +71,11 @@ export class TakeAssessmentPage implements OnInit, OnDestroy {
       .pipe(finalize(() => this.isLoading.set(false)))
       .subscribe({
         next: (items) => this.assigned.set(items ?? []),
-        error: () => this.assigned.set([]),
+        error: (err) => {
+          const userMessage = err?.userMessage || 'Failed to load assigned assessments.';
+          this.toast.error(userMessage);
+          this.assigned.set([]);
+        },
       });
   }
 
@@ -88,8 +92,9 @@ export class TakeAssessmentPage implements OnInit, OnDestroy {
           this.restoreAutosave();
           this.startTimer((data.timeLimitMinutes ?? 60) * 60);
         },
-        error: () => {
-          this.toast.error('Could not load assessment.');
+        error: (err) => {
+          const userMessage = err?.userMessage || 'Could not load assessment.';
+          this.toast.error(userMessage);
           this.router.navigate(['/candidate/assessments']);
         },
       });
@@ -149,7 +154,11 @@ export class TakeAssessmentPage implements OnInit, OnDestroy {
           this.toast.success('Assessment submitted successfully.');
           this.router.navigate(['/candidate/assessments']);
         },
-        error: () => this.toast.error('Failed to submit assessment.'),
+        error: (err) => {
+          const userMessage = err?.userMessage || 'Failed to submit assessment.';
+          const errorDetails = err?.error?.errors?.validation?.join(' ') || '';
+          this.toast.error(errorDetails || userMessage);
+        },
       });
   }
 
