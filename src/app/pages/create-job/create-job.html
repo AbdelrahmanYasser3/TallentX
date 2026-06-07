@@ -1,4 +1,3 @@
-<body class="text-sm" data-mode="connect">
 <form class="max-w-4xl mx-auto py-10 px-6" [formGroup]="newJobForm" (ngSubmit)="onSubmit()">
 
   <!-- BEGIN: Title Section -->
@@ -8,7 +7,7 @@
       <p class="text-text-muted mt-1">Define the role, requirements, and AI matching parameters.</p>
     </div>
     <div class="flex space-x-3">
-      <button class="px-4 py-2 border border-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-200 cursor-pointer">Save Draft</button>
+      <button type="button" class="px-4 py-2 border border-gray-200 text-gray-700 rounded-lg font-medium hover:bg-gray-200 cursor-pointer">Save Draft</button>
       <button 
       
       type="submit" class="px-4 py-2 bg-brand-purple text-white rounded-lg font-medium bg-indigo-600 hover:bg-indigo-700 cursor-pointer">Publish Job</button>
@@ -32,8 +31,7 @@
         <label class="block text-[10px] font-bold text-gray-500 uppercase mb-2 tracking-wider">Job Title</label>
         <input class="w-full border-gray-200 rounded-lg focus:ring-brand-purple focus:border-brand-purple py-2.5"
           placeholder="e.g. Senior Frontend Engineer" type="text"
-          formControlName="title"
-          value="Backend Software Engineering Intern (ASP.NET Core)">
+          formControlName="title">
         <p *ngIf="title?.invalid && title?.touched" class="text-red-500 text-xs mt-1">Job title is required</p>
       </div>
 
@@ -118,7 +116,7 @@
 
           <div class="mb-4">
             <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Description</label>
-            <textarea class="w-full border-gray-200 rounded-lg text-sm py-2 focus:ring-brand-purple focus:border-brand-purple" rows="2" formControlName="EducationDiscription">Currently pursuing or recently graduated with a degree in Computer Science, Software Engineering, or a related technical field.</textarea>
+            <textarea class="w-full border-gray-200 rounded-lg text-sm py-2 focus:ring-brand-purple focus:border-brand-purple" rows="2" formControlName="EducationDiscription" placeholder="Describe the education requirements..."></textarea>
             <p *ngIf="EducationDiscription?.invalid && EducationDiscription?.touched" class="text-red-500 text-xs mt-1">Education description is required</p>
           </div>
 
@@ -223,7 +221,7 @@
           <div class="mb-4">
             <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Description</label>
             <textarea class="w-full border-gray-200 rounded-lg text-sm py-2 focus:ring-brand-purple focus:border-brand-purple" rows="2"
-              formControlName="ExperienceDiscription">Internship-level position. No prior professional experience required.</textarea>
+              formControlName="ExperienceDiscription" placeholder="Describe the experience requirements..."></textarea>
 
                <p *ngIf="ExperienceDiscription?.invalid && ExperienceDiscription?.touched" class="text-red-500 text-xs mt-1">
               Experience description is required
@@ -341,7 +339,7 @@
 
           <div class="mb-4">
             <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1">Description</label>
-            <textarea class="w-full border-gray-200 rounded-lg text-sm py-2 focus:ring-brand-purple focus:border-brand-purple" rows="2" formControlName="TechnicalSkillDiscription">Required technical skills for ASP.NET Core backend development.</textarea>
+            <textarea class="w-full border-gray-200 rounded-lg text-sm py-2 focus:ring-brand-purple focus:border-brand-purple" rows="2" formControlName="TechnicalSkillDiscription" placeholder="Describe the required technical skills..."></textarea>
             <p *ngIf="TechnicalSkillDiscription?.invalid && TechnicalSkillDiscription?.touched" class="text-red-500 text-xs mt-1">
                   Technical Skill Description is required 
               </p>
@@ -377,14 +375,14 @@
                 </div>
 
                 <!-- ✅ Validation Messages -->
-                <div class=" width-full "> 
-                  <div class="inline-block  " style="width: 75%;">
-                    <p clss=" " *ngIf="skill.get('skillName')?.invalid && skill.get('skillName')?.touched"
+                <div class="flex gap-4 px-1">
+                  <div class="inline-block" style="width: 75%;">
+                    <p *ngIf="skill.get('skillName')?.invalid && skill.get('skillName')?.touched"
                     class="text-red-500 text-xs">Skill name is required</p>
                   </div>
                   
-                  <div class="inline-block " style="width: 25%;">
-                    <p clss="" *ngIf="skill.get('skillPriority')?.invalid && skill.get('skillPriority')?.touched"
+                  <div class="inline-block" style="width: 25%;">
+                    <p *ngIf="skill.get('skillPriority')?.invalid && skill.get('skillPriority')?.touched"
                     class="text-red-500 text-xs">Priority is required</p>
                   </div>
                 </div>
@@ -420,4 +418,3 @@
   <!-- END: Job Description Section -->
 
 </form>
-</body>

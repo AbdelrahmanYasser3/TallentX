@@ -23,6 +23,9 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
         // Token expired or invalid → clear session → redirect to login
         authService.clearSession();
         router.navigate(['/login'], { queryParams: { reason: 'expired' } });
+      } else if (error.status === 400 && isPublicJobRead) {
+        // Swallow 400 on public job endpoints — the service has its own fallback.
+        console.warn('[ErrorInterceptor] 400 on public job endpoint (suppressed):', req.url);
       } else if (error.status === 400) {
         // Model binding / validation failure — surface details for debugging
         const body = error.error;

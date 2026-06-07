@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, Validators, FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { CreateJobService } from '../../core/services/create-jop.service';
+import { ToastService } from '../../core/services/toast.service';
 
 // ===== Interfaces =====
 
@@ -60,6 +61,7 @@ export class CreateJobPage {
 
   // ===== Services =====
   private createJobService = inject(CreateJobService);
+  private toastService = inject(ToastService);
   private router = inject(Router);
 
   // ===== Dropdowns Data =====
@@ -81,7 +83,7 @@ export class CreateJobPage {
 
     department: new FormControl('', Validators.required),
     employmentType: new FormControl('', Validators.required),
-    GPA: new FormControl('', Validators.required),
+    GPA: new FormControl('', [Validators.required, Validators.min(0), Validators.max(4)]),
     GPAPriority: new FormControl('', Validators.required),
     ExperienceMinYears: new FormControl('', Validators.required),
     ExperienceMaxYears: new FormControl('', Validators.required),
@@ -164,11 +166,9 @@ export class CreateJobPage {
   // ===== Submit =====
 
   onSubmit() {
-    console.log(this.newJobForm.value);
-
-    if (this.newJobForm.valid) {
-      if (this.newJobForm.invalid) {
+    if (this.newJobForm.invalid) {
       this.newJobForm.markAllAsTouched();
+      this.toastService.error('Please fill in all required fields before publishing.');
       return;
     }
 
@@ -176,14 +176,14 @@ export class CreateJobPage {
 
     this.createJobService.createJob(formValue).subscribe({
       next: (response) => {
-        console.log('jop created successfully', response);
+        console.log('Job created successfully', response);
+        this.toastService.success('Job published successfully!');
         this.router.navigate(['/jobs']);
       },
       error: (err) => {
-        console.error('Error happen me', err);
+        console.error('Error creating job:', err);
       }
     });
-    }
   }
 
 }
