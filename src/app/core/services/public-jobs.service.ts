@@ -142,11 +142,17 @@ export class PublicJobsService {
     const params = this.buildParams(filters);
     const term = (filters.searchTerm || filters.keyword || '').trim();
 
+    const publicUrl = `${this.apiUrl}/public`;
     const listUrl = term ? `${this.apiUrl}/search/${encodeURIComponent(term)}` : `${this.apiUrl}`;
 
-    return this.http.get<unknown>(listUrl, { params }).pipe(
+    return this.http.get<unknown>(publicUrl, { params }).pipe(
       map((body) => extractJobsFromApiResponse(body)),
-      catchError(() => of([] as PublicJobDto[]))
+      catchError(() =>
+        this.http.get<unknown>(listUrl, { params }).pipe(
+          map((body) => extractJobsFromApiResponse(body)),
+          catchError(() => of([] as PublicJobDto[]))
+        )
+      )
     );
   }
 
