@@ -1,0 +1,338 @@
+<div class="min-h-screen bg-surface-container-lowest p-6 md:p-8">
+  <div class="mx-auto max-w-6xl space-y-7">
+    <!-- Header -->
+    <header class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div>
+        <p class="text-label-md uppercase tracking-widest text-tertiary">Recruitment Tools</p>
+        <h1 class="mt-1 text-display-sm font-bold text-on-surface">Assessments & Assignments</h1>
+        <p class="mt-2 text-body-md text-on-surface-variant">Create coding tests, add Google Docs assignments, or generate exams using AI.</p>
+      </div>
+      
+      <!-- Tab Switcher -->
+      <div class="flex rounded-xl bg-surface-container p-1 self-start">
+        <button 
+          (click)="activeTab.set('list')" 
+          [class]="activeTab() === 'list' ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'"
+          class="rounded-lg px-4 py-2 text-label-md font-medium transition-all">
+          All Assessments
+        </button>
+        <button 
+          (click)="activeTab.set('create')" 
+          [class]="activeTab() === 'create' ? 'bg-primary text-on-primary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'"
+          class="rounded-lg px-4 py-2 text-label-md font-medium transition-all">
+          New Assessment
+        </button>
+      </div>
+    </header>
+
+    <!-- Tab 1: All Assessments List -->
+    @if (activeTab() === 'list') {
+      @if (isLoading()) {
+        <!-- Skeleton Loading -->
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          @for (i of [1, 2, 3, 4]; track i) {
+            <div class="animate-pulse rounded-3xl bg-surface-container p-6 space-y-4">
+              <div class="h-4 w-1/3 rounded bg-outline-variant/30"></div>
+              <div class="h-6 w-3/4 rounded bg-outline-variant/30"></div>
+              <div class="h-16 w-full rounded bg-outline-variant/30"></div>
+              <div class="flex gap-2">
+                <div class="h-8 w-16 rounded bg-outline-variant/30"></div>
+                <div class="h-8 w-16 rounded bg-outline-variant/30"></div>
+              </div>
+            </div>
+          }
+        </div>
+      } @else if (assessments().length === 0) {
+        <!-- Empty State -->
+        <div class="flex flex-col items-center justify-center rounded-3xl bg-surface-container px-6 py-12 text-center ring-1 ring-outline-variant/20">
+          <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-tertiary-container/30 text-tertiary">
+            <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+            </svg>
+          </div>
+          <h3 class="mt-4 text-title-lg font-semibold text-on-surface">No assessments created yet</h3>
+          <p class="mt-2 max-w-md text-body-md text-on-surface-variant">
+            Create custom challenges or set up a Google Docs assignment for candidates. You can also generate one automatically with AI.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button (click)="activeTab.set('create')" class="rounded-xl bg-primary px-5 py-2.5 text-label-md font-semibold text-on-primary hover:bg-primary/90 transition-all">
+              Create Manually
+            </button>
+          </div>
+        </div>
+      } @else {
+        <!-- Assessment Cards Grid -->
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+          @for (item of assessments(); track item.id) {
+            <div class="flex flex-col justify-between rounded-3xl bg-surface-container p-6 shadow-sm ring-1 ring-outline-variant/30 hover:shadow-md transition-all">
+              <div>
+                <div class="flex items-center justify-between">
+                  <span class="rounded-lg bg-tertiary-container px-2.5 py-1 text-label-sm font-semibold text-on-tertiary-container">
+                    {{ getJobTitle(item.jobPostingId) }}
+                  </span>
+                  <span class="text-body-sm text-on-surface-variant font-mono">ID: #{{ item.id }}</span>
+                </div>
+                
+                <h3 class="mt-4 text-title-lg font-bold text-on-surface">{{ item.title }}</h3>
+                <p class="mt-2 text-body-md text-on-surface-variant whitespace-pre-line line-clamp-3">
+                  {{ item.description || 'No description provided.' }}
+                </p>
+
+                <!-- Check if description contains links and render helper -->
+                @if (item.description && (item.description.includes('http://') || item.description.includes('https://'))) {
+                  <div class="mt-3 flex items-center gap-2 rounded-xl bg-surface-container-high p-3 text-body-sm text-primary">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    <span>Contains external assignment URL</span>
+                  </div>
+                }
+              </div>
+
+              <div class="mt-6 border-t border-outline-variant/20 pt-4 flex items-center justify-between">
+                <div class="flex items-center gap-3 text-body-sm text-on-surface-variant">
+                  <span class="flex items-center gap-1">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {{ item.timeLimitMinutes || 30 }}m
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Pass: {{ item.passingScore || 70 }}%
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    {{ item.questions?.length ?? 0 }} MCQ
+                  </span>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    }
+
+    <!-- Tab 2: Create Assessment Form -->
+    @if (activeTab() === 'create') {
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <!-- Main Form Column -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="rounded-3xl bg-surface-container p-6 shadow-sm ring-1 ring-outline-variant/30">
+            <h2 class="text-title-lg font-bold text-on-surface">Assessment Settings</h2>
+            
+            <form [formGroup]="createForm" (ngSubmit)="createManualAssessment()" class="mt-6 space-y-5">
+              <!-- Select Job -->
+              <div>
+                <label class="text-label-sm font-semibold text-on-surface">Target Job Posting</label>
+                <div class="mt-1.5 flex gap-3">
+                  <select 
+                    formControlName="jobPostingId" 
+                    class="w-full rounded-xl bg-surface-container-high px-4 py-2.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary">
+                    <option [value]="0" disabled>Select job posting...</option>
+                    @for (job of jobs(); track job.id) {
+                      <option [value]="job.id">{{ job.title }}</option>
+                    }
+                  </select>
+                  
+                  <!-- AI Quick Generate Button -->
+                  <button 
+                    type="button"
+                    [disabled]="createForm.get('jobPostingId')?.value === 0 || isSubmitting()"
+                    (click)="generateAIAssessment(createForm.get('jobPostingId')!.value)"
+                    class="flex items-center gap-2 rounded-xl bg-secondary-container px-4 py-2.5 text-label-md font-semibold text-on-secondary-container hover:bg-secondary-container/85 disabled:opacity-50 disabled:cursor-not-allowed transition-all whitespace-nowrap">
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    Generate with AI
+                  </button>
+                </div>
+                @if (createForm.get('jobPostingId')?.touched && createForm.get('jobPostingId')?.invalid) {
+                  <p class="mt-1 text-body-sm text-error">Job selection is required.</p>
+                }
+              </div>
+
+              <!-- Assessment Title -->
+              <div>
+                <label class="text-label-sm font-semibold text-on-surface">Assessment Title</label>
+                <input 
+                  type="text" 
+                  formControlName="title" 
+                  placeholder="e.g. Frontend Architecture Exam, Google Docs Assignment"
+                  class="mt-1.5 w-full rounded-xl bg-surface-container-high px-4 py-2.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary" />
+                @if (createForm.get('title')?.touched && createForm.get('title')?.invalid) {
+                  <p class="mt-1 text-body-sm text-error">Title is required (minimum 3 characters).</p>
+                }
+              </div>
+
+              <!-- Assessment Description / Instructions / Links -->
+              <div>
+                <label class="text-label-sm font-semibold text-on-surface">Description / Instructions</label>
+                <textarea 
+                  formControlName="description" 
+                  rows="4" 
+                  placeholder="Enter details about the assessment. You can paste a Google Docs assignment URL or detailed instructions here for candidates to follow."
+                  class="mt-1.5 w-full rounded-xl bg-surface-container-high px-4 py-3 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary"></textarea>
+              </div>
+
+              <!-- Technical Constraints -->
+              <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
+                  <label class="text-label-sm font-semibold text-on-surface">Time Limit (Minutes)</label>
+                  <input 
+                    type="number" 
+                    formControlName="timeLimitMinutes" 
+                    class="mt-1.5 w-full rounded-xl bg-surface-container-high px-4 py-2.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary" />
+                  @if (createForm.get('timeLimitMinutes')?.touched && createForm.get('timeLimitMinutes')?.invalid) {
+                    <p class="mt-1 text-body-sm text-error">Time limit must be at least 5 minutes.</p>
+                  }
+                </div>
+                <div>
+                  <label class="text-label-sm font-semibold text-on-surface">Passing Score (%)</label>
+                  <input 
+                    type="number" 
+                    formControlName="passingScore" 
+                    class="mt-1.5 w-full rounded-xl bg-surface-container-high px-4 py-2.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary" />
+                  @if (createForm.get('passingScore')?.touched && createForm.get('passingScore')?.invalid) {
+                    <p class="mt-1 text-body-sm text-error">Passing score must be between 0 and 100.</p>
+                  }
+                </div>
+              </div>
+
+              <!-- Manual Questions FormArray -->
+              <div class="border-t border-outline-variant/20 pt-6">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-title-md font-bold text-on-surface">Multiple Choice Questions (Optional)</h3>
+                  <button 
+                    type="button" 
+                    (click)="addQuestion()" 
+                    class="flex items-center gap-1.5 rounded-xl bg-primary-container px-3 py-1.5 text-label-sm font-semibold text-on-primary-container hover:bg-primary-container/85 transition-all">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                    </svg>
+                    Add Question
+                  </button>
+                </div>
+
+                <div formArrayName="questions" class="mt-4 space-y-5">
+                  @for (qGroup of questionsFormArray.controls; track $index) {
+                    <div [formGroupName]="$index" class="relative rounded-2xl bg-surface-container-high p-5 ring-1 ring-outline-variant/30">
+                      <!-- Question Header -->
+                      <div class="flex items-center justify-between">
+                        <span class="text-label-sm font-bold text-primary">Question #{{ $index + 1 }}</span>
+                        <button 
+                          type="button" 
+                          (click)="removeQuestion($index)" 
+                          class="rounded-lg p-1 text-on-surface-variant hover:bg-error/10 hover:text-error transition-all">
+                          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1-1h4M4 7h16" />
+                          </svg>
+                        </button>
+                      </div>
+
+                      <!-- Question Text -->
+                      <div class="mt-3">
+                        <label class="text-label-sm text-on-surface">Question Text</label>
+                        <input 
+                          type="text" 
+                          formControlName="text" 
+                          placeholder="e.g. What is the difference between a standalone component and module?"
+                          class="mt-1 w-full rounded-xl bg-surface-container px-3 py-2 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary text-body-sm" />
+                      </div>
+
+                      <!-- Question Options -->
+                      <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                        <div>
+                          <label class="text-label-sm text-on-surface">Option A</label>
+                          <input type="text" formControlName="option0" placeholder="Option A" class="mt-1 w-full rounded-xl bg-surface-container px-3 py-1.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary text-body-sm" />
+                        </div>
+                        <div>
+                          <label class="text-label-sm text-on-surface">Option B</label>
+                          <input type="text" formControlName="option1" placeholder="Option B" class="mt-1 w-full rounded-xl bg-surface-container px-3 py-1.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary text-body-sm" />
+                        </div>
+                        <div>
+                          <label class="text-label-sm text-on-surface">Option C</label>
+                          <input type="text" formControlName="option2" placeholder="Option C" class="mt-1 w-full rounded-xl bg-surface-container px-3 py-1.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary text-body-sm" />
+                        </div>
+                        <div>
+                          <label class="text-label-sm text-on-surface">Option D</label>
+                          <input type="text" formControlName="option3" placeholder="Option D" class="mt-1 w-full rounded-xl bg-surface-container px-3 py-1.5 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary text-body-sm" />
+                        </div>
+                      </div>
+
+                      <!-- Correct Option Selector -->
+                      <div class="mt-4">
+                        <label class="text-label-sm text-on-surface">Correct Option</label>
+                        <select 
+                          formControlName="correctOptionIndex" 
+                          class="mt-1 w-full rounded-xl bg-surface-container px-3 py-2 text-on-surface outline-none ring-1 ring-outline-variant/40 focus:ring-2 focus:ring-primary text-body-sm">
+                          <option [value]="0">Option A</option>
+                          <option [value]="1">Option B</option>
+                          <option [value]="2">Option C</option>
+                          <option [value]="3">Option D</option>
+                        </select>
+                      </div>
+                    </div>
+                  } @empty {
+                    <div class="rounded-xl border border-dashed border-outline-variant/40 p-4 text-center text-body-sm text-on-surface-variant">
+                      No custom MCQ questions added yet. You can still save the assessment as a link/assignment.
+                    </div>
+                  }
+                </div>
+              </div>
+
+              <!-- Form Buttons -->
+              <div class="border-t border-outline-variant/20 pt-6 flex items-center justify-end gap-3">
+                <button 
+                  type="button" 
+                  (click)="resetForm(); activeTab.set('list')" 
+                  class="rounded-xl bg-surface-container-high px-5 py-2.5 text-label-md font-semibold text-on-surface hover:bg-outline-variant/15 transition-all">
+                  Cancel
+                </button>
+                <button 
+                  type="submit" 
+                  [disabled]="createForm.invalid || isSubmitting()"
+                  class="rounded-xl bg-primary px-5 py-2.5 text-label-md font-semibold text-on-primary hover:bg-primary/95 disabled:opacity-50 transition-all flex items-center gap-2">
+                  @if (isSubmitting()) {
+                    <div class="h-4 w-4 animate-spin rounded-full border-2 border-on-primary border-t-transparent"></div>
+                    Saving...
+                  } @else {
+                    Save Assessment
+                  }
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right Side/Sidebar Guide Column -->
+        <div class="space-y-6">
+          <!-- Guide Widget -->
+          <div class="rounded-3xl bg-secondary-container/20 p-6 shadow-sm ring-1 ring-secondary-container/30">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-secondary-container text-on-secondary-container">
+              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 class="mt-4 text-title-md font-bold text-on-surface">Assessment Guide</h3>
+            <div class="mt-3 space-y-3 text-body-sm text-on-surface-variant leading-relaxed">
+              <p>
+                <strong>External Tasks:</strong> Paste a Google Docs link, Github Classroom invitation link, or PDF link directly in the description field. This is the simplest way to get up and running.
+              </p>
+              <p>
+                <strong>AI Gen Option:</strong> If you select a job from the dropdown, you can click "Generate with AI" to let TallentX formulate specific competency-based questions for that role.
+              </p>
+              <p>
+                <strong>Custom Questions:</strong> Add multiple-choice questions below. These will be automatically presented to candidates in the application portal.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

@@ -7,6 +7,7 @@ export interface InterviewDto {
   candidateName: string;
   recruiterName: string;
   scheduledTime: string;
+  scheduledAt?: string;
   durationMinutes: number;
   status: 'Scheduled' | 'Completed' | 'Cancelled';
   meetingLink?: string;
@@ -15,7 +16,7 @@ export interface InterviewDto {
 
 export interface ScheduleInterviewRequest {
   jobApplicationId: number;
-  scheduledTime: string;
+  scheduledAt: string;
   durationMinutes: number;
   meetingLink?: string;
   notes?: string;

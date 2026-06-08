@@ -32,9 +32,9 @@ export class InterviewService {
   }
 
   update(id: number, data: Partial<ScheduleInterviewRequest>): Observable<InterviewDto> {
-    // If scheduledTime is being updated, ensure it's already in UTC ISO format
-    if (data.scheduledTime) {
-      console.log('[InterviewService] Updating scheduledTime:', data.scheduledTime);
+    // If scheduledAt is being updated, ensure it's already in UTC ISO format
+    if (data.scheduledAt) {
+      console.log('[InterviewService] Updating scheduledAt:', data.scheduledAt);
     }
     return this.http.put<InterviewDto>(`${this.base}/${id}`, data).pipe(
       catchError((error) => {

@@ -94,6 +94,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/interview-scheduling/interview-scheduling').then(m => m.InterviewSchedulingPage),
   },
   {
+    path: 'recruiter/assessments',
+    canActivate: [recruiterGuard],
+    loadComponent: () => import('./pages/recruiter-assessments/recruiter-assessments').then(m => m.RecruiterAssessmentsPage),
+  },
+  {
     path: 'recruiter/assessments/new',
     canActivate: [recruiterGuard],
     loadComponent: () => import('./pages/create-ai-interview/create-ai-interview').then(m => m.CreateAiInterviewPage),

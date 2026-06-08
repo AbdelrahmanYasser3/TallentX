@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { finalize } from 'rxjs/operators';
 import { InterviewService } from '../../core/services/interview.service';
@@ -44,7 +44,7 @@ export class CandidateInterviewsPage implements OnInit {
     this.interviewService.getByCandidate(userId)
       .pipe(finalize(() => this.isLoading.set(false)))
       .subscribe({
-        next: (items) => this.interviews.set(items ?? []),
+        next: (items) => this.interviews.set((items ?? []).map(item => ({ ...item, scheduledTime: item.scheduledTime ?? item.scheduledAt ?? '' }))),
         error: () => {
           this.interviews.set([]);
           this.toast.error('Failed to load interviews.');

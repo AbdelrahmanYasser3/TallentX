@@ -1,16 +1,19 @@
 import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { forkJoin } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { InterviewService } from '../../core/services/interview.service';
 import { InterviewDto } from '../../core/models/interview.models';
 import { ToastService } from '../../core/services/toast.service';
 import { Router } from '@angular/router';
+import { JobApplicationDto } from '../../core/models/job.models';
 import {
   UpcomingInterviewItem,
   buildStaticUpcomingInterviews,
   InterviewType,
 } from '../../core/data/upcoming-interviews.seed';
+import { RecruiterService } from '../../core/services/recruiter';
 
 export type InterviewTimeBucket = 'today' | 'tomorrow' | 'thisWeek' | 'later';
 
@@ -18,6 +21,13 @@ export interface InterviewTimeSection {
   key: InterviewTimeBucket;
   label: string;
   items: UpcomingInterviewItem[];
+}
+
+interface InterviewApplicationOption {
+  id: number;
+  candidateName: string;
+  jobTitle: string;
+  status: string;
 }
 
 @Component({
@@ -28,14 +38,17 @@ export interface InterviewTimeSection {
 })
 export class InterviewSchedulingPage implements OnInit {
   private interviewService = inject(InterviewService);
+  private recruiterService = inject(RecruiterService);
   private toast = inject(ToastService);
   private fb = inject(FormBuilder);
   private router = inject(Router);
 
   readonly interviews = signal<UpcomingInterviewItem[]>([]);
   readonly isLoading = signal<boolean>(true);
+  readonly isLoadingApplications = signal<boolean>(true);
   readonly isSubmitting = signal<boolean>(false);
   readonly expandedId = signal<number | null>(null);
+  readonly availableApplications = signal<InterviewApplicationOption[]>([]);
 
   readonly timeSections: { key: InterviewTimeBucket; label: string }[] = [
     { key: 'today', label: 'Today' },
@@ -86,6 +99,7 @@ export class InterviewSchedulingPage implements OnInit {
 
   ngOnInit(): void {
     this.loadInterviews();
+    this.loadAvailableApplications();
   }
 
   loadInterviews(): void {
@@ -118,11 +132,57 @@ export class InterviewSchedulingPage implements OnInit {
     const roomName = item.meetingLink?.split('/').pop();
     return {
       ...item,
+      scheduledTime: item.scheduledTime ?? item.scheduledAt ?? '',
       companyName: 'Company',
       interviewType: 'Online',
       displayStatus: 'Scheduled',
       roomName,
       isStatic: false,
+    };
+  }
+
+  private loadAvailableApplications(): void {
+    this.isLoadingApplications.set(true);
+
+    this.recruiterService
+      .getJobPostings()
+      .pipe(finalize(() => this.isLoadingApplications.set(false)))
+      .subscribe({
+        next: (jobs) => {
+          if (!jobs.length) {
+            this.availableApplications.set([]);
+            return;
+          }
+
+          forkJoin(
+            jobs.map((job) => this.recruiterService.getJobApplicants(Number(job.id), 1, 100))
+          ).subscribe({
+            next: (groups) => {
+              const options = groups
+                .flat()
+                .map((application) => this.toApplicationOption(application))
+                .sort((a, b) => a.candidateName.localeCompare(b.candidateName));
+              this.availableApplications.set(options);
+            },
+            error: () => {
+              this.availableApplications.set([]);
+              this.toast.error('Failed to load your applicants.');
+            },
+          });
+        },
+        error: () => {
+          this.availableApplications.set([]);
+          this.toast.error('Failed to load your jobs.');
+        },
+      });
+  }
+
+  private toApplicationOption(application: JobApplicationDto): InterviewApplicationOption {
+    return {
+      id: application.id,
+      candidateName: application.candidateName || application.candidateId,
+      jobTitle: application.jobTitle || `Job #${application.jobPostingId}`,
+      status: application.status,
     };
   }
 
@@ -216,9 +276,14 @@ export class InterviewSchedulingPage implements OnInit {
       return;
     }
 
-    const scheduledTimeLocal = value.scheduledTime.includes(':00', value.scheduledTime.length - 3)
-      ? value.scheduledTime
-      : value.scheduledTime + ':00';
+    // Ensure at least 30 minutes in the future to avoid edge cases
+    const thirtyMinutesFromNow = Date.now() + 30 * 60 * 1000;
+    if (selectedDate.getTime() < thirtyMinutesFromNow) {
+      this.toast.error('Interview must be at least 30 minutes from now.');
+      return;
+    }
+
+    const scheduledTimeLocal = new Date(value.scheduledTime).toISOString();
 
     const roomId = this.generateRoomId();
     const meetingLink = `https://meet.jit.si/TallentX-${roomId}`;
@@ -228,7 +293,7 @@ export class InterviewSchedulingPage implements OnInit {
     this.interviewService
       .schedule({
         jobApplicationId: Number(value.jobApplicationId),
-        scheduledTime: scheduledTimeLocal,
+        scheduledAt: scheduledTimeLocal,
         durationMinutes: Number(value.durationMinutes),
         meetingLink,
         notes: value.notes || undefined,

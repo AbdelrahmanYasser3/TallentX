@@ -16,6 +16,15 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
     /\/JobPosting\/\d+$/i.test(req.url) ||
     /\/JobPosting\/search\//i.test(req.url);
 
+  // Interview scheduling: component handles its own error display
+  const isInterviewWrite =
+    /\/Interview\/schedule$/i.test(req.url) && req.method === 'POST';
+
+  // Dashboard background data: errors should be silent (logged only)
+  const isDashboardBackground =
+    /\/Dashboards\//i.test(req.url) ||
+    /\/Analytics\//i.test(req.url);
+
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status === 401 && !isAuthEndpoint && !isPublicJobRead) {
@@ -26,13 +35,16 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
       } else if (error.status === 400 && isPublicJobRead) {
         // Swallow 400 on public job endpoints — the service has its own fallback.
         console.warn('[ErrorInterceptor] 400 on public job endpoint (suppressed):', req.url);
+      } else if (error.status === 400 && isInterviewWrite) {
+        // Component shows its own contextual error message
+        console.warn('[ErrorInterceptor] 400 on interview schedule (suppressed):', req.url);
       } else if (error.status === 400) {
         // Model binding / validation failure — surface details for debugging
         const body = error.error;
         const validationErrors = body?.errors;
         if (validationErrors && typeof validationErrors === 'object') {
           const messages = Object.entries(validationErrors)
-            .map(([field, msgs]) => `${field}: ${(msgs as string[]).join(', ')}`)
+             .map(([field, msgs]) => `${field}: ${(msgs as string[]).join(', ')}`)
             .join(' | ');
           toastService.error(`Validation failed — ${messages}`);
           console.error('[ErrorInterceptor] 400 Validation:', validationErrors);
@@ -44,7 +56,11 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
       } else if (error.status === 403) {
         toastService.error('You do not have permission for this action.');
       } else if (error.status === 500) {
-        toastService.error('A server error occurred. Please try again later.');
+        if (isDashboardBackground) {
+          console.warn('[ErrorInterceptor] 500 on dashboard background request (suppressed):', req.url);
+        } else {
+          toastService.error('A server error occurred. Please try again later.');
+        }
       } else if (error.status === 0) {
         toastService.error('Unable to connect to server. Check your internet connection.');
       }

@@ -12,9 +12,19 @@
         <h2 class="text-title-md text-on-surface">Create Interview</h2>
         <form class="mt-4 space-y-3" [formGroup]="interviewForm" (ngSubmit)="schedule()">
           <div>
-            <label class="mb-1 block text-label-sm text-on-surface-variant">Job Application Id</label>
-            <input type="number" formControlName="jobApplicationId"
-              class="w-full rounded-xl bg-surface-container px-3 py-2 text-on-surface ring-1 ring-outline-variant/30" />
+            <label class="mb-1 block text-label-sm text-on-surface-variant">Candidate Application</label>
+            <select formControlName="jobApplicationId"
+              class="w-full rounded-xl bg-surface-container px-3 py-2 text-on-surface ring-1 ring-outline-variant/30">
+              <option [ngValue]="0" disabled>
+                {{ isLoadingApplications() ? 'Loading your applicants...' : 'Select one of your applicants' }}
+              </option>
+              <option *ngFor="let option of availableApplications()" [ngValue]="option.id">
+                {{ option.candidateName }} - {{ option.jobTitle }} ({{ option.status }})
+              </option>
+            </select>
+            <p class="mt-1 text-body-sm text-on-surface-variant" *ngIf="!isLoadingApplications() && availableApplications().length === 0">
+              No applicants were found for your jobs yet.
+            </p>
           </div>
 
           <div>
@@ -41,7 +51,7 @@
               class="w-full rounded-xl bg-surface-container px-3 py-2 text-on-surface ring-1 ring-outline-variant/30"></textarea>
           </div>
 
-          <button type="submit" [disabled]="isSubmitting()"
+          <button type="submit" [disabled]="isSubmitting() || isLoadingApplications() || availableApplications().length === 0"
             class="w-full rounded-xl bg-primary px-4 py-2 text-label-md text-on-primary disabled:opacity-50">
             {{ isSubmitting() ? 'Scheduling...' : 'Schedule Interview' }}
           </button>

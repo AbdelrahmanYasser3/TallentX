@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { RecruiterService, RecruiterStats, RecruiterJob, Applicant } from '../../core/services/recruiter';
@@ -70,7 +70,7 @@ export class RecruiterDashboard implements OnInit {
       this.loadAnalyticsChart();
       
       if (!result.stats) {
-        this.toast.error('Failed to load dashboard data');
+        console.warn('[RecruiterDashboard] Stats unavailable – using defaults.');
       }
       this.isLoading.set(false);
     });
