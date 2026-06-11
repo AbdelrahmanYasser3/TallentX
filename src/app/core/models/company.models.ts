@@ -5,7 +5,12 @@ export interface CompanyDetailDto {
   industry?: string;
   website?: string;
   logoPath?: string;
+  bannerPath?: string;
   size?: string;
+  location?: string;
+  employeesCount?: number;
+  openJobsCount?: number;
+  linkedInUrl?: string;
 }
 
 export interface InviteCodeDto {
@@ -25,4 +30,16 @@ export interface GenerateInviteCodeRequest {
 
 export interface GenerateInviteCodeResponse {
   code: string;
+}
+
+export interface PublicCompanyListItemDto {
+  id: number;
+  name: string;
+  logoPath?: string;
+  industry?: string;
+  location?: string;
+  description?: string;
+  openJobsCount?: number;
+  size?: string;
+  employeesCount?: number;
 }

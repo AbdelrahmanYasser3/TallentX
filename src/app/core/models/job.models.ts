@@ -11,7 +11,7 @@ export interface JobListDto {
   salaryMin?: number;
   salaryMax?: number;
   currency?: string;
-  skills: { id: number; name: string; requiredLevel: 1|2|3 }[];
+  skills: { id: number; name: string; requiredLevel: 1 | 2 | 3 }[];
   applicantsCount: number;
   createdAt: string;
   expiryDate?: string;
@@ -38,6 +38,8 @@ export interface JobApplicationDto {
   jobPostingId: number;
   candidateId: string;
   candidateName?: string;
+  candidateEmail?: string;
+  candidatePhone?: string;
   jobTitle?: string;
   status: string;
   appliedAt: string;
@@ -47,6 +49,11 @@ export interface JobApplicationDto {
   matchScore?: number;
   recruiterRating?: number;
   rejectionReason?: string;
+  skills?: string[];
+  experienceLevel?: string;
+  assessmentStatus?: string;
+  interviewStatus?: string;
+  avatarUrl?: string;
 }
 
 export interface ApplyWithCvDto {

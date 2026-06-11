@@ -14,3 +14,12 @@ export interface QuestionDto {
   options: string[];
   correctOptionIndex: number;
 }
+
+export interface AssessmentListItemDto {
+  id: number;
+  jobPostingId?: number;
+  title: string;
+  status?: 'Draft' | 'Published' | string;
+  createdAt?: string;
+  timeLimitMinutes?: number;
+}
